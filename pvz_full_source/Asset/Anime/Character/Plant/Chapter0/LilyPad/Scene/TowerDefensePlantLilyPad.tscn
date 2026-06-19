@@ -1,0 +1,103 @@
+[gd_scene format=4 uid="uid://cb32lgtm8ebf7"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dq77mlt3b468m" path="res://Asset/Anime/Character/Plant/Chapter0/LilyPad/Scene/TowerDefensePlantLilyPad.gd" id="2"]
+[ext_resource type="Resource" uid="uid://c71vmd72n60v6" path="res://Asset/Anime/Character/Plant/Chapter0/LilyPad/Config/TowerDefensePlantLilyPad.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://k4i0khnkhvmq" path="res://Asset/Anime/Character/Plant/Chapter0/LilyPad/LilyPad.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://d1l3f28mblu32" path="res://Script/Component/TowerDefense/Character/SlotComponent/SlotComponent.tscn" id="7"]
+
+[sub_resource type="Image" id="Image_f2bbm"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPzMzs74AALBAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_l5flf"]
+image = SubResource("Image_f2bbm")
+
+[sub_resource type="Image" id="Image_u8fmr"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nwcrm"]
+image = SubResource("Image_u8fmr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmh0u"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_nwcrm")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_l5flf")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(100, 100)
+shader_parameter/uvs = [Rect2(0, 0, 100, 100)]
+shader_parameter/layerVisible = [true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefensePlantLilyPad" unique_id=148277462 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -13
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/LilyPad")
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+z_index = -10
+position = Vector2(0, 24)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="LilyPad" parent="SpriteGroup/TransformPoint" index="0" unique_id=2098292704 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_cmh0u")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -30)
+offset = Vector2(-40, -19.017576)
+
+[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/LilyPad" index="0" unique_id=941184742]
+position = Vector2(-40.35, -13.996708)
+script = ExtResource("6")
+followSlotId = 1
+useScale = false
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/LilyPad/PotSlot" index="0" unique_id=1012813159]
+position = Vector2(41.35, 10.1448)
+
+[node name="ShowHealthComponent" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1448292904]
+position = Vector2(0, 30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1522945377 node_paths=PackedStringArray("posMark") instance=ExtResource("7")]
+posMark = NodePath("../../SpriteGroup/TransformPoint/LilyPad/PotSlot/Marker2D")
+heightFollow = true
+hideShadow = false

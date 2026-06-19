@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://c1t02cr54x0qa"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/BackyardFull/BackyardFullAdvancedDifficult.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_iwnig"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieNormalScreendoor", "ZombieFootball", "ZombieJackson", "ZombieDuck", "ZombieDolphinrider"]
+
+[sub_resource type="Resource" id="Resource_8eptn"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieSleeper", "ZombieBalloon", "ZombieLadder", "ZombiePogo", "ZombiePolestriker", "ZombieBalloonColour", "ZombieDolphiSN", "ZombieSnorkle", "ZombieDuckRider", "ZombieMagnetic", "ZombieShadow"]
+
+[sub_resource type="Resource" id="Resource_jndyn"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieDisco", "ZombieFootballBlack", "ZombieShieldArmor", "ZombieAxe", "ZombieDolphinMJ"]
+
+[sub_resource type="Resource" id="Resource_1ohn7"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieJackbox", "ZombiePaperball", "ZombiePogoball", "ZombieShark", "ZombieAngel", "ZombieGargantuar", "ZombiePogoJackson", "ZombieJacksonX", "ZombieSeaDemon"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundLimit = 5
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 800
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_iwnig"), SubResource("Resource_8eptn"), SubResource("Resource_jndyn"), SubResource("Resource_1ohn7")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

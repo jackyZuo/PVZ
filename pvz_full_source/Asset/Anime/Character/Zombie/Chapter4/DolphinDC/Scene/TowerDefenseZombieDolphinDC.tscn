@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://b6w8eus2s2fq"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bk1ifxaa1kwi7" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Scene/TowerDefenseZombieDolphinDC.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bafl3u30txv2c" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Config/TowerDefenseZombieDolphinDC.tres" id="3"]
+[ext_resource type="Resource" uid="uid://063issa3q4tm" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/DamagePoint/Config/ZombieDolphinDCDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c8qxqcmdx6wj3" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/DamagePoint/Config/ZombieDolphinDCDamagePointHead.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://yrst07pt6sah" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/ZombieDolphinDC.tscn" id="6"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="9"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s12qd"]
+size = Vector2(85, 76)
+
+[node name="TowerDefenseZombieDolphinDC" unique_id=1792522526 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 1.5
+inSwimAnimeClipScale = 0.5
+useAttackDps = false
+walkAnimeClip = "DolphinWalk"
+inSwimAnimeClip = "JumpInWater"
+swimAnimeClip = "SwimWalk"
+attackAnimeClip = "DolphinAttack"
+attackWaterAnimeClip = "SwimEat"
+dieAnimeClip = "DolphinDeath"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -10.0
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/HeadSlot")
+damagePart = {
+"Arm": ExtResource("4"),
+"Head": ExtResource("5")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/HeadSlot")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDolphinDC" parent="SpriteGroup/TransformPoint" index="0" unique_id=300318078 instance=ExtResource("6")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="0" unique_id=495288169]
+position = Vector2(-27.357748, -43.456455)
+rotation = 0.014173928
+scale = Vector2(0.799844, 0.799844)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="1" unique_id=1091629193]
+position = Vector2(21.706402, -11.900044)
+rotation = -0.012302093
+scale = Vector2(0.7999184, 0.7999184)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="2" unique_id=205512757]
+position = Vector2(-64.16, 18)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
+[node name="Jump" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="6" unique_id=1771208729]
+script = ExtResource("7")
+
+[node name="Run" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="7" unique_id=686589596]
+script = ExtResource("7")
+
+[node name="ToJump" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="14" unique_id=820192062]
+script = ExtResource("8")
+to = NodePath("../Jump")
+event = &"ToJump"
+delay_in_seconds = "0.0"
+
+[node name="ToRun" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="15" unique_id=477061245]
+script = ExtResource("8")
+to = NodePath("../Run")
+event = &"ToRun"
+delay_in_seconds = "0.0"
+
+[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=52793227 node_paths=PackedStringArray("checkArea") instance=ExtResource("9")]
+unique_name_in_owner = true
+checkArea = NodePath("CheckJumpArea")
+checkIntreval = 0
+checkGrid = false
+checkLine = true
+checkTall = true
+checkBowling = true
+
+[node name="CheckJumpArea" type="Area2D" parent="ComponentManager/AttackComponent2" index="0" unique_id=105627797]
+unique_name_in_owner = true
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent2/CheckJumpArea" index="0" unique_id=80474927]
+position = Vector2(-18.5, -1)
+shape = SubResource("RectangleShape2D_s12qd")
+
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1930686332]
+attackType = "Smash"
+checkVase = true
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="20" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieDolphinDC/GroundSlot")
+
+[connection signal="state_entered" from="StateChart/CompoundState/Jump" to="." method="JumpEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Jump" to="." method="JumpExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Jump" to="." method="JumpProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Run" to="." method="RunEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Run" to="." method="RunExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Run" to="." method="RunProcessing"]
+
+[editable path="SpriteGroup/TransformPoint/ZombieDolphinDC"]

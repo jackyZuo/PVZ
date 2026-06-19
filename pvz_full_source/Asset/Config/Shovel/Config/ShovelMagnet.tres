@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ShovelConfig" format=3 uid="uid://jxykqvxl0ebw"]
+
+[ext_resource type="Script" uid="uid://bv06srpobht2e" path="res://Resource/TowerDefense/Shovel/Event/ShovelEventPacketSpawnConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://dp131blh3op2p" path="res://Resource/TowerDefense/Shovel/Event/ShovelEventDestroyConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://xmwd4jomf83s" path="res://Resource/TowerDefense/Shovel/ShovelConfig.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://d1umf0xwkc7j1" path="res://Asset/Texture/TowerDefense/Shovel/ShovelMagnet.png" id="4"]
+[ext_resource type="Script" uid="uid://p7yhpfahgp8d" path="res://Resource/UnlockCondition/UnlockConditionLevelFinishConfig.gd" id="5"]
+
+[sub_resource type="Resource" id="Resource_k7s8a"]
+script = ExtResource("1")
+packetName = "ItemMagnetWave"
+everyNum = 75
+metadata/_custom_type_script = "uid://bv06srpobht2e"
+
+[sub_resource type="Resource" id="Resource_l5nfx"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://dp131blh3op2p"
+
+[sub_resource type="Resource" id="Resource_y83xa"]
+script = ExtResource("5")
+levelSaveKey = "Level4_4"
+metadata/_custom_type_script = "uid://p7yhpfahgp8d"
+
+[resource]
+script = ExtResource("3")
+texture = ExtResource("4")
+saveKey = "ShovelMagnet"
+unlockCheckList = [SubResource("Resource_y83xa")]
+name = "TOWERDEFENSE_SHOVEL_MAGNET_NAME"
+describe = "TOWERDEFENSE_SHOVEL_MAGNET_EXPRESTION"
+handbookDescribe = "TOWERDEFENSE_SHOVEL_MAGNET_HANDBOOK_EXPRESTION"
+handbookStory = "TOWERDEFENSE_SHOVEL_MAGNET_HANDBOOK_STORY"
+eventList = [SubResource("Resource_k7s8a"), SubResource("Resource_l5nfx")]
+metadata/_custom_type_script = "uid://xmwd4jomf83s"

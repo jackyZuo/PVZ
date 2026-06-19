@@ -1,0 +1,82 @@
+[gd_scene format=4 uid="uid://dty16unawpwvn"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://dy2kkpeimvsor" path="res://Asset/Anime/Effect/Fire/Mega/MegaFire.tres" id="3"]
+
+[sub_resource type="Image" id="Image_ewl6b"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 3,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_x2cnk"]
+image = SubResource("Image_ewl6b")
+
+[sub_resource type="Image" id="Image_8fefb"]
+data = {
+"data": PackedByteArray("AABAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAoEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 3,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_87cgi"]
+image = SubResource("Image_8fefb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ica7p"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_87cgi")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_x2cnk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(452, 348)
+shader_parameter/uvs = [Rect2(0, 0, 113, 87), Rect2(113, 0, 113, 87), Rect2(113, 87, 113, 87), Rect2(226, 0, 113, 87), Rect2(226, 87, 113, 87), Rect2(339, 0, 113, 87), Rect2(339, 87, 113, 87), Rect2(0, 87, 113, 87), Rect2(113, 174, 113, 87), Rect2(226, 174, 113, 87), Rect2(339, 174, 113, 87), Rect2(0, 174, 113, 87), Rect2(113, 261, 113, 87), Rect2(226, 261, 113, 87), Rect2(339, 261, 113, 87)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="MegaFire" type="Node2D" unique_id=1922499867]
+material = SubResource("ShaderMaterial_ica7p")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(0, -50)
+Animation/Clip = "Flame"
+Animation/LayerVisible/AnimeClips = true
+"Animation/LayerVisible/Layer 1" = true
+Animation/MediaReplace/fire1_1_Mega.png = null
+Animation/MediaReplace/fire1_2_Mega.png = null
+Animation/MediaReplace/fire1_3_Mega.png = null
+Animation/MediaReplace/fire1_Mega.png = null
+Animation/MediaReplace/fire2_Mega.png = null
+Animation/MediaReplace/fire3_Mega.png = null
+Animation/MediaReplace/fire4_Mega.png = null
+Animation/MediaReplace/fire4b_Mega.png = null
+Animation/MediaReplace/fire5_Mega.png = null
+Animation/MediaReplace/fire5b_Mega.png = null
+Animation/MediaReplace/fire6_Mega.png = null
+Animation/MediaReplace/fire6b_Mega.png = null
+Animation/MediaReplace/fire7_Mega.png = null
+Animation/MediaReplace/fire7b_Mega.png = null
+Animation/MediaReplace/fire8_Mega.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

@@ -1,0 +1,85 @@
+[gd_scene format=4 uid="uid://cy266b676lini"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cm7k55y1ospqd" path="res://Asset/Anime/Character/Plant/Chapter0/Coffeebean/Coffeebean.tres" id="3"]
+
+[sub_resource type="Image" id="Image_63ygr"]
+data = {
+"data": PackedByteArray("AAAAPwAAAAAAAAAAAAAAPzMziUHNzNRAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZkJBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAWzEBPxfHcT0AAAAAAAAAPw18iUGe9MJAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZlNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAf5QAP/738z0AAAAAAAAAPyAJiUFgjrFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZmRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA5VIAPylE3D0AAIAyAAAAP60hiUEL8eNAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZnVBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAPwDExD0AACAzAAAAPzMziUEbLwtBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUEzM4NBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAtFQBP5AQAz0AACAzAAAAP2mKiUE+Dh1BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZnVBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAgJQAP/93Ar0AACAzAAAAPyEJiUGC+S5BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZmRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA1VoAPwccgrwAAKAyAAAAP+YkiUFKsgxBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZlNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAPwAAAAAAAAAAAAAAPzMziUHNzNRAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZkJBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_otiji"]
+image = SubResource("Image_63ygr")
+
+[sub_resource type="Image" id="Image_1h5rx"]
+data = {
+"data": PackedByteArray("AABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_x148n"]
+image = SubResource("Image_1h5rx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dq4mx"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_x148n")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_otiji")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(425, 312)
+shader_parameter/uvs = [Rect2(374, 156, 17, 13), Rect2(391, 156, 17, 13), Rect2(408, 0, 17, 13), Rect2(0, 0, 57, 156), Rect2(57, 0, 57, 156), Rect2(57, 156, 57, 156), Rect2(114, 0, 57, 156), Rect2(114, 156, 57, 156), Rect2(171, 0, 57, 156), Rect2(171, 156, 57, 156), Rect2(228, 0, 57, 156), Rect2(228, 156, 57, 156), Rect2(285, 0, 57, 156), Rect2(285, 156, 57, 156), Rect2(342, 0, 57, 156), Rect2(342, 156, 32, 27)]
+shader_parameter/layerVisible = [true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="Coffeebean" type="Node2D" unique_id=1350998435]
+material = SubResource("ShaderMaterial_dq4mx")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -80)
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/Coffeebean_head = true
+Animation/LayerVisible/Coffeebean_leaf = true
+Animation/MediaReplace/Coffeebean_eyelid.png = null
+Animation/MediaReplace/Coffeebean_eyelid2.png = null
+Animation/MediaReplace/Coffeebean_eyelid3.png = null
+Animation/MediaReplace/Coffeebean_head1.png = null
+Animation/MediaReplace/Coffeebean_head10.png = null
+Animation/MediaReplace/Coffeebean_head11.png = null
+Animation/MediaReplace/Coffeebean_head12.png = null
+Animation/MediaReplace/Coffeebean_head2.png = null
+Animation/MediaReplace/Coffeebean_head3.png = null
+Animation/MediaReplace/Coffeebean_head4.png = null
+Animation/MediaReplace/Coffeebean_head5.png = null
+Animation/MediaReplace/Coffeebean_head6.png = null
+Animation/MediaReplace/Coffeebean_head7.png = null
+Animation/MediaReplace/Coffeebean_head8.png = null
+Animation/MediaReplace/Coffeebean_head9.png = null
+Animation/MediaReplace/Coffeebean_leaf.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

@@ -1,0 +1,95 @@
+[gd_scene format=4 uid="uid://b216dsddv7dub"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bgwcr88rvek4o" path="res://Asset/Anime/Character/GraveStone/TargetHealth/Scene/TowerDefenseGraveStoneTargetHealth.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bw8upor8wsnmr" path="res://Asset/Anime/Character/GraveStone/TargetHealth/Config/TowerDefenseGraveStoneTargetHealth.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://b5ew4trb21lef" path="res://Asset/Anime/Character/GraveStone/TargetHealth/GraveStoneTargetHealth.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://fd6u1lxx523v" path="res://Script/Component/TimerComponent/TimerComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_hit8n"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ul4ip"]
+image = SubResource("Image_hit8n")
+
+[sub_resource type="Image" id="Image_dyi6s"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_vgd8g"]
+image = SubResource("Image_dyi6s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0j2kd"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_vgd8g")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ul4ip")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(83, 94)
+shader_parameter/uvs = [Rect2(0, 0, 83, 94)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st5h7"]
+size = Vector2(73, 73)
+
+[node name="TowerDefenseGraveStoneTargetHealth" unique_id=1266045169 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneTargetHealth")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 26)
+
+[node name="GraveStoneTargetHealth" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1082409569 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_0j2kd")
+instance_shader_parameters/frameIndex = 0.6179692559226121
+position = Vector2(0, -18)
+
+[node name="TimerComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1423992022 instance=ExtResource("6")]
+unique_name_in_owner = true
+timerDictionary = {
+"Spawn": 3.0
+}
+
+[node name="Node2D" type="Node2D" parent="." index="7" unique_id=1505788201]
+
+[node name="CheckArea" type="Area2D" parent="Node2D" index="0" unique_id=157646094]
+unique_name_in_owner = true
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Node2D/CheckArea" index="0" unique_id=12592761]
+unique_name_in_owner = true
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_st5h7")
+
+[connection signal="timeout" from="ComponentManager/TimerComponent" to="." method="Timeout"]

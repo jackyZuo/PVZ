@@ -1,0 +1,137 @@
+[gd_scene format=4 uid="uid://bjloa6p7yhpe8"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bk0fhs4wqp3bh" path="res://Asset/Anime/Character/Plant/Chapter0/PotatoMine/Scene/TowerDefensePlantPotatoMine.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cmawrsk5shsqc" path="res://Asset/Anime/Character/Plant/Chapter0/PotatoMine/Config/TowerDefensePlantPotatoMine.tres" id="3"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="4"]
+[ext_resource type="PackedScene" uid="uid://cak7ibof3jc27" path="res://Asset/Anime/Character/Plant/Chapter0/PotatoMine/PotatoMine.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="7"]
+[ext_resource type="Script" uid="uid://c3wiwula8chdo" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://dqcu2ycvf4u72" path="res://Prefab/Particles/Explosion/MineExplosion/MineExplosion.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dbxioa701nscp" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponent.tscn" id="10"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vy3vg"]
+shader = ExtResource("4")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 1.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = null
+shader_parameter/imageAnimeData = null
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(0, 0)
+shader_parameter/uvs = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/layerVisible = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Image" id="Image_epbmx"]
+data = {
+"data": PackedByteArray("AikXPwAAAAAAAAAAAikXP2ZmGkJmZnpCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ADMzPwAAAAAAAAAAADMzP83MvkEzM3dCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP2ZmokEAAGRCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMz4UHNzCFCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMza0EzM4RCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMPwAA1kEAAIlCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMPwAAKkIAAIFCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP83M+EEzM4pCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 51
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_egbkk"]
+image = SubResource("Image_epbmx")
+
+[sub_resource type="Image" id="Image_w1m31"]
+data = {
+"data": PackedByteArray("AAAgQQAAAAAAAAAAAAAAAAAAAEEAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABQQQAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAA/39HAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAD/f0cAAOBAAAAAAAAAAAAA/39HAAAAQQAAAAAAAAAAAP9/RwAAEEEAAAAAAAAAAAAAgEAAACBBAAAAAAAAAAAA/39HAAAwQQAAAAAAAAAAAABAQQAAQEEAAAAAAAAAAAAA4EAAAFBBAAAAAAAAAAAAABBBAABgQQAAAAAAAAAAAAAwQQAAcEEAAAAAAAAAAAD/f0cAAIBBAAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 17
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qcfvx"]
+image = SubResource("Image_w1m31")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xg70y"]
+shader = ExtResource("4")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_qcfvx")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_egbkk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(233, 140)
+shader_parameter/uvs = [Rect2(178, 83, 44, 24), Rect2(0, 93, 44, 24), Rect2(132, 0, 101, 66), Rect2(44, 93, 44, 24), Rect2(113, 112, 28, 28), Rect2(132, 66, 46, 46), Rect2(0, 0, 132, 93), Rect2(202, 107, 10, 10), Rect2(79, 117, 34, 19), Rect2(163, 112, 20, 15), Rect2(44, 117, 35, 21), Rect2(141, 112, 22, 12), Rect2(183, 107, 19, 13), Rect2(178, 66, 45, 17)]
+shader_parameter/layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xotnw"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Resource_qy0fv"]
+script = ExtResource("8")
+type = "Mine"
+metadata/_custom_type_script = "uid://c3wiwula8chdo"
+
+[node name="TowerDefensePlantPotatoMine" unique_id=887943218 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+readyTime = 15.0
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/PotatoMine")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+material = SubResource("ShaderMaterial_vy3vg")
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PotatoMine" parent="SpriteGroup/TransformPoint" index="0" unique_id=965843860 instance=ExtResource("5")]
+material = SubResource("ShaderMaterial_xg70y")
+instance_shader_parameters/frameIndex = 0.8337512939372458
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=202055863 node_paths=PackedStringArray("checkArea") instance=ExtResource("6")]
+unique_name_in_owner = true
+attackType = "Default"
+checkArea = NodePath("CheckArea")
+checkLine = true
+
+[node name="CheckArea" type="Area2D" parent="ComponentManager/AttackComponent" index="0" unique_id=1328920468]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent/CheckArea" index="0" unique_id=289953972]
+position = Vector2(-1, 0.75)
+shape = SubResource("RectangleShape2D_xotnw")
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=206414620 instance=ExtResource("7")]
+explodeAudio = "MineExplosion"
+explodeEvent = [SubResource("Resource_qy0fv")]
+explodeEffect = ExtResource("9")
+explodeRange = Vector2(1, 0.25)
+
+[node name="PotatoComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1827946023 node_paths=PackedStringArray("attackComponent", "explodeComponent", "sprite") instance=ExtResource("10")]
+unique_name_in_owner = true
+attackComponent = NodePath("../AttackComponent")
+explodeComponent = NodePath("../ExplodeComponent")
+sprite = NodePath("../../SpriteGroup/TransformPoint/PotatoMine")
+
+[connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

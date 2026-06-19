@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dsremvbsrky0x"]
+
+[ext_resource type="Script" uid="uid://bwpkekpvo7sto" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffButter.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bpu1ibbqp3m2" path="res://Asset/Config/Projectile/Butter/Sprite/Butter/ProjectileButter.tscn" id="3"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://5se4p3vq67y8" path="res://Prefab/Particles/Splats/ButterSplats/ButterSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_c77gh"]
+script = ExtResource("1")
+time = 4.0
+butterSprite = null
+metadata/_custom_type_script = "uid://bwpkekpvo7sto"
+
+[sub_resource type="Resource" id="Resource_jldlt"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_c77gh")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("4")
+name = "Butter"
+baseDamage = 40.0
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_jldlt")]
+damageFlags = 2
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+Flag/Damage = 2
+Flag/FireMethod = 32
+Flag/Collision = 11

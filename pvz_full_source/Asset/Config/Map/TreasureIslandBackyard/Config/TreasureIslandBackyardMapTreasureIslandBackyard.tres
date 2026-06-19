@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseMapConfig" format=3 uid="uid://c4lygbqbah2mg"]
+
+[ext_resource type="Script" uid="uid://bk1pu7tdpvvch" path="res://Resource/TowerDefense/Map/Cell/Config/TowerDefenseCellConfig.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ey5h6bb8215g" path="res://Asset/Config/Map/TreasureIslandBackyard/Scene/Day/TowerDefenseMapTreasureIslandBackyard.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cph0hjgummung" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/TreasureIsland/TreasureIslandBackyard.jpg" id="3"]
+[ext_resource type="Script" uid="uid://jariliyqi7jt" path="res://Resource/TowerDefense/Map/TowerDefenseMapConfig.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_6dxup"]
+script = ExtResource("1")
+pos = Vector4i(1, 1, 9, 3)
+groundHeightCurve = null
+Flag/Elemet = 0
+
+[sub_resource type="Resource" id="Resource_3im6n"]
+script = ExtResource("1")
+pos = Vector4i(1, 4, 9, 5)
+groundHeightCurve = null
+gridType = [3, 4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[resource]
+script = ExtResource("4")
+translate = "MAP_TREASUREISLAND_BACKYARD"
+dayNightSwitching = "TreasureIslandBackyardNight"
+mapTexture = ExtResource("3")
+mapScene = ExtResource("2")
+mapOffset = Vector2(-205, 0)
+gridBeginPos = Vector2(260, 75)
+cellConfig = [SubResource("Resource_6dxup"), SubResource("Resource_3im6n")]
+lineUse = [1, 2, 3, 4, 5]

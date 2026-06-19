@@ -1,0 +1,91 @@
+[gd_scene format=4 uid="uid://bbttjoo31mjyr"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://2bkt47ki1fw1" path="res://Asset/Anime/Character/Plant/Chapter0/Coffeebean/Scene/TowerDefensePlantCoffeebean.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cowpptbroar4j" path="res://Asset/Anime/Character/Plant/Chapter0/Coffeebean/Config/TowerDefensePlantCoffeebean.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cy266b676lini" path="res://Asset/Anime/Character/Plant/Chapter0/Coffeebean/Coffeebean.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_gyyfo"]
+data = {
+"data": PackedByteArray("AAAAPwAAAAAAAAAAAAAAPzMziUHNzNRAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZkJBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAWzEBPxfHcT0AAAAAAAAAPw18iUGe9MJAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZlNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAf5QAP/738z0AAAAAAAAAPyAJiUFgjrFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZmRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA5VIAPylE3D0AAIAyAAAAP60hiUEL8eNAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZnVBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAPwDExD0AACAzAAAAPzMziUEbLwtBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUEzM4NBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAtFQBP5AQAz0AACAzAAAAP2mKiUE+Dh1BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZnVBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAgJQAP/93Ar0AACAzAAAAPyEJiUGC+S5BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZmRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA1VoAPwccgrwAAKAyAAAAP+YkiUFKsgxBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZlNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAPwAAAAAAAAAAAAAAPzMziUHNzNRAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP5qZkUFmZkJBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_otiji"]
+image = SubResource("Image_gyyfo")
+
+[sub_resource type="Image" id="Image_r2c36"]
+data = {
+"data": PackedByteArray("AABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAABwQQAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_x148n"]
+image = SubResource("Image_r2c36")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otiji"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_x148n")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_otiji")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(425, 312)
+shader_parameter/uvs = [Rect2(374, 156, 17, 13), Rect2(391, 156, 17, 13), Rect2(408, 0, 17, 13), Rect2(0, 0, 57, 156), Rect2(57, 0, 57, 156), Rect2(57, 156, 57, 156), Rect2(114, 0, 57, 156), Rect2(114, 156, 57, 156), Rect2(171, 0, 57, 156), Rect2(171, 156, 57, 156), Rect2(228, 0, 57, 156), Rect2(228, 156, 57, 156), Rect2(285, 0, 57, 156), Rect2(285, 156, 57, 156), Rect2(342, 0, 57, 156), Rect2(342, 156, 32, 27)]
+shader_parameter/layerVisible = [true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefensePlantCoffeebean" unique_id=1219512726 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -9
+script = ExtResource("2")
+sleepAnimeClip = "Sleep"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/Coffeebean")
+itemLayer = 6
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Coffeebean" parent="SpriteGroup/TransformPoint" index="0" unique_id=365456987 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_otiji")
+instance_shader_parameters/frameIndex = 2.5847097777777774
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=206414620 node_paths=PackedStringArray("sprite") instance=ExtResource("6")]
+sprite = NodePath("../../SpriteGroup/TransformPoint/Coffeebean")
+explodeAnimeClips = "Crumble"
+explodeAnimeTimeScale = 2.0
+checkIZM = false
+explodeUse = false
+
+[connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

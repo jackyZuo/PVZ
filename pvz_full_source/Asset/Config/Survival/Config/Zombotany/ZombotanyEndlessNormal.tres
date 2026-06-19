@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://bboxh4pleces8"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Zombotany/ZombotanyEndlessNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_iu530"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombieNormalSnowPea", "ZombieNormalSunflower"]
+
+[sub_resource type="Resource" id="Resource_6pjcw"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieNormalPeaShooter", "ZombieNormalIcenut", "ZombieNormalFirenut", "ZombieNormalSquash"]
+
+[sub_resource type="Resource" id="Resource_lcdje"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieImpSeaShroom", "ZombieImpPuffShroom", "ZombieImpSunShroom", "ZombieSnorkleTanglekelp", "ZombieNormalCabbagepult"]
+
+[sub_resource type="Resource" id="Resource_5ml0d"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieNormalGatlingPea", "ZombieNormalTallnut", "ZombieFootballFumeShroom", "ZombieFootballBlackFumeShroom", "ZombieImpSunpult", "ZombieNormalCornpult"]
+
+[sub_resource type="Resource" id="Resource_hi0v6"]
+script = ExtResource("3")
+_round = 5
+zombieList = ["ZombieDiggerGatlingPea", "ZombieZamboniGatlingPea", "ZombieDolphinriderGatlingPea", "ZombieSnorkleDoomTanglekelp", "ZombieNormalMelonpult", "ZombieNormalChomper"]
+
+[sub_resource type="Resource" id="Resource_hvwsj"]
+script = ExtResource("3")
+_round = 6
+zombieList = ["ZombieImpPeashooterZ", "ZombieImpPeashooterSingle", "ZombieNormalStarfruit", "ZombieNormalThreePeater", "ZombieNormalWallnutABC"]
+
+[sub_resource type="Resource" id="Resource_r3v6u"]
+script = ExtResource("3")
+_round = 7
+zombieList = ["ZombieDiscoFire", "ZombieNormalWinterMelon", "ZombieNormalDoomShroom", "ZombieNormalLmitater"]
+
+[sub_resource type="Resource" id="Resource_ap6yn"]
+script = ExtResource("3")
+_round = 8
+zombieList = ["ZombieFootballGloomShroom", "ZombieNormalJalapeno", "ZombieCat", "ZombieImpHypnoShroom", "ZombieDiggerPotatoMine", "ZombieImpDiggerSpike"]
+
+[sub_resource type="Resource" id="Resource_epyn8"]
+script = ExtResource("3")
+_round = 9
+zombieList = ["ZombieFootballBlackGloomShroom", "ZombieNormalWildPea", "ZombieGargantuarWallnutZ", "ZombieSeaDemon", "ZombieNormalCobCannon", "ZombieGargantuarGloompult", "ZombieZamboniIceShroom"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 800
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormalPeaShooterSingle", "ZombieNormalWallnut"]
+zombiePoolRoundAdd = [SubResource("Resource_iu530"), SubResource("Resource_6pjcw"), SubResource("Resource_lcdje"), SubResource("Resource_5ml0d"), SubResource("Resource_hi0v6"), SubResource("Resource_hvwsj"), SubResource("Resource_r3v6u"), SubResource("Resource_ap6yn"), SubResource("Resource_epyn8")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

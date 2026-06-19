@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dthtb4n1mlu08"]
+
+[ext_resource type="Script" uid="uid://m4eoldogq74" path="res://Script/Component/TowerDefense/Character/GravebusterComponent/GravebusterComponent.gd" id="1"]
+[ext_resource type="Script" uid="uid://crrpyxc32l472" path="res://addons/godot_state_charts/state_chart.gd" id="2"]
+[ext_resource type="Script" uid="uid://dp7fkbu3flis1" path="res://addons/godot_state_charts/compound_state.gd" id="3"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="5"]
+
+[node name="GravebusterComponent" type="Node2D" unique_id=206414620]
+script = ExtResource("1")
+
+[node name="StateChart" type="Node" parent="." unique_id=915095076]
+unique_name_in_owner = true
+process_mode = 4
+script = ExtResource("2")
+
+[node name="CompoundState" type="Node" parent="StateChart" unique_id=194327973]
+script = ExtResource("3")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=531806657]
+script = ExtResource("4")
+
+[node name="Gravebuster" type="Node" parent="StateChart/CompoundState" unique_id=951748005]
+script = ExtResource("4")
+
+[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=402799324]
+script = ExtResource("5")
+to = NodePath("../Idle")
+event = &"ToIdle"
+delay_in_seconds = "0.0"
+
+[node name="ToGravebuster" type="Node" parent="StateChart/CompoundState" unique_id=48623984]
+script = ExtResource("5")
+to = NodePath("../Gravebuster")
+event = &"ToGravebuster"
+delay_in_seconds = "0.0"
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="IdleEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Idle" to="." method="IdleExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Idle" to="." method="IdleProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Gravebuster" to="." method="GravebusterEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Gravebuster" to="." method="GravebusterExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Gravebuster" to="." method="GravebusterProcessing"]

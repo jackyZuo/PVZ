@@ -1,0 +1,93 @@
+[gd_scene format=4 uid="uid://chw5vw0gehkb3"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c6lrdkjivl73s" path="res://Asset/Anime/Character/Plant/Other/GarlicJalapeno/Scene/TowerDefensePlantGarlicJalapeno.gd" id="2"]
+[ext_resource type="Resource" uid="uid://irx5mdd0g57s" path="res://Asset/Anime/Character/Plant/Other/GarlicJalapeno/Config/TowerDefensePlantGarlicJalapeno.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cj6bgtyqnfsgg" path="res://Asset/Anime/Character/Plant/Other/GarlicJalapeno/GarlicJalapeno.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="6"]
+[ext_resource type="Script" uid="uid://bkfxjkevbeq05" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventGarlic.gd" id="7"]
+
+[sub_resource type="Image" id="Image_gbldx"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 7,
+"mipmaps": false,
+"width": 21
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_mbi2n"]
+image = SubResource("Image_gbldx")
+
+[sub_resource type="Image" id="Image_tkeya"]
+data = {
+"data": PackedByteArray("AADAQAAAAAAAAAAAAAAAAAAAoEAAAIA/AAAAAAAAAAAAAIBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAAEAAAIBAAAAAAAAAAAAAAIA/AACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAAAAAKBAAACAPwAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAAAQEAAAEBAAAAAAAAAAAAAAABAAACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAAAACgQAAAgD8AAAAAAAAAAAAAgEAAAABAAAAAAAAAAAAAAEBAAABAQAAAAAAAAAAAAAAAQAAAgEAAAAAAAAAAAAAAgD8AAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAADAQAAAAAAAAAAAAAAAAAAAoEAAAIA/AAAAAAAAAAAAAIBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAAEAAAIBAAAAAAAAAAAAAAIA/AACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAAAAAKBAAACAPwAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAAAQEAAAEBAAAAAAAAAAAAAAABAAACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAAAACgQAAAgD8AAAAAAAAAAAAAgEAAAABAAAAAAAAAAAAAAEBAAABAQAAAAAAAAAAAAAAAQAAAgEAAAAAAAAAAAAAAgD8AAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAADAQAAAAAAAAAAAAAAAAAAAoEAAAIA/AAAAAAAAAAAAAIBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAAEAAAIBAAAAAAAAAAAAAAIA/AACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAA=="),
+"format": "RGBAFloat",
+"height": 7,
+"mipmaps": false,
+"width": 7
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_5iylu"]
+image = SubResource("Image_tkeya")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3elb"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_5iylu")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_mbi2n")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(251, 186)
+shader_parameter/uvs = [Rect2(0, 0, 71, 148), Rect2(71, 105, 61, 57), Rect2(182, 133, 40, 37), Rect2(222, 0, 29, 27), Rect2(132, 133, 50, 53), Rect2(132, 105, 55, 28), Rect2(71, 0, 71, 105)]
+shader_parameter/layerVisible = [true, true, true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_5hvfr"]
+script = ExtResource("7")
+metadata/_custom_type_script = "uid://bkfxjkevbeq05"
+
+[node name="TowerDefensePlantGralicJalapeno" unique_id=850170915 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/GralicJalapeno")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="GralicJalapeno" parent="SpriteGroup/TransformPoint" index="0" unique_id=984086370 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_q3elb")
+instance_shader_parameters/frameIndex = 0.284328
+position = Vector2(0, -30)
+offset = Vector2(-39.454132, -39.910355)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=206414620 node_paths=PackedStringArray("sprite") instance=ExtResource("6")]
+sprite = NodePath("../../SpriteGroup/TransformPoint/GralicJalapeno")
+explodeAnimeTimeScale = 1.25
+explodeMethod = "Line"
+explodeAudio = ""
+explodeEvent = [SubResource("Resource_5hvfr")]
+explodeJalaNum = 500.0
+explodeJalaOffset = [0]

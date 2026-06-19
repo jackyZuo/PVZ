@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://byee3s263f1rj"]
+
+[ext_resource type="Script" uid="uid://co800k41gh77q" path="res://Resource/TowerDefense/Character/Buff/LightArea/LightArea.gd" id="1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4k8kg"]
+radius = 200.0
+
+[node name="LightArea" type="Area2D" unique_id=1020506015]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1158835424]
+unique_name_in_owner = true
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_4k8kg")
+
+[connection signal="area_entered" from="." to="." method="AreaEntered"]

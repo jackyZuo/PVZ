@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dtl1kq8slto8v"]
+
+[ext_resource type="Script" uid="uid://cyk2xngfbvvfk" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventSnowBallSpawn.gd" id="1"]
+[ext_resource type="Script" uid="uid://ckftw7h80d58s" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventDestroy.gd" id="2"]
+[ext_resource type="Script" uid="uid://cfrgul0lo7ufi" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionHitpointBelow.gd" id="3"]
+[ext_resource type="Script" uid="uid://xug53xwvy4my" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.gd" id="4"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://cpmsiylayixf2" path="res://Asset/Config/Projectile/SnowBullet/SnowBullet/ProjectileSnowBullet.tscn" id="6"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://c73f1gkmmso7m" path="res://Prefab/Particles/Splats/SnowPeaSplats/SnowPeaSplats.tscn" id="8"]
+
+[sub_resource type="Resource" id="Resource_gsukt"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://cyk2xngfbvvfk"
+
+[sub_resource type="Resource" id="Resource_nq8l8"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://ckftw7h80d58s"
+
+[sub_resource type="Resource" id="Resource_m38qb"]
+script = ExtResource("3")
+eventList = [SubResource("Resource_gsukt"), SubResource("Resource_nq8l8")]
+percentage = 0.1
+metadata/_custom_type_script = "uid://cfrgul0lo7ufi"
+
+[sub_resource type="Resource" id="Resource_e30gf"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://xug53xwvy4my"
+
+[sub_resource type="Resource" id="Resource_4p806"]
+script = ExtResource("5")
+buffList = [SubResource("Resource_e30gf")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("7")
+name = "SnowBullet"
+scale = Vector2(0.75, 0.75)
+projectileScene = ExtResource("6")
+splatScene = ExtResource("8")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_m38qb"), SubResource("Resource_4p806")]

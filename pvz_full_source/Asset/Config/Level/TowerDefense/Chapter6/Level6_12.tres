@@ -1,0 +1,912 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://cagfne3b2bysd"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter6/Level6_12.json" id="1"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="3"]
+[ext_resource type="Script" uid="uid://dh6dw4svladxc" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.gd" id="4"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="5"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="6"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="10"]
+[ext_resource type="Script" uid="uid://b2wtvsnyc4qk5" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.gd" id="11"]
+[ext_resource type="Script" uid="uid://xlc4qncs6jvy" path="res://Resource/TowerDefense/Level/Event/Bungi/TowerDefenseLevelEventBungiSpawnZombie.gd" id="12"]
+
+[sub_resource type="Resource" id="Resource_w3f87"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="Resource_p4c53"]
+script = ExtResource("3")
+
+[sub_resource type="Resource" id="Resource_yup3g"]
+script = ExtResource("4")
+packetName = "PlantWallnutSquash"
+override = null
+
+[sub_resource type="Resource" id="Resource_t7hd3"]
+script = ExtResource("6")
+open = false
+
+[sub_resource type="Resource" id="Resource_86lrx"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_xgdjj"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_ptv6p"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_0dlfp"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_6ieqf"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_buq67"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_rwmkp"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_f5ts6"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_u65sm"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_dqotg"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_u65sm")]
+dynamic = SubResource("Resource_f5ts6")
+
+[sub_resource type="Resource" id="Resource_6ghve"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_c724w"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+override = null
+
+[sub_resource type="Resource" id="Resource_mtt0p"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_h2522"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_c724w"), SubResource("Resource_mtt0p")]
+dynamic = SubResource("Resource_6ghve")
+
+[sub_resource type="Resource" id="Resource_xkis1"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_y2ejl"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_bgr43"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+override = null
+
+[sub_resource type="Resource" id="Resource_ng2mt"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_y2ejl"), SubResource("Resource_bgr43")]
+dynamic = SubResource("Resource_xkis1")
+
+[sub_resource type="Resource" id="Resource_1kfgm"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_7x3hb"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+override = null
+
+[sub_resource type="Resource" id="Resource_vyls0"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+override = null
+
+[sub_resource type="Resource" id="Resource_hwwu2"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_7x3hb"), SubResource("Resource_vyls0")]
+dynamic = SubResource("Resource_1kfgm")
+
+[sub_resource type="Resource" id="Resource_gbgqq"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_epmp8"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_lvef0"]
+script = ExtResource("11")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_jxt12"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_epmp8"), SubResource("Resource_lvef0")]
+dynamic = SubResource("Resource_gbgqq")
+
+[sub_resource type="Resource" id="Resource_pasd5"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_8xkhw"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_kv2pf"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_b7xnl"]
+script = ExtResource("11")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_3456r"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ncl7o"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_8xkhw"), SubResource("Resource_kv2pf"), SubResource("Resource_b7xnl"), SubResource("Resource_3456r")]
+dynamic = SubResource("Resource_pasd5")
+
+[sub_resource type="Resource" id="Resource_0dvqp"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_7u34n"]
+script = ExtResource("11")
+zombie = "ZombieFootball"
+override = null
+
+[sub_resource type="Resource" id="Resource_ruool"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_rfcp7"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ojeif"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_7u34n"), SubResource("Resource_ruool"), SubResource("Resource_rfcp7")]
+dynamic = SubResource("Resource_0dvqp")
+
+[sub_resource type="Resource" id="Resource_dtl11"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_b1yid"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_bp0aw"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 6
+override = null
+
+[sub_resource type="Resource" id="Resource_0a0b2"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_b1yid"), SubResource("Resource_bp0aw")]
+dynamic = SubResource("Resource_dtl11")
+
+[sub_resource type="Resource" id="Resource_vgc6p"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_j6i71"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_cg756"]
+script = ExtResource("11")
+zombie = "ZombieFootball"
+override = null
+
+[sub_resource type="Resource" id="Resource_5w5nm"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_j6i71"), SubResource("Resource_cg756")]
+dynamic = SubResource("Resource_vgc6p")
+
+[sub_resource type="Resource" id="Resource_lhcwy"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_ycd4e"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_rcg8d"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_i3afk"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_004l6"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_ycd4e"), SubResource("Resource_rcg8d"), SubResource("Resource_i3afk")]
+dynamic = SubResource("Resource_lhcwy")
+
+[sub_resource type="Resource" id="Resource_x2g8f"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_rskkd"]
+script = ExtResource("11")
+zombie = "ZombieNormalWallnut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_4x80w"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_w2klx"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_3pig3"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_r5wj8"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_rskkd"), SubResource("Resource_4x80w"), SubResource("Resource_w2klx"), SubResource("Resource_3pig3")]
+dynamic = SubResource("Resource_x2g8f")
+
+[sub_resource type="Resource" id="Resource_wv143"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_b6f6x"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_yhn88"]
+script = ExtResource("11")
+zombie = "ZombieFootball"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_5yxum"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_22rsi"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_cejey"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_b6f6x"), SubResource("Resource_yhn88"), SubResource("Resource_5yxum"), SubResource("Resource_22rsi")]
+dynamic = SubResource("Resource_wv143")
+
+[sub_resource type="Resource" id="Resource_361b6"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_2svdw"]
+script = ExtResource("11")
+zombie = "ZombieGargantuar"
+override = null
+
+[sub_resource type="Resource" id="Resource_w3uxb"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_sy20s"]
+script = ExtResource("11")
+zombie = "ZombieVampire"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_6rxdj"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_2svdw"), SubResource("Resource_w3uxb"), SubResource("Resource_sy20s")]
+dynamic = SubResource("Resource_361b6")
+
+[sub_resource type="Resource" id="Resource_tx6kq"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_4qcix"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_gwid4"]
+script = ExtResource("11")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_tqp25"]
+script = ExtResource("11")
+zombie = "ZombieVampire"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_wos2q"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_4qcix"), SubResource("Resource_gwid4"), SubResource("Resource_tqp25")]
+dynamic = SubResource("Resource_tx6kq")
+
+[sub_resource type="Resource" id="Resource_tiq2v"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_x5nag"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_74my3"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_xfxk5"]
+script = ExtResource("11")
+zombie = "ZombieVampire"
+override = null
+
+[sub_resource type="Resource" id="Resource_sm3lt"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_x5nag"), SubResource("Resource_74my3"), SubResource("Resource_xfxk5")]
+dynamic = SubResource("Resource_tiq2v")
+
+[sub_resource type="Resource" id="Resource_16mr2"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_bggjl"]
+script = ExtResource("11")
+zombie = "ZombieDuck"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_dok3t"]
+script = ExtResource("11")
+zombie = "ZombieFootball"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_0ed1x"]
+script = ExtResource("11")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_2bmn0"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_bggjl"), SubResource("Resource_dok3t"), SubResource("Resource_0ed1x")]
+dynamic = SubResource("Resource_16mr2")
+
+[sub_resource type="Resource" id="Resource_crmc1"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_ywln2"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_wl6e2"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 6
+override = null
+
+[sub_resource type="Resource" id="Resource_1qdgg"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_hc73d"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_ywln2"), SubResource("Resource_wl6e2"), SubResource("Resource_1qdgg")]
+dynamic = SubResource("Resource_crmc1")
+
+[sub_resource type="Resource" id="Resource_ad5l1"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_62n3r"]
+script = ExtResource("12")
+zombieNames = ["ZombieNormalCone", "ZombieNormal"]
+zombieNum = 2
+delay = Vector2(4, 4)
+override = null
+spawnPos = Vector4i(4, 1, 8, 5)
+
+[sub_resource type="Resource" id="Resource_qmi5k"]
+script = ExtResource("11")
+zombie = "ZombieGargantuar"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ru5lw"]
+script = ExtResource("11")
+zombie = "ZombieNormal"
+num = 6
+override = null
+
+[sub_resource type="Resource" id="Resource_rh6np"]
+script = ExtResource("11")
+zombie = "ZombieNormalCone"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_hdo7k"]
+script = ExtResource("11")
+zombie = "ZombieFootball"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_w8sh7"]
+script = ExtResource("11")
+zombie = "ZombieVampire"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_5l3l4"]
+script = ExtResource("11")
+zombie = "ZombieNormalLmitater"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_cnb5j"]
+script = ExtResource("10")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_qmi5k"), SubResource("Resource_ru5lw"), SubResource("Resource_rh6np"), SubResource("Resource_hdo7k"), SubResource("Resource_w8sh7"), SubResource("Resource_5l3l4")]
+dynamic = SubResource("Resource_ad5l1")
+event = [SubResource("Resource_62n3r")]
+
+[sub_resource type="Resource" id="Resource_8b3nu"]
+script = ExtResource("8")
+flagWaveInterval = 6
+maxNextWaveHealthPercentage = 0.25
+minNextWaveHealthPercentage = 0.3
+spawnColStart = 10.0
+spawnOverride = null
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_86lrx"), SubResource("Resource_xgdjj"), SubResource("Resource_ptv6p"), SubResource("Resource_0dlfp"), SubResource("Resource_6ieqf"), SubResource("Resource_buq67"), SubResource("Resource_rwmkp")]
+wave = [SubResource("Resource_dqotg"), SubResource("Resource_h2522"), SubResource("Resource_ng2mt"), SubResource("Resource_hwwu2"), SubResource("Resource_jxt12"), SubResource("Resource_ncl7o"), SubResource("Resource_ojeif"), SubResource("Resource_0a0b2"), SubResource("Resource_5w5nm"), SubResource("Resource_004l6"), SubResource("Resource_r5wj8"), SubResource("Resource_cejey"), SubResource("Resource_6rxdj"), SubResource("Resource_wos2q"), SubResource("Resource_sm3lt"), SubResource("Resource_2bmn0"), SubResource("Resource_hc73d"), SubResource("Resource_cnb5j")]
+customSurvival = null
+
+[resource]
+script = ExtResource("5")
+data = ExtResource("1")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "RoofNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "FrontlawnNightThreePart"
+},
+&"Mower": {},
+&"PacketBank": {
+"PacketBankName": "GeneralPlant"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 1,
+"StormOpen": false
+},
+&"SeedBank": {
+"ColdDownStart": true,
+"ColdDownUse": true,
+"Method": "CHOOSE",
+"Packet": [{
+"PacketName": "PlantWallnutSquash"
+}],
+"PlantColumn": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 500.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 6.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.25,
+"MinNextWaveHealthPercentage": 0.3,
+"MowerUse": true,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"StormOpen": false,
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieDuck"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieDuck"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDuck"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootball"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDuck"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 6.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootball"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalLmitater"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieDuck"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalLmitater"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootball"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalLmitater"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieVampire"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieVampire"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalLmitater"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieVampire"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieDuck"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootball"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormalLmitater"
+}, {
+"Line": -1.0,
+"Num": 6.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "BungiSpawnZombie",
+"Value": {
+"Delay": [4.0, 4.0],
+"SpawnPos": {
+"w": 5.0,
+"x": 4.0,
+"y": 1.0,
+"z": 8.0
+},
+"ZombieNames": ["ZombieNormalCone", "ZombieNormal"],
+"ZombieNum": 2.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 6.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootball"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieVampire"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalLmitater"
+}]
+}]
+}
+map = "FrontlawnNightThreePart"
+backgroundMusic = "RoofNight"
+firstRewardType = 1
+firstRewardValue = "PlantWallnutSquash"
+sunManager = SubResource("Resource_t7hd3")
+fogManager = SubResource("Resource_w3f87")
+lookStarManager = SubResource("Resource_p4c53")
+waveManager = SubResource("Resource_8b3nu")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+packetBankList = [SubResource("Resource_yup3g")]
+conveyorData = null
+rainData = null
+PacketBank/Name = "GeneralPlant"
+name = "Level6_12"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_ROOFNIGHT_LEVEL_NAME"
+levelNumber = 12
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

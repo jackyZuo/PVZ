@@ -1,0 +1,83 @@
+[gd_scene format=4 uid="uid://cxmk8jiq0nkjg"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://g2au6qb835s4" path="res://Asset/Anime/Effect/Fire/Purify/PurifyFire.tres" id="3"]
+
+[sub_resource type="Image" id="Image_6vb1o"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAKCNYP83MJ8IzM9NBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMMIzM7dBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MJsLNzGBBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZKMIzM8NAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzM8JmZmbAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMMIAAGzBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZMMJmZurBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZN8KamfPBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMsLNzB7CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZMcLNzDrCAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 10,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xj3sj"]
+image = SubResource("Image_6vb1o")
+
+[sub_resource type="Image" id="Image_rn7hf"]
+data = {
+"data": PackedByteArray("AADAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAOBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAQQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAACBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAMEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABAQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAFBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAYEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABgQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 10,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nne02"]
+image = SubResource("Image_rn7hf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr611"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_nne02")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_xj3sj")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(452, 348)
+shader_parameter/uvs = [Rect2(0, 0, 113, 87), Rect2(113, 0, 113, 87), Rect2(113, 87, 113, 87), Rect2(226, 0, 113, 87), Rect2(226, 87, 113, 87), Rect2(339, 0, 113, 87), Rect2(339, 87, 113, 87), Rect2(0, 87, 113, 87), Rect2(113, 174, 113, 87), Rect2(226, 174, 113, 87), Rect2(339, 174, 113, 87), Rect2(0, 174, 113, 87), Rect2(113, 261, 113, 87), Rect2(226, 261, 113, 87), Rect2(339, 261, 113, 87)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="PurifyFire" type="Node2D" unique_id=2142004356]
+material = SubResource("ShaderMaterial_fr611")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(0, -80)
+trueFrameRate = 180.0
+Animation/Clip = "Done"
+Animation/LayerVisible/AnimeClips = true
+"Animation/LayerVisible/Layer 1" = true
+Animation/MediaReplace/fire1_1_Purify.png = null
+Animation/MediaReplace/fire1_2_Purify.png = null
+Animation/MediaReplace/fire1_3_Purify.png = null
+Animation/MediaReplace/fire1_Purify.png = null
+Animation/MediaReplace/fire2_Purify.png = null
+Animation/MediaReplace/fire3_Purify.png = null
+Animation/MediaReplace/fire4_Purify.png = null
+Animation/MediaReplace/fire4b_Purify.png = null
+Animation/MediaReplace/fire5_Purify.png = null
+Animation/MediaReplace/fire5b_Purify.png = null
+Animation/MediaReplace/fire6_Purify.png = null
+Animation/MediaReplace/fire6b_Purify.png = null
+Animation/MediaReplace/fire7_Purify.png = null
+Animation/MediaReplace/fire7b_Purify.png = null
+Animation/MediaReplace/fire8_Purify.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

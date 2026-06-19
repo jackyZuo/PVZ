@@ -1,0 +1,201 @@
+[gd_scene format=4 uid="uid://cxeg1d6b5eg0a"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://y5307xxi8jfy" path="res://Asset/Anime/Character/Plant/Cover/PumpkinFireIce/Scene/TowerDefensePlantPumpkinFireIce.gd" id="2"]
+[ext_resource type="Script" uid="uid://fix6uw08if5s" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.gd" id="3"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="4"]
+[ext_resource type="Resource" uid="uid://by81bw64p2akv" path="res://Asset/Anime/Character/Plant/Cover/PumpkinFireIce/Config/TowerDefensePlantPumpkinFireIce.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dwry67v3r3nod" path="res://Asset/Anime/Character/Plant/Cover/PumpkinFireIce/PumpkinFireIce.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="7"]
+[ext_resource type="PackedScene" uid="uid://b6w5f0q85ngb7" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/ChangeProjectileComponent.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://8fpowsb3exlb" path="res://Script/Component/TowerDefense/Character/ReverseInjuryComponent/ReverseInjuryComponent.tscn" id="9"]
+[ext_resource type="Script" uid="uid://cmqmtitj4tcd8" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.gd" id="10"]
+[ext_resource type="Script" uid="uid://xug53xwvy4my" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.gd" id="11"]
+[ext_resource type="PackedScene" uid="uid://dxdsva0xl5qtd" path="res://Prefab/Particles/Splats/IceFireSplats/IceFireSplats.tscn" id="12"]
+
+[sub_resource type="Resource" id="Resource_myjtn"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://fix6uw08if5s"
+
+[sub_resource type="Resource" id="Resource_sc05p"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_myjtn")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Image" id="Image_hjeav"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 21
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_tipln"]
+image = SubResource("Image_hjeav")
+
+[sub_resource type="Image" id="Image_13pjf"]
+data = {
+"data": PackedByteArray("AAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAABBAAAAQAAAAAAAAAAAAAAAQQAAQEAAAAAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAAAQQQAAAEAAAAAAAAAAAAAAEEEAAEBAAAAAAAAAAAAAAIA/AACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAIEEAAABAAAAAAAAAAAAAACBBAABAQAAAAAAAAAAAAAAAQAAAgEAAAAAAAAAAAAAAAEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAADBBAAAAQAAAAAAAAAAAAAAwQQAAQEAAAAAAAAAAAAAAQEAAAIBAAAAAAAAAAAAAAEBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAABAQQAAAEAAAAAAAAAAAAAAQEEAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAACAQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAUEEAAABAAAAAAAAAAAAAAFBBAABAQAAAAAAAAAAAAACgQAAAgEAAAAAAAAAAAAAAoEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAGBBAAAAQAAAAAAAAAAAAABgQQAAQEAAAAAAAAAAAAAAwEAAAIBAAAAAAAAAAAAAAMBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAABwQQAAAEAAAAAAAAAAAAAAcEEAAEBAAAAAAAAAAAAAAOBAAACAQAAAAAAAAAAAAADgQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAgEEAAABAAAAAAAAAAAAAAIBBAABAQAAAAAAAAAAAAADAQAAAgEAAAAAAAAAAAAAAwEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAIhBAAAAQAAAAAAAAAAAAACIQQAAQEAAAAAAAAAAAAAAoEAAAIBAAAAAAAAAAAAAAKBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAACQQQAAAEAAAAAAAAAAAAAAkEEAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAACAQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAmEEAAABAAAAAAAAAAAAAAJhBAABAQAAAAAAAAAAAAABAQAAAgEAAAAAAAAAAAAAAQEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAKBBAAAAQAAAAAAAAAAAAACgQQAAQEAAAAAAAAAAAAAAAEAAAIBAAAAAAAAAAAAAAABAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAACoQQAAAEAAAAAAAAAAAAAAqEEAAEBAAAAAAAAAAAAAAIA/AACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAsEEAAABAAAAAAAAAAAAAALBBAABAQAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 7
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_x6cet"]
+image = SubResource("Image_13pjf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmtrx"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_x6cet")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_tipln")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(1548, 1641)
+shader_parameter/uvs = [Rect2(516, 516, 512, 512), Rect2(516, 1028, 512, 512), Rect2(0, 0, 516, 512), Rect2(516, 0, 516, 516), Rect2(1028, 516, 512, 516), Rect2(0, 1028, 512, 516), Rect2(1032, 0, 516, 516), Rect2(0, 512, 516, 516), Rect2(1168, 1436, 81, 101), Rect2(763, 1540, 81, 101), Rect2(844, 1540, 81, 101), Rect2(925, 1540, 81, 101), Rect2(1006, 1540, 81, 101), Rect2(1087, 1032, 81, 101), Rect2(1087, 1133, 81, 101), Rect2(1087, 1234, 81, 101), Rect2(1087, 1335, 81, 101), Rect2(1087, 1436, 81, 101), Rect2(1087, 1537, 81, 101), Rect2(1168, 1032, 81, 101), Rect2(1168, 1133, 81, 101), Rect2(1168, 1234, 81, 101), Rect2(1168, 1335, 81, 101), Rect2(643, 1540, 120, 80), Rect2(512, 1540, 131, 77)]
+shader_parameter/layerVisible = [false, true, true, true, true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq16p"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_x6cet")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_tipln")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(1548, 1641)
+shader_parameter/uvs = [Rect2(516, 516, 512, 512), Rect2(516, 1028, 512, 512), Rect2(0, 0, 516, 512), Rect2(516, 0, 516, 516), Rect2(1028, 516, 512, 516), Rect2(0, 1028, 512, 516), Rect2(1032, 0, 516, 516), Rect2(0, 512, 516, 516), Rect2(1168, 1436, 81, 101), Rect2(763, 1540, 81, 101), Rect2(844, 1540, 81, 101), Rect2(925, 1540, 81, 101), Rect2(1006, 1540, 81, 101), Rect2(1087, 1032, 81, 101), Rect2(1087, 1133, 81, 101), Rect2(1087, 1234, 81, 101), Rect2(1087, 1335, 81, 101), Rect2(1087, 1436, 81, 101), Rect2(1087, 1537, 81, 101), Rect2(1168, 1032, 81, 101), Rect2(1168, 1133, 81, 101), Rect2(1168, 1234, 81, 101), Rect2(1168, 1335, 81, 101), Rect2(643, 1540, 120, 80), Rect2(512, 1540, 131, 77)]
+shader_parameter/layerVisible = [true, false, false, false, false, false, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sc05p"]
+radius = 74.953316
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdpe"]
+size = Vector2(64, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q77ah"]
+size = Vector2(100, 98)
+
+[sub_resource type="Resource" id="Resource_1nd3y"]
+script = ExtResource("10")
+num = 40.0
+damageFlags = 6
+Flag/Damage = 6
+Flag/Collision = 9
+metadata/_custom_type_script = "uid://cmqmtitj4tcd8"
+
+[sub_resource type="Resource" id="Resource_5rbt1"]
+script = ExtResource("11")
+metadata/_custom_type_script = "uid://xug53xwvy4my"
+
+[sub_resource type="Resource" id="Resource_lmtrx"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_5rbt1")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Gradient" id="Gradient_vpdpe"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7kd5i"]
+gradient = SubResource("Gradient_vpdpe")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantPumpkinFireIce" unique_id=1482849053 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -10
+script = ExtResource("2")
+allEventList = [SubResource("Resource_sc05p")]
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinFireIce")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinFireIce" parent="SpriteGroup/TransformPoint" index="0" unique_id=494338043 instance=ExtResource("6")]
+material = SubResource("ShaderMaterial_lmtrx")
+instance_shader_parameters/frameIndex = 7.269166666666666
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpkinFireIce/Node2D" index="0"]
+z_index = -2
+material = SubResource("ShaderMaterial_iq16p")
+instance_shader_parameters/frameIndex = 7.269166666666666
+trueFrameRate = 180.0
+
+[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=885306900]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=1507075572]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_sc05p")
+
+[node name="ShowHealthComponent" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="2" unique_id=1448292904]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_vpdpe")
+
+[node name="ChangeProjectileComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=1170159690 node_paths=PackedStringArray("checkArea") instance=ExtResource("8")]
+changeName = &"IceFire"
+changeAudio = "FireHit"
+checkArea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="ComponentManager/ChangeProjectileComponent" index="0" unique_id=866154904]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/ChangeProjectileComponent/Area2D" index="0" unique_id=166344254]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_q77ah")
+
+[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=790268001 instance=ExtResource("9")]
+eventList = [SubResource("Resource_1nd3y"), SubResource("Resource_lmtrx")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("12")
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=1008584871]
+unique_name_in_owner = true
+visible = false
+color = Color(0.529412, 1, 1, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_7kd5i")
+
+[editable path="SpriteGroup/TransformPoint/PumpkinFireIce"]

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dycupcitaypey"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://s1y7sfxwgkg1" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Scene/TowerDefenseZombieYetiFootball.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bdm1rrviqrmxo" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Config/TowerDefenseZombieYetiFootball.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bulmb5eshcdvo" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/DamagePoint/Config/ZombieYetiFootballDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dax3wr03o2q51" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/DamagePoint/Config/ZombieYetiFootballDamagePointHead.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dnqb46hdg7csw" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Armor/Config/ZombieYetiFootballArmorHelmet.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://fcefy7x5jwo8" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/ZombieYetiFootball.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://b1yls1ul6s8q4" path="res://Asset/Texture/Character/Armor/Helmet/ZombieHelmet1.png" id="8"]
+
+[node name="TowerDefenseZombieYetiFootball" unique_id=1758679974 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 0.25
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HeadSlot")
+damagePart = {
+"Arm": ExtResource("4"),
+"Head": ExtResource("5"),
+"Helmet": ExtResource("6")
+}
+PreviewDamagePointPersontage = 1.0
+Armor = []
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HelmentSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HelmentSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieYetiFootball" parent="SpriteGroup/TransformPoint" index="0" unique_id=2020338469 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/Zombie_football_gargantuar_helmet = false
+Animation/LayerVisible/anim_face = false
+Animation/MediaReplace/Zombie_football_helmet.png = ExtResource("8")
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="0" unique_id=1404164438]
+position = Vector2(-21.839403, -60.623356)
+rotation = -0.01198447
+scale = Vector2(0.7199431, 0.7199431)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="1" unique_id=881895507]
+position = Vector2(15.202499, -3.5931377)
+rotation = 0.05686961
+scale = Vector2(0.7198304, 0.7198304)
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="2" unique_id=1463659601]
+position = Vector2(-17.959576, -69.65413)
+rotation = -0.0119748525
+scale = Vector2(1.0719515, 1.0719515)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="3" unique_id=109299470]
+position = Vector2(-63.813595, 1.0041122)
+scale = Vector2(1.0003781, 1.0003781)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieYetiFootball/GroundSlot")
+
+[connection signal="buffAdd" from="ComponentManager/BuffComponent" to="." method="GetBuffAdd"]
+
+[editable path="SpriteGroup/TransformPoint/ZombieYetiFootball"]

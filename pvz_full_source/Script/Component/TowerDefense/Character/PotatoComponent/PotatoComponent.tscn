@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dbxioa701nscp"]
+
+[ext_resource type="Script" uid="uid://c1u385g1erc7a" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponent.gd" id="1"]
+[ext_resource type="Script" uid="uid://crrpyxc32l472" path="res://addons/godot_state_charts/state_chart.gd" id="2"]
+[ext_resource type="Script" uid="uid://dp7fkbu3flis1" path="res://addons/godot_state_charts/compound_state.gd" id="3"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://fd6u1lxx523v" path="res://Script/Component/TimerComponent/TimerComponent.tscn" id="6"]
+
+[node name="PotatoComponent" type="Node2D" unique_id=206414620]
+script = ExtResource("1")
+
+[node name="StateChart" type="Node" parent="." unique_id=2097196635]
+unique_name_in_owner = true
+process_mode = 4
+script = ExtResource("2")
+
+[node name="CompoundState" type="Node" parent="StateChart" unique_id=836029902]
+script = ExtResource("3")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=1983974462]
+script = ExtResource("4")
+
+[node name="Ready" type="Node" parent="StateChart/CompoundState" unique_id=503482004]
+script = ExtResource("4")
+
+[node name="Rise" type="Node" parent="StateChart/CompoundState" unique_id=619970802]
+script = ExtResource("4")
+
+[node name="Charge" type="Node" parent="StateChart/CompoundState" unique_id=1365731009]
+script = ExtResource("4")
+
+[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=1617975947]
+script = ExtResource("5")
+to = NodePath("../Idle")
+event = &"ToIdle"
+delay_in_seconds = "0.0"
+
+[node name="ToReady" type="Node" parent="StateChart/CompoundState" unique_id=732670223]
+script = ExtResource("5")
+to = NodePath("../Ready")
+event = &"ToReady"
+delay_in_seconds = "0.0"
+
+[node name="ToRise" type="Node" parent="StateChart/CompoundState" unique_id=942594151]
+script = ExtResource("5")
+to = NodePath("../Rise")
+event = &"ToRise"
+delay_in_seconds = "0.0"
+
+[node name="ToCharge" type="Node" parent="StateChart/CompoundState" unique_id=729902188]
+script = ExtResource("5")
+to = NodePath("../Charge")
+event = &"ToCharge"
+delay_in_seconds = "0.0"
+
+[node name="TimerComponent" parent="." unique_id=1423992022 instance=ExtResource("6")]
+unique_name_in_owner = true
+timerDictionary = {
+"Ready": 15.0
+}
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="IdleEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Idle" to="." method="IdleExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Idle" to="." method="IdleProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Ready" to="." method="ReadyEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Ready" to="." method="ReadyExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Ready" to="." method="ReadyProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Rise" to="." method="RiseEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Rise" to="." method="RiseExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Rise" to="." method="RiseProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Charge" to="." method="ChargeEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Charge" to="." method="ChargeExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Charge" to="." method="ChargeProcessing"]
+[connection signal="timeout" from="TimerComponent" to="." method="Timeout"]

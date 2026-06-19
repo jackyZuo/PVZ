@@ -1,0 +1,192 @@
+[gd_scene format=4 uid="uid://b3f6bsiuin3v4"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://copblo2hroaju" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/Scene/TowerDefensePlantPumpkinFire.gd" id="2"]
+[ext_resource type="Script" uid="uid://fix6uw08if5s" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.gd" id="3"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="4"]
+[ext_resource type="Resource" uid="uid://n0yyarg0b5hr" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/Config/TowerDefensePlantPumpkinFire.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://byw6jsnuv2wf2" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/PumpkinFire.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="7"]
+[ext_resource type="PackedScene" uid="uid://b6w5f0q85ngb7" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/ChangeProjectileComponent.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://8fpowsb3exlb" path="res://Script/Component/TowerDefense/Character/ReverseInjuryComponent/ReverseInjuryComponent.tscn" id="9"]
+[ext_resource type="Script" uid="uid://cmqmtitj4tcd8" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="11"]
+
+[sub_resource type="Resource" id="Resource_bevwy"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://fix6uw08if5s"
+
+[sub_resource type="Resource" id="Resource_3ko1g"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_bevwy")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Image" id="Image_yt8w2"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 21
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ymm3x"]
+image = SubResource("Image_yt8w2")
+
+[sub_resource type="Image" id="Image_4y5jg"]
+data = {
+"data": PackedByteArray("AAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAABBAAAAQAAAAAAAAAAAAAAAQQAAQEAAAAAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAABwQQAAAEAAAAAAAAAAAAAAcEEAAEBAAAAAAAAAAAAAAIA/AACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAgEEAAABAAAAAAAAAAAAAAIBBAABAQAAAAAAAAAAAAAAAQAAAgEAAAAAAAAAAAAAAAEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAIhBAAAAQAAAAAAAAAAAAACIQQAAQEAAAAAAAAAAAAAAQEAAAIBAAAAAAAAAAAAAAEBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAACQQQAAAEAAAAAAAAAAAAAAkEEAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAACAQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAmEEAAABAAAAAAAAAAAAAAJhBAABAQAAAAAAAAAAAAACgQAAAgEAAAAAAAAAAAAAAoEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAKBBAAAAQAAAAAAAAAAAAACgQQAAQEAAAAAAAAAAAAAAwEAAAIBAAAAAAAAAAAAAAMBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAACoQQAAAEAAAAAAAAAAAAAAqEEAAEBAAAAAAAAAAAAAAOBAAACAQAAAAAAAAAAAAADgQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAsEEAAABAAAAAAAAAAAAAALBBAABAQAAAAAAAAAAAAADAQAAAgEAAAAAAAAAAAAAAwEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAABBBAAAAQAAAAAAAAAAAAAAQQQAAQEAAAAAAAAAAAAAAoEAAAIBAAAAAAAAAAAAAAKBAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAAAgQQAAAEAAAAAAAAAAAAAAIEEAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAACAQAAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAMEEAAABAAAAAAAAAAAAAADBBAABAQAAAAAAAAAAAAABAQAAAgEAAAAAAAAAAAAAAQEAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAAC4QQAAAAAAAAAAAAAAAAAAwEEAAIA/AAAAAAAAAAAAAEBBAAAAQAAAAAAAAAAAAABAQQAAQEAAAAAAAAAAAAAAAEAAAIBAAAAAAAAAAAAAAABAAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAAAuEEAAAAAAAAAAAAAAAAAAMBBAACAPwAAAAAAAAAAAABQQQAAAEAAAAAAAAAAAAAAUEEAAEBAAAAAAAAAAAAAAIA/AACAQAAAAAAAAAAAAACAPwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAAALhBAAAAAAAAAAAAAAAAAADAQQAAgD8AAAAAAAAAAAAAYEEAAABAAAAAAAAAAAAAAGBBAABAQAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 7
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hk43k"]
+image = SubResource("Image_4y5jg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsdd7"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_hk43k")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ymm3x")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(2048, 1645)
+shader_parameter/uvs = [Rect2(0, 0, 516, 512), Rect2(0, 512, 512, 512), Rect2(512, 1028, 512, 512), Rect2(516, 0, 516, 512), Rect2(516, 512, 516, 516), Rect2(1024, 1028, 512, 516), Rect2(1536, 516, 512, 516), Rect2(1032, 0, 516, 516), Rect2(1254, 1544, 81, 101), Rect2(1173, 1544, 81, 101), Rect2(120, 1104, 81, 101), Rect2(201, 1104, 81, 101), Rect2(282, 1024, 81, 101), Rect2(363, 1024, 81, 101), Rect2(444, 1540, 81, 101), Rect2(525, 1540, 81, 101), Rect2(606, 1540, 81, 101), Rect2(687, 1540, 81, 101), Rect2(768, 1540, 81, 101), Rect2(849, 1540, 81, 101), Rect2(930, 1540, 81, 101), Rect2(1011, 1544, 81, 101), Rect2(1092, 1544, 81, 101), Rect2(120, 1024, 120, 80), Rect2(0, 1024, 120, 80)]
+shader_parameter/layerVisible = [false, true, true, true, true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bevwy"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_hk43k")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ymm3x")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(2048, 1645)
+shader_parameter/uvs = [Rect2(0, 0, 516, 512), Rect2(0, 512, 512, 512), Rect2(512, 1028, 512, 512), Rect2(516, 0, 516, 512), Rect2(516, 512, 516, 516), Rect2(1024, 1028, 512, 516), Rect2(1536, 516, 512, 516), Rect2(1032, 0, 516, 516), Rect2(1254, 1544, 81, 101), Rect2(1173, 1544, 81, 101), Rect2(120, 1104, 81, 101), Rect2(201, 1104, 81, 101), Rect2(282, 1024, 81, 101), Rect2(363, 1024, 81, 101), Rect2(444, 1540, 81, 101), Rect2(525, 1540, 81, 101), Rect2(606, 1540, 81, 101), Rect2(687, 1540, 81, 101), Rect2(768, 1540, 81, 101), Rect2(849, 1540, 81, 101), Rect2(930, 1540, 81, 101), Rect2(1011, 1544, 81, 101), Rect2(1092, 1544, 81, 101), Rect2(120, 1024, 120, 80), Rect2(0, 1024, 120, 80)]
+shader_parameter/layerVisible = [true, false, false, false, false, false, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bevwy"]
+radius = 74.953316
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdpe"]
+size = Vector2(64, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q77ah"]
+size = Vector2(100, 98)
+
+[sub_resource type="Resource" id="Resource_8eyjb"]
+script = ExtResource("10")
+num = 40.0
+damageFlags = 6
+Flag/Damage = 6
+Flag/Collision = 9
+metadata/_custom_type_script = "uid://cmqmtitj4tcd8"
+
+[sub_resource type="Gradient" id="Gradient_vpdpe"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7kd5i"]
+gradient = SubResource("Gradient_vpdpe")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantPumpkinFire" unique_id=842002567 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -10
+script = ExtResource("2")
+allEventList = [SubResource("Resource_3ko1g")]
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinFire")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinFire" parent="SpriteGroup/TransformPoint" index="0" unique_id=1126663770 instance=ExtResource("6")]
+material = SubResource("ShaderMaterial_nsdd7")
+instance_shader_parameters/frameIndex = 1.5059986666666667
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="Node2D" parent="SpriteGroup/TransformPoint/PumpkinFire" index="0"]
+z_index = -2
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpkinFire/Node2D" index="0"]
+z_index = -2
+material = SubResource("ShaderMaterial_bevwy")
+instance_shader_parameters/frameIndex = 1.5059986666666667
+trueFrameRate = 180.0
+
+[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=492829503]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=1781042450]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_bevwy")
+
+[node name="ShowHealthComponent" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="2" unique_id=1448292904]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_vpdpe")
+
+[node name="ChangeProjectileComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=1260627562 node_paths=PackedStringArray("checkArea") instance=ExtResource("8")]
+changeName = &"Fire"
+changeAudio = "FireHit"
+checkArea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="ComponentManager/ChangeProjectileComponent" index="0" unique_id=1488149239]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/ChangeProjectileComponent/Area2D" index="0" unique_id=742658108]
+shape = SubResource("RectangleShape2D_q77ah")
+
+[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1450364672 instance=ExtResource("9")]
+eventList = [SubResource("Resource_8eyjb")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("11")
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=1928565280]
+unique_name_in_owner = true
+visible = false
+energy = 0.35
+texture = SubResource("GradientTexture2D_7kd5i")
+
+[editable path="SpriteGroup/TransformPoint/PumpkinFire"]

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bt1fb24vatp5l"]
+
+[ext_resource type="Script" uid="uid://d27s2oqain3l" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCoinCreate.gd" id="1"]
+[ext_resource type="Script" uid="uid://1jb2yen6kwy8" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dm4cppouc70yp" path="res://Asset/Anime/Effect/Coin/Gold/CoinGold.tscn" id="3"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_v1asf"]
+script = ExtResource("1")
+num = 50.0
+collect = true
+metadata/_custom_type_script = "uid://d27s2oqain3l"
+
+[sub_resource type="Resource" id="Resource_al6od"]
+script = ExtResource("2")
+eventList = [SubResource("Resource_v1asf")]
+percentage = 0.08
+metadata/_custom_type_script = "uid://1jb2yen6kwy8"
+
+[resource]
+script = ExtResource("4")
+name = "CoinGold"
+baseDamage = 500.0
+projectileScene = ExtResource("3")
+splatSceneType = "Sprite"
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_al6od")]
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+penetrateNum = 10000
+Flag/Damage = 3
+Flag/FireMethod = 32
+Flag/Collision = 11

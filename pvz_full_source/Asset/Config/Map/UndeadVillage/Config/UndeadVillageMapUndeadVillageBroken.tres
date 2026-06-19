@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="TowerDefenseMapConfig" format=3 uid="uid://5stf48h7khp2"]
+
+[ext_resource type="Script" uid="uid://bk1pu7tdpvvch" path="res://Resource/TowerDefense/Map/Cell/Config/TowerDefenseCellConfig.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://hgqeei4ehxjx" path="res://Asset/Config/Map/UndeadVillage/Scene/Broken/TowerDefenseMapUndeadVillageBroken.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bt48fkrhouiw8" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Village/UndeadVillageBroken.jpg" id="3"]
+[ext_resource type="Script" uid="uid://jariliyqi7jt" path="res://Resource/TowerDefense/Map/TowerDefenseMapConfig.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_yhsrd"]
+script = ExtResource("1")
+pos = Vector4i(1, 1, 9, 5)
+groundHeightCurve = null
+gridType = [1, 4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[sub_resource type="Resource" id="Resource_u5wbo"]
+script = ExtResource("1")
+pos = Vector4i(2, 1, 2, 1)
+groundHeightCurve = null
+gridType = [4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[sub_resource type="Resource" id="Resource_wks5a"]
+script = ExtResource("1")
+pos = Vector4i(3, 2, 3, 2)
+groundHeightCurve = null
+gridType = [4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[sub_resource type="Resource" id="Resource_idgxg"]
+script = ExtResource("1")
+pos = Vector4i(6, 2, 7, 3)
+groundHeightCurve = null
+gridType = [4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[sub_resource type="Resource" id="Resource_pi4mn"]
+script = ExtResource("1")
+pos = Vector4i(2, 4, 3, 5)
+groundHeightCurve = null
+gridType = [4]
+Flag/Elemet = 0
+metadata/_custom_type_script = "uid://bk1pu7tdpvvch"
+
+[resource]
+script = ExtResource("4")
+translate = "MAP_UNDEADVILLAGE_BROKEN"
+mapTexture = ExtResource("3")
+mapScene = ExtResource("2")
+gridBeginPos = Vector2(260, 75)
+cellConfig = [SubResource("Resource_yhsrd"), SubResource("Resource_u5wbo"), SubResource("Resource_wks5a"), SubResource("Resource_idgxg"), SubResource("Resource_pi4mn")]
+lineUse = [1, 2, 3, 4, 5]
+isNight = true
+useSunFall = false

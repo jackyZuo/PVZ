@@ -1,0 +1,150 @@
+[gd_scene format=4 uid="uid://bspepbq4vpjbc"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bolcwae5nbs31" path="res://Asset/Anime/Character/Plant/Other/LilyPot/Scene/TowerDefensePlantLilyPot.gd" id="2"]
+[ext_resource type="Resource" uid="uid://di07bfxsbpik6" path="res://Asset/Anime/Character/Plant/Other/LilyPot/Config/TowerDefensePlantLilyPot.tres" id="3"]
+[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://pyl5kc3qkt64" path="res://Asset/Anime/Character/Plant/Other/LilyPot/LilyPot.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://d1l3f28mblu32" path="res://Script/Component/TowerDefense/Character/SlotComponent/SlotComponent.tscn" id="7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xulyi"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 1.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = null
+shader_parameter/imageAnimeData = null
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(0, 0)
+shader_parameter/uvs = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/layerVisible = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Image" id="Image_dwf1j"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 21
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0swyx"]
+image = SubResource("Image_dwf1j")
+
+[sub_resource type="Image" id="Image_t7ujd"]
+data = {
+"data": PackedByteArray("AP9/RwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAKBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAgEAAAIBAAAAAAAAAAAAA/39HAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAD/f0cAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACgQAAAAEAAAAAAAAAAAAAAQEAAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAP9/RwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAA/39HAAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAoEAAAABAAAAAAAAAAAAAAEBAAABAQAAAAAAAAAAAAACAQAAAgEAAAAAAAAAAAAD/f0cAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAP9/RwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAKBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAgEAAAIBAAAAAAAAAAAAA/39HAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAD/f0cAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACgQAAAAEAAAAAAAAAAAAAAQEAAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAP9/RwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAAA/39HAAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAoEAAAABAAAAAAAAAAAAAAEBAAABAQAAAAAAAAAAAAACAQAAAgEAAAAAAAAAAAAD/f0cAAKBAAAAAAAAAAAAA/39HAADAQAAAAAAAAAAAAP9/RwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAKBAAAAAQAAAAAAAAAAAAABAQAAAQEAAAAAAAAAAAAAAgEAAAIBAAAAAAAAAAAAA/39HAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAD/f0cAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACgQAAAAEAAAAAAAAAAAAAAQEAAAEBAAAAAAAAAAAAAAIBAAACAQAAAAAAAAAAAAP9/RwAAoEAAAAAAAAAAAAD/f0cAAMBAAAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 7
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hb83t"]
+image = SubResource("Image_t7ujd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqqsg"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_hb83t")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_0swyx")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(100, 132)
+shader_parameter/uvs = [Rect2(0, 0, 100, 100), Rect2(0, 100, 34, 23), Rect2(34, 100, 34, 23), Rect2(34, 123, 12, 9), Rect2(46, 123, 12, 8), Rect2(58, 123, 11, 7)]
+shader_parameter/layerVisible = [true, true, true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefensePlantLilyPot" unique_id=677018421 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -13
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/LilyPot")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="ShadowSprite" index="0" unique_id=264396963]
+position = Vector2(-26.558334, 22.25)
+scale = Vector2(0.7509061, 0.7999878)
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="ShadowSprite2" type="Sprite2D" parent="ShadowSprite/AdobeAnimateSlot" index="0" unique_id=1834323242]
+unique_name_in_owner = true
+z_index = -10
+position = Vector2(35.4053, -26.2011)
+scale = Vector2(1.21333, 1.11844)
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+material = SubResource("ShaderMaterial_xulyi")
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="LilyPot" parent="SpriteGroup/TransformPoint" index="0" unique_id=756499903 instance=ExtResource("6")]
+material = SubResource("ShaderMaterial_pqqsg")
+instance_shader_parameters/frameIndex = 6.8260439999999996
+position = Vector2(0, -26)
+trueFrameRate = 180.0
+Animation/LayerVisible/anim_blink = true
+Animation/LayerVisible/anim_blink1 = true
+Animation/LayerVisible/body = true
+Animation/MediaReplace/LilyPot.png = null
+Animation/MediaReplace/LilyPot_blink1.png = null
+Animation/MediaReplace/LilyPot_blink2.png = null
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/LilyPot" index="0" unique_id=1836155463]
+position = Vector2(-32.85, -6.6013374)
+scale = Vector2(0.7999878, 0.7999878)
+script = ExtResource("4")
+followSlotId = 6
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/LilyPot/AdobeAnimateSlot" index="0" unique_id=65813366]
+position = Vector2(40, 0)
+
+[node name="ShowHealthComponent" parent="SpriteGroup" index="1" unique_id=1448292904]
+visible = false
+position = Vector2(0, 30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1502859521 node_paths=PackedStringArray("posMark") instance=ExtResource("7")]
+posMark = NodePath("../../SpriteGroup/TransformPoint/LilyPot/AdobeAnimateSlot/Marker2D")

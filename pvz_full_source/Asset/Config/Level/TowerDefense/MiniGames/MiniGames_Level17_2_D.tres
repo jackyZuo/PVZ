@@ -1,0 +1,472 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://dbxj3klnxvhy7"]
+
+[ext_resource type="Script" uid="uid://bo4f1vfbr2qjj" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorPacketConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://b2mbg8q37sg2h" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorConfig.gd" id="2"]
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/MiniGames/MiniGames_Level17_2_D.json" id="3"]
+[ext_resource type="Script" uid="uid://cvgtvji3a1q0m" path="res://Resource/TowerDefense/Level/Event/Gravestone/TowerDefenseLevelEventGravestoneCreateRandom.gd" id="4"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="5"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="6"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="10"]
+[ext_resource type="Script" uid="uid://8ona8byq7o7a" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.gd" id="11"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="12"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="13"]
+[ext_resource type="Script" uid="uid://bdw752xk12whi" path="res://Resource/TowerDefense/Character/Override/Property/TowerDefenseCharacterPropertyChangeConfig.gd" id="14"]
+[ext_resource type="Script" uid="uid://b2wtvsnyc4qk5" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.gd" id="15"]
+
+[sub_resource type="Resource" id="Resource_6q0qb"]
+script = ExtResource("1")
+name = "PlantPuffShroom"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_hw585"]
+script = ExtResource("1")
+name = "PlantSplitPea"
+weight = 8
+maxNum = 5
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_wh8up"]
+script = ExtResource("1")
+name = "PlantSnowShroom"
+weight = 6
+maxNum = 2
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_2e6cu"]
+script = ExtResource("1")
+name = "PlantIcenut"
+weight = 8
+maxNum = 3
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_p2w83"]
+script = ExtResource("1")
+name = "PlantGargantuarShroom"
+weight = 6
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_dm0b4"]
+script = ExtResource("1")
+name = "PlantMagnetMine"
+maxNum = 3
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_0woug"]
+script = ExtResource("1")
+name = "PlantGraveMine"
+weight = 7
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_0xpxo"]
+script = ExtResource("1")
+name = "PlantJalapeno"
+weight = 8
+maxNum = 2
+minNum = 1
+override = null
+
+[sub_resource type="Resource" id="Resource_68nxb"]
+script = ExtResource("1")
+name = "PlantIceShroom"
+weight = 8
+maxNum = 2
+minNum = 1
+minMagnification = 3.0
+override = null
+
+[sub_resource type="Resource" id="Resource_k2nxa"]
+script = ExtResource("1")
+name = "PlantDoomShroom"
+weight = 4
+maxNum = 2
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_y4k5y"]
+script = ExtResource("1")
+name = "PlantScaredyShroom"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_sojrg"]
+script = ExtResource("1")
+name = "PlantFumeShroom"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_02q4d"]
+script = ExtResource("1")
+name = "PlantGloompult"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_r133p"]
+script = ExtResource("1")
+name = "PlantFireSnowPea"
+weight = 8
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_po0m2"]
+script = ExtResource("2")
+interval = 4.0
+intervalIncreaseEvery = 3
+intervalMagnification = 0.25
+packetList = [SubResource("Resource_6q0qb"), SubResource("Resource_hw585"), SubResource("Resource_wh8up"), SubResource("Resource_2e6cu"), SubResource("Resource_p2w83"), SubResource("Resource_dm0b4"), SubResource("Resource_0woug"), SubResource("Resource_0xpxo"), SubResource("Resource_68nxb"), SubResource("Resource_k2nxa"), SubResource("Resource_y4k5y"), SubResource("Resource_sojrg"), SubResource("Resource_02q4d"), SubResource("Resource_r133p")]
+waveEvent = [[], []]
+
+[sub_resource type="Resource" id="Resource_1mwg7"]
+script = ExtResource("4")
+gravestoneNum = 8
+gravestonePos = Vector4i(5, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_asydy"]
+script = ExtResource("5")
+
+[sub_resource type="Resource" id="Resource_0ty77"]
+script = ExtResource("6")
+
+[sub_resource type="Resource" id="Resource_a1ou2"]
+script = ExtResource("8")
+open = false
+begin = 500
+
+[sub_resource type="Resource" id="Resource_np826"]
+script = ExtResource("9")
+pointIncrementPerWave = -10
+startingPoints = -50
+startingWave = 3
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_6qclp"]
+script = ExtResource("9")
+pointIncrementPerWave = -10
+startingPoints = -50
+startingWave = 4
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_8mvky"]
+script = ExtResource("9")
+pointIncrementPerWave = -5
+startingPoints = -100
+startingWave = 5
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_eamos"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_gpday"]
+script = ExtResource("9")
+pointIncrementPerWave = 20
+startingPoints = 20
+startingWave = 5
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_ogsrl"]
+script = ExtResource("9")
+pointIncrementPerWave = 40
+startingPoints = 40
+startingWave = 4
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_ypm3j"]
+script = ExtResource("9")
+pointIncrementPerWave = 60
+startingPoints = 60
+startingWave = 3
+zombiePool = ["ZombieNormal"]
+
+[sub_resource type="Resource" id="Resource_bwml0"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_b0iju"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_lvcb0"]
+script = ExtResource("14")
+propertyName = "stageSpawnList"
+value = [[["ZombieNormal", "ZombieNormalCone", "ZombieShadow", "ZombieNormalScreendoor"]], [["ZombieNormalCone", "ZombieNormalScreendoor", "ZombiePaper", "ZombieShadow", "ZombieDigger", "ZombieYetiDigger"]], [["ZombieNormalCone", "ZombieYetiDigger", "ZombiePolestriker", "ZombieShadow", "ZombieNormalScreendoor", "ZombieGargantuar"]], [["ZombieNormalScreendoor", "ZombiePaper", "ZombieYetiDigger", "ZombiePolestriker", "ZombieGargantuar", "ZombieGargantuarArmed"]]]
+
+[sub_resource type="Resource" id="Resource_5eu8p"]
+script = ExtResource("11")
+hitpointScale = 1.5
+propertyChange = [SubResource("Resource_lvcb0")]
+
+[sub_resource type="Resource" id="Resource_xnegu"]
+script = ExtResource("15")
+zombie = "ZombieBoss"
+override = SubResource("Resource_5eu8p")
+
+[sub_resource type="Resource" id="Resource_0mebe"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_xnegu")]
+dynamic = SubResource("Resource_b0iju")
+
+[sub_resource type="Resource" id="Resource_4tvt8"]
+script = ExtResource("10")
+flagZombie = ""
+flagWaveInterval = 1
+maxNextWaveHealthPercentage = 0.45
+minNextWaveHealthPercentage = 0.5
+beginCol = 1.0
+spawnColEnd = 25.0
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_bwml0")
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_np826"), SubResource("Resource_6qclp"), SubResource("Resource_8mvky"), SubResource("Resource_eamos"), SubResource("Resource_gpday"), SubResource("Resource_ogsrl"), SubResource("Resource_ypm3j")]
+wave = [SubResource("Resource_0mebe")]
+customSurvival = null
+
+[resource]
+script = ExtResource("7")
+data = ExtResource("3")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "BrainiacManiac"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+&"Interval": 4.0,
+&"IntervalIncreaseEvery": 3,
+&"IntervalMagnification": 0.25,
+&"Packet": [{
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantPuffShroom",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 5,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantSplitPea",
+&"Weight": 8
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 2,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantSnowShroom",
+&"Weight": 6
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 3,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantIcenut",
+&"Weight": 8
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantGargantuarShroom",
+&"Weight": 6
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 3,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantMagnetMine",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantGraveMine",
+&"Weight": 7
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 2,
+&"MinMagnification": 2.0,
+&"MinNum": 1,
+&"Name": "PlantJalapeno",
+&"Weight": 8
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 2,
+&"MinMagnification": 3.0,
+&"MinNum": 1,
+&"Name": "PlantIceShroom",
+&"Weight": 8
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 2,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantDoomShroom",
+&"Weight": 4
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantScaredyShroom",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantFumeShroom",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantGloompult",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantFireSnowPea",
+&"Weight": 8
+}],
+&"Type": "Default",
+&"WaveEvent": [[], []]
+},
+&"Event": {
+"EventInit": [],
+"EventReady": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneDefault"],
+"GravestoneNum": 8.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 5.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"EventStart": []
+},
+&"Map": {
+"MapName": "FrontlawnNight"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 3,
+"StormOpen": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 500.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 1.0,
+"Dynamic": [{
+"PointIncrementPerWave": -10.0,
+"StartingPoints": -50.0,
+"StartingWave": 3.0,
+"ZombiePool": ["ZombieNormal"]
+}, {
+"PointIncrementPerWave": -10.0,
+"StartingPoints": -50.0,
+"StartingWave": 4.0,
+"ZombiePool": ["ZombieNormal"]
+}, {
+"PointIncrementPerWave": -5.0,
+"StartingPoints": -100.0,
+"StartingWave": 5.0,
+"ZombiePool": ["ZombieNormal"]
+}, {}, {
+"PointIncrementPerWave": 20.0,
+"StartingPoints": 20.0,
+"StartingWave": 5.0,
+"ZombiePool": ["ZombieNormal"]
+}, {
+"PointIncrementPerWave": 40.0,
+"StartingPoints": 40.0,
+"StartingWave": 4.0,
+"ZombiePool": ["ZombieNormal"]
+}, {
+"PointIncrementPerWave": 60.0,
+"StartingPoints": 60.0,
+"StartingWave": 3.0,
+"ZombiePool": ["ZombieNormal"]
+}],
+"FlagWaveInterval": 1.0,
+"FlagZombie": "",
+"MaxNextWaveHealthPercentage": 0.45,
+"MinNextWaveHealthPercentage": 0.5,
+"MowerUse": true,
+"SpawnColEnd": 25.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"HitpointScale": 1.5,
+"PropertyChange": [{
+"PropertyName": "stageSpawnList",
+"Value": [[["ZombieNormal", "ZombieNormalCone", "ZombieShadow", "ZombieNormalScreendoor"]], [["ZombieNormalCone", "ZombieNormalScreendoor", "ZombiePaper", "ZombieShadow", "ZombieDigger", "ZombieYetiDigger"]], [["ZombieNormalCone", "ZombieYetiDigger", "ZombiePolestriker", "ZombieShadow", "ZombieNormalScreendoor", "ZombieGargantuar"]], [["ZombieNormalScreendoor", "ZombiePaper", "ZombieYetiDigger", "ZombiePolestriker", "ZombieGargantuar", "ZombieGargantuarArmed"]]]
+}]
+},
+"Zombie": "ZombieBoss"
+}]
+}]
+}
+map = "FrontlawnNight"
+backgroundMusic = "BrainiacManiac"
+firstRewardValue = "2000"
+eventReady = [SubResource("Resource_1mwg7")]
+packetBankMethod = 3
+sunManager = SubResource("Resource_a1ou2")
+fogManager = SubResource("Resource_asydy")
+lookStarManager = SubResource("Resource_0ty77")
+waveManager = SubResource("Resource_4tvt8")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+conveyorData = SubResource("Resource_po0m2")
+rainData = null
+name = "MiniGames_Level17_2"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "僵王博士的复仇 - {LevelNumber}"
+levelNumber = 2
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

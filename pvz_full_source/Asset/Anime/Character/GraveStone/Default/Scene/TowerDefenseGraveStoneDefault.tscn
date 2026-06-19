@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://14d7mb2lm57h"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://b3ctyxjko0aj0" path="res://Asset/Anime/Character/GraveStone/Default/Scene/TowerDefenseGraveStoneDefault.gd" id="2"]
+[ext_resource type="Resource" uid="uid://juieot16lhx1" path="res://Asset/Anime/Character/GraveStone/Default/Config/TowerDefenseGraveStoneDefault.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://rex8c803eb7s" path="res://Asset/Anime/Character/GraveStone/Default/GraveStoneDefault.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+
+[sub_resource type="Image" id="Image_hq5e2"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_l4kxh"]
+image = SubResource("Image_hq5e2")
+
+[sub_resource type="Image" id="Image_8673u"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAoEEAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_d2kn6"]
+image = SubResource("Image_8673u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmsdk"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_d2kn6")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_l4kxh")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(430, 728)
+shader_parameter/uvs = [Rect2(86, 364, 86, 91), Rect2(172, 364, 86, 91), Rect2(258, 364, 86, 91), Rect2(344, 364, 86, 91), Rect2(0, 364, 86, 91), Rect2(86, 455, 86, 91), Rect2(172, 455, 86, 91), Rect2(258, 455, 86, 91), Rect2(344, 455, 86, 91), Rect2(0, 455, 86, 91), Rect2(86, 546, 86, 91), Rect2(172, 546, 86, 91), Rect2(258, 546, 86, 91), Rect2(344, 546, 86, 91), Rect2(0, 546, 86, 91), Rect2(86, 637, 86, 91), Rect2(172, 637, 86, 91), Rect2(258, 637, 86, 91), Rect2(344, 637, 86, 91), Rect2(0, 637, 86, 91), Rect2(0, 0, 86, 91), Rect2(86, 0, 86, 91), Rect2(86, 91, 86, 91), Rect2(172, 0, 86, 91), Rect2(172, 91, 86, 91), Rect2(258, 0, 86, 91), Rect2(258, 91, 86, 91), Rect2(344, 0, 86, 91), Rect2(344, 91, 86, 91), Rect2(0, 91, 86, 91), Rect2(86, 182, 86, 91), Rect2(172, 182, 86, 91), Rect2(258, 182, 86, 91), Rect2(344, 182, 86, 91), Rect2(0, 182, 86, 91), Rect2(86, 273, 86, 91), Rect2(172, 273, 86, 91), Rect2(258, 273, 86, 91), Rect2(344, 273, 86, 91), Rect2(0, 273, 86, 91)]
+shader_parameter/layerVisible = [true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseGraveStoneDefault" unique_id=1931086568 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+idleAnimeClip = "Idle1&Idle10&Idle11&Idle12&Idle13&Idle14&Idle15&Idle16&Idle17&Idle18&Idle19&Idle2&Idle20&Idle3&Idle4&Idle5&Idle6&Idle7&Idle8&Idle9"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneDefault")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 26)
+
+[node name="GraveStoneDefault" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1751514897 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_fmsdk")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -18)
+Animation/Clip = "Idle1"

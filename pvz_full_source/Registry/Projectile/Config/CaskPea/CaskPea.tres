@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://7lrm7denaysy"]
+
+[ext_resource type="Script" uid="uid://bguds5b6fy2r6" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.gd" id="1"]
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="2"]
+[ext_resource type="Script" uid="uid://yhbrrikb2vgf" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateProjectile.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://oigbi8gud5sh" path="res://Asset/Config/Projectile/Cask/Sprite/CaskPea/ProjectileCaskPea.tscn" id="4"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="5"]
+
+[sub_resource type="Resource" id="Resource_lc46w"]
+script = ExtResource("1")
+length = 0.125
+time = 0.1
+metadata/_custom_type_script = "uid://bguds5b6fy2r6"
+
+[sub_resource type="Resource" id="Resource_jov78"]
+script = ExtResource("2")
+projectileName = &"PeaBomb"
+baseDamage = 40.0
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_fplht"]
+script = ExtResource("3")
+projectileData = SubResource("Resource_jov78")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_xhkci"]
+script = ExtResource("2")
+projectileName = &"PeaBomb"
+baseDamage = 40.0
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_nocx0"]
+script = ExtResource("3")
+dir = 90.0
+projectileData = SubResource("Resource_xhkci")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_av4vd"]
+script = ExtResource("2")
+projectileName = &"PeaBomb"
+baseDamage = 40.0
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_n3ga2"]
+script = ExtResource("3")
+dir = 180.0
+projectileData = SubResource("Resource_av4vd")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_s6jl7"]
+script = ExtResource("2")
+projectileName = &"PeaBomb"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_06j4v"]
+script = ExtResource("3")
+dir = 270.0
+projectileData = SubResource("Resource_s6jl7")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[resource]
+script = ExtResource("5")
+name = "CaskPea"
+projectileScene = ExtResource("4")
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_lc46w"), SubResource("Resource_fplht"), SubResource("Resource_nocx0"), SubResource("Resource_n3ga2"), SubResource("Resource_06j4v")]
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+hitPesontage = 0.5

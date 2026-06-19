@@ -1,0 +1,1048 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://ufb8wlsxgq21"]
+
+[ext_resource type="Script" uid="uid://8ona8byq7o7a" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.gd" id="1"]
+[ext_resource type="Script" uid="uid://bxppvgvu66yw5" path="res://Resource/TowerDefense/PacketBank/Packet/Override/TowerDefensePacketOverride.gd" id="2"]
+[ext_resource type="Script" uid="uid://bo4f1vfbr2qjj" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorPacketConfig.gd" id="3"]
+[ext_resource type="Script" uid="uid://b2mbg8q37sg2h" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorConfig.gd" id="4"]
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/IZM2/Chapter1/IZM2_Level1_5_D.json" id="5"]
+[ext_resource type="Script" uid="uid://b5cuv3omtbssc" path="res://Resource/TowerDefense/Level/Event/Map/TowerDefenseLevelEventCurrentMapFunctionExecute.gd" id="6"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="10"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="11"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="12"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="13"]
+[ext_resource type="Script" uid="uid://7k77ho7g2cdd" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelGridSpawnConfig.gd" id="14"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="15"]
+[ext_resource type="Script" uid="uid://bdw752xk12whi" path="res://Resource/TowerDefense/Character/Override/Property/TowerDefenseCharacterPropertyChangeConfig.gd" id="16"]
+
+[sub_resource type="Resource" id="Resource_rldyp"]
+script = ExtResource("1")
+scale = 0.5
+hitpointScale = 0.5
+walkSpeedScale = Vector2(1.1, 1.5)
+
+[sub_resource type="Resource" id="Resource_1tnck"]
+script = ExtResource("2")
+characterOverride = SubResource("Resource_rldyp")
+
+[sub_resource type="Resource" id="Resource_1nd0d"]
+script = ExtResource("3")
+name = "ZombieNormal"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = SubResource("Resource_1tnck")
+
+[sub_resource type="Resource" id="Resource_0slto"]
+script = ExtResource("1")
+scale = 0.5
+hitpointScale = 0.5
+walkSpeedScale = Vector2(1.1, 1.5)
+
+[sub_resource type="Resource" id="Resource_3pgjx"]
+script = ExtResource("2")
+characterOverride = SubResource("Resource_0slto")
+
+[sub_resource type="Resource" id="Resource_ts8h3"]
+script = ExtResource("3")
+name = "ZombieNormalCone"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = SubResource("Resource_3pgjx")
+
+[sub_resource type="Resource" id="Resource_g0d86"]
+script = ExtResource("1")
+scale = 0.5
+hitpointScale = 0.5
+walkSpeedScale = Vector2(1.1, 1.5)
+
+[sub_resource type="Resource" id="Resource_uu6eq"]
+script = ExtResource("2")
+characterOverride = SubResource("Resource_g0d86")
+
+[sub_resource type="Resource" id="Resource_t0b2s"]
+script = ExtResource("3")
+name = "ZombiePolevaulter"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = SubResource("Resource_uu6eq")
+
+[sub_resource type="Resource" id="Resource_cv440"]
+script = ExtResource("1")
+scale = 0.5
+hitpointScale = 0.5
+walkSpeedScale = Vector2(1.1, 1.5)
+
+[sub_resource type="Resource" id="Resource_bp2oa"]
+script = ExtResource("2")
+characterOverride = SubResource("Resource_cv440")
+
+[sub_resource type="Resource" id="Resource_j5ets"]
+script = ExtResource("3")
+name = "ZombieNormalBucket"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = SubResource("Resource_bp2oa")
+
+[sub_resource type="Resource" id="Resource_ercxx"]
+script = ExtResource("4")
+intervalIncreaseEvery = 1
+intervalMagnification = 0.0
+packetList = [SubResource("Resource_1nd0d"), SubResource("Resource_ts8h3"), SubResource("Resource_t0b2s"), SubResource("Resource_j5ets")]
+waveEvent = [[], []]
+
+[sub_resource type="Resource" id="Resource_k1x4e"]
+script = ExtResource("6")
+functionName = "UseStripe"
+value = [5.0]
+
+[sub_resource type="Resource" id="Resource_4gojm"]
+script = ExtResource("7")
+
+[sub_resource type="Resource" id="Resource_fy2tr"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_bpxyq"]
+script = ExtResource("10")
+type = "Brain"
+
+[sub_resource type="Resource" id="Resource_5wwl7"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_tpqg0"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_onpgx"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_uh7ik"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_1a7ah"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_2880v"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_kjv7k"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_llwqi"]
+script = ExtResource("1")
+
+[sub_resource type="Resource" id="Resource_qrn1a"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_gn2l7"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(5, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_lilnr"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_gn2l7")]
+dynamic = SubResource("Resource_qrn1a")
+
+[sub_resource type="Resource" id="Resource_sm8tr"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_ygdnu"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_7d6cl"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_6xwxc"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_8e1bu"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_vb0wr"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_kb2vo"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_vb0wr")]
+
+[sub_resource type="Resource" id="Resource_b0xip"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(1, 2)
+override = SubResource("Resource_kb2vo")
+
+[sub_resource type="Resource" id="Resource_ec7wh"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_7h15y"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_ec7wh")]
+
+[sub_resource type="Resource" id="Resource_q2odo"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(2, 5)
+override = SubResource("Resource_7h15y")
+
+[sub_resource type="Resource" id="Resource_m6nj2"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_ygdnu"), SubResource("Resource_7d6cl"), SubResource("Resource_6xwxc"), SubResource("Resource_8e1bu"), SubResource("Resource_b0xip"), SubResource("Resource_q2odo")]
+dynamic = SubResource("Resource_sm8tr")
+
+[sub_resource type="Resource" id="Resource_p3mq4"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_n0x4q"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_el8nx"]
+script = ExtResource("14")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_eam08"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_lnu2c"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_g1crc"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_n0x4q"), SubResource("Resource_el8nx"), SubResource("Resource_eam08"), SubResource("Resource_lnu2c")]
+dynamic = SubResource("Resource_p3mq4")
+
+[sub_resource type="Resource" id="Resource_ty5h8"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_qed00"]
+script = ExtResource("14")
+packet = "PlantWallnut"
+gridPos = Vector2i(5, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_5d5ja"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_lebqg"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_3rvtn"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_gc8hm"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_ax47x"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_ptov5"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_ax47x")]
+
+[sub_resource type="Resource" id="Resource_nbymt"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(1, 5)
+override = SubResource("Resource_ptov5")
+
+[sub_resource type="Resource" id="Resource_scjd5"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_tqcnk"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_scjd5")]
+
+[sub_resource type="Resource" id="Resource_loitf"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(3, 1)
+override = SubResource("Resource_tqcnk")
+
+[sub_resource type="Resource" id="Resource_sq7jo"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_qed00"), SubResource("Resource_5d5ja"), SubResource("Resource_lebqg"), SubResource("Resource_3rvtn"), SubResource("Resource_gc8hm"), SubResource("Resource_nbymt"), SubResource("Resource_loitf")]
+dynamic = SubResource("Resource_ty5h8")
+
+[sub_resource type="Resource" id="Resource_efeiw"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_o6cj6"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(5, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_3r0xn"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_gdwnf"]
+script = ExtResource("14")
+packet = "PlantSunBomb"
+gridPos = Vector2i(2, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_0hvy4"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_i6c1h"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_0hvy4")]
+
+[sub_resource type="Resource" id="Resource_ge8ki"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(1, 1)
+override = SubResource("Resource_i6c1h")
+
+[sub_resource type="Resource" id="Resource_xyvh2"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_d2bws"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_xyvh2")]
+
+[sub_resource type="Resource" id="Resource_6va0q"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(2, 5)
+override = SubResource("Resource_d2bws")
+
+[sub_resource type="Resource" id="Resource_vjcpo"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_fommt"]
+script = ExtResource("14")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_kuu3m"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_o6cj6"), SubResource("Resource_3r0xn"), SubResource("Resource_gdwnf"), SubResource("Resource_ge8ki"), SubResource("Resource_6va0q"), SubResource("Resource_vjcpo"), SubResource("Resource_fommt")]
+dynamic = SubResource("Resource_efeiw")
+
+[sub_resource type="Resource" id="Resource_6nt1d"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_t7ulg"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_2uf8n"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_jcwko"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_xl1ty"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_8bbkf"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_2347h"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_5jobs"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_2347h")]
+
+[sub_resource type="Resource" id="Resource_vp6yx"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(2, 4)
+override = SubResource("Resource_5jobs")
+
+[sub_resource type="Resource" id="Resource_rab0h"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_t7ulg"), SubResource("Resource_2uf8n"), SubResource("Resource_jcwko"), SubResource("Resource_xl1ty"), SubResource("Resource_8bbkf"), SubResource("Resource_vp6yx")]
+dynamic = SubResource("Resource_6nt1d")
+
+[sub_resource type="Resource" id="Resource_km538"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_xi624"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_0cwyh"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(3, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_uey28"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(4, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_pa3lu"]
+script = ExtResource("14")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_luwvt"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_ciawd"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_xi624"), SubResource("Resource_0cwyh"), SubResource("Resource_uey28"), SubResource("Resource_pa3lu"), SubResource("Resource_luwvt")]
+dynamic = SubResource("Resource_km538")
+
+[sub_resource type="Resource" id="Resource_hk5rc"]
+script = ExtResource("13")
+
+[sub_resource type="Resource" id="Resource_hbe7f"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_pkcdh"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_pu2w8"]
+script = ExtResource("14")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_g8u02"]
+script = ExtResource("14")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_vuh0b"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_y8mfr"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_o84op"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_y8mfr")]
+
+[sub_resource type="Resource" id="Resource_a683r"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(1, 2)
+override = SubResource("Resource_o84op")
+
+[sub_resource type="Resource" id="Resource_ogw47"]
+script = ExtResource("14")
+packet = "PlantSunflowerPea"
+gridPos = Vector2i(3, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_ua3gw"]
+script = ExtResource("14")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_w1lo6"]
+script = ExtResource("16")
+propertyName = "readyTime"
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_5dvyg"]
+script = ExtResource("1")
+propertyChange = [SubResource("Resource_w1lo6")]
+
+[sub_resource type="Resource" id="Resource_38ed0"]
+script = ExtResource("14")
+packet = "PlantSunMine"
+gridPos = Vector2i(1, 4)
+override = SubResource("Resource_5dvyg")
+
+[sub_resource type="Resource" id="Resource_kagnn"]
+script = ExtResource("14")
+packet = "PlantSunBomb"
+gridPos = Vector2i(2, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_hfbtk"]
+script = ExtResource("14")
+packet = "PlantSunBomb"
+gridPos = Vector2i(2, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_e35xi"]
+script = ExtResource("15")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_hbe7f"), SubResource("Resource_pkcdh"), SubResource("Resource_pu2w8"), SubResource("Resource_g8u02"), SubResource("Resource_vuh0b"), SubResource("Resource_a683r"), SubResource("Resource_ogw47"), SubResource("Resource_ua3gw"), SubResource("Resource_38ed0"), SubResource("Resource_kagnn"), SubResource("Resource_hfbtk")]
+dynamic = SubResource("Resource_hk5rc")
+
+[sub_resource type="Resource" id="Resource_4h55q"]
+script = ExtResource("12")
+flagZombieUse = false
+flagWaveInterval = 8
+maxNextWaveHealthPercentage = 0.2
+minNextWaveHealthPercentage = 0.3
+beginCol = 5.0
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_llwqi")
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_5wwl7"), SubResource("Resource_tpqg0"), SubResource("Resource_onpgx"), SubResource("Resource_uh7ik"), SubResource("Resource_1a7ah"), SubResource("Resource_2880v"), SubResource("Resource_kjv7k")]
+wave = [SubResource("Resource_lilnr"), SubResource("Resource_m6nj2"), SubResource("Resource_g1crc"), SubResource("Resource_sq7jo"), SubResource("Resource_kuu3m"), SubResource("Resource_rab0h"), SubResource("Resource_ciawd"), SubResource("Resource_e35xi")]
+customSurvival = null
+
+[resource]
+script = ExtResource("9")
+data = ExtResource("5")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "Frontlawn"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+&"Interval": 3.0,
+&"IntervalIncreaseEvery": 1,
+&"IntervalMagnification": 0.0,
+&"Packet": [{
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormal",
+"Override": {
+&"CharacterOverride": {
+"AnimeSpeedScale": [-1.0, -1.0],
+"Armor": [],
+"CanMowerMove": false,
+"DieEvent": [],
+"HitpointScale": 0.5,
+"Invisible": false,
+"PropertyChange": [],
+"Scale": 0.5,
+"SpawnEvent": [],
+"WalkSpeedScale": [1.1, 1.5]
+},
+&"Cost": -1,
+&"CostMultiple": -1.0,
+&"CostRise": -1,
+&"CoverCanDirectPlant": false,
+&"EventPlant": [],
+&"EventPress": [],
+&"Hypnoses": false,
+&"IslimitGridNum": true,
+&"PacketCooldown": -1.0,
+&"PlantCover": [],
+&"StartingCooldown": -1.0,
+&"Type": "NOONE",
+&"WavePointCost": -1,
+&"Weight": -1
+},
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormalCone",
+"Override": {
+&"CharacterOverride": {
+"AnimeSpeedScale": [-1.0, -1.0],
+"Armor": [],
+"CanMowerMove": false,
+"DieEvent": [],
+"HitpointScale": 0.5,
+"Invisible": false,
+"PropertyChange": [],
+"Scale": 0.5,
+"SpawnEvent": [],
+"WalkSpeedScale": [1.1, 1.5]
+},
+&"Cost": -1,
+&"CostMultiple": -1.0,
+&"CostRise": -1,
+&"CoverCanDirectPlant": false,
+&"EventPlant": [],
+&"EventPress": [],
+&"Hypnoses": false,
+&"IslimitGridNum": true,
+&"PacketCooldown": -1.0,
+&"PlantCover": [],
+&"StartingCooldown": -1.0,
+&"Type": "NOONE",
+&"WavePointCost": -1,
+&"Weight": -1
+},
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombiePolevaulter",
+"Override": {
+&"CharacterOverride": {
+"AnimeSpeedScale": [-1.0, -1.0],
+"Armor": [],
+"CanMowerMove": false,
+"DieEvent": [],
+"HitpointScale": 0.5,
+"Invisible": false,
+"PropertyChange": [],
+"Scale": 0.5,
+"SpawnEvent": [],
+"WalkSpeedScale": [1.1, 1.5]
+},
+&"Cost": -1,
+&"CostMultiple": -1.0,
+&"CostRise": -1,
+&"CoverCanDirectPlant": false,
+&"EventPlant": [],
+&"EventPress": [],
+&"Hypnoses": false,
+&"IslimitGridNum": true,
+&"PacketCooldown": -1.0,
+&"PlantCover": [],
+&"StartingCooldown": -1.0,
+&"Type": "NOONE",
+&"WavePointCost": -1,
+&"Weight": -1
+},
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormalBucket",
+"Override": {
+&"CharacterOverride": {
+"AnimeSpeedScale": [-1.0, -1.0],
+"Armor": [],
+"CanMowerMove": false,
+"DieEvent": [],
+"HitpointScale": 0.5,
+"Invisible": false,
+"PropertyChange": [],
+"Scale": 0.5,
+"SpawnEvent": [],
+"WalkSpeedScale": [1.1, 1.5]
+},
+&"Cost": -1,
+&"CostMultiple": -1.0,
+&"CostRise": -1,
+&"CoverCanDirectPlant": false,
+&"EventPlant": [],
+&"EventPress": [],
+&"Hypnoses": false,
+&"IslimitGridNum": true,
+&"PacketCooldown": -1.0,
+&"PlantCover": [],
+&"StartingCooldown": -1.0,
+&"Type": "NOONE",
+&"WavePointCost": -1,
+&"Weight": -1
+},
+&"Weight": 20
+}],
+&"Type": "Default",
+&"WaveEvent": [[], []]
+},
+&"Event": {
+"EventInit": [{
+"EventName": "CurrentMapFunctionExecute",
+"Value": {
+"FunctionName": "UseStripe",
+"Value": [5.0]
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "Frontlawn"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 3,
+"StormOpen": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 300.0,
+"MovingMethod": "Land",
+"Open": true,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0,
+"Type": "Brain"
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 5.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 8.0,
+"FlagZombie": "ZombieFlag",
+"FlagZombieUse": false,
+"MaxNextWaveHealthPercentage": 0.2,
+"MinNextWaveHealthPercentage": 0.3,
+"MowerUse": true,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 3.0],
+"Packet": "PlantSunflowerPea"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [1.0, 2.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [2.0, 5.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 1.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantSunFlower"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPeaShooterSingle"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 3.0],
+"Packet": "PlantWallnut"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [1.0, 5.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [3.0, 1.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantSunBomb"
+}, {
+"GridPos": [1.0, 1.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [2.0, 5.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [4.0, 1.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantSunFlower"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [2.0, 4.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [3.0, 5.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 3.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantSunFlower"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantPeaShooterSingle"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 1.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantSunFlower"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantSunFlower"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [1.0, 2.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [3.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantPeaShooterSingle"
+}, {
+"GridPos": [1.0, 4.0],
+"Override": {
+"PropertyChange": [{
+"PropertyName": "readyTime",
+"Value": 1.0
+}]
+},
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [2.0, 2.0],
+"Packet": "PlantSunBomb"
+}, {
+"GridPos": [2.0, 4.0],
+"Packet": "PlantSunBomb"
+}],
+"Spawn": []
+}]
+}
+finishMethod = 4
+firstRewardType = 1
+firstRewardValue = "ZombiePaper"
+eventInit = [SubResource("Resource_k1x4e")]
+packetBankMethod = 3
+sunManager = SubResource("Resource_bpxyq")
+fogManager = SubResource("Resource_4gojm")
+lookStarManager = SubResource("Resource_fy2tr")
+waveManager = SubResource("Resource_4h55q")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+conveyorData = SubResource("Resource_ercxx")
+rainData = null
+name = "IZM2_Level1_5"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_IZM2_LEVEL_NAME"
+levelNumber = 5
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

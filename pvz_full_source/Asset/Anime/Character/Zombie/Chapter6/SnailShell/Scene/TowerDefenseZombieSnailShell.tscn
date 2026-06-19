@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ldc184n5hxmu"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dgudgwu8har48" path="res://Asset/Anime/Character/Zombie/Chapter6/SnailShell/Scene/TowerDefenseZombieSnailShell.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cp3pumcb3uk6j" path="res://Asset/Anime/Character/Zombie/Chapter6/SnailShell/Config/TowerDefenseZombieSnailShell.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bhwtjd6lkwqhh" path="res://Asset/Anime/Character/Zombie/Chapter6/SnailShell/ZombieSnailShell.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://qupj2nqkoeld" path="res://Asset/Anime/Character/Zombie/Chapter6/SnailShell/Armor/Zombie_impSnail_shell.png" id="5"]
+
+[node name="TowerDefenseZombieSnailShell" unique_id=842589144 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 1.5
+useAttackDps = false
+waterHeight = 20.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSnailShell")
+Armor = ["Shell"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSnailShell" parent="SpriteGroup/TransformPoint" index="0" unique_id=1182669728 instance=ExtResource("4")]
+position = Vector2(-12, -33)
+Animation/MediaReplace/Zombie_impSnail_shell.png = ExtResource("5")
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieSnailShell" index="0" unique_id=410203072]
+position = Vector2(-62.232452, -40)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieSnailShell/GroundSlot")
+
+[editable path="SpriteGroup/TransformPoint/ZombieSnailShell"]

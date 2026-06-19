@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://4ru23bvugnoo"]
+
+[ext_resource type="Script" uid="uid://fix6uw08if5s" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://caq7gmvjy3nyg" path="res://Asset/Config/Projectile/Star/FireStar/FireStar.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_nyh30"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://fix6uw08if5s"
+
+[sub_resource type="Resource" id="Resource_cmhs8"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_nyh30")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("4")
+name = "FireStar"
+baseDamage = 40.0
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_cmhs8")]

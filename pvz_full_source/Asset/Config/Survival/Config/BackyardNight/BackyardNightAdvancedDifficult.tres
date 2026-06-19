@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://b274lq12ikr71"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/BackyardNight/BackyardNightAdvancedDifficult.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_vcpo2"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor", "ZombieFootball", "ZombieJackson"]
+
+[sub_resource type="Resource" id="Resource_13a2s"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieBalloon", "ZombieBalloonColour", "ZombieShadow", "ZombiePolestriker", "ZombiePolevaulter", "ZombieDigger", "ZombieSnorkle", "ZombieDuck"]
+
+[sub_resource type="Resource" id="Resource_30lvw"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieLadder", "ZombiePogo", "ZombieDisco", "ZombieFootballBlack", "ZombieShieldArmor", "ZombieImpSnail", "ZombieZamboni"]
+
+[sub_resource type="Resource" id="Resource_xdg5j"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieMagnetic", "ZombieBed", "ZombieYetiDigger", "ZombieDolphinrider", "ZombieDolphiSN", "ZombieAxe", "ZombieDolphinMJ", "ZombieJackbox", "ZombieGargantuar", "ZombiePogoJackson", "ZombiePaperball", "ZombieJacksonX", "ZombiePogoball", "ZombieGargantuarRedEyes", "ZombieDuckRider", "ZombieSeaDemon", "ZombieShark"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundLimit = 5
+pointIncrementPerWave = 150
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 1000
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_vcpo2"), SubResource("Resource_13a2s"), SubResource("Resource_30lvw"), SubResource("Resource_xdg5j")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

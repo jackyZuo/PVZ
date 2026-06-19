@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://byuv6jflrtcul"]
+
+[ext_resource type="Script" uid="uid://diis0ygpg82y0" path="res://Prefab/GUI/DialogBox/StarExchange/StarExchangeItem/StarExchangeItem.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cvth13h0ui3cq" path="res://Asset/Texture/GUI/General/Special/MoreGameStar.png" id="2"]
+[ext_resource type="FontFile" uid="uid://coqskwlqtnypf" path="res://Asset/Font/fzkt.ttf" id="3"]
+[ext_resource type="PackedScene" uid="uid://bhqecss20rwpb" path="res://Prefab/TowerDefense/GUI/InGame/Packet/TowerDefenseInGamePacketShow.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://dpm2kwh72n3p4" path="res://Asset/Texture/GUI/General/Special/DebuffFinish.png" id="5"]
+
+[node name="StarExchangeItem" type="Control" unique_id=532716519]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_right = -2.0
+script = ExtResource("1")
+
+[node name="LabelTexture" type="TextureRect" parent="." unique_id=2147317164]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 34.0
+offset_right = -3.0
+offset_bottom = 65.0
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="CostLabel" type="Label" parent="LabelTexture" unique_id=1809902078]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 26.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 35.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 16
+text = "x 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PacketNode" type="Control" parent="." unique_id=465497900]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -8.0
+offset_right = 1.0
+offset_bottom = -8.0
+
+[node name="Packet" parent="PacketNode" unique_id=1794970412 instance=ExtResource("4")]
+unique_name_in_owner = true
+layout_mode = 0
+scale = Vector2(1.25, 1.25)
+setMobileLayout = true
+
+[node name="Button" type="Button" parent="." unique_id=248390737]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+light_mask = 0
+layout_mode = 0
+offset_left = -59.0
+offset_top = -46.0
+offset_right = 62.0
+offset_bottom = 30.0
+mouse_default_cursor_shape = 2
+
+[node name="FinishTexture" type="TextureRect" parent="." unique_id=428426572]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 18.0
+offset_right = 73.0
+offset_bottom = 68.0
+texture = ExtResource("5")
+
+[connection signal="pressed" from="Button" to="." method="Pressed"]

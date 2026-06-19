@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dcag7mp1h3da1"]
+
+[ext_resource type="Script" uid="uid://b7bsdfdfctvuh" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventIceSpeedDown.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://x8go376ra0lr" path="res://Asset/Config/Projectile/Melon/Sprite/WinterMelon/ProjectileWinterMelon.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://cyckg6uoamlaq" path="res://Prefab/Particles/Splats/WinterMelonSplats/WinterMelonSplats.tscn" id="4"]
+
+[sub_resource type="Resource" id="Resource_yjdge"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://b7bsdfdfctvuh"
+
+[resource]
+script = ExtResource("3")
+name = "WinterMelon"
+baseDamage = 80.0
+projectileScene = ExtResource("2")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("4")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_yjdge")]
+rotateScale = 5.0
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 1.5)
+damageFlags = 2
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+Flag/Damage = 2
+Flag/FireMethod = 32
+Flag/Collision = 11

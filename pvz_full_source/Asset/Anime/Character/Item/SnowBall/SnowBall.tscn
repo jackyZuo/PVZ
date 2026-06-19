@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://dy8ewroum32lh"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://dx5r3cdal6o6y" path="res://Asset/Anime/Character/Item/SnowBall/SnowBall.tres" id="3"]
+
+[sub_resource type="Image" id="Image_yjajx"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMtMPwAAAAAAAAAAAMtMPwAA6MEAAIDCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMtMPwAAAAAAAAAAAMtMPwAA6MEAAIDCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 2,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_s7n2i"]
+image = SubResource("Image_yjajx")
+
+[sub_resource type="Image" id="Image_01uxo"]
+data = {
+"data": PackedByteArray("AP9/RwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAP9/RwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 2,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_n8w4p"]
+image = SubResource("Image_01uxo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sxqbk"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_n8w4p")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_s7n2i")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(350, 295)
+shader_parameter/uvs = [Rect2(175, 175, 120, 120), Rect2(0, 0, 175, 175), Rect2(175, 0, 175, 175)]
+shader_parameter/layerVisible = [false, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="SnowBall" type="Node2D" unique_id=1821149835]
+material = SubResource("ShaderMaterial_sxqbk")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-42, -9)
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/_ground = false
+Animation/LayerVisible/anim_face = true
+Animation/MediaReplace/Ground.png = null
+Animation/MediaReplace/SnowBall.png = null
+Animation/MediaReplace/SnowBall_half.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

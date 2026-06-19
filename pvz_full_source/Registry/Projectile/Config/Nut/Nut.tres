@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://ooxmb8xsagfa"]
+
+[ext_resource type="Script" uid="uid://dgnek80uj8531" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ccysv0iych4ws" path="res://Asset/Config/Projectile/Nut/Sprite/Nut/ProjectileNut.tscn" id="2"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://baqug3vkcx00a" path="res://Prefab/Particles/Splats/NutpultSplats/SpikeNutpultSplats.tscn" id="4"]
+
+[sub_resource type="Resource" id="Resource_xvqha"]
+script = ExtResource("1")
+packetName = "PlantMininut"
+percentage = 0.2
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[sub_resource type="Resource" id="Resource_2pshr"]
+script = ExtResource("1")
+packetName = "PlantMininut"
+percentage = 0.2
+byCamp = true
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[resource]
+script = ExtResource("3")
+name = "Nut"
+baseDamage = 200.0
+projectileScene = ExtResource("2")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("4")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_2pshr")]
+hitGroundEventList = [SubResource("Resource_xvqha")]
+useRange = true
+rangeSize = Vector2(0.5, 1.25)

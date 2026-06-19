@@ -1,0 +1,148 @@
+[gd_scene format=4 uid="uid://23uajo7uduh"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bi0ufkbflgt3l" path="res://Asset/Anime/Character/Plant/Chapter3/SunPad/Scene/TowerDefensePlantSunPad.gd" id="2"]
+[ext_resource type="Script" uid="uid://fix6uw08if5s" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.gd" id="3"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="4"]
+[ext_resource type="Resource" uid="uid://behwvr0ykkyko" path="res://Asset/Anime/Character/Plant/Chapter3/SunPad/Config/TowerDefensePlantSunPad.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://brri0hbooo2oy" path="res://Asset/Anime/Character/Plant/Chapter3/SunPad/SunPad.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="7"]
+[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://d1l3f28mblu32" path="res://Script/Component/TowerDefense/Character/SlotComponent/SlotComponent.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://c5d74tbefbann" path="res://Script/Component/TowerDefense/Character/ProduceComponent/ProduceComponent.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://8fpowsb3exlb" path="res://Script/Component/TowerDefense/Character/ReverseInjuryComponent/ReverseInjuryComponent.tscn" id="11"]
+[ext_resource type="Script" uid="uid://cmqmtitj4tcd8" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.gd" id="12"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="13"]
+
+[sub_resource type="Resource" id="Resource_nwny8"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://fix6uw08if5s"
+
+[sub_resource type="Resource" id="Resource_cko82"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_nwny8")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_en1pb"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = null
+shader_parameter/imageAnimeData = null
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(256, 423)
+shader_parameter/uvs = [Rect2(74, 352, 34, 23), Rect2(108, 352, 34, 23), Rect2(121, 129, 100, 100), Rect2(100, 290, 52, 62), Rect2(152, 290, 52, 62), Rect2(204, 229, 52, 62), Rect2(0, 323, 37, 50), Rect2(37, 323, 37, 50), Rect2(37, 373, 37, 50), Rect2(204, 291, 47, 70), Rect2(100, 229, 56, 61), Rect2(0, 223, 100, 100), Rect2(0, 129, 121, 94), Rect2(142, 352, 34, 23), Rect2(176, 361, 34, 23), Rect2(0, 0, 144, 129)]
+shader_parameter/layerVisible = [true, true, true, true, true, false, false, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tr5a7"]
+radius = 74.953316
+
+[sub_resource type="Resource" id="Resource_tr5a7"]
+script = ExtResource("12")
+num = 40.0
+damageFlags = 6
+Flag/Damage = 6
+Flag/Collision = 9
+metadata/_custom_type_script = "uid://cmqmtitj4tcd8"
+
+[sub_resource type="Gradient" id="Gradient_7kd5i"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wisqu"]
+gradient = SubResource("Gradient_7kd5i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantSunPad" unique_id=95989368 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -13
+script = ExtResource("2")
+allEventList = [SubResource("Resource_cko82")]
+produceInterval = 25.0
+sunNum = 25
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunPad")
+Custom = []
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+z_index = -10
+position = Vector2(0, 24)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunPad" parent="SpriteGroup/TransformPoint" index="0" unique_id=1288316253 instance=ExtResource("6")]
+material = SubResource("ShaderMaterial_en1pb")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -30)
+offset = Vector2(-40, -20.838247)
+
+[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunPad" index="0" unique_id=38017239]
+position = Vector2(-40.35, -15.338247)
+script = ExtResource("8")
+followSlotId = 3
+useScale = false
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPad/PotSlot" index="0" unique_id=870614262]
+position = Vector2(41.35, 10.1448)
+
+[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1223294932]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=537898492]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_tr5a7")
+
+[node name="ShowHealthComponent" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="2" unique_id=1448292904]
+position = Vector2(0, 30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1863442325 node_paths=PackedStringArray("posMark") instance=ExtResource("9")]
+posMark = NodePath("../../SpriteGroup/TransformPoint/SunPad/PotSlot/Marker2D")
+heightFollow = true
+hideShadow = false
+
+[node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=181185137 node_paths=PackedStringArray("marker") instance=ExtResource("10")]
+unique_name_in_owner = true
+marker = [NodePath("../../SpriteGroup/TransformPoint/SunPad/PotSlot/Marker2D")]
+
+[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1949037436 instance=ExtResource("11")]
+unique_name_in_owner = true
+eventList = [SubResource("Resource_tr5a7")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("13")
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=527448004]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.5625, 0.515625)
+energy = 0.35
+texture = SubResource("GradientTexture2D_wisqu")

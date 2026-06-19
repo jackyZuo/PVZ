@@ -1,0 +1,91 @@
+[gd_scene format=4 uid="uid://bijhrcgsgcoxb"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://do4ajfiak7d4f" path="res://Asset/Anime/Character/Plant/Chapter6/TabooBean/Scene/TowerDefensePlantTabooBean.gd" id="2"]
+[ext_resource type="Resource" uid="uid://rkikrsbgydhe" path="res://Asset/Anime/Character/Plant/Chapter6/TabooBean/Config/TowerDefensePlantTabooBean.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://ctrdtncc6bm48" path="res://Asset/Anime/Character/Plant/Chapter6/TabooBean/TabooBean.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_33ert"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 15
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rmxdm"]
+image = SubResource("Image_33ert")
+
+[sub_resource type="Image" id="Image_idrbm"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAYEEAAIA/AAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgQQAAgD8AAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBBAACAPwAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYEEAAIA/AAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgQQAAgD8AAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBBAACAPwAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYEEAAIA/AAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgQQAAgD8AAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBBAACAPwAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 5
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xxepl"]
+image = SubResource("Image_idrbm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qg5r"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_xxepl")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_rmxdm")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(481, 363)
+shader_parameter/uvs = [Rect2(0, 0, 82, 73), Rect2(82, 0, 67, 51), Rect2(82, 51, 57, 156), Rect2(139, 51, 57, 156), Rect2(196, 0, 57, 156), Rect2(253, 0, 57, 156), Rect2(310, 0, 57, 156), Rect2(367, 0, 57, 156), Rect2(424, 0, 57, 156), Rect2(0, 73, 57, 156), Rect2(57, 207, 57, 156), Rect2(114, 207, 57, 156), Rect2(171, 207, 57, 156), Rect2(228, 156, 57, 156), Rect2(285, 156, 32, 27)]
+shader_parameter/layerVisible = [true, true, true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefensePlantTabooBean" unique_id=1219512726 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -9
+script = ExtResource("2")
+sleepAnimeClip = "Sleep"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/TabooBean")
+itemLayer = 6
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="TabooBean" parent="SpriteGroup/TransformPoint" index="0" unique_id=365456987 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_4qg5r")
+instance_shader_parameters/frameIndex = 0.4758813333333333
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=206414620 node_paths=PackedStringArray("sprite") instance=ExtResource("6")]
+sprite = NodePath("../../SpriteGroup/TransformPoint/TabooBean")
+explodeAnimeClips = "Crumble"
+explodeAnimeTimeScale = 2.0
+checkIZM = false
+explodeUse = false
+
+[connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

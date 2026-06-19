@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://ct20wxcclwn0e"]
+
+[ext_resource type="Script" uid="uid://cpk1k0s7x63ej" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://xxfhty83vnxj" path="res://Asset/Config/Projectile/CabbageCob/Sprite/CabbageCob/ProjectileCabbageCob.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_1uu3c"]
+script = ExtResource("1")
+projectileData = null
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_ogath"]
+script = ExtResource("1")
+projectileData = null
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[resource]
+script = ExtResource("3")
+name = "CabbageCob"
+baseDamage = 80.0
+projectileScene = ExtResource("2")
+splatAudio = "ProjectileHit"
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_ogath")]
+hitGroundEventList = [SubResource("Resource_1uu3c")]
+rotateFollowVelocity = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+damageFlags = 10
+fireMethodFlags = 2
+collisionFlags = 43
+catapultHeight = 800.0
+Flag/Damage = 10
+Flag/FireMethod = 2
+Flag/Collision = 43
+Catapult/Height = 800.0

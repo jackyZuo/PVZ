@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b5okjyouryjct"]
+
+[ext_resource type="PackedScene" uid="uid://nx2prtbxim66" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogPopup.tscn" id="1"]
+[ext_resource type="Script" uid="uid://uj4160dwwq" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogBoxTips/DialogBoxTips.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="3"]
+
+[node name="DialogBoxTips" unique_id=1277296362 instance=ExtResource("1")]
+script = ExtResource("2")
+pasue = true
+
+[node name="Layer" parent="." index="0"]
+layer = 110
+
+[node name="TextLabel" parent="Layer/Control/MarginContainer2/MarginContainer/CenterContainer" index="0"]
+text = "[center][font_size=24]提示[/font_size][/center]"
+
+[node name="ButtonContainer" parent="Layer/Control" index="1"]
+offset_left = -177.0
+offset_top = 6.01601
+offset_right = 171.0
+offset_bottom = 52.016
+
+[node name="ConfirmButton" parent="Layer/Control/ButtonContainer" index="0" unique_id=2102548262 instance=ExtResource("3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "确定"
+
+[connection signal="pressed" from="Layer/Control/ButtonContainer/ConfirmButton" to="." method="ConfirmButtonPressed"]

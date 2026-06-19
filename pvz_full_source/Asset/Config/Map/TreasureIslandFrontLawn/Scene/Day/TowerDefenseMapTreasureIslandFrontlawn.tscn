@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://kqscvb0xfqnx"]
+
+[ext_resource type="Script" uid="uid://deto4f4iuxegj" path="res://Asset/Config/Map/TreasureIslandFrontLawn/Scene/Day/TowerDefenseMapTreasureIslandFrontlawn.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bibbp3qfmioje" path="res://Asset/Config/Map/TreasureIslandFrontLawn/Scene/Day/TowerDefenseMapTreasureIslandFrontlawnGradient.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://cjfxivl6ud4hg" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/TreasureIsland/TreasureIslandFrontlawn.jpg" id="3"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4"]
+
+[node name="TowerDefenseMapTreasureIslandFrontlawn" type="Node2D" unique_id=2030505559 node_paths=PackedStringArray("stripe")]
+script = ExtResource("1")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2")
+
+[node name="Frontlawn" type="Sprite2D" parent="." unique_id=1920825079]
+position = Vector2(-205, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="." unique_id=883435261]
+visible = false
+position = Vector2(494, 70)
+texture = ExtResource("4")
+centered = false

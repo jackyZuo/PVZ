@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cwhqvqfanhp7s"]
+
+[ext_resource type="PackedScene" uid="uid://cnwqwm6ecgmhp" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacter.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cekw6gxu8rbiv" path="res://Prefab/TowerDefense/Character/TowerDefenseCrater.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/WeatheringComponent/WeatheringComponent.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/EnvironmentAnimeComponent/EnvironmentAnimeComponent.tscn" id="4"]
+
+[node name="TowerDefenseCrater" unique_id=1527053207 instance=ExtResource("1")]
+z_index = -14
+script = ExtResource("2")
+idleAnimeClip = "Whole"
+sleepAnimeClip = "Whole"
+camp = -1
+itemLayer = 1
+gravity = 245.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 50)
+texture = null
+
+[node name="IcetrapSprite" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="2" unique_id=885996306]
+texture = null
+
+[node name="WeatheringComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="11" unique_id=1705032705 instance=ExtResource("3")]
+
+[node name="EnvironmentAnimeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="12" unique_id=1705032706 instance=ExtResource("4")]

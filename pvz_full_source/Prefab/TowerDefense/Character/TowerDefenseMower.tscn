@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ckn1ugd7d88nm"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ykutf3v8kqax" path="res://Prefab/TowerDefense/Character/TowerDefenseMower.gd" id="2"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="3"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://bhh76tmil13cb" path="res://Script/Component/MoveComponent/MoveComponent.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/MowerHitComponent/MowerHitComponent.tscn" id="6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hont"]
+size = Vector2(93, 68)
+
+[node name="TowerDefenseMower" unique_id=1002405428 instance=ExtResource("1")]
+z_index = -7
+script = ExtResource("2")
+runAnimeClips = "Normal"
+runWaterAnimeClips = "Normal"
+attackAnimeClips = ""
+attackWaterAnimeClips = ""
+invisible = false
+sleepAnimeClip = "Normal"
+config = null
+damagePartClip = "particles"
+itemLayer = 8
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 50)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 36)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(-27.5, 0)
+shape = SubResource("RectangleShape2D_8hont")
+
+[node name="Run" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="2" unique_id=613362737]
+script = ExtResource("3")
+
+[node name="ToRun" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="5" unique_id=1428732974]
+script = ExtResource("4")
+to = NodePath("../Run")
+event = &"ToRun"
+delay_in_seconds = "0.0"
+
+[node name="MoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="18" unique_id=1391799581 instance=ExtResource("5")]
+unique_name_in_owner = true
+
+[node name="MowerHitComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=-1589934591 instance=ExtResource("6")]
+
+[connection signal="area_entered" from="HitBox" to="." method="HitCheck"]
+[connection signal="state_entered" from="StateChart/CompoundState/Run" to="." method="RunEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Run" to="." method="RunExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Run" to="." method="RunProcessing"]

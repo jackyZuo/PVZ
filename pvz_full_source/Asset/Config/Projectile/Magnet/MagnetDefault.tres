@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bxgkigcqyict4"]
+
+[ext_resource type="Script" uid="uid://dgnek80uj8531" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://qwdnsaywv4ol" path="res://Asset/Config/Projectile/Magnet/Sprite/Magnet/ProjectileMagnet.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_ffqoo"]
+script = ExtResource("1")
+packetName = "ItemMagnet"
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[sub_resource type="Resource" id="Resource_m3rgy"]
+script = ExtResource("1")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[resource]
+script = ExtResource("3")
+name = "Magnet"
+baseDamage = 60.0
+projectileScene = ExtResource("2")
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_m3rgy")]
+hitGroundEventList = [SubResource("Resource_ffqoo")]
+rotateScale = 5.0
+damageFlags = 10
+fireMethodFlags = 2
+collisionFlags = 43
+catapultHeight = 600.0
+Flag/Damage = 10
+Flag/FireMethod = 2
+Flag/Collision = 43
+Catapult/Height = 600.0

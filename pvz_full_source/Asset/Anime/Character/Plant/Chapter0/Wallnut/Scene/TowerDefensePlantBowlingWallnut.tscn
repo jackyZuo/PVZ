@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://djj8oa8uiu213"]
+
+[ext_resource type="PackedScene" uid="uid://colk7liw31q6k" path="res://Prefab/TowerDefense/Character/TowerDefensePlantBowlingBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://st77vg4pxclf" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Scene/TowerDefensePlantBowlingWallnut.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bbqkdausigalo" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Config/TowerDefensePlantWallnutBowling.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://boocp7vnh24m5" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Wallnut.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="Script" uid="uid://dvyancfxatcgc" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventBowlingHurt.gd" id="6"]
+
+[sub_resource type="Image" id="Image_s0lte"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 13,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_lci6b"]
+image = SubResource("Image_s0lte")
+
+[sub_resource type="Image" id="Image_bsb4m"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 13,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_f8wch"]
+image = SubResource("Image_bsb4m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7i0g"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_f8wch")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_lci6b")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(120, 220)
+shader_parameter/uvs = [Rect2(0, 0, 120, 120), Rect2(0, 120, 100, 100)]
+shader_parameter/layerVisible = [false, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_t18tx"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://dvyancfxatcgc"
+
+[node name="TowerDefensePlantBowlingWallnut" unique_id=96219493 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/Wallnut")
+PreviewDamagePointPersontage = 1.0
+
+[node name="Wallnut" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=293412688 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_e7i0g")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+Animation/Clip = "Roll"
+
+[node name="BowlingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="23" unique_id=1334557662 node_paths=PackedStringArray("sprite")]
+hitEvent = [SubResource("Resource_t18tx")]
+sprite = NodePath("../../SpriteGroup/TransformPoint/Wallnut")

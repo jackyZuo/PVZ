@@ -1,0 +1,42 @@
+extends TowerDefenseProjectileEffectBase
+
+const GLOOM_SPLATS_SCENE: PackedScene = preload("uid://djchpnx8iwbpe")
+
+var num: int = 4
+
+var projectileData: TowerDefenseProjectileCreateData
+
+func _ready() -> void :
+    AttackCreate()
+
+func AttackCreate() -> void :
+    num -= 1
+    var velocity: Vector2
+    for i in 8:
+        velocity = Vector2.from_angle(deg_to_rad(360.0 / 8 * i))
+        projectileData = TowerDefenseProjectileCreateData.new(&"Kernal")
+        projectileData.baseDamage = 20
+        if randf() < 0.08:
+            projectileData.projectileName = "Butter"
+            projectileData.baseDamage = 40
+            projectileData.damageFlags = TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITBODY
+        var projectile: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByData(null, target, - height, global_position + velocity * 20, velocity * 300, projectileData, collisionFlag, camp)
+        if projectile == null:
+            continue
+        projectile.projectileBodyNode.rotation = deg_to_rad(360.0 / 8 * i + 90)
+        projectile.checkAll = true
+    AudioManager.AudioPlay("SplatNormal", AudioManagerEnum.TYPE.SFX)
+    var characterNode: Node2D = TowerDefenseManager.GetCharacterNode()
+    var effect: TowerDefenseEffectParticlesOnce = GLOOM_SPLATS_SCENE.instantiate()
+    effect.objectId = ObjectManagerConfig.OBJECT.NOONE
+    characterNode.add_child(effect)
+    effect.Refresh()
+    effect.gridPos = gridPos
+    if !is_instance_valid(target):
+        effect.global_position = global_position - Vector2(0, height)
+        TowerDefenseExplode.CreateExplode(global_position - Vector2(0, height), Vector2(1.25, 1.25), eventList, [], camp, collisionFlag)
+    else:
+        effect.global_position = target.transformPoint.global_position - Vector2(0, 50)
+        TowerDefenseExplode.CreateExplode(target.transformPoint.global_position - Vector2(0, 50), Vector2(1.25, 1.25), eventList, [], camp, collisionFlag)
+    if num <= 0:
+        queue_free()

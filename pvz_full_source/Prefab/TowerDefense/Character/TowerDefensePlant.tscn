@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c3lnqei4itfpx"]
+
+[ext_resource type="PackedScene" uid="uid://cnwqwm6ecgmhp" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacter.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ckxrfgo82i8j" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.gd" id="2"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="3"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/WaterInteractionComponent/WaterInteractionComponent.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/PlantAnimeComponent/PlantAnimeComponent.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/PuzzleShaderComponent/PuzzleShaderComponent.tscn" id="6"]
+
+[node name="TowerDefensePlant" unique_id=348177637 instance=ExtResource("1")]
+z_index = -11
+script = ExtResource("2")
+plantAnimeClip = ""
+itemLayer = 4
+gravity = 245.0
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 26)
+
+[node name="CompoundState" parent="StateChart" parent_id_path=PackedInt32Array(937104315) index="0" unique_id=124629617]
+initial_state = NodePath("Plant")
+
+[node name="Plant" type="Node" parent="StateChart/CompoundState" index="0" unique_id=1536808800]
+script = ExtResource("3")
+
+[node name="GroundHeightComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=709243207]
+waterHeight = 25.0
+
+[node name="WaterInteractionComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="18" unique_id=705032705 instance=ExtResource("4")]
+
+[node name="PlantAnimeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=705032706 instance=ExtResource("5")]
+
+[node name="PuzzleShaderComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="20" unique_id=705032707 instance=ExtResource("6")]
+
+[connection signal="state_entered" from="StateChart/CompoundState/Plant" to="." method="PlantEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Plant" to="." method="PlantExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Plant" to="." method="PlantProcessing"]

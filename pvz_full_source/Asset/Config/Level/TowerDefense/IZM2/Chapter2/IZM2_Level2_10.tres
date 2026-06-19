@@ -1,0 +1,1084 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bxtswaix75e8p"]
+
+[ext_resource type="Script" uid="uid://bo4f1vfbr2qjj" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorPacketConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://b2mbg8q37sg2h" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorConfig.gd" id="2"]
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/IZM2/Chapter2/IZM2_Level2_10.json" id="3"]
+[ext_resource type="Script" uid="uid://b5cuv3omtbssc" path="res://Resource/TowerDefense/Level/Event/Map/TowerDefenseLevelEventCurrentMapFunctionExecute.gd" id="4"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="5"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="6"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="10"]
+[ext_resource type="Script" uid="uid://8ona8byq7o7a" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.gd" id="11"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="12"]
+[ext_resource type="Script" uid="uid://7k77ho7g2cdd" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelGridSpawnConfig.gd" id="13"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="14"]
+
+[sub_resource type="Resource" id="Resource_3p5e8"]
+script = ExtResource("1")
+name = "ZombieNormalSpecialHelmet"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_rxbro"]
+script = ExtResource("1")
+name = "ZombieNormalBucket"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_snnvo"]
+script = ExtResource("1")
+name = "ZombieShieldArmor"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_drq6s"]
+script = ExtResource("1")
+name = "ZombiePolevaulter"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_w0gyt"]
+script = ExtResource("1")
+name = "ZombieFootball"
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_f2ed2"]
+script = ExtResource("1")
+name = "ZombieLadder"
+weight = 15
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_mjoq6"]
+script = ExtResource("1")
+name = "ZombieNormalSquash"
+weight = 15
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_yhey1"]
+script = ExtResource("2")
+interval = 4.0
+intervalIncreaseEvery = 4
+packetList = [SubResource("Resource_3p5e8"), SubResource("Resource_rxbro"), SubResource("Resource_snnvo"), SubResource("Resource_drq6s"), SubResource("Resource_w0gyt"), SubResource("Resource_f2ed2"), SubResource("Resource_mjoq6")]
+waveEvent = [[], [], []]
+
+[sub_resource type="Resource" id="Resource_jhoye"]
+script = ExtResource("4")
+functionName = "UseStripe"
+value = [5.0]
+
+[sub_resource type="Resource" id="Resource_f4wsg"]
+script = ExtResource("5")
+
+[sub_resource type="Resource" id="Resource_3wywn"]
+script = ExtResource("6")
+
+[sub_resource type="Resource" id="Resource_hk6xf"]
+script = ExtResource("8")
+open = false
+type = "Brain"
+
+[sub_resource type="Resource" id="Resource_p1keu"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_g033x"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_6hrlb"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_3akxp"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_bgonb"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_kp6go"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_pdewh"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_siy36"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_d46x5"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_d84wg"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_mhidr"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_rt8on"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(7, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_nfjav"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(2, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_lp2x3"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_esrsh"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_ik136"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(7, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_tgctu"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_d84wg"), SubResource("Resource_mhidr"), SubResource("Resource_rt8on"), SubResource("Resource_nfjav"), SubResource("Resource_lp2x3"), SubResource("Resource_esrsh"), SubResource("Resource_ik136")]
+dynamic = SubResource("Resource_d46x5")
+
+[sub_resource type="Resource" id="Resource_wonqi"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_j0vjd"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_8qo32"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_bcptj"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_7mrwx"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(1, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_y0klm"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(1, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_oopoy"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_j0vjd"), SubResource("Resource_8qo32"), SubResource("Resource_bcptj"), SubResource("Resource_7mrwx"), SubResource("Resource_y0klm")]
+dynamic = SubResource("Resource_wonqi")
+
+[sub_resource type="Resource" id="Resource_j2v1t"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_72a1h"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_hi15u"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_5710m"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_i0com"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(5, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_opm68"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(5, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_c60br"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(2, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_pi4i0"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(1, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_hh8fq"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_72a1h"), SubResource("Resource_hi15u"), SubResource("Resource_5710m"), SubResource("Resource_i0com"), SubResource("Resource_opm68"), SubResource("Resource_c60br"), SubResource("Resource_pi4i0")]
+dynamic = SubResource("Resource_j2v1t")
+
+[sub_resource type="Resource" id="Resource_45s1q"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_y74we"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_cfxso"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_2layx"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(5, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_ji53x"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_24p08"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_00wd4"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_5tgbo"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(1, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_43bse"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(2, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_c1nic"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_y74we"), SubResource("Resource_cfxso"), SubResource("Resource_2layx"), SubResource("Resource_ji53x"), SubResource("Resource_24p08"), SubResource("Resource_00wd4"), SubResource("Resource_5tgbo"), SubResource("Resource_43bse")]
+dynamic = SubResource("Resource_45s1q")
+
+[sub_resource type="Resource" id="Resource_f56op"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_hrar2"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(1, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_qa1oa"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_5md4u"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_7y282"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_tke1m"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(4, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_nw8rt"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(2, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_eda2d"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(2, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_2e8ws"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_hrar2"), SubResource("Resource_qa1oa"), SubResource("Resource_5md4u"), SubResource("Resource_7y282"), SubResource("Resource_tke1m"), SubResource("Resource_nw8rt"), SubResource("Resource_eda2d")]
+dynamic = SubResource("Resource_f56op")
+
+[sub_resource type="Resource" id="Resource_464y8"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_8dmxc"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_kjtgh"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_3l7em"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(5, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_08r4i"]
+script = ExtResource("13")
+packet = "PlantScaredySunShroom"
+gridPos = Vector2i(1, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_sgc0h"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_yhtv8"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_8dmxc"), SubResource("Resource_kjtgh"), SubResource("Resource_3l7em"), SubResource("Resource_08r4i"), SubResource("Resource_sgc0h")]
+dynamic = SubResource("Resource_464y8")
+
+[sub_resource type="Resource" id="Resource_u5xwx"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_sn4nk"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_prho2"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(5, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_e3skd"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(2, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_qikko"]
+script = ExtResource("13")
+packet = "PlantScaredySunShroom"
+gridPos = Vector2i(2, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_gku32"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_e6oou"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_ektns"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_sn4nk"), SubResource("Resource_prho2"), SubResource("Resource_e3skd"), SubResource("Resource_qikko"), SubResource("Resource_gku32"), SubResource("Resource_e6oou")]
+dynamic = SubResource("Resource_u5xwx")
+
+[sub_resource type="Resource" id="Resource_e5bpb"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_tw78s"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_lo1h5"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_y5tsr"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_2o0b5"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_y6n8m"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(3, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_gjytr"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_g5wex"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_8bct4"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(3, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_bk11j"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_tw78s"), SubResource("Resource_lo1h5"), SubResource("Resource_y5tsr"), SubResource("Resource_2o0b5"), SubResource("Resource_y6n8m"), SubResource("Resource_gjytr"), SubResource("Resource_g5wex"), SubResource("Resource_8bct4")]
+dynamic = SubResource("Resource_e5bpb")
+
+[sub_resource type="Resource" id="Resource_ugb2d"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_l8tex"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(1, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_si1bh"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_upfac"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_wnarh"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_m2uy0"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(5, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_hdah8"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(2, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_0ithi"]
+script = ExtResource("13")
+packet = "PlantScaredySunShroom"
+gridPos = Vector2i(1, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_g8e7u"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_1vif2"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_diicl"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_japh0"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_q5t5i"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_l8tex"), SubResource("Resource_si1bh"), SubResource("Resource_upfac"), SubResource("Resource_wnarh"), SubResource("Resource_m2uy0"), SubResource("Resource_hdah8"), SubResource("Resource_0ithi"), SubResource("Resource_g8e7u"), SubResource("Resource_1vif2"), SubResource("Resource_diicl"), SubResource("Resource_japh0")]
+dynamic = SubResource("Resource_ugb2d")
+
+[sub_resource type="Resource" id="Resource_fqgpq"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_ikyjt"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_hq7jo"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(3, 4)
+override = null
+
+[sub_resource type="Resource" id="Resource_50egs"]
+script = ExtResource("13")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(4, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_tp345"]
+script = ExtResource("13")
+packet = "PlantPuffPot"
+gridPos = Vector2i(5, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_ueo2r"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(2, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_diy4r"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(3, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_ofe2v"]
+script = ExtResource("13")
+packet = "PlantScaredyShroom"
+gridPos = Vector2i(1, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_rwyqn"]
+script = ExtResource("13")
+packet = "PlantScaredySunShroom"
+gridPos = Vector2i(3, 2)
+override = null
+
+[sub_resource type="Resource" id="Resource_dmi36"]
+script = ExtResource("13")
+packet = "PlantHypnoShroom"
+gridPos = Vector2i(4, 1)
+override = null
+
+[sub_resource type="Resource" id="Resource_yvf3n"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 3)
+override = null
+
+[sub_resource type="Resource" id="Resource_2tges"]
+script = ExtResource("13")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 5)
+override = null
+
+[sub_resource type="Resource" id="Resource_73giv"]
+script = ExtResource("14")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+gridSpawn = [SubResource("Resource_ikyjt"), SubResource("Resource_hq7jo"), SubResource("Resource_50egs"), SubResource("Resource_tp345"), SubResource("Resource_ueo2r"), SubResource("Resource_diy4r"), SubResource("Resource_ofe2v"), SubResource("Resource_rwyqn"), SubResource("Resource_dmi36"), SubResource("Resource_yvf3n"), SubResource("Resource_2tges")]
+dynamic = SubResource("Resource_fqgpq")
+
+[sub_resource type="Resource" id="Resource_gxely"]
+script = ExtResource("10")
+flagZombieUse = false
+flagWaveInterval = 5
+maxNextWaveHealthPercentage = 0.2
+minNextWaveHealthPercentage = 0.3
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_siy36")
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_p1keu"), SubResource("Resource_g033x"), SubResource("Resource_6hrlb"), SubResource("Resource_3akxp"), SubResource("Resource_bgonb"), SubResource("Resource_kp6go"), SubResource("Resource_pdewh")]
+wave = [SubResource("Resource_tgctu"), SubResource("Resource_oopoy"), SubResource("Resource_hh8fq"), SubResource("Resource_c1nic"), SubResource("Resource_2e8ws"), SubResource("Resource_yhtv8"), SubResource("Resource_ektns"), SubResource("Resource_bk11j"), SubResource("Resource_q5t5i"), SubResource("Resource_73giv")]
+customSurvival = null
+
+[resource]
+script = ExtResource("7")
+data = ExtResource("3")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "UltimateBattle"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+&"Interval": 4.0,
+&"IntervalIncreaseEvery": 4,
+&"IntervalMagnification": 0.5,
+&"Packet": [{
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormalSpecialHelmet",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormalBucket",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieShieldArmor",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombiePolevaulter",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieFootball",
+&"Weight": 10
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieLadder",
+&"Weight": 15
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "ZombieNormalSquash",
+&"Weight": 15
+}],
+&"Type": "Default",
+&"WaveEvent": [[], [], []]
+},
+&"Event": {
+"EventInit": [{
+"EventName": "CurrentMapFunctionExecute",
+"Value": {
+"FunctionName": "UseStripe",
+"Value": [5.0]
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "FrontlawnNight"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 3,
+"StormOpen": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 300.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0,
+"Type": "Brain"
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 5.0,
+"FlagZombie": "ZombieFlag",
+"FlagZombieUse": false,
+"MaxNextWaveHealthPercentage": 0.2,
+"MinNextWaveHealthPercentage": 0.3,
+"MowerUse": true,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [7.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [2.0, 4.0],
+"Packet": "PlantHypnoShroom"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 3.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [7.0, 2.0],
+"Packet": "PlantPuffShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [3.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 3.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [1.0, 1.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantScaredyShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [3.0, 3.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [2.0, 4.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 5.0],
+"Packet": "PlantScaredyShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 2.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [1.0, 3.0],
+"Packet": "PlantHypnoShroom"
+}, {
+"GridPos": [2.0, 5.0],
+"Packet": "PlantHypnoShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [1.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 1.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [4.0, 2.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [2.0, 4.0],
+"Packet": "PlantHypnoShroom"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantHypnoShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 2.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [1.0, 3.0],
+"Packet": "PlantScaredySunShroom"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantFumeShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [3.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 1.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [2.0, 2.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [2.0, 4.0],
+"Packet": "PlantScaredySunShroom"
+}, {
+"GridPos": [1.0, 4.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantFumeShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 2.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [3.0, 1.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [1.0, 1.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantFumeShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [1.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 2.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 3.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantScaredySunShroom"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantHypnoShroom"
+}, {
+"GridPos": [1.0, 4.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [4.0, 1.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantHypnoShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 2.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [3.0, 4.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantPuffPot"
+}, {
+"GridPos": [2.0, 1.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantScaredySunShroom"
+}, {
+"GridPos": [4.0, 1.0],
+"Packet": "PlantHypnoShroom"
+}, {
+"GridPos": [1.0, 3.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [1.0, 5.0],
+"Packet": "PlantFumeShroom"
+}],
+"Spawn": []
+}]
+}
+finishMethod = 4
+map = "FrontlawnNight"
+backgroundMusic = "UltimateBattle"
+firstRewardType = 1
+firstRewardValue = "ZombieDuck"
+eventInit = [SubResource("Resource_jhoye")]
+packetBankMethod = 3
+sunManager = SubResource("Resource_hk6xf")
+fogManager = SubResource("Resource_f4wsg")
+lookStarManager = SubResource("Resource_3wywn")
+waveManager = SubResource("Resource_gxely")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+packetBank = "GeneralZombie"
+conveyorData = SubResource("Resource_yhey1")
+rainData = null
+name = "IZM2_Level2_10"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_IZM2_NIGHT_LEVEL_NAME"
+levelNumber = 10
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

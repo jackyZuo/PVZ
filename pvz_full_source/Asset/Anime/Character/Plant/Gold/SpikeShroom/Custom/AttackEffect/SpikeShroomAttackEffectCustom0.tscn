@@ -1,0 +1,82 @@
+[gd_scene format=4 uid="uid://bac4csfsmibf0"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://1bjdokd1agow" path="res://Asset/Anime/Character/Plant/Gold/SpikeShroom/Custom/AttackEffect/SpikeShroomAttackEffectCustom0.gd" id="2"]
+[ext_resource type="Resource" uid="uid://t8g3dhwctxtq" path="res://Asset/Anime/Character/Plant/Gold/SpikeShroom/Custom/AttackEffect/SpikeShroomAttackEffectCustom0.tres" id="3"]
+
+[sub_resource type="Image" id="Image_l132c"]
+data = {
+"data": PackedByteArray("AIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAIXLQAAAAAAAAAAAAJiZPgAA+rszM0FCAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8wu6d"]
+image = SubResource("Image_l132c")
+
+[sub_resource type="Image" id="Image_mhe2s"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAoEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAADAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAOBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAQQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAACBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAMEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABAQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAFBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 15,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ig4g5"]
+image = SubResource("Image_mhe2s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43dcv"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ig4g5")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_8wu6d")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(966, 435)
+shader_parameter/uvs = [Rect2(0, 0, 322, 87), Rect2(322, 0, 322, 87), Rect2(322, 87, 322, 87), Rect2(644, 0, 322, 87), Rect2(644, 87, 322, 87), Rect2(0, 87, 322, 87), Rect2(322, 174, 322, 87), Rect2(644, 174, 322, 87), Rect2(0, 174, 322, 87), Rect2(322, 261, 322, 87), Rect2(644, 261, 322, 87), Rect2(0, 261, 322, 87), Rect2(322, 348, 322, 87), Rect2(644, 348, 322, 87)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="SpikeShroomAttackEffectCustom0" type="Node2D" unique_id=674652647]
+material = SubResource("ShaderMaterial_43dcv")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-180, -60)
+timeScale = 2.0
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = true
+"Animation/LayerVisible/图层_1" = true
+Animation/MediaReplace/LGZTX2_0000.png = null
+Animation/MediaReplace/LGZTX2_0001.png = null
+Animation/MediaReplace/LGZTX2_0002.png = null
+Animation/MediaReplace/LGZTX2_0003.png = null
+Animation/MediaReplace/LGZTX2_0004.png = null
+Animation/MediaReplace/LGZTX2_0005.png = null
+Animation/MediaReplace/LGZTX2_0006.png = null
+Animation/MediaReplace/LGZTX2_0007.png = null
+Animation/MediaReplace/LGZTX2_0008.png = null
+Animation/MediaReplace/LGZTX2_0009.png = null
+Animation/MediaReplace/LGZTX2_0010.png = null
+Animation/MediaReplace/LGZTX2_0011.png = null
+Animation/MediaReplace/LGZTX2_0012.png = null
+Animation/MediaReplace/LGZTX2_0013.png = null

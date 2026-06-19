@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cux0wbsftgq37"]
+
+[ext_resource type="PackedScene" uid="uid://nx2prtbxim66" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogPopup.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bs85sg0re27aa" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogBoxChoose/DialogBoxChoose.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="3"]
+
+[node name="DialogBoxChoose" unique_id=1392580146 instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="TextLabel" parent="Layer/Control/MarginContainer2/MarginContainer/CenterContainer" index="0"]
+text = "[center][font_size=24]选择[/font_size][/center]
+[center][font_size=16]是否？[/font_size][/center]"
+
+[node name="ButtonContainer" parent="Layer/Control" index="1"]
+offset_left = -179.0
+offset_top = 5.01601
+offset_right = 169.0
+offset_bottom = 51.016
+
+[node name="TrueButton" parent="Layer/Control/ButtonContainer" index="0" unique_id=2075333193 instance=ExtResource("3")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "是"
+
+[node name="FalseButton" parent="Layer/Control/ButtonContainer" index="1" unique_id=152316440 instance=ExtResource("3")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "否"
+
+[connection signal="pressed" from="Layer/Control/ButtonContainer/TrueButton" to="." method="TrueButtonPressed"]
+[connection signal="pressed" from="Layer/Control/ButtonContainer/FalseButton" to="." method="FalseButtonPressed"]

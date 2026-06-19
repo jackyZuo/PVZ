@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bc1ifskbpetrr"]
+
+[ext_resource type="Script" uid="uid://dt3t2ueoiwggq" path="res://Resource/TowerDefense/Attack/AttackConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://bj7bt4rv2g2ui" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurtWithConfig.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://doy0lwdy2wlmj" path="res://Asset/Config/Projectile/Pea/Sprite/GoldPea/ProjectileGoldPea.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://cc80ittetqubs" path="res://Prefab/Particles/Splats/GoldPeaSplats/GoldPeaSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_a21b7"]
+script = ExtResource("1")
+armorAttackScale = 10.0
+collisionFlags = 1
+
+[sub_resource type="Resource" id="Resource_3y035"]
+script = ExtResource("2")
+attackConfig = SubResource("Resource_a21b7")
+metadata/_custom_type_script = "uid://bj7bt4rv2g2ui"
+
+[resource]
+script = ExtResource("4")
+name = "GoldPea"
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_3y035")]
+hitBody = true

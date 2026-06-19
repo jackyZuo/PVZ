@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://53bfidom6v84"]
+
+[ext_resource type="Script" uid="uid://dcjaf0wlhotfr" path="res://Script/Component/TowerDefense/Character/ChomperComponent/ChomperComponent.gd" id="1"]
+[ext_resource type="Script" uid="uid://crrpyxc32l472" path="res://addons/godot_state_charts/state_chart.gd" id="2"]
+[ext_resource type="Script" uid="uid://dp7fkbu3flis1" path="res://addons/godot_state_charts/compound_state.gd" id="3"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="5"]
+
+[node name="ChomperComponent" type="Node2D" unique_id=206414620]
+script = ExtResource("1")
+
+[node name="StateChart" type="Node" parent="." unique_id=900483480]
+unique_name_in_owner = true
+script = ExtResource("2")
+
+[node name="CompoundState" type="Node" parent="StateChart" unique_id=579658713]
+process_mode = 4
+script = ExtResource("3")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=263442595]
+script = ExtResource("4")
+
+[node name="Attack" type="Node" parent="StateChart/CompoundState" unique_id=1115116488]
+script = ExtResource("4")
+
+[node name="Chew" type="Node" parent="StateChart/CompoundState" unique_id=660711877]
+script = ExtResource("4")
+
+[node name="Swallow" type="Node" parent="StateChart/CompoundState" unique_id=1771550756]
+script = ExtResource("4")
+
+[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=1650671059]
+script = ExtResource("5")
+to = NodePath("../Idle")
+event = &"ToIdle"
+delay_in_seconds = "0.0"
+
+[node name="ToAttack" type="Node" parent="StateChart/CompoundState" unique_id=1253330077]
+script = ExtResource("5")
+to = NodePath("../Attack")
+event = &"ToAttack"
+delay_in_seconds = "0.0"
+
+[node name="ToChew" type="Node" parent="StateChart/CompoundState" unique_id=587525474]
+script = ExtResource("5")
+to = NodePath("../Chew")
+event = &"ToChew"
+delay_in_seconds = "0.0"
+
+[node name="ToSwallow" type="Node" parent="StateChart/CompoundState" unique_id=416212734]
+script = ExtResource("5")
+to = NodePath("../Swallow")
+event = &"ToSwallow"
+delay_in_seconds = "0.0"
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="IdleEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Idle" to="." method="IdleExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Idle" to="." method="IdleProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Attack" to="." method="AttackEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Attack" to="." method="AttackExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Attack" to="." method="AttackProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Chew" to="." method="ChewEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Chew" to="." method="ChewExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Chew" to="." method="ChewProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Swallow" to="." method="SwallowEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Swallow" to="." method="SwallowExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Swallow" to="." method="SwallowProcessing"]

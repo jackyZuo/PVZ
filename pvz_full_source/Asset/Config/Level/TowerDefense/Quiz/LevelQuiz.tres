@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://ccdkb1f5papjm"]
+
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="3"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_ls2t7"]
+script = ExtResource("1")
+beginColumn = 3
+
+[sub_resource type="Resource" id="Resource_43pus"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="Resource_h51aa"]
+script = ExtResource("4")
+open = false
+
+[resource]
+script = ExtResource("3")
+data = null
+featureData = {
+&"Brain": {},
+&"Camera": {},
+&"Map": {
+"MapName": "FrontlawnNight"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"Progess": {},
+&"Shovel": {}
+}
+processName = &"Quiz"
+finishMethod = 3
+map = "FrontlawnNight"
+backgroundMusic = "Cerebraw"
+firstRewardType = 0
+firstRewardValue = ""
+packetColdDownStart = false
+sunManager = SubResource("Resource_h51aa")
+fogManager = SubResource("Resource_ls2t7")
+lookStarManager = SubResource("Resource_43pus")
+waveManager = null
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+conveyorData = null
+rainData = null
+PacketBank/Name = "GeneralPlant"
+name = "Quiz_Level"
+description = "有奖竞猜"
+levelName = "有奖竞猜"
+homeWorld = 1

@@ -1,0 +1,75 @@
+[gd_scene format=4 uid="uid://ddwrcoukx3cy2"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bypgt82c621a6" path="res://Asset/Anime/Character/GraveStone/TargetSheild/Scene/TowerDefenseGraveStoneTargetSheild.gd" id="2"]
+[ext_resource type="Resource" uid="uid://df0d5jq6327gu" path="res://Asset/Anime/Character/GraveStone/TargetSheild/Config/TowerDefenseGraveStoneTargetSheild.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cph8a0a5rohsc" path="res://Asset/Anime/Character/GraveStone/TargetSheild/GraveStoneTargetSheild.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+
+[sub_resource type="Image" id="Image_wyone"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAEAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAABAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xuam5"]
+image = SubResource("Image_wyone")
+
+[sub_resource type="Image" id="Image_au7no"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_636mp"]
+image = SubResource("Image_au7no")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gyqa"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_636mp")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_xuam5")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(86, 185)
+shader_parameter/uvs = [Rect2(0, 91, 83, 94), Rect2(0, 0, 86, 91)]
+shader_parameter/layerVisible = [true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseGraveStoneTargetSheild" unique_id=1266045169 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneTargetSheild")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 26)
+
+[node name="GraveStoneTargetSheild" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1082409569 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_7gyqa")
+instance_shader_parameters/frameIndex = 0.7910835551842615
+position = Vector2(0, -18)
+
+[connection signal="area_entered" from="HitBox" to="." method="HitBoxEntered"]
+[connection signal="area_exited" from="HitBox" to="." method="HitBoxExited"]

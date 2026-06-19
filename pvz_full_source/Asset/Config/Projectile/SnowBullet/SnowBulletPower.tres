@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://diyais5684w8r"]
+
+[ext_resource type="Script" uid="uid://cyk2xngfbvvfk" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventSnowBallSpawn.gd" id="1"]
+[ext_resource type="Script" uid="uid://ckftw7h80d58s" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventDestroy.gd" id="2"]
+[ext_resource type="Script" uid="uid://cfrgul0lo7ufi" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionHitpointBelow.gd" id="3"]
+[ext_resource type="Script" uid="uid://b7bsdfdfctvuh" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventIceSpeedDown.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://cpmsiylayixf2" path="res://Asset/Config/Projectile/SnowBullet/SnowBullet/ProjectileSnowBullet.tscn" id="5"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://bmlgjv0djieap" path="res://Prefab/Particles/Splats/SnowPeaSplats/TowerDefenseEffectParticlesSnowPeaSplats.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_rhhxi"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://cyk2xngfbvvfk"
+
+[sub_resource type="Resource" id="Resource_0kwcl"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://ckftw7h80d58s"
+
+[sub_resource type="Resource" id="Resource_qgdsy"]
+script = ExtResource("3")
+eventList = [SubResource("Resource_rhhxi"), SubResource("Resource_0kwcl")]
+percentage = 0.15
+metadata/_custom_type_script = "uid://cfrgul0lo7ufi"
+
+[sub_resource type="Resource" id="Resource_kmrpn"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://b7bsdfdfctvuh"
+
+[resource]
+script = ExtResource("6")
+name = "SnowBullet"
+baseDamage = 60.0
+projectileScene = ExtResource("5")
+splatScene = ExtResource("7")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_qgdsy"), SubResource("Resource_kmrpn")]
+collisionFlags = 1
+catapultHeight = 400.0
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1

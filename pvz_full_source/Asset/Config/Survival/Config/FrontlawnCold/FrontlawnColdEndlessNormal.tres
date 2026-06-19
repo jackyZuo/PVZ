@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://bqpemi1mq6b3m"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/FrontlawnCold/FrontlawnColdEndlessNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_j3q2s"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor", "ZombieFootball"]
+
+[sub_resource type="Resource" id="Resource_6odjk"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieNormalScreendoor", "ZombieYetiFootball", "ZombieJackson", "ZombiePolevaulter", "ZombieYetiDigger", "ZombieNormalSnowPea", "ZombiePaperball", "ZombieNormalHelmet", "ZombieShadowCone", "ZombieJacksonCone", "ZombieLadderCone"]
+
+[sub_resource type="Resource" id="Resource_okweh"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieShadow", "ZombieLadder", "ZombiePogo", "ZombiePolestriker", "ZombieFootballBlack", "ZombieDisco", "ZombieDigger", "ZombieCatapult", "ZombieNormalBlackHelmet", "ZombiePaperCone", "ZombiePaperBucket", "ZombiePolevaulterCone", "ZombiePolevaulterBucket", "ZombiePolevaulterHelmet", "ZombieShadowBucket", "ZombieShadowHelmet", "ZombieShadowBlackHelmet", "ZombieJacksonBucket", "ZombieJacksonHelmet", "ZombieLadderBucket", "ZombieLadderHelmet", "ZombiePogoCone"]
+
+[sub_resource type="Resource" id="Resource_7t83t"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieShieldArmor", "ZombieImpSnail", "ZombieAxe", "ZombieDiscopaper", "ZombieBed", "ZombieZamboni", "ZombieNormalIcenut", "ZombieNormalSpecialHelmet", "ZombiePaperHelmet", "ZombiePaperBlackHelmet", "ZombiePolevaulterBlackHelmet", "ZombiePolevaulterSpecialHelmet", "ZombieFootballSpecial", "ZombieShadowSpecialHelmet", "ZombieJacksonBlackHelmet", "ZombieLadderBlackHelmet", "ZombieLadderSpecialHelmet", "ZombiePogoBucket"]
+
+[sub_resource type="Resource" id="Resource_o4q7l"]
+script = ExtResource("3")
+_round = 5
+zombieList = ["ZombieMagnetic", "ZombieJackbox", "ZombieJackboxCone", "ZombieGargantuar", "ZombieJacksonX", "ZombieImphacker", "ZombiePogoJackson", "ZombiePogoball", "ZombieNormalWinterMelon", "ZombieGargantuarArmed", "ZombieDiamond", "ZombieNecromancerG", "ZombiePaperSpecialHelmet", "ZombieGargantuarBucket", "ZombieGargantuarScreendoor", "ZombieGargantuarShield", "ZombieJacksonSpecialHelmet", "ZombieJackboxBucket", "ZombiePogoHelmet"]
+
+[sub_resource type="Resource" id="Resource_wiml5"]
+script = ExtResource("3")
+_round = 6
+zombieList = ["ZombieChess", "ZombieVampire", "ZombieGardener", "ZombieImppult", "ZombieCaptain", "ZombieGargantuarHelmet", "ZombieGargantuarBlackHelmet", "ZombieJackboxHelmet", "ZombiePogoBlackHelmet"]
+
+[sub_resource type="Resource" id="Resource_dgcx7"]
+script = ExtResource("3")
+_round = 7
+zombieList = ["ZombieDiscoFire", "ZombieGargantuarZamboni", "ZombieDiamond", "ZombieGargantuarArmed", "ZombieFootballGargantuar", "ZombieBalloonpult", "ZombieGargantuarRedEyes", "ZombieGargantuarRedEyesBucket", "ZombieGargantuarRedEyesScreendoor", "ZombieJackboxBlackHelmet"]
+
+[sub_resource type="Resource" id="Resource_3371l"]
+script = ExtResource("3")
+_round = 8
+zombieList = ["ZombieImpDiggerSpike", "ZombieMerchant", "ZombieFootballGargantuarBlackWhiteEyes", "ZombieGargantuarDigger", "ZombieGargantuarRedEyesArmed", "ZombieZambonipult", "ZombieGargantuarSpecialHelmet", "ZombieGargantuarRedEyesHelmet", "ZombieGargantuarRedEyesBlackHelmet", "ZombieJackboxSpecialHelmet", "ZombiePogoSpecialHelmet"]
+
+[sub_resource type="Resource" id="Resource_n1ovw"]
+script = ExtResource("3")
+_round = 9
+zombieList = ["ZombieGargantuarRedEyesSpecialHelmet", "ZombieFootballGargantuarBlack", "ZombieDiscoGargantuar", "ZombieNormalIceTallnut", "ZombieCaptainBucket", "ZombieJacksonXBlackHelmet", "ZombieAxeSpecialHelmet"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundDayNightChange = true
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 800
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_j3q2s"), SubResource("Resource_6odjk"), SubResource("Resource_okweh"), SubResource("Resource_7t83t"), SubResource("Resource_o4q7l"), SubResource("Resource_wiml5"), SubResource("Resource_dgcx7"), SubResource("Resource_3371l"), SubResource("Resource_n1ovw")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://bpo6h13kj4elm"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Heaven/HeavenEndlessNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_j4ag1"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombieNormalScreendoor", "ZombieBalloon"]
+
+[sub_resource type="Resource" id="Resource_wnpod"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieBalloonColour", "ZombiePolevaulter"]
+
+[sub_resource type="Resource" id="Resource_4b37m"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieFootball", "ZombieJackson", "ZombiePolestriker"]
+
+[sub_resource type="Resource" id="Resource_qf6cf"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieNormalHelmet", "ZombieFootballBlack", "ZombieAngel"]
+
+[sub_resource type="Resource" id="Resource_imqqk"]
+script = ExtResource("3")
+_round = 5
+zombieList = ["ZombieNormalBlackHelmet", "ZombieJacksonCone", "ZombieJacksonBucket", "ZombiePolevaulterCone"]
+
+[sub_resource type="Resource" id="Resource_x2mbh"]
+script = ExtResource("3")
+_round = 6
+zombieList = ["ZombieJacksonBucket", "ZombiePolevaulterBucket", "ZombieJacksonHelmet", "ZombieNormalSpecialHelmet"]
+
+[sub_resource type="Resource" id="Resource_foiyk"]
+script = ExtResource("3")
+_round = 7
+zombieList = ["ZombieBalloonJackson", "ZombieFootballSpecial", "ZombieJacksonBlackHelmet"]
+
+[sub_resource type="Resource" id="Resource_y5wc3"]
+script = ExtResource("3")
+_round = 8
+zombieList = ["ZombieJacksonX", "ZombieJacksonSpecialHelmet"]
+
+[sub_resource type="Resource" id="Resource_whwaa"]
+script = ExtResource("3")
+_round = 9
+zombieList = ["ZombiePolevaulterSpecialHelmet", "ZombieJacksonXBlackHelmet"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 800
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_j4ag1"), SubResource("Resource_wnpod"), SubResource("Resource_4b37m"), SubResource("Resource_qf6cf"), SubResource("Resource_imqqk"), SubResource("Resource_x2mbh"), SubResource("Resource_foiyk"), SubResource("Resource_y5wc3"), SubResource("Resource_whwaa")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

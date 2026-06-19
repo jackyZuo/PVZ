@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bawu0nxe3flro"]
+
+[ext_resource type="Script" uid="uid://yhbrrikb2vgf" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateProjectile.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://38bcfh2fl3qw" path="res://Asset/Config/Projectile/Star/FireBigStar/FireBigStar.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4"]
+
+[sub_resource type="Resource" id="Resource_fk103"]
+script = ExtResource("1")
+speed = 500.0
+dir = 330.0
+projectileData = null
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_et24r"]
+script = ExtResource("1")
+speed = 500.0
+dir = 270.0
+projectileData = null
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_kuumh"]
+script = ExtResource("1")
+speed = 500.0
+dir = 180.0
+projectileData = null
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_ufdg1"]
+script = ExtResource("1")
+speed = 500.0
+dir = 90.0
+projectileData = null
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_sx3le"]
+script = ExtResource("1")
+speed = 500.0
+dir = 30.0
+projectileData = null
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[resource]
+script = ExtResource("3")
+name = "BigFireStar"
+baseDamage = 100.0
+projectileScene = ExtResource("2")
+splatScene = ExtResource("4")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_fk103"), SubResource("Resource_et24r"), SubResource("Resource_kuumh"), SubResource("Resource_ufdg1"), SubResource("Resource_sx3le")]
+damageFlags = 7
+collisionFlags = 1
+catapultHeight = 400.0
+Flag/Damage = 7
+Flag/FireMethod = 1
+Flag/Collision = 1

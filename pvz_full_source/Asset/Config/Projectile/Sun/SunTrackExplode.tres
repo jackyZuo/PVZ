@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dx8jym58qugu1"]
+
+[ext_resource type="Script" uid="uid://d37vnt7i0gkc4" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventSunCreate.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b1ab4758ocpsj" path="res://Asset/Config/Projectile/Sun/Sprite/Sun/ProjectileSun.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://b73i0bacl5jnh" path="res://Prefab/Particles/Explosion/SunBombExplosion/SunBombExplosion.tscn" id="4"]
+
+[sub_resource type="Resource" id="Resource_lo14s"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://d37vnt7i0gkc4"
+
+[resource]
+script = ExtResource("3")
+name = "Sun"
+baseDamage = 100.0
+projectileScene = ExtResource("2")
+splatAudio = "ExplodeCherrybomb"
+splatScene = ExtResource("4")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_lo14s")]
+hitBody = true
+useRange = true
+rangeSize = Vector2(1.25, 1.25)
+hitPesontage = 1.0
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+penetrateNum = 10000
+Flag/Damage = 3
+Flag/FireMethod = 32
+Flag/Collision = 11

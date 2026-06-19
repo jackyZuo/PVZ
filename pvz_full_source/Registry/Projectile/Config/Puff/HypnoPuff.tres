@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dyiioxn38m4hj"]
+
+[ext_resource type="Script" uid="uid://mucgbdaa15rg" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffHypnoses.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://6uxqb8okhca1" path="res://Asset/Config/Projectile/Puff/Sprite/HypnoPuff/HypnoPuff.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://dj5uavekcsu6g" path="res://Prefab/Particles/Splats/PuffSplats/PuffSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_bbn5i"]
+script = ExtResource("1")
+time = 15.0
+metadata/_custom_type_script = "uid://mucgbdaa15rg"
+
+[sub_resource type="Resource" id="Resource_0a74n"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_bbn5i")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("4")
+name = "HypnoPuff"
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_0a74n")]

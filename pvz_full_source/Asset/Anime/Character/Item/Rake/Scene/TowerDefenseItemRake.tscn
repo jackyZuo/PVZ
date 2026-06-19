@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://ualal2uqoi6d"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dmdaynjvl038v" path="res://Asset/Anime/Character/Item/Rake/Scene/TowerDefenseItemRake.gd" id="2"]
+[ext_resource type="Resource" uid="uid://dqlqppti74d08" path="res://Asset/Anime/Character/Item/Rake/Config/TowerDefenseItemRake.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cxoussiq03oo8" path="res://Asset/Anime/Character/Item/Rake/Rake.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_f8np8"]
+data = {
+"data": PackedByteArray("Lr07swAAgL8AAIA/Lr07s83MNcIAAJdCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAP5qZ8UEzM1RCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAABEDavP/af7//2n8/BEDavAAAMcIAgJhCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AFx/PwDYiT0A2Im9AFx/P2ZmAEIAAE9CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA+R9avQCIf78AiH8/+R9avQAALMLNzJlCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AJB9P/+HCT7/hwm+AJB9PwAACEIzM0pCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAoijvQAHf78AB38/AoijvZqZJsIzM5tCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AZ56PwB8TT4AfE2+AZ56P83MD0KamUVCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMZ/PwAARzsAAEe7AMZ/PwAAIEJmZpLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACN8PwDoLT4A6C2+ACN8P5qZDkIAAEZCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAl/PwBIhD0ASIS9AAl/P5qZOULNzJLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA//1t4P/+Hcz7/h3O+/1t4PzMzF0JmZkJCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAYV/PwCgCj0AoAq9AYV/PwAALULNzJLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AGN6P//XUD7/11C+AGN6P83MEkJmZkRCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMZ/PwAARzsAAEe7AMZ/PwAAIEJmZpLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACN8PwDoLT4A6C2+ACN8P5qZDkIAAEZCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_b2be5"]
+image = SubResource("Image_f8np8")
+
+[sub_resource type="Image" id="Image_5bbj3"]
+data = {
+"data": PackedByteArray("AAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_oi465"]
+image = SubResource("Image_5bbj3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yvvl"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_oi465")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_b2be5")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(56, 119)
+shader_parameter/uvs = [Rect2(0, 0, 28, 36), Rect2(28, 0, 28, 36), Rect2(28, 36, 6, 83)]
+shader_parameter/layerVisible = [true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo5c0"]
+size = Vector2(33, 33)
+
+[node name="TowerDefenseItemRake" unique_id=631035523 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -13
+script = ExtResource("2")
+invisible = false
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/Rake")
+damagePartClip = "particles"
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="Rake" parent="SpriteGroup/TransformPoint" index="0" unique_id=2040897780 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_0yvvl")
+instance_shader_parameters/frameIndex = 6.518518518518518
+position = Vector2(0, -37)
+trueFrameRate = 180.0
+
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1752862875 node_paths=PackedStringArray("checkArea") instance=ExtResource("6")]
+unique_name_in_owner = true
+attackType = "Default"
+checkArea = NodePath("Area2D")
+checkIntreval = 10
+
+[node name="Area2D" type="Area2D" parent="ComponentManager/AttackComponent" index="0" unique_id=1001628199]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent/Area2D" index="0" unique_id=1633236460]
+position = Vector2(-4.5, -6.5)
+shape = SubResource("RectangleShape2D_mo5c0")

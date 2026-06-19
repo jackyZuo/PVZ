@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://due58q3hhur3a"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/BackyardDayNight/BackyardDayNightBaseNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_i242q"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor", "ZombieJackson"]
+
+[sub_resource type="Resource" id="Resource_7qk86"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieBalloon", "ZombiePolevaulter", "ZombiePolestriker", "ZombieSnorkle", "ZombieDuck", "ZombieDolphinrider"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundLimit = 3
+roundDayNightChange = true
+pointIncrementPerWave = 80
+pointIncrementPerBigWave = 120
+pointIncrementPerRound = 400
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = [SubResource("Resource_i242q"), SubResource("Resource_7qk86")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

@@ -1,0 +1,122 @@
+[gd_scene format=4 uid="uid://bts02xtdd66m7"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bso85hkit55ff" path="res://Asset/Anime/Character/Item/GatlingTX/Scene/TowerDefenseItemGatlingTX.gd" id="2"]
+[ext_resource type="Resource" uid="uid://canjww3qqqxfi" path="res://Asset/Anime/Character/Item/GatlingTX/Config/TowerDefenseItemGatlingTX.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bq2xaqwi105bs" path="res://Asset/Anime/Character/Item/GatlingTX/GatlingTX.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://b5htxrgm8twcr" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponent.tscn" id="7"]
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="8"]
+[ext_resource type="Script" uid="uid://bd70pedr27fla" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.gd" id="9"]
+[ext_resource type="Script" uid="uid://duxe603jas8ga" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.gd" id="10"]
+
+[sub_resource type="Image" id="Image_s2b85"]
+data = {
+"data": PackedByteArray("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AAAAAAAAAAAAAIA/AACAPwAAgD/z8nI/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAJTs8PwAAAAAAAAAAJTs8P1ZVSMJWVVbCAAAAAAAAAAAAAIA/AACAPwAAgD/R0NA9ADwKPwAAAAAAAAAAADwKPwAAwEAAAFBBAAAAAAAAAAAAAIA/AACAPwAAgD/Avz8/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMtMPwAAAAAAAAAAAMtMPwAAZ8IAAHXCAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAADwKPwAAAAAAAAAAADwKPwAAwEAAAFBBAAAAAAAAAAAAAIA/AACAPwAAgD+BgAA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAADwKPwAAAAAAAAAAADwKPwAAwEAAAFBBAAAAAAAAAAAAAIA/AACAPwAAgD+BgIA+AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 12,
+"mipmaps": false,
+"width": 15
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_q7gjf"]
+image = SubResource("Image_s2b85")
+
+[sub_resource type="Image" id="Image_avsmg"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAA/39HAAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAD/f0cAAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAAAP9/RwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAA/39HAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAP9/RwAAgEAAAAAAAAAAAAD/f0cAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAP9/RwAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAA/39HAACAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 12,
+"mipmaps": false,
+"width": 5
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_65lgm"]
+image = SubResource("Image_avsmg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6s6sm"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_65lgm")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_q7gjf")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(386, 328)
+shader_parameter/uvs = [Rect2(0, 0, 237, 237), Rect2(237, 0, 149, 91), Rect2(237, 91, 149, 91), Rect2(237, 182, 149, 91), Rect2(0, 237, 149, 91)]
+shader_parameter/layerVisible = [true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_p0hk7"]
+script = ExtResource("8")
+projectileName = &"Pea"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_h87ce"]
+script = ExtResource("9")
+projectileData = SubResource("Resource_p0hk7")
+metadata/_custom_type_script = "uid://bd70pedr27fla"
+
+[sub_resource type="Resource" id="Resource_t88n5"]
+script = ExtResource("10")
+projectile = SubResource("Resource_h87ce")
+metadata/_custom_type_script = "uid://duxe603jas8ga"
+
+[node name="TowerDefenseItemGatlingTX" unique_id=239006865 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -10
+script = ExtResource("2")
+canCheck = true
+invisible = false
+idleAnimeClip = "Fire"
+sleepAnimeClip = "Fire"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/GatlingTX")
+damagePartClip = "particles"
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="GatlingTX" parent="SpriteGroup/TransformPoint" index="0" unique_id=757804339 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_6s6sm")
+instance_shader_parameters/frameIndex = 8.466908565656565
+position = Vector2(0, -37)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/GatlingTX" index="0" unique_id=1700427642]
+position = Vector2(-34, -27)
+scale = Vector2(0.539978, 0.539978)
+script = ExtResource("6")
+followSlotId = 3
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/GatlingTX/AdobeAnimateSlot" index="0" unique_id=1871734957]
+position = Vector2(105.55985, 42.594326)
+
+[node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1561858944 node_paths=PackedStringArray("firePosMarker") instance=ExtResource("7")]
+unique_name_in_owner = true
+firePosMarker = [NodePath("../../SpriteGroup/TransformPoint/GatlingTX/AdobeAnimateSlot/Marker2D")]
+fireCheckList = [SubResource("Resource_t88n5")]
+
+[editable path="SpriteGroup/TransformPoint/GatlingTX"]

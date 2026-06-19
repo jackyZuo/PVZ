@@ -1,0 +1,108 @@
+[gd_scene format=4 uid="uid://rex8c803eb7s"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://lm2i1h4kk8iu" path="res://Asset/Anime/Character/GraveStone/Default/GraveStoneDefault.tres" id="3"]
+
+[sub_resource type="Image" id="Image_80k4c"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_cfuey"]
+image = SubResource("Image_80k4c")
+
+[sub_resource type="Image" id="Image_ysnc1"]
+data = {
+"data": PackedByteArray("AAAAQQAAAAAAAAAAAAAAAAAA4EEAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ebng7"]
+image = SubResource("Image_ysnc1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogy3u"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ebng7")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_cfuey")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(430, 728)
+shader_parameter/uvs = [Rect2(86, 364, 86, 91), Rect2(172, 364, 86, 91), Rect2(258, 364, 86, 91), Rect2(344, 364, 86, 91), Rect2(0, 364, 86, 91), Rect2(86, 455, 86, 91), Rect2(172, 455, 86, 91), Rect2(258, 455, 86, 91), Rect2(344, 455, 86, 91), Rect2(0, 455, 86, 91), Rect2(86, 546, 86, 91), Rect2(172, 546, 86, 91), Rect2(258, 546, 86, 91), Rect2(344, 546, 86, 91), Rect2(0, 546, 86, 91), Rect2(86, 637, 86, 91), Rect2(172, 637, 86, 91), Rect2(258, 637, 86, 91), Rect2(344, 637, 86, 91), Rect2(0, 637, 86, 91), Rect2(0, 0, 86, 91), Rect2(86, 0, 86, 91), Rect2(86, 91, 86, 91), Rect2(172, 0, 86, 91), Rect2(172, 91, 86, 91), Rect2(258, 0, 86, 91), Rect2(258, 91, 86, 91), Rect2(344, 0, 86, 91), Rect2(344, 91, 86, 91), Rect2(0, 91, 86, 91), Rect2(86, 182, 86, 91), Rect2(172, 182, 86, 91), Rect2(258, 182, 86, 91), Rect2(344, 182, 86, 91), Rect2(0, 182, 86, 91), Rect2(86, 273, 86, 91), Rect2(172, 273, 86, 91), Rect2(258, 273, 86, 91), Rect2(344, 273, 86, 91), Rect2(0, 273, 86, 91)]
+shader_parameter/layerVisible = [true, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="GraveStoneDefault" type="Node2D" unique_id=383589703]
+material = SubResource("ShaderMaterial_ogy3u")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -50)
+Animation/Clip = "Idle17"
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/Body = true
+Animation/LayerVisible/Dirt = true
+Animation/MediaReplace/Tombstones1.png = null
+Animation/MediaReplace/Tombstones10.png = null
+Animation/MediaReplace/Tombstones11.png = null
+Animation/MediaReplace/Tombstones12.png = null
+Animation/MediaReplace/Tombstones13.png = null
+Animation/MediaReplace/Tombstones14.png = null
+Animation/MediaReplace/Tombstones15.png = null
+Animation/MediaReplace/Tombstones16.png = null
+Animation/MediaReplace/Tombstones17.png = null
+Animation/MediaReplace/Tombstones18.png = null
+Animation/MediaReplace/Tombstones19.png = null
+Animation/MediaReplace/Tombstones2.png = null
+Animation/MediaReplace/Tombstones20.png = null
+Animation/MediaReplace/Tombstones3.png = null
+Animation/MediaReplace/Tombstones4.png = null
+Animation/MediaReplace/Tombstones5.png = null
+Animation/MediaReplace/Tombstones6.png = null
+Animation/MediaReplace/Tombstones7.png = null
+Animation/MediaReplace/Tombstones8.png = null
+Animation/MediaReplace/Tombstones9.png = null
+Animation/MediaReplace/TombstonesDirt1.png = null
+Animation/MediaReplace/TombstonesDirt10.png = null
+Animation/MediaReplace/TombstonesDirt11.png = null
+Animation/MediaReplace/TombstonesDirt12.png = null
+Animation/MediaReplace/TombstonesDirt13.png = null
+Animation/MediaReplace/TombstonesDirt14.png = null
+Animation/MediaReplace/TombstonesDirt15.png = null
+Animation/MediaReplace/TombstonesDirt16.png = null
+Animation/MediaReplace/TombstonesDirt17.png = null
+Animation/MediaReplace/TombstonesDirt18.png = null
+Animation/MediaReplace/TombstonesDirt19.png = null
+Animation/MediaReplace/TombstonesDirt2.png = null
+Animation/MediaReplace/TombstonesDirt20.png = null
+Animation/MediaReplace/TombstonesDirt3.png = null
+Animation/MediaReplace/TombstonesDirt4.png = null
+Animation/MediaReplace/TombstonesDirt5.png = null
+Animation/MediaReplace/TombstonesDirt6.png = null
+Animation/MediaReplace/TombstonesDirt7.png = null
+Animation/MediaReplace/TombstonesDirt8.png = null
+Animation/MediaReplace/TombstonesDirt9.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

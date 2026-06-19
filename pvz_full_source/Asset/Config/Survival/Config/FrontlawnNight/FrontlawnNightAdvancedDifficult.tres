@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://c02lk8yn1g8yv"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/FrontlawnNight/FrontlawnNightAdvancedDifficult.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_cb3j5"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor", "ZombieFootball"]
+
+[sub_resource type="Resource" id="Resource_noawk"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieJackson", "ZombieShadow", "ZombieLadder", "ZombiePogo", "ZombiePolestriker", "ZombiePolevaulter", "ZombieFootballBlack", "ZombieDisco", "ZombieDigger"]
+
+[sub_resource type="Resource" id="Resource_05eoo"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieShieldArmor", "ZombieImpSnail", "ZombieAxe", "ZombieDiscopaper", "ZombiePaperball", "ZombieYetiDigger"]
+
+[sub_resource type="Resource" id="Resource_4y67m"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieMagnetic", "ZombieBed", "ZombieJackbox", "ZombieGargantuar", "ZombieJacksonX", "ZombieImphacker", "ZombieGargantuarRedEyes", "ZombiePogoJackson", "ZombiePogoball", "ZombieGargantuarArmed", "ZombieGardener", "ZombieDiamond"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundLimit = 5
+pointIncrementPerWave = 150
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 1000
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_cb3j5"), SubResource("Resource_noawk"), SubResource("Resource_05eoo"), SubResource("Resource_4y67m")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

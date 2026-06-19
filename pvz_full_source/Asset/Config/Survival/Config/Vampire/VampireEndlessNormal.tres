@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://dn1qeule8k7ie"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Vampire/VampireEndlessNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_rw4e5"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombieNormalScreendoor"]
+
+[sub_resource type="Resource" id="Resource_rsmlj"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieGhost"]
+
+[sub_resource type="Resource" id="Resource_fd66v"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieSkeleton"]
+
+[sub_resource type="Resource" id="Resource_2rv1c"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieVampire", "ZombieNormalHelmet"]
+
+[sub_resource type="Resource" id="Resource_wrat6"]
+script = ExtResource("3")
+_round = 5
+zombieList = ["ZombieNormalBlackHelmet", "ZombieFootball"]
+
+[sub_resource type="Resource" id="Resource_mhbll"]
+script = ExtResource("3")
+_round = 6
+zombieList = ["ZombieNecromancer"]
+
+[sub_resource type="Resource" id="Resource_6c3oy"]
+script = ExtResource("3")
+_round = 7
+zombieList = ["ZombieFootballBlack"]
+
+[sub_resource type="Resource" id="Resource_odu37"]
+script = ExtResource("3")
+_round = 8
+zombieList = ["ZombieSkeletuar"]
+
+[sub_resource type="Resource" id="Resource_pv5yj"]
+script = ExtResource("3")
+_round = 9
+zombieList = ["ZombieFootballSpecial", "ZombieNormalSpecialHelmet"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+pointIncrementPerWave = 150
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 1000
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = [SubResource("Resource_rw4e5"), SubResource("Resource_rsmlj"), SubResource("Resource_fd66v"), SubResource("Resource_2rv1c"), SubResource("Resource_wrat6"), SubResource("Resource_mhbll"), SubResource("Resource_6c3oy"), SubResource("Resource_odu37"), SubResource("Resource_pv5yj")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

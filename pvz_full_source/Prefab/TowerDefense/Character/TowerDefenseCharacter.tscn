@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://cnwqwm6ecgmhp"]
+
+[ext_resource type="Script" uid="uid://8bcorxqvra7n" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacter.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://xbkiy0tlw2r" path="res://Script/Component/TowerDefense/Character/ShowHealthComponent/ShowHealthComponent.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://667tssge1tab" path="res://Asset/Texture/Character/Effect/Icetrap.png" id="4"]
+[ext_resource type="Shape2D" uid="uid://baneigxsob6qg" path="res://Prefab/TowerDefense/Base/TowerDefenseCollitionShape.tres" id="5"]
+[ext_resource type="Script" uid="uid://crrpyxc32l472" path="res://addons/godot_state_charts/state_chart.gd" id="6"]
+[ext_resource type="Script" uid="uid://dp7fkbu3flis1" path="res://addons/godot_state_charts/compound_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://bln8telgvty4v" path="res://Script/Component/ComponentManager.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://th8qgki21itu" path="res://Script/Component/TowerDefense/Character/BuffComponent/BuffComponent.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/ShadowComponent/ShadowComponent.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/TargetRegistrationComponent/TargetRegistrationComponent.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/RiseComponent/RiseComponent.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/DestroyComponent/DestroyComponent.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/HitFlashComponent/HitFlashComponent.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/ShaderEffectComponent/ShaderEffectComponent.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/BlowBackComponent/BlowBackComponent.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/SleepComponent/SleepComponent.tscn" id="19"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/ResourceSpawnComponent/ResourceSpawnComponent.tscn" id="20"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/GroundHeightComponent/GroundHeightComponent.tscn" id="21"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/DamagePartComponent/DamagePartComponent.tscn" id="22"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/HurtComponent/HurtComponent.tscn" id="23"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/HypnosesComponent/HypnosesComponent.tscn" id="24"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/ArmorVisualComponent/ArmorVisualComponent.tscn" id="25"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/CustomVisualComponent/CustomVisualComponent.tscn" id="26"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/RecycleComponent/RecycleComponent.tscn" id="27"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/EffectCreateComponent/EffectCreateComponent.tscn" id="28"]
+
+[node name="TowerDefenseCharacter" type="Node2D" unique_id=82783115]
+z_index = -15
+script = ExtResource("1")
+gravity = 367.5
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1970894107]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(0, 18)
+texture = ExtResource("2")
+
+[node name="BackEffectNode" type="Node2D" parent="." unique_id=1929493585]
+unique_name_in_owner = true
+
+[node name="SpriteGroup" type="Node2D" parent="." unique_id=1006029617]
+unique_name_in_owner = true
+
+[node name="TransformPoint" type="Marker2D" parent="SpriteGroup" unique_id=429682308]
+unique_name_in_owner = true
+position = Vector2(0, 18)
+
+[node name="ShowHealthComponent" parent="SpriteGroup" unique_id=1448292904 node_paths=PackedStringArray("parent") instance=ExtResource("3")]
+unique_name_in_owner = true
+parent = NodePath("../..")
+alive = false
+
+[node name="IcetrapSprite" type="Sprite2D" parent="SpriteGroup" unique_id=885996306]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 22)
+texture = ExtResource("4")
+
+[node name="FrontEffectNode" type="Node2D" parent="." unique_id=1161662400]
+unique_name_in_owner = true
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1378956158]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=813309339]
+unique_name_in_owner = true
+position = Vector2(-0.25, -25)
+shape = ExtResource("5")
+
+[node name="StateChart" type="Node" parent="." unique_id=937104315]
+unique_name_in_owner = true
+script = ExtResource("6")
+
+[node name="CompoundState" type="Node" parent="StateChart" unique_id=124629617]
+script = ExtResource("7")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=374597566]
+script = ExtResource("8")
+
+[node name="Sleep" type="Node" parent="StateChart/CompoundState" unique_id=2141161702]
+script = ExtResource("8")
+
+[node name="Component" type="Node" parent="StateChart/CompoundState" unique_id=1270880809]
+script = ExtResource("8")
+
+[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=1101694357]
+script = ExtResource("9")
+to = NodePath("../Idle")
+event = &"ToIdle"
+delay_in_seconds = "0.0"
+
+[node name="ToSleep" type="Node" parent="StateChart/CompoundState" unique_id=365316889]
+script = ExtResource("9")
+to = NodePath("../Sleep")
+event = &"ToSleep"
+delay_in_seconds = "0.0"
+
+[node name="ToComponent" type="Node" parent="StateChart/CompoundState" unique_id=323216201]
+script = ExtResource("9")
+to = NodePath("../Component")
+event = &"ToComponent"
+delay_in_seconds = "0.0"
+
+[node name="ComponentManager" parent="." unique_id=798302124 instance=ExtResource("10")]
+unique_name_in_owner = true
+
+[node name="BuffComponent" parent="ComponentManager" unique_id=1272835751 instance=ExtResource("11")]
+
+[node name="ShadowComponent" parent="ComponentManager" unique_id=1510478119 instance=ExtResource("12")]
+
+[node name="TargetRegistrationComponent" parent="ComponentManager" unique_id=840493374 instance=ExtResource("13")]
+
+[node name="RiseComponent" parent="ComponentManager" unique_id=937201101 instance=ExtResource("14")]
+
+[node name="DestroyComponent" parent="ComponentManager" unique_id=948302202 instance=ExtResource("15")]
+
+[node name="HitFlashComponent" parent="ComponentManager" unique_id=959403303 instance=ExtResource("16")]
+
+[node name="ShaderEffectComponent" parent="ComponentManager" unique_id=960504404 instance=ExtResource("17")]
+
+[node name="BlowBackComponent" parent="ComponentManager" unique_id=971605505 instance=ExtResource("18")]
+
+[node name="SleepComponent" parent="ComponentManager" unique_id=982706606 instance=ExtResource("19")]
+
+[node name="ResourceSpawnComponent" parent="ComponentManager" unique_id=993807707 instance=ExtResource("20")]
+
+[node name="GroundHeightComponent" parent="ComponentManager" unique_id=709243207 instance=ExtResource("21")]
+waterHeight = 35.0
+
+[node name="DamagePartComponent" parent="ComponentManager" unique_id=1000000001 instance=ExtResource("22")]
+
+[node name="HurtComponent" parent="ComponentManager" unique_id=1000000002 instance=ExtResource("23")]
+
+[node name="HypnosesComponent" parent="ComponentManager" unique_id=1000000003 instance=ExtResource("24")]
+
+[node name="ArmorVisualComponent" parent="ComponentManager" unique_id=1000000004 instance=ExtResource("25")]
+
+[node name="CustomVisualComponent" parent="ComponentManager" unique_id=1000000005 instance=ExtResource("26")]
+
+[node name="RecycleComponent" parent="ComponentManager" unique_id=1000000006 instance=ExtResource("27")]
+
+[node name="EffectCreateComponent" parent="ComponentManager" unique_id=1000000007 instance=ExtResource("28")]
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="IdleEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Idle" to="." method="IdleExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Idle" to="." method="IdleProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Sleep" to="." method="SleepEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Sleep" to="." method="SleepExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Sleep" to="." method="SleepProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Component" to="." method="ComponentEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Component" to="." method="ComponentExited"]

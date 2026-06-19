@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://5pgcojefedgf"]
+
+[ext_resource type="Script" uid="uid://dgnek80uj8531" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://qwdnsaywv4ol" path="res://Asset/Config/Projectile/Magnet/Sprite/Magnet/ProjectileMagnet.tscn" id="2"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_ffqoo"]
+script = ExtResource("1")
+packetName = "ItemMagnet"
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[sub_resource type="Resource" id="Resource_m3rgy"]
+script = ExtResource("1")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://dgnek80uj8531"
+
+[resource]
+script = ExtResource("3")
+name = "Magnet"
+projectileScene = ExtResource("2")
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_m3rgy")]
+hitGroundEventList = [SubResource("Resource_ffqoo")]
+rotateScale = 5.0

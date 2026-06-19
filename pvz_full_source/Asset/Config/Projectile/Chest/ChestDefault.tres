@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cmnahkhrjuvxw"]
+
+[ext_resource type="Script" uid="uid://bguds5b6fy2r6" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.gd" id="1"]
+[ext_resource type="Script" uid="uid://dsvlk3x3m6pjw" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventExplodeProjectileFromMetaData.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://geg3f83r7bsx" path="res://Asset/Config/Projectile/Chest/Sprite/Chest/ProjectileChest.tscn" id="3"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://dgksig5vvlsf4" path="res://Asset/Anime/Effect/ChestBroke/ChestBroke.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_8mecq"]
+script = ExtResource("1")
+length = 0.25
+time = 0.1
+metadata/_custom_type_script = "uid://bguds5b6fy2r6"
+
+[sub_resource type="Resource" id="Resource_4awnx"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://dsvlk3x3m6pjw"
+
+[resource]
+script = ExtResource("4")
+name = "Chest"
+baseDamage = 200.0
+projectileScene = ExtResource("3")
+splatSceneType = "Sprite"
+splatAudio = "Bonk"
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_8mecq"), SubResource("Resource_4awnx")]
+collisionFlags = 61
+catapultHeight = 600.0
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 61

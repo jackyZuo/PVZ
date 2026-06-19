@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://o23h6eikvn8n"]
+
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="1"]
+[ext_resource type="Script" uid="uid://yhbrrikb2vgf" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateProjectile.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dxh04ie0gex8d" path="res://Asset/Config/Projectile/Star/BigStar/ProjectileBigStar.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://bmxl5dqy46cmv" path="res://Prefab/Particles/Splats/StarSplats/StarSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_murch"]
+script = ExtResource("1")
+projectileName = &"Star"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_0abr7"]
+script = ExtResource("2")
+dir = 330.0
+projectileData = SubResource("Resource_murch")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_c046a"]
+script = ExtResource("1")
+projectileName = &"Star"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_kwppl"]
+script = ExtResource("2")
+dir = 270.0
+projectileData = SubResource("Resource_c046a")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_r0g6h"]
+script = ExtResource("1")
+projectileName = &"Star"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_v5d0i"]
+script = ExtResource("2")
+dir = 180.0
+projectileData = SubResource("Resource_r0g6h")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_0s70a"]
+script = ExtResource("1")
+projectileName = &"Star"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_hb01u"]
+script = ExtResource("2")
+dir = 90.0
+projectileData = SubResource("Resource_0s70a")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[sub_resource type="Resource" id="Resource_teco7"]
+script = ExtResource("1")
+projectileName = &"Star"
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 1
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_635e7"]
+script = ExtResource("2")
+dir = 30.0
+projectileData = SubResource("Resource_teco7")
+metadata/_custom_type_script = "uid://yhbrrikb2vgf"
+
+[resource]
+script = ExtResource("4")
+name = "BigStar"
+baseDamage = 50.0
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_0abr7"), SubResource("Resource_kwppl"), SubResource("Resource_v5d0i"), SubResource("Resource_hb01u"), SubResource("Resource_635e7")]
+rotateScale = 2.0

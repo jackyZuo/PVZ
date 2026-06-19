@@ -1,0 +1,580 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://diwb3cd03jii"]
+
+[ext_resource type="Script" uid="uid://bo4f1vfbr2qjj" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorPacketConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://b2mbg8q37sg2h" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorConfig.gd" id="2"]
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Survival/Entertainment/Survival_Level_Entertainment5_2_D.json" id="3"]
+[ext_resource type="Script" uid="uid://b5cuv3omtbssc" path="res://Resource/TowerDefense/Level/Event/Map/TowerDefenseLevelEventCurrentMapFunctionExecute.gd" id="4"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="5"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="6"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="10"]
+[ext_resource type="Script" uid="uid://8ona8byq7o7a" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.gd" id="11"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="12"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="13"]
+
+[sub_resource type="Resource" id="Resource_aqrcm"]
+script = ExtResource("1")
+name = "PlantWallnutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_h72cm"]
+script = ExtResource("1")
+name = "PlantFirenutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_80qox"]
+script = ExtResource("1")
+name = "PlantIcenutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_46gsb"]
+script = ExtResource("1")
+name = "PlantMagnetnutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_ioaf8"]
+script = ExtResource("1")
+name = "PlantJalaNutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_e0tpg"]
+script = ExtResource("1")
+name = "PlantMelonnutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_j5o3n"]
+script = ExtResource("1")
+name = "PlantWallnutHoleBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_ummhc"]
+script = ExtResource("1")
+name = "PlantWallnutSquashBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_51la6"]
+script = ExtResource("1")
+name = "PlantWallnutZBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_htv2y"]
+script = ExtResource("1")
+name = "PlantBowlingWallnutShooterNormal"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_hw85k"]
+script = ExtResource("1")
+name = "PlantBowlingWallnutShooterBoom"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_m20b0"]
+script = ExtResource("1")
+name = "PlantVIPNutBowling"
+weight = 20
+maxMagnification = 0.0
+minMagnification = 0.0
+override = null
+
+[sub_resource type="Resource" id="Resource_d8cf0"]
+script = ExtResource("2")
+interval = 2.0
+intervalIncreaseEvery = 4
+packetList = [SubResource("Resource_aqrcm"), SubResource("Resource_h72cm"), SubResource("Resource_80qox"), SubResource("Resource_46gsb"), SubResource("Resource_ioaf8"), SubResource("Resource_e0tpg"), SubResource("Resource_j5o3n"), SubResource("Resource_ummhc"), SubResource("Resource_51la6"), SubResource("Resource_htv2y"), SubResource("Resource_hw85k"), SubResource("Resource_m20b0")]
+waveEvent = [[], [], []]
+
+[sub_resource type="Resource" id="Resource_id14m"]
+script = ExtResource("4")
+functionName = "UseStripe"
+value = [3.0]
+
+[sub_resource type="Resource" id="Resource_ywxrb"]
+script = ExtResource("5")
+
+[sub_resource type="Resource" id="Resource_gvykh"]
+script = ExtResource("6")
+
+[sub_resource type="Resource" id="Resource_qqauq"]
+script = ExtResource("8")
+open = false
+begin = 2000
+
+[sub_resource type="Resource" id="Resource_ufkl0"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_l61q6"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_1qrsj"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_6ss4g"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_0yntf"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_wcqfc"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_y11wq"]
+script = ExtResource("9")
+
+[sub_resource type="Resource" id="Resource_qqw4j"]
+script = ExtResource("11")
+
+[sub_resource type="Resource" id="Resource_dmmrm"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_6hn4x"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_dmmrm")
+
+[sub_resource type="Resource" id="Resource_c0bgd"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_lq0bm"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_c0bgd")
+
+[sub_resource type="Resource" id="Resource_0e2g7"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_sidoj"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_0e2g7")
+
+[sub_resource type="Resource" id="Resource_e0cge"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_3ejm8"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_e0cge")
+
+[sub_resource type="Resource" id="Resource_uo155"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_ynttv"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_uo155")
+
+[sub_resource type="Resource" id="Resource_72eu6"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_6m0re"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_72eu6")
+
+[sub_resource type="Resource" id="Resource_cmpha"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_rp8dj"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_cmpha")
+
+[sub_resource type="Resource" id="Resource_ho2ak"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_2440l"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_ho2ak")
+
+[sub_resource type="Resource" id="Resource_ygwss"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_r5wy1"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_ygwss")
+
+[sub_resource type="Resource" id="Resource_qunyv"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_275xn"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_qunyv")
+
+[sub_resource type="Resource" id="Resource_8tibk"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_k0ap1"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_8tibk")
+
+[sub_resource type="Resource" id="Resource_lpffs"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_ekfjd"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_lpffs")
+
+[sub_resource type="Resource" id="Resource_stm73"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_r00i7"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_stm73")
+
+[sub_resource type="Resource" id="Resource_pdn01"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_ibrjh"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_pdn01")
+
+[sub_resource type="Resource" id="Resource_2bftw"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_22ola"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_2bftw")
+
+[sub_resource type="Resource" id="Resource_te02u"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_8plg0"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_te02u")
+
+[sub_resource type="Resource" id="Resource_meivu"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_udqnw"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_meivu")
+
+[sub_resource type="Resource" id="Resource_fmfa2"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_5q8tl"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_fmfa2")
+
+[sub_resource type="Resource" id="Resource_svkjl"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_wg5ys"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_svkjl")
+
+[sub_resource type="Resource" id="Resource_0bup3"]
+script = ExtResource("12")
+
+[sub_resource type="Resource" id="Resource_vvxc2"]
+script = ExtResource("13")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_0bup3")
+
+[sub_resource type="Resource" id="Resource_8oc8d"]
+script = ExtResource("10")
+maxNextWaveHealthPercentage = 0.8
+minNextWaveHealthPercentage = 0.15
+beginCol = 10.0
+spawnColEnd = 10.0
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_qqw4j")
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_ufkl0"), SubResource("Resource_l61q6"), SubResource("Resource_1qrsj"), SubResource("Resource_6ss4g"), SubResource("Resource_0yntf"), SubResource("Resource_wcqfc"), SubResource("Resource_y11wq")]
+wave = [SubResource("Resource_6hn4x"), SubResource("Resource_lq0bm"), SubResource("Resource_sidoj"), SubResource("Resource_3ejm8"), SubResource("Resource_ynttv"), SubResource("Resource_6m0re"), SubResource("Resource_rp8dj"), SubResource("Resource_2440l"), SubResource("Resource_r5wy1"), SubResource("Resource_275xn"), SubResource("Resource_k0ap1"), SubResource("Resource_ekfjd"), SubResource("Resource_r00i7"), SubResource("Resource_ibrjh"), SubResource("Resource_22ola"), SubResource("Resource_8plg0"), SubResource("Resource_udqnw"), SubResource("Resource_5q8tl"), SubResource("Resource_wg5ys"), SubResource("Resource_vvxc2")]
+survival = "WallnutBowlingAdvancedDifficult"
+customSurvival = null
+
+[resource]
+script = ExtResource("7")
+data = ExtResource("3")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "Loonboon"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+&"Interval": 2.0,
+&"IntervalIncreaseEvery": 4,
+&"IntervalMagnification": 0.5,
+&"Packet": [{
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantWallnutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantFirenutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantIcenutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantMagnetnutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantJalaNutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantMelonnutBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantWallnutHoleBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantWallnutSquashBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantWallnutZBowling",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantBowlingWallnutShooterNormal",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantBowlingWallnutShooterBoom",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.0,
+&"MaxNum": -1,
+&"MinMagnification": 0.0,
+&"MinNum": -1,
+&"Name": "PlantVIPNutBowling",
+&"Weight": 20
+}],
+&"Type": "Default",
+&"WaveEvent": [[], [], []]
+},
+&"Event": {
+"EventInit": [{
+"EventName": "CurrentMapFunctionExecute",
+"Value": {
+"FunctionName": "UseStripe",
+"Value": [3.0]
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "FrontlawnBig"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 3,
+"StormOpen": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 2000.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 10.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 10.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.8,
+"MinNextWaveHealthPercentage": 0.15,
+"MowerUse": true,
+"SpawnColEnd": 10.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Survival": "WallnutBowlingAdvancedDifficult",
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}]
+}
+map = "FrontlawnBig"
+backgroundMusic = "Loonboon"
+firstRewardValue = "2000"
+eventInit = [SubResource("Resource_id14m")]
+packetBankMethod = 3
+sunManager = SubResource("Resource_qqauq")
+fogManager = SubResource("Resource_ywxrb")
+lookStarManager = SubResource("Resource_gvykh")
+waveManager = SubResource("Resource_8oc8d")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+conveyorData = SubResource("Resource_d8cf0")
+rainData = null
+name = "Survival_Level_Entertainment5_2"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "坚果保龄球（进阶）"
+levelNumber = 2
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

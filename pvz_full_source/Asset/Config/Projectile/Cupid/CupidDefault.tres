@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dpbf3u5uph0gk"]
+
+[ext_resource type="Script" uid="uid://dlx2xha5gxsoi" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHypnoses.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ck6lm6tlqubdq" path="res://Asset/Config/Projectile/Cupid/Sprite/Cupid/ProjectileCupid.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_dnib2"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://dlx2xha5gxsoi"
+
+[resource]
+script = ExtResource("3")
+name = "Cupid"
+baseDamage = 0.0
+projectileScene = ExtResource("2")
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_dnib2")]
+damageFlags = 2
+collisionFlags = 11
+catapultHeight = 400.0
+penetrateNum = 10000
+Flag/Damage = 2
+Flag/FireMethod = 1
+Flag/Collision = 11

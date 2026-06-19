@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dh6h8jqqnyw3o"]
+
+[ext_resource type="Script" uid="uid://doxgijxid53ii" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://lp2o2awc4h0h" path="res://Asset/Config/Projectile/Star/Star/ProjectileStar.tscn" id="3"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://b3gm7x2iajkja" path="res://Prefab/Particles/Splats/StarSplats/TowerDefenseEffectParticlesStarSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_vhgab"]
+script = ExtResource("1")
+dizzinessSprite = null
+metadata/_custom_type_script = "uid://doxgijxid53ii"
+
+[sub_resource type="Resource" id="Resource_yq7fw"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_vhgab")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("4")
+name = "ShootingStartsBigStar"
+scale = Vector2(2, 2)
+baseDamage = 200.0
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_yq7fw")]
+rotateScale = 2.0
+damageFlags = 10
+collisionFlags = 43
+catapultHeight = 400.0
+Flag/Damage = 10
+Flag/FireMethod = 1
+Flag/Collision = 43

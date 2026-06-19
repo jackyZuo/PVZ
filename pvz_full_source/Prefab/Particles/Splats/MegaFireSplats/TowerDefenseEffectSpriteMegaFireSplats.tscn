@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://ccm0r4a5wgihb"]
+
+[ext_resource type="PackedScene" uid="uid://dwvgduivkprow" path="res://Prefab/TowerDefense/Effect/Once/TowerDefenseEffectSpriteOnce.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cqk5e8gyrn284" path="res://Prefab/Particles/Splats/MegaFireSplats/MegaFireSplats.tscn" id="2"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="3"]
+
+[sub_resource type="Image" id="Image_o11tj"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAWyJYP83MJ8IzM9NBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMMIzM7dBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MJsLNzGBBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZKMIzM8NAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzM8JmZmbAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMMIAAGzBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZMMJmZurBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZN8KamfPBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMzMsLNzB7CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZMcLNzDrCAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 10,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ewl6b"]
+image = SubResource("Image_o11tj")
+
+[sub_resource type="Image" id="Image_dp7nq"]
+data = {
+"data": PackedByteArray("AADAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAOBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAQQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAACBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAMEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABAQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAFBBAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAYEEAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAABgQQAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 10,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_clctx"]
+image = SubResource("Image_dp7nq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly543"]
+shader = ExtResource("3")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_clctx")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ewl6b")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(452, 348)
+shader_parameter/uvs = [Rect2(0, 0, 113, 87), Rect2(113, 0, 113, 87), Rect2(113, 87, 113, 87), Rect2(226, 0, 113, 87), Rect2(226, 87, 113, 87), Rect2(339, 0, 113, 87), Rect2(339, 87, 113, 87), Rect2(0, 87, 113, 87), Rect2(113, 174, 113, 87), Rect2(226, 174, 113, 87), Rect2(339, 174, 113, 87), Rect2(0, 174, 113, 87), Rect2(113, 261, 113, 87), Rect2(226, 261, 113, 87), Rect2(339, 261, 113, 87)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseEffectSpriteMegaFireSplats" unique_id=1323688738 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+sprite = NodePath("MegaFireSplats")
+clipsList = PackedStringArray("Done")
+
+[node name="MegaFireSplats" parent="." index="0" unique_id=1963197645 instance=ExtResource("2")]
+material = SubResource("ShaderMaterial_ly543")
+instance_shader_parameters/frameIndex = 0.0

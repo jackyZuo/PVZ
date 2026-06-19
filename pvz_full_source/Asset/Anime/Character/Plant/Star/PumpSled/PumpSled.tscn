@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://44myj5i4skmr"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dxfkyr50qwa3s" path="res://Asset/Anime/Character/Plant/Star/PumpSled/PumpSledSprite.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bfum321kjgd2i" path="res://Asset/Anime/Character/Plant/Star/PumpSled/PumpSled.tres" id="3"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="4"]
+
+[sub_resource type="Image" id="Image_001kg"]
+data = {
+"data": PackedByteArray("AK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAC3lIPwAAAAAAAAAA0VVFP9ejHMGuRzFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/C3lIPwAAAAAAAAAA0VVFP9ejHMGuRzFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAF0VJPwAAAAAAAAAAov5CP3sUIsHC9WhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/F0VJPwAAAAAAAAAAov5CP3sUIsHC9WhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAIRFKPwAAAAAAAAAAc6dAPx6FJ8HsUZBAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/IRFKPwAAAAAAAAAAc6dAPx6FJ8HsUZBAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAALN1KPwAAAAAAAAAARFA+P8L1LMH2KKxAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/LN1KPwAAAAAAAAAARFA+P8L1LMH2KKxAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAOKlLPwAAAAAAAAAAFfk7P2ZmMsEAAMhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/OKlLPwAAAAAAAAAAFfk7P2ZmMsEAAMhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAALN1KPwAAAAAAAAAARFA+P8L1LMH2KKxAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/LN1KPwAAAAAAAAAARFA+P8L1LMH2KKxAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAIRFKPwAAAAAAAAAAc6dAPx6FJ8HsUZBAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/IRFKPwAAAAAAAAAAc6dAPx6FJ8HsUZBAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAF0VJPwAAAAAAAAAAov5CP3oUIsHC9WhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/F0VJPwAAAAAAAAAAov5CP3oUIsHC9WhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAC3lIPwAAAAAAAAAA0VVFP9ejHMGuRzFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/C3lIPwAAAAAAAAAA0VVFP9ejHMGuRzFAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAALeBGPwAAAAAAAAAAC3lIP6RwEcEK18M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/LeBGPwAAAAAAAAAAC3lIP6RwEcEK18M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAWhNGPwAAAAAAAAAAF0VJPxSuC8HhepQ/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/WhNGPwAAAAAAAAAAF0VJPxSuC8HhepQ/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAh0ZFPwAAAAAAAAAAIRFKP4XrBcFwPUo/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/h0ZFPwAAAAAAAAAAIRFKP4XrBcFwPUo/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAtXlEPwAAAAAAAAAALN1KP/YoAME8Ctc+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/tXlEPwAAAAAAAAAALN1KP/YoAME8Ctc+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA4qxDPwAAAAAAAAAAOKlLP83M9MDNzEw9AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/4qxDPwAAAAAAAAAAOKlLP83M9MDNzEw9AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAtXlEPwAAAAAAAAAALN1KP/YoAME+Ctc+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/tXlEPwAAAAAAAAAALN1KP/YoAME+Ctc+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAh0ZFPwAAAAAAAAAAIRFKP4XrBcFxPUo/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/h0ZFPwAAAAAAAAAAIRFKP4XrBcFxPUo/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAWhNGPwAAAAAAAAAAF0VJPxSuC8HhepQ/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/WhNGPwAAAAAAAAAAF0VJPxSuC8HhepQ/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAALeBGPwAAAAAAAAAAC3lIP6RwEcEK18M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/LeBGPwAAAAAAAAAAC3lIP6RwEcEK18M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AK1HPwAAAAAAAAAAAK1HPzMzF8EzM/M/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 21,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_18vgk"]
+image = SubResource("Image_001kg")
+
+[sub_resource type="Image" id="Image_hoxle"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 21,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ty478"]
+image = SubResource("Image_hoxle")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c26vp"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ty478")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_18vgk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(246, 416)
+shader_parameter/uvs = [Rect2(0, 0, 246, 104), Rect2(0, 104, 246, 104), Rect2(0, 208, 246, 104), Rect2(0, 312, 246, 104)]
+shader_parameter/layerVisible = [false, true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmdev"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ty478")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_18vgk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(246, 416)
+shader_parameter/uvs = [Rect2(0, 0, 246, 104), Rect2(0, 104, 246, 104), Rect2(0, 208, 246, 104), Rect2(0, 312, 246, 104)]
+shader_parameter/layerVisible = [true, false, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="PumpSled" type="Node2D" unique_id=209911589]
+material = SubResource("ShaderMaterial_c26vp")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -25)
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/Pumpkin_back = false
+Animation/LayerVisible/Pumpkin_front = true
+Animation/MediaReplace/PumpSled_back.png = null
+Animation/MediaReplace/PumpSled_damage1.png = null
+Animation/MediaReplace/PumpSled_damage3.png = null
+Animation/MediaReplace/PumpSled_front.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1631955423]
+show_behind_parent = true
+
+[node name="Back" type="Node2D" parent="Node2D" unique_id=1115194778]
+unique_name_in_owner = true
+show_behind_parent = true
+material = SubResource("ShaderMaterial_hmdev")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("4")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -25)
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/Pumpkin_back = true
+Animation/LayerVisible/Pumpkin_front = false
+Animation/MediaReplace/PumpSled_back.png = null
+Animation/MediaReplace/PumpSled_damage1.png = null
+Animation/MediaReplace/PumpSled_damage3.png = null
+Animation/MediaReplace/PumpSled_front.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

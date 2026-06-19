@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://cxoussiq03oo8"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://ci84xmfhy6mfi" path="res://Asset/Anime/Character/Item/Rake/Rake.tres" id="3"]
+
+[sub_resource type="Image" id="Image_5h586"]
+data = {
+"data": PackedByteArray("Lr07swAAgL8AAIA/Lr07s83MNcIAAJdCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAP5qZ8UEzM1RCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAABEDavP/af7//2n8/BEDavAAAMcIAgJhCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AFx/PwDYiT0A2Im9AFx/P2ZmAEIAAE9CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA+R9avQCIf78AiH8/+R9avQAALMLNzJlCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AJB9P/+HCT7/hwm+AJB9PwAACEIzM0pCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAoijvQAHf78AB38/AoijvZqZJsIzM5tCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AZ56PwB8TT4AfE2+AZ56P83MD0KamUVCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMZ/PwAARzsAAEe7AMZ/PwAAIEJmZpLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACN8PwDoLT4A6C2+ACN8P5qZDkIAAEZCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAl/PwBIhD0ASIS9AAl/P5qZOULNzJLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA//1t4P/+Hcz7/h3O+/1t4PzMzF0JmZkJCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAYV/PwCgCj0AoAq9AYV/PwAALULNzJLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AGN6P//XUD7/11C+AGN6P83MEkJmZkRCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMZ/PwAARzsAAEe7AMZ/PwAAIEJmZpLBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACN8PwDoLT4A6C2+ACN8P5qZDkIAAEZCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_b2be5"]
+image = SubResource("Image_5h586")
+
+[sub_resource type="Image" id="Image_yticv"]
+data = {
+"data": PackedByteArray("AAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_oi465"]
+image = SubResource("Image_yticv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3bvm"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_oi465")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_b2be5")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(56, 119)
+shader_parameter/uvs = [Rect2(0, 0, 28, 36), Rect2(28, 0, 28, 36), Rect2(28, 36, 6, 83)]
+shader_parameter/layerVisible = [true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="Rake" type="Node2D" unique_id=38826202]
+material = SubResource("ShaderMaterial_l3bvm")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -40)
+trueFrameRate = 60.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = true
+"Animation/LayerVisible/Layer 1" = true
+"Animation/LayerVisible/Layer 2" = true
+Animation/MediaReplace/rake1.png = null
+Animation/MediaReplace/rake2.png = null
+Animation/MediaReplace/rake_handle.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

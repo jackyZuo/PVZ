@@ -1,0 +1,153 @@
+[gd_scene format=4 uid="uid://bbkqcmfisx7yb"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cfvdp4tsvjdou" path="res://Asset/Anime/Character/Item/MegaFire/Scene/TowerDefenseItemMegaFire.gd" id="2"]
+[ext_resource type="Script" uid="uid://fix6uw08if5s" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.gd" id="3"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="4"]
+[ext_resource type="Resource" uid="uid://p7khuqrl3g3j" path="res://Asset/Anime/Character/Item/MegaFire/Config/TowerDefenseItemMegaFire.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dty16unawpwvn" path="res://Asset/Anime/Character/Item/MegaFire/MegaFire.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="7"]
+[ext_resource type="PackedScene" uid="uid://b6w5f0q85ngb7" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/ChangeProjectileComponent.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://8fpowsb3exlb" path="res://Script/Component/TowerDefense/Character/ReverseInjuryComponent/ReverseInjuryComponent.tscn" id="9"]
+[ext_resource type="Script" uid="uid://cmqmtitj4tcd8" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://cqk5e8gyrn284" path="res://Prefab/Particles/Splats/MegaFireSplats/MegaFireSplats.tscn" id="11"]
+
+[sub_resource type="Resource" id="Resource_1l2cn"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://fix6uw08if5s"
+
+[sub_resource type="Resource" id="Resource_8oy6t"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_1l2cn")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Image" id="Image_t8x16"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MNMKamfFBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 3,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_x2cnk"]
+image = SubResource("Image_t8x16")
+
+[sub_resource type="Image" id="Image_8f03n"]
+data = {
+"data": PackedByteArray("AABAQAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAoEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 3,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_87cgi"]
+image = SubResource("Image_8f03n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqbs5"]
+shader = ExtResource("7")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/effectFlags = 0
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_87cgi")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_x2cnk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(452, 348)
+shader_parameter/uvs = [Rect2(0, 0, 113, 87), Rect2(113, 0, 113, 87), Rect2(113, 87, 113, 87), Rect2(226, 0, 113, 87), Rect2(226, 87, 113, 87), Rect2(339, 0, 113, 87), Rect2(339, 87, 113, 87), Rect2(0, 87, 113, 87), Rect2(113, 174, 113, 87), Rect2(226, 174, 113, 87), Rect2(339, 174, 113, 87), Rect2(0, 174, 113, 87), Rect2(113, 261, 113, 87), Rect2(226, 261, 113, 87), Rect2(339, 261, 113, 87)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbcxu"]
+radius = 74.953316
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oy6t"]
+size = Vector2(100, 98)
+
+[sub_resource type="Resource" id="Resource_01uum"]
+script = ExtResource("10")
+num = 80.0
+damageFlags = 6
+Flag/Damage = 6
+Flag/Collision = 9
+metadata/_custom_type_script = "uid://cmqmtitj4tcd8"
+
+[sub_resource type="Gradient" id="Gradient_vpdpe"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pp4ge"]
+gradient = SubResource("Gradient_vpdpe")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefenseItemMegaFire" unique_id=2020639735 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -5
+script = ExtResource("2")
+allEventList = [SubResource("Resource_8oy6t")]
+invisible = false
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/MegaFire")
+damagePartClip = "particles"
+itemLayer = 10
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="MegaFire" parent="SpriteGroup/TransformPoint" index="0" unique_id=1634956998 instance=ExtResource("6")]
+material = SubResource("ShaderMaterial_pqbs5")
+instance_shader_parameters/frameIndex = 0.676597333333333
+position = Vector2(0, -37)
+trueFrameRate = 180.0
+
+[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1067419363]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=791544395]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_jbcxu")
+
+[node name="ChangeProjectileComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=202016191 node_paths=PackedStringArray("checkArea") instance=ExtResource("8")]
+changeName = &"MegaFire"
+changeAudio = "FireHit"
+checkArea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="ComponentManager/ChangeProjectileComponent" index="0" unique_id=1681200821]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/ChangeProjectileComponent/Area2D" index="0" unique_id=1142902074]
+shape = SubResource("RectangleShape2D_8oy6t")
+
+[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1946002848 instance=ExtResource("9")]
+eventList = [SubResource("Resource_01uum")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("11")
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=2122647643]
+unique_name_in_owner = true
+visible = false
+energy = 0.35
+texture = SubResource("GradientTexture2D_pp4ge")
+
+[editable path="SpriteGroup/TransformPoint/MegaFire"]

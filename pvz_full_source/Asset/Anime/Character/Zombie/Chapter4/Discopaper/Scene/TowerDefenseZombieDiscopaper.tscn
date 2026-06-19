@@ -1,0 +1,161 @@
+[gd_scene format=4 uid="uid://drgu8lx4gm61f"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://w0ulowfqyrsy" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/Scene/TowerDefenseZombieDiscopaper.gd" id="2"]
+[ext_resource type="Gradient" uid="uid://bw0gnyj66aqst" path="res://Asset/Texture/Character/Effect/LightGradient.tres" id="3"]
+[ext_resource type="Resource" uid="uid://m1lrlkesln1p" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/Config/TowerDefenseZombieDiscopaper.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b5lykvc4bvr0h" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/DamagePoint/Config/ZombieDiscopaperDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cgc3qbv0f1ewj" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/DamagePoint/Config/ZombieDiscopaperDamagePointHead.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://dw20amg6idui7" path="res://Asset/Texture/Character/Effect/Spotlight2.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://dwij3ros30qup" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/ZombieDiscopaper.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://df6ws2yafp4hr" path="res://Asset/Texture/Character/Armor/Paper/ZombiePaper1.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="10"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="11"]
+[ext_resource type="Texture2D" uid="uid://deadkw1wbm3aw" path="res://Asset/Texture/Character/Effect/Spotlight.png" id="12"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="13"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="14"]
+
+[sub_resource type="Image" id="Image_mcknb"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
+image = SubResource("Image_mcknb")
+
+[sub_resource type="Image" id="Image_6aidd"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
+image = SubResource("Image_6aidd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yau5a"]
+shader = ExtResource("11")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ponxk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(72, 57)
+shader_parameter/uvs = [Rect2(0, 0, 72, 19), Rect2(0, 19, 72, 19), Rect2(0, 38, 72, 19)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseZombieDiscopaper" unique_id=138166499 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+spotlightGrandient = ExtResource("3")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieDisco/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_dancer__head.png"
+waterHeight = 45.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDisco")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDisco/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"Head": ExtResource("6")
+}
+PreviewDamagePointPersontage = 1.0
+Armor = ["Paper"]
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieDisco/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieDisco/HeadSlot")
+
+[node name="Spotlight2" type="Sprite2D" parent="BackEffectNode" parent_id_path=PackedInt32Array(1929493585) index="0" unique_id=698559731]
+unique_name_in_owner = true
+visible = false
+position = Vector2(14, 33)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("7")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDisco" parent="SpriteGroup/TransformPoint" index="0" unique_id=2043940886 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+Animation/MediaReplace/Zombie_paper_paper1.png = ExtResource("9")
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieDisco" index="0" unique_id=1207048458]
+position = Vector2(-26.422916, -69.54024)
+rotation = -0.055493455
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDisco" index="1" unique_id=1501984173]
+position = Vector2(-17.933424, -64.39195)
+rotation = -0.058893368
+scale = Vector2(0.99997884, 0.99997884)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDisco" index="2" unique_id=1772569395]
+position = Vector2(4.379476, -28.843079)
+rotation = 0.5625969
+scale = Vector2(0.7998602, 0.7998602)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2121023955 instance=ExtResource("10")]
+visible = false
+material = SubResource("ShaderMaterial_yau5a")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(-3, -62)
+trueFrameRate = 180.0
+
+[node name="Spotlight" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=370892860]
+unique_name_in_owner = true
+visible = false
+position = Vector2(17, -200)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12")
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
+[node name="Gasp" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="6" unique_id=236012766]
+script = ExtResource("13")
+
+[node name="Point" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="7" unique_id=960962116]
+script = ExtResource("13")
+
+[node name="ToGasp" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="14" unique_id=488719205]
+script = ExtResource("14")
+to = NodePath("../Gasp")
+event = &"ToGasp"
+delay_in_seconds = "0.0"
+
+[node name="ToPoint" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="15" unique_id=351292241]
+script = ExtResource("14")
+to = NodePath("../Point")
+event = &"ToPoint"
+delay_in_seconds = "0.0"
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieDisco/GroundSlot")
+
+[connection signal="state_entered" from="StateChart/CompoundState/Gasp" to="." method="GaspEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Gasp" to="." method="GaspExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Gasp" to="." method="GaspProcessing"]
+[connection signal="state_entered" from="StateChart/CompoundState/Point" to="." method="PointEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Point" to="." method="PointExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Point" to="." method="PointProcessing"]
+
+[editable path="SpriteGroup/TransformPoint/ZombieDisco"]

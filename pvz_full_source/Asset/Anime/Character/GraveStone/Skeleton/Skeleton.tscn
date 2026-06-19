@@ -1,0 +1,114 @@
+[gd_scene format=4 uid="uid://dow72n03j10d0"]
+
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="1"]
+[ext_resource type="Script" uid="uid://dcjlwjqgdivmr" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.gd" id="2"]
+[ext_resource type="Resource" uid="uid://phtjjnniop3" path="res://Asset/Anime/Character/GraveStone/Skeleton/Skeleton.tres" id="3"]
+
+[sub_resource type="Image" id="Image_inm14"]
+data = {
+"data": PackedByteArray("AFJoPwCWyj4Alsq+AFJoP2ZmVkHNTItCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AGTrPgDrXz8A61+/AGTrPpqZlUEAAKlCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ALD+PQDcer8A3Ho/ALD+PQAAW8LNjA5DAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/APqZPgBLcr8AS3I/APqZPpqZL8IAgANDAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/tqXjvn7DRb95jEI/2Vvavs3MUEKaWRFDAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMjKvQBVfb+AFO8/AByxvpqZkcEAABRDAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AFTnPgBWYb8AqVo/ABUDP5qZx8Fm5vVCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMq0vgCaa78Amms/AMq0vjMzc0IAQBdDAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ALjyPQDrfr8AVKI/ABLDPgAAwD8AAPxCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACKsPgDHbb8AHpI/AJjTPjMzycHNzNtCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AHxVPwDzCz8A8wu/AHxVP81M70IAAGJCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AHxVPwDzCz8A8wu/AHxVPwCA50IzM3NCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AI5VPwDWCz8A1gu/AI5VP5qZK0IAAMhAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAHxVPwDzCz8A8wu/AHxVP2ZmnkIzM1tCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMt+PwAA0joAANi6gI2BPwAAgL8zMzdCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AGN8PwCQKT4A3H6+AOJ2PzMzQ0Fm5r1CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ACZ8PwCgGb4AoBk+ACZ8P5qZXcFm5rVCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AJBcvgCwdD8ApIS/ALw5vgAAoEAzs85CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AJrhvgCQY78AkGM/AJrhvpqZMUKamSlDAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AOx3PwBQFz4AwLO8AO9RPzMzY0EzM6tCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AId9PwDwp70A8Kc9AId9PwAA30JmZtdCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 81
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_e2b34"]
+image = SubResource("Image_inm14")
+
+[sub_resource type="Image" id="Image_eg50g"]
+data = {
+"data": PackedByteArray("AAAAQQAAAAAAAAAAAAAAAAAA4EAAAIA/AAAAAAAAAAAAAMBAAAAAQAAAAAAAAAAAAACAQAAAQEAAAAAAAAAAAAAAEEEAAIBAAAAAAAAAAAAAACBBAACgQAAAAAAAAAAAAAAwQQAAwEAAAAAAAAAAAAAAiEEAAOBAAAAAAAAAAAAAAJBBAAAAQQAAAAAAAAAAAACYQQAAEEEAAAAAAAAAAAAAAEAAACBBAAAAAAAAAAAAAIA/AAAwQQAAAAAAAAAAAABAQAAAQEEAAAAAAAAAAAD/f0cAAFBBAAAAAAAAAAAA/39HAABgQQAAAAAAAAAAAP9/RwAAcEEAAAAAAAAAAAD/f0cAAIBBAAAAAAAAAAAAAAAAAACIQQAAAAAAAAAAAACgQAAAkEEAAAAAAAAAAAAAQEEAAJhBAAAAAAAAAAAAAKBBAACgQQAAAAAAAAAAAABwQQAAqEEAAAAAAAAAAAAAYEEAALBBAAAAAAAAAAAAAIBBAAC4QQAAAAAAAAAAAABQQQAAwEEAAAAAAAAAAAD/f0cAAMhBAAAAAAAAAAAA/39HAADQQQAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 27
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_3emo1"]
+image = SubResource("Image_eg50g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckjqk"]
+shader = ExtResource("1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_3emo1")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_e2b34")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(255, 356)
+shader_parameter/uvs = [Rect2(127, 117, 73, 66), Rect2(90, 306, 41, 50), Rect2(167, 321, 35, 20), Rect2(0, 84, 127, 103), Rect2(127, 84, 83, 33), Rect2(0, 227, 53, 68), Rect2(0, 295, 45, 41), Rect2(45, 300, 45, 44), Rect2(156, 265, 50, 56), Rect2(127, 183, 64, 31), Rect2(0, 187, 56, 40), Rect2(105, 265, 51, 41), Rect2(131, 321, 36, 23), Rect2(206, 289, 46, 41), Rect2(53, 238, 52, 62), Rect2(56, 187, 56, 51), Rect2(112, 214, 56, 51), Rect2(191, 183, 64, 31), Rect2(168, 214, 56, 38), Rect2(206, 252, 49, 37), Rect2(0, 0, 173, 84)]
+shader_parameter/layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="Skeleton" type="Node2D" unique_id=1101020374]
+material = SubResource("ShaderMaterial_ckjqk")
+instance_shader_parameters/frameIndex = 0.0
+script = ExtResource("2")
+flashAnimeData = ExtResource("3")
+offset = Vector2(-40, -90)
+trueFrameRate = 180.0
+Animation/Clip = "Idle"
+Animation/LayerVisible/AnimeClips = true
+Animation/LayerVisible/Zombie_gargantua_body1 = true
+Animation/LayerVisible/Zombie_gargantua_body2 = true
+Animation/LayerVisible/Zombie_gargantua_innerleg_foot = true
+Animation/LayerVisible/Zombie_gargantua_innerleg_lower = true
+Animation/LayerVisible/Zombie_gargantua_innerleg_upper = true
+Animation/LayerVisible/Zombie_gargantua_jaw = true
+Animation/LayerVisible/Zombie_gargantuar_innerarm_hand = true
+Animation/LayerVisible/Zombie_gargantuar_innerarm_lower = true
+Animation/LayerVisible/Zombie_gargantuar_innerarm_thumb = true
+Animation/LayerVisible/Zombie_gargantuar_innerarm_upper = true
+Animation/LayerVisible/Zombie_gargantuar_outerarm_hand = true
+Animation/LayerVisible/Zombie_gargantuar_outerarm_lower = true
+Animation/LayerVisible/Zombie_gargantuar_outerarm_upper = true
+Animation/LayerVisible/Zombie_gargantuar_outerleg_foot = true
+Animation/LayerVisible/Zombie_gargantuar_outerleg_lower = true
+Animation/LayerVisible/Zombie_gargantuar_outerleg_upper = true
+Animation/LayerVisible/Zombie_gargantuar_rope = true
+Animation/LayerVisible/Zombie_gargantuar_telephonepole = true
+Animation/LayerVisible/Zombie_gargantuar_trashcan = true
+Animation/LayerVisible/Zombie_gargantuar_trashcan2 = true
+Animation/LayerVisible/Zombie_gargantuar_whiterope = true
+Animation/LayerVisible/Zombie_imp_innerarm_lower = true
+Animation/LayerVisible/Zombie_imp_outerarm_lower = true
+Animation/LayerVisible/Zombie_imp_outerarm_upper = true
+Animation/LayerVisible/anim_head1 = true
+Animation/LayerVisible/outerarm_upper2 = true
+Animation/MediaReplace/Zombie_Skeletuar_body1.png = null
+Animation/MediaReplace/Zombie_Skeletuar_body2.png = null
+Animation/MediaReplace/Zombie_Skeletuar_head.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerarm_hand.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerarm_lower.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerarm_upper.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerfoot.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerleg_lower.png = null
+Animation/MediaReplace/Zombie_Skeletuar_innerleg_upper.png = null
+Animation/MediaReplace/Zombie_Skeletuar_jaw.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerarm_hand.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerarm_lower.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerarm_upper.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerarm_upper2.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerfoot.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerleg_lower.png = null
+Animation/MediaReplace/Zombie_Skeletuar_outerleg_upper.png = null
+Animation/MediaReplace/Zombie_Skeletuar_weapon.png = null
+Animation/MediaReplace/Zombie_gargantuar_rope.png = null
+Animation/MediaReplace/Zombie_gargantuar_trashcan1.png = null
+Animation/MediaReplace/Zombie_gargantuar_trashcan2.png = null
+metadata/_custom_type_script = "uid://dcjlwjqgdivmr"

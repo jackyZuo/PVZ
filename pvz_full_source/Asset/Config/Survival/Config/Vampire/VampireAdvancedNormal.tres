@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://bo8qhdysfvokm"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Vampire/VampireAdvancedNormal.json" id="1"]
+[ext_resource type="Script" uid="uid://c6owntm6p65kr" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1uyoiow1d3eg" path="res://Resource/TowerDefense/Level/Survival/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_fnmk3"]
+script = ExtResource("3")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombieGhost"]
+
+[sub_resource type="Resource" id="Resource_7yrps"]
+script = ExtResource("3")
+_round = 2
+zombieList = ["ZombieSkeleton", "ZombieVampire"]
+
+[sub_resource type="Resource" id="Resource_i5fjp"]
+script = ExtResource("3")
+_round = 3
+zombieList = ["ZombieNecromancer", "ZombieFootball"]
+
+[sub_resource type="Resource" id="Resource_gado2"]
+script = ExtResource("3")
+_round = 4
+zombieList = ["ZombieFootballBlack"]
+
+[resource]
+script = ExtResource("2")
+json = ExtResource("1")
+roundLimit = 5
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 150
+pointIncrementPerRound = 600
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = [SubResource("Resource_fnmk3"), SubResource("Resource_7yrps"), SubResource("Resource_i5fjp"), SubResource("Resource_gado2")]
+metadata/_custom_type_script = "uid://c6owntm6p65kr"

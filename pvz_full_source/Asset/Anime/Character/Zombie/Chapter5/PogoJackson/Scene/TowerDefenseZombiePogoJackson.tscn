@@ -1,0 +1,194 @@
+[gd_scene format=4 uid="uid://cu5bi7rcmgb22"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bryc3q8f804l0" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/Scene/TowerDefenseZombiePogoJackson.gd" id="2"]
+[ext_resource type="Resource" uid="uid://b0kjm8iptig86" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/Config/TowerDefenseZombiePogoJackson.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cxl2pti0kpuhm" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/DamagePoint/Config/ZombiePogoJacksonDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b1rgkwletrxg5" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/DamagePoint/Config/ZombiePogoJacksonDamagePointHead.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b40s537hrjo2k" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/Armor/Config/ZombiePogoJacksonArmorPogo.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://dw20amg6idui7" path="res://Asset/Texture/Character/Effect/Spotlight2.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://14entud0oglo" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoJackson/ZombiePogoJackson.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="9"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="10"]
+[ext_resource type="Texture2D" uid="uid://deadkw1wbm3aw" path="res://Asset/Texture/Character/Effect/Spotlight.png" id="11"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="12"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="13"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/DancingComponent/DancingComponent.tscn" id="15"]
+
+[sub_resource type="Image" id="Image_mcknb"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
+image = SubResource("Image_mcknb")
+
+[sub_resource type="Image" id="Image_6aidd"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
+image = SubResource("Image_6aidd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae3xr"]
+shader = ExtResource("10")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ponxk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(72, 57)
+shader_parameter/uvs = [Rect2(0, 0, 72, 19), Rect2(0, 19, 72, 19), Rect2(0, 38, 72, 19)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkbw"]
+size = Vector2(44, 33)
+
+[sub_resource type="Gradient" id="Gradient_xt5x7"]
+offsets = PackedFloat32Array(0, 0.173077, 0.331731, 0.507212, 0.65625, 0.824519, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.8, 1, 0, 1, 0.15, 1, 0.1925, 1, 0.33, 1, 0.609167, 1, 0.51, 1, 0.665167, 1, 0.69, 1, 0.932833, 1, 1, 1, 1, 1)
+
+[node name="TowerDefenseZombiePogoJackson" unique_id=1393774867 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_jackson_head.png"
+waterHeight = 25.0
+idleAnimeClip = "Pogo"
+sleepAnimeClip = "Walk"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/HeadSlot")
+damagePart = {
+"Arm": ExtResource("4"),
+"Head": ExtResource("5"),
+"Pogo": ExtResource("6")
+}
+PreviewDamagePointPersontage = 1.0
+Armor = ["Pogo"]
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/HeadSlot")
+DamagePartSlot/Pogo = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/PogoSlot")
+gravity = 490.0
+
+[node name="Spotlight2" type="Sprite2D" parent="BackEffectNode" parent_id_path=PackedInt32Array(1929493585) index="0" unique_id=1080226591]
+unique_name_in_owner = true
+visible = false
+position = Vector2(14, 33)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("7")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombiePogoJackson" parent="SpriteGroup/TransformPoint" index="0" unique_id=140421934 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombiePogoJackson" index="0" unique_id=78815427]
+position = Vector2(-12.799673, -45.899803)
+rotation = -0.04111775
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePogoJackson" index="1" unique_id=1049989550]
+position = Vector2(7.3802567, 50.075535)
+rotation = -0.017241824
+scale = Vector2(0.79952216, 0.79952216)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePogoJackson" index="2" unique_id=1886707833]
+position = Vector2(-25.576387, -56.966072)
+rotation = -0.19177471
+scale = Vector2(0.79889816, 0.79889816)
+
+[node name="PogoSlot" parent="SpriteGroup/TransformPoint/ZombiePogoJackson" index="3" unique_id=1332235768]
+position = Vector2(-13.600437, 17.006306)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePogoJackson" index="4" unique_id=206156427]
+position = Vector2(-70.66333, -38.73)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1504891509 instance=ExtResource("9")]
+visible = false
+material = SubResource("ShaderMaterial_ae3xr")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(-6, -44)
+trueFrameRate = 180.0
+
+[node name="Spotlight" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=975164967]
+unique_name_in_owner = true
+visible = false
+position = Vector2(17, -200)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
+[node name="Pogo" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="9" unique_id=384288603]
+script = ExtResource("12")
+
+[node name="ToPogo" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="15" unique_id=1904123623]
+script = ExtResource("13")
+to = NodePath("../Pogo")
+event = &"ToPogo"
+delay_in_seconds = "0.0"
+
+[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=765526501 node_paths=PackedStringArray("checkArea") instance=ExtResource("14")]
+unique_name_in_owner = true
+checkArea = NodePath("CheckJumpArea")
+checkIntreval = 0
+checkGrid = false
+checkLine = true
+checkTall = true
+checkBowling = true
+
+[node name="CheckJumpArea" type="Area2D" parent="ComponentManager/AttackComponent2" index="0" unique_id=111546548]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent2/CheckJumpArea" index="0" unique_id=653868128]
+position = Vector2(4, -1.5)
+shape = SubResource("RectangleShape2D_lkkbw")
+
+[node name="DancingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1627685911 node_paths=PackedStringArray("attackComponent", "groundMoveComponent", "sprite", "spotlight", "spotlight2") instance=ExtResource("15")]
+attackComponent = NodePath("../AttackComponent")
+groundMoveComponent = NodePath("../GroundMoveComponent")
+dancerPacketName = "ZombiePogoDancer"
+walkTimeInit = 2
+danceTimeInit = 3
+sprite = NodePath("../../SpriteGroup/TransformPoint/ZombiePogoJackson")
+spotlight = NodePath("../../FrontEffectNode/Spotlight")
+spotlight2 = NodePath("../../BackEffectNode/Spotlight2")
+spotlightGrandient = SubResource("Gradient_xt5x7")
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombiePogoJackson/GroundSlot")
+
+[connection signal="land" from="." to="." method="Land"]
+[connection signal="state_entered" from="StateChart/CompoundState/Pogo" to="." method="PogoEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Pogo" to="." method="PogoExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Pogo" to="." method="PogoProcessing"]
+
+[editable path="SpriteGroup/TransformPoint/ZombiePogoJackson"]

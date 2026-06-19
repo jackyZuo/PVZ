@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://ta7jct0ah6xa"]
+
+[ext_resource type="Script" uid="uid://ds0l5hmdyo5a8" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="Script" uid="uid://1jb2yen6kwy8" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://cg25a133r74jk" path="res://Asset/Config/Projectile/Star/FeverStar/FeverStar.tscn" id="4"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_plqsj"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://ds0l5hmdyo5a8"
+
+[sub_resource type="Resource" id="Resource_h2l3b"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_plqsj")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Resource" id="Resource_ajr8q"]
+script = ExtResource("3")
+eventList = [SubResource("Resource_h2l3b")]
+percentage = 0.1
+metadata/_custom_type_script = "uid://1jb2yen6kwy8"
+
+[resource]
+script = ExtResource("5")
+name = "FireStarF"
+baseDamage = 40.0
+projectileScene = ExtResource("4")
+splatScene = ExtResource("6")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_ajr8q")]
+damageFlags = 7
+collisionFlags = 1
+catapultHeight = 400.0
+Flag/Damage = 7
+Flag/FireMethod = 1
+Flag/Collision = 1

@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://unw0w6jxiprl"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://br8ietemvdjqv" path="res://Asset/Anime/Character/Plant/Special/PresentBox/Scene/TowerDefensePlantPresentBox.gd" id="2"]
+[ext_resource type="Resource" uid="uid://brd0ln0lrox6t" path="res://Asset/Anime/Character/Plant/Special/PresentBox/Config/TowerDefensePlantPresentBox.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bn2uk5f11yv0g" path="res://Asset/Anime/Character/Plant/Special/PresentBox/PresentBox.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://djvfnrjg7vtqn" path="res://Prefab/Particles/Imitater/ImitaterCloud.tscn" id="7"]
+
+[sub_resource type="Image" id="Image_golys"]
+data = {
+"data": PackedByteArray("AJmZPwAAAAAAAAAAAJmZP9DGrMA0Nk9BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAIDSePwAAAAAAAAAAYIaWP3g828BUk2xBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAQM+iPwAAAAAAAAAAwHOTPxDZBME4+IRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAYGqnPwAAAAAAAAAAIGGQP+ATHMHIppNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAgAWsPwAAAAAAAAAAgE6NP7ROM8FYVaJBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAYGqnPwAAAAAAAAAAIGGQP+ATHMHIppNBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAQM+iPwAAAAAAAAAAwHOTPxDZBME4+IRBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAIDSePwAAAAAAAAAAYIaWP3g828BUk2xBAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAJmZPwAAAAAAAAAAAJmZP9DGrMA0Nk9BAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_clxkb"]
+image = SubResource("Image_golys")
+
+[sub_resource type="Image" id="Image_yfi7w"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 9,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4mjpf"]
+image = SubResource("Image_yfi7w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxrnv"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_4mjpf")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_clxkb")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(100, 180)
+shader_parameter/uvs = [Rect2(0, 100, 80, 80), Rect2(0, 0, 100, 100)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefensePlantPresentBox" unique_id=1182221819 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -10
+script = ExtResource("2")
+packetBank = "PlantPresentBox"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/PresentBox")
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PresentBox" parent="SpriteGroup/TransformPoint" index="0" unique_id=1527502369 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_rxrnv")
+instance_shader_parameters/frameIndex = 6.059365777777778
+position = Vector2(0, -40)
+trueFrameRate = 180.0
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=206414620 node_paths=PackedStringArray("sprite") instance=ExtResource("6")]
+unique_name_in_owner = true
+sprite = NodePath("../../SpriteGroup/TransformPoint/PresentBox")
+explodeAnimeClips = "Open"
+explodeAnimeTimeScale = 2.0
+skipGameRunning = true
+checkIZM = false
+explodeUse = false
+reverseAudio = ""
+explodeAudio = ""
+explodeEffect = ExtResource("7")
+
+[connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hn08nlygvchl"]
+
+[ext_resource type="PackedScene" uid="uid://clpu43psaiqf2" path="res://Prefab/TowerDefense/Projectile/ProjectileEffect/TowerDefenseProjectileEffectBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://did3d04trcisb" path="res://Prefab/ProjectileEffect/FireStarBigCatGatlingPeaExplode/TowerDefenseProjectileEffectFireStarBigCatGatlingPeaExplode.gd" id="2"]
+[ext_resource type="Script" uid="uid://c3wiwula8chdo" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.gd" id="3"]
+[ext_resource type="Script" uid="uid://bguds5b6fy2r6" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_2c663"]
+script = ExtResource("3")
+num = 400.0
+metadata/_custom_type_script = "uid://c3wiwula8chdo"
+
+[sub_resource type="Resource" id="Resource_13jq4"]
+script = ExtResource("4")
+length = 0.5
+time = 0.5
+metadata/_custom_type_script = "uid://bguds5b6fy2r6"
+
+[node name="TowerDefenseProjectileEffectFireStarBigCatGatlingPeaExplode" unique_id=892344453 instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_2c663"), SubResource("Resource_13jq4")]

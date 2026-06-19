@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://dbp6denu4nsl1"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://27md25gjrc07" path="res://Asset/Anime/Character/Item/RakeSun/Scene/TowerDefenseItemRakeSun.gd" id="2"]
+[ext_resource type="Resource" uid="uid://d3shen3aipn06" path="res://Asset/Anime/Character/Item/RakeSun/Config/TowerDefenseItemRakeSun.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://dot3sw46ogyiy" path="res://Asset/Anime/Character/Item/RakeSun/RakeSun.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_7ebko"]
+data = {
+"data": PackedByteArray("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"),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 12
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_pgfof"]
+image = SubResource("Image_7ebko")
+
+[sub_resource type="Image" id="Image_hee75"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAEAAAIA/AAAAAAAAAAAAAEBAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAACAPwAAAAAAAAAAAABAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIA/AAAAAAAAAAAAAEBAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAABAAACAPwAAAAAAAAAAAABAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAQAAAgD8AAAAAAAAAAAAAQEAAAABAAAAAAAAAAAAA/39HAABAQAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAEAAAIA/AAAAAAAAAAAAAEBAAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAABAAACAPwAAAAAAAAAAAABAQAAAAEAAAAAAAAAAAAD/f0cAAEBAAAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 8,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0up8l"]
+image = SubResource("Image_hee75")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_js534"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_0up8l")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_pgfof")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(56, 120)
+shader_parameter/uvs = [Rect2(0, 0, 28, 36), Rect2(28, 0, 28, 36), Rect2(28, 36, 14, 84), Rect2(42, 36, 14, 84)]
+shader_parameter/layerVisible = [true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo5c0"]
+size = Vector2(33, 33)
+
+[node name="TowerDefenseItemRakeSun" unique_id=1284071871 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -13
+script = ExtResource("2")
+invisible = false
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/RakeSun")
+damagePartClip = "particles"
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="RakeSun" parent="SpriteGroup/TransformPoint" index="0" unique_id=432232317 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_js534")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -37)
+trueFrameRate = 30.0
+
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="5" unique_id=2122923370 node_paths=PackedStringArray("checkArea") instance=ExtResource("6")]
+unique_name_in_owner = true
+attackType = "Default"
+checkArea = NodePath("Area2D")
+checkIntreval = 10
+
+[node name="Area2D" type="Area2D" parent="ComponentManager/AttackComponent" index="0" unique_id=573568912]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent/Area2D" index="0" unique_id=70818161]
+position = Vector2(-4.5, -6.5)
+shape = SubResource("RectangleShape2D_mo5c0")

@@ -1,0 +1,81 @@
+[gd_scene format=4 uid="uid://c0ar07i7dju5p"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c5i3od6canhtq" path="res://Asset/Anime/Character/GraveStone/TargetCold/Scene/TowerDefenseGraveStoneTargetCold.gd" id="2"]
+[ext_resource type="Script" uid="uid://bxlwoxox5hth3" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.gd" id="3"]
+[ext_resource type="Resource" uid="uid://dxgmcxo8r3vkg" path="res://Asset/Anime/Character/GraveStone/TargetCold/Config/TowerDefenseGraveStoneTargetCold.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://dstkpvrkoq7yl" path="res://Asset/Anime/Character/GraveStone/TargetCold/GraveStoneTargetCold.tscn" id="5"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="6"]
+[ext_resource type="Texture2D" uid="uid://0ge07rl1l2gc" path="res://Asset/Anime/Character/GraveStone/TargetCold/DamagePoint/TargetStones5_1.png" id="7"]
+
+[sub_resource type="Resource" id="Resource_7laa4"]
+script = ExtResource("3")
+time = 3.0
+metadata/_custom_type_script = "uid://bxlwoxox5hth3"
+
+[sub_resource type="Image" id="Image_mjljk"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAoEAAAMDAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_vqc1w"]
+image = SubResource("Image_mjljk")
+
+[sub_resource type="Image" id="Image_q65qb"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_yy60e"]
+image = SubResource("Image_q65qb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbw1s"]
+shader = ExtResource("6")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_yy60e")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_vqc1w")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(86, 185)
+shader_parameter/uvs = [Rect2(0, 91, 83, 94), Rect2(0, 0, 86, 91)]
+shader_parameter/layerVisible = [true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseGraveStoneTargetCold" unique_id=1034729795 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_7laa4")]
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneTargetCold")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 26)
+
+[node name="GraveStoneTargetCold" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1703711702 instance=ExtResource("5")]
+material = SubResource("ShaderMaterial_xbw1s")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(0, -18)
+Animation/MediaReplace/TargetStones5_1.png = ExtResource("7")

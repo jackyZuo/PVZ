@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://cvbad5h474clx"]
+
+[ext_resource type="PackedScene" uid="uid://cwhqvqfanhp7s" path="res://Prefab/TowerDefense/Character/TowerDefenseCrater.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dfwqwefoxnokh" path="res://Asset/Anime/Character/Crater/CraterImp/Scene/TowerDefenseCraterImp.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bfcmk3dbqr68j" path="res://Asset/Anime/Character/Crater/CraterImp/Config/TowerDefenseCraterImp.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cqxs5krkqguyc" path="res://Asset/Anime/Character/Crater/CraterImp/CraterImp.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+
+[sub_resource type="Image" id="Image_lxbws"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 9
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ivib8"]
+image = SubResource("Image_lxbws")
+
+[sub_resource type="Image" id="Image_w6sth"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_p88ox"]
+image = SubResource("Image_w6sth")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63cx6"]
+shader = ExtResource("5")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/cover = false
+shader_parameter/imitater = false
+shader_parameter/puzzle = false
+shader_parameter/blink = false
+shader_parameter/hologram = false
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_p88ox")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ivib8")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(90, 122)
+shader_parameter/uvs = [Rect2(0, 0, 90, 61), Rect2(0, 61, 90, 61)]
+shader_parameter/layerVisible = [true, false, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseCraterImp" unique_id=1808330769 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+idleAnimeClip = "Day"
+sleepAnimeClip = "Day"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/CraterImp")
+
+[node name="CraterImp" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=844737884 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_63cx6")
+instance_shader_parameters/frameIndex = 0.7852312974882162
+position = Vector2(0, -18)
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/CraterHalf = false

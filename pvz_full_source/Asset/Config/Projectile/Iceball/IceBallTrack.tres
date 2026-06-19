@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cnqnrdh8vmnvb"]
+
+[ext_resource type="Script" uid="uid://c1l0ssv1s1jul" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFrozen.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bgc317fuflyqj" path="res://Prefab/Particles/Explosion/IceBallExplosion/IceBallExplosion.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://p30xslel80fv" path="res://Asset/Config/Projectile/Iceball/Sprite/Iceball/ProjectileIceBall.tscn" id="4"]
+[ext_resource type="Script" uid="uid://b7ddnv74g0463" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.gd" id="5"]
+
+[sub_resource type="Resource" id="Resource_wpmip"]
+script = ExtResource("1")
+time = 3.0
+metadata/_custom_type_script = "uid://c1l0ssv1s1jul"
+
+[sub_resource type="Resource" id="Resource_myh71"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_wpmip")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("5")
+name = "IceBall"
+baseDamage = 100.0
+projectileScene = ExtResource("4")
+splatAudio = "ExplodeCherrybomb"
+splatScene = null
+hitEffect = ExtResource("3")
+hitCharacterEventList = [SubResource("Resource_myh71")]
+rotateScale = 5.0
+hitBody = true
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.5, 1.5)
+hitPesontage = 1.0
+damageFlags = 2
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+Flag/Damage = 2
+Flag/FireMethod = 32
+Flag/Collision = 11

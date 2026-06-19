@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://f15oqo6he76x"]
+
+[ext_resource type="Script" uid="uid://xug53xwvy4my" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dagsgt51n5sl6" path="res://Asset/Config/Projectile/Spike/Sprite/IceSpike/ProjectileIceSpike.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://br7muxuvxx77s" path="res://Asset/Anime/Splat/Spike/SpikeSplats.tscn" id="5"]
+
+[sub_resource type="Resource" id="Resource_ov40h"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://xug53xwvy4my"
+
+[sub_resource type="Resource" id="Resource_6y8nc"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_ov40h")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[resource]
+script = ExtResource("4")
+name = "IceSpike"
+projectileScene = ExtResource("3")
+splatScene = ExtResource("5")
+hitEffect = null
+hitCharacterEventList = [SubResource("Resource_6y8nc")]
+hitBody = true

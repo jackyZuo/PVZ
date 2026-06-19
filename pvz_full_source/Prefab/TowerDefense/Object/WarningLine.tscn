@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://7e2ylijvno4n"]
+
+[ext_resource type="Script" uid="uid://dyybyko4gvw04" path="res://Prefab/TowerDefense/Object/WarningLine.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbg4c6a00qebj" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/WarningLine.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox0nh"]
+size = Vector2(19.5, 505.5)
+
+[node name="WarningLine" type="Node2D" unique_id=1782688174]
+script = ExtResource("1")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1682188985]
+unique_name_in_owner = true
+texture = ExtResource("2")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Sprite" unique_id=1409722662]
+position = Vector2(-20, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" unique_id=457879545]
+position = Vector2(0, 253)
+shape = SubResource("RectangleShape2D_ox0nh")
+
+[node name="Area2D2" type="Area2D" parent="Sprite" unique_id=1818214062]
+position = Vector2(41, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D2" unique_id=1214753455]
+position = Vector2(0, 253)
+shape = SubResource("RectangleShape2D_ox0nh")
+
+[connection signal="area_entered" from="Sprite/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite/Area2D2" to="." method="_on_area_2d_2_area_entered"]

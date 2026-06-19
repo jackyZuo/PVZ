@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d06vs2he2jj36"]
+
+[ext_resource type="Script" uid="uid://csgeudristbmm" path="res://Asset/Config/Map/Heaven/Heaven/TowerDefenseMapHeaven.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfuh8xi4d8jx4" path="res://Asset/Config/Map/Heaven/Heaven/TowerDefenseMapHeavenGradient.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://cot31amy6ecwo" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Heaven/Heaven.jpg" id="3"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dnj3b6ra1didx" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Heaven/HeavenFloor.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b5bwerm08ql4q" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Heaven/HeavenDoor.png" id="6"]
+
+[node name="TowerDefenseMapHeaven" type="Node2D" unique_id=22977297 node_paths=PackedStringArray("stripe")]
+script = ExtResource("1")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2")
+
+[node name="Heaven" type="Sprite2D" parent="." unique_id=1421840305]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="." unique_id=1954643692]
+visible = false
+position = Vector2(494, 70)
+texture = ExtResource("4")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="." unique_id=422784139]
+unique_name_in_owner = true
+visible = false
+position = Vector2(84.54, 249.3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=127460791]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer" unique_id=606160848]
+unique_name_in_owner = true
+visible = false
+position = Vector2(84.55, 249.2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6")
