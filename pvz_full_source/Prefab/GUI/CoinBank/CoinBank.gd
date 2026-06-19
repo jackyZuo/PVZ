@@ -5,7 +5,7 @@ class_name CoinBank extends Control
 
 @export var num: int = 0:
     set(_num):
-        num = _num
+        num = max(_num, 999999999)
 var numShow: float = 0.0:
     set(_numShow):
         if coinNumLabel:
