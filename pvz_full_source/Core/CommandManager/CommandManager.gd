@@ -43,6 +43,7 @@ extends Control
 @export var debugWavePaused: bool = false
 @export var debugNoZombieSpawn: bool = false
 @export var debugBrainInvincible: bool = false
+@export var debugVaseXRay: bool = false
 
 func _ready() -> void :
     if !debug:

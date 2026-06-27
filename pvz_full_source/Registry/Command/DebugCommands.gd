@@ -149,7 +149,8 @@ static func _CmdDebug(option: String, value: String = "toggle") -> void :
         "nolose": "debugNoLose", 
         "wavepaused": "debugWavePaused", 
         "nozombiespawn": "debugNoZombieSpawn", 
-        "braininvincible": "debugBrainInvincible", 
+        "braininvincible": "debugBrainInvincible",
+        "vasexray": "debugVaseXRay",
     }
     var key: String = option.to_lower()
     if !debugVars.has(key):
@@ -181,7 +182,8 @@ static func _CmdDebugList() -> void :
         ["nolose", "禁用失败"], 
         ["wavepaused", "暂停波次"], 
         ["nozombiespawn", "禁止僵尸生成"], 
-        ["braininvincible", "脑子无敌"], 
+        ["braininvincible", "脑子无敌"],
+        ["vasexray", "开罐子透视"],
     ]
     CommandConsole.PrintLine("[color=cyan]═══════ 调试选项列表 ═══════[/color]")
     for item in debugVars:

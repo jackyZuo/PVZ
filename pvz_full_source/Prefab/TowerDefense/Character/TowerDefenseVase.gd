@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void :
             global_position.x = groundRight - 30
         mouseMask.position = spriteGroup.position + Vector2(-30, -54)
         packetShow.position.y = spriteGroup.position.y
-    showPacket = is_instance_valid(packetConfig) && (lightDetectionComponent.CheckShow() || _ShouldAlwaysShowPacket())
+    showPacket = is_instance_valid(packetConfig) && (lightDetectionComponent.CheckShow() || _ShouldAlwaysShowPacket() || CommandManager.debugVaseXRay)
     if showPacket:
         packetShow.modulate.a = lerpf(packetShow.modulate.a, 1.0, delta * 2.0)
         sprite.visible = false
