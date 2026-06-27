@@ -18,6 +18,8 @@ const NEAR_DEATH_DAMAGE_DIVISOR: = 3.0
 @warning_ignore("unused_signal")
 signal destroy(character: TowerDefenseCharacter)
 @warning_ignore("unused_signal")
+signal characterNearDie(character: TowerDefenseCharacter)
+@warning_ignore("unused_signal")
 signal bodyHurt(num: int)
 @warning_ignore("unused_signal")
 signal armorHurt(num: int)
@@ -58,6 +60,8 @@ var armorVisualComponent: ArmorVisualComponent
 var customVisualComponent: CustomVisualComponent
 var recycleComponent: RecycleComponent
 var effectCreateComponent: EffectCreateComponent
+var phonkComponent: PhonkComponent
+var dismemberComponent: DismemberComponent
 
 @export var invisible: bool = false:
     set(_invisible):
@@ -161,6 +165,9 @@ var isSmash: bool = false
 var isExplode: bool = false
 var isChomp: bool = false
 var skipDestroySet: bool = false
+
+
+var lastAttacker: TowerDefenseCharacter = null
 
 var inWater: bool = false:
     set(_inWater):
@@ -309,6 +316,14 @@ func _ready() -> void :
         customVisualComponent = componentManager.GetComponentFromType("CustomVisualComponent")
         recycleComponent = componentManager.GetComponentFromType("RecycleComponent")
         effectCreateComponent = componentManager.GetComponentFromType("EffectCreateComponent")
+        phonkComponent = componentManager.GetComponentFromType("PhonkComponent")
+
+        if PhonkComponent.phonkEnabled && phonkComponent == null:
+            PhonkComponent.InjectToCharacter(self)
+        dismemberComponent = componentManager.GetComponentFromType("DismemberComponent")
+
+        if DismemberComponent.dismemberEnabled && dismemberComponent == null && self is TowerDefenseZombie:
+            DismemberComponent.InjectToCharacter(self)
         if is_instance_valid(shadowComponent):
             shadowComponent.Init()
         if is_instance_valid(shaderEffectComponent):
@@ -401,12 +416,14 @@ func DamagePartInit() -> void :
                     damagePart[damagePointName] = damagePoint
                     damagePartList.append(damagePointName)
             if config.armorData:
-                var armorList: Array[CharacterArmorConfig] = config.armorData.armorList
-                for armor: CharacterArmorConfig in armorList:
-                    if !armor.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DROPABLE:
-                        continue
-                    var armorName: String = armor.armorName
-                    damagePart[armorName] = armor
+                var armorList: Array[ArmorSlotConfig] = config.armorData.armorList
+                for slotConfig: ArmorSlotConfig in armorList:
+                    var typeData: TowerDefenseArmorTypeData = CharacterArmorData._LoadTypeDataFromJSON(slotConfig.armorName)
+                    if typeData:
+                        if !typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DROPABLE:
+                            continue
+                    var armorName: String = slotConfig.armorName
+                    damagePart[armorName] = slotConfig
                     damagePartList.append(armorName)
 
 func PreviewDamagePoint(persontage: float) -> void :
@@ -557,7 +574,7 @@ func GetTotalHitPoint() -> float:
     var hitPoint: float = config.hitpoints + config.hitpointsNearDeath
     var armorList: Array[TowerDefenseArmorInstance] = GetArmor()
     for armor: TowerDefenseArmorInstance in armorList:
-        hitPoint += armor.config.damagePoint
+        hitPoint += armor.damagePointBase
     return hitPoint * instance.hitpointScale
 
 func GetCurrentHitPoint() -> float:
@@ -584,13 +601,13 @@ func HasHelm() -> bool:
 
 func GetHasArmor(armorName: String) -> bool:
     for armor: TowerDefenseArmorInstance in GetArmor():
-        if armor.config.armorName == armorName:
+        if armor.slotConfig.armorName == armorName:
             return true
     return false
 
 func GetArmorFromName(armorName: String) -> TowerDefenseArmorInstance:
     for armor: TowerDefenseArmorInstance in GetArmor():
-        if armor.config.armorName == armorName:
+        if armor.slotConfig.armorName == armorName:
             return armor
     return null
 
@@ -622,6 +639,8 @@ func GetGroundHeight(posHieght: float) -> float:
     return global_position.y - posHieght + groundHeight
 
 func SetSpriteGroupShaderParameter(property: String, value: Variant) -> void :
+    if !is_instance_valid(shaderEffectComponent):
+        return
     shaderEffectComponent.SetSpriteGroupShaderParameter(property, value)
 
 const SHADER_EFFECT_FLAGS: Dictionary = {
@@ -658,21 +677,17 @@ func SetChildShaderParameter(parent: Node2D, property: String, value: Variant) -
     if SHADER_EFFECT_FLAGS.has(property):
         var flag: int = SHADER_EFFECT_FLAGS[property]
         if parent is AdobeAnimateSpriteBase:
-            var _material: ShaderMaterial = parent.material as ShaderMaterial
-            if _material:
-                var current: int = _material.get_shader_parameter("effectFlags") if _material.get_shader_parameter("effectFlags") != null else 0
-                if value:
-                    current |= flag
-                else:
-                    current &= ~ flag
-                _material.set_shader_parameter("effectFlags", current)
+            var current: int = parent.get_instance_shader_parameter("effectFlags") if parent.get_instance_shader_parameter("effectFlags") != null else 0
+            if value:
+                current |= flag
+            else:
+                current &= ~ flag
+            parent.set_instance_shader_parameter("effectFlags", current)
         for child in parent.get_children():
             SetChildShaderParameter(child, property, value)
         return
     if parent is AdobeAnimateSpriteBase:
-        var _material: ShaderMaterial = parent.material as ShaderMaterial
-        if _material:
-            _material.set_shader_parameter(property, value)
+        parent.set_instance_shader_parameter(property, value)
     for child in parent.get_children():
         SetChildShaderParameter(child, property, value)
 
@@ -747,8 +762,8 @@ func White(init: float = 1.0, delay: float = 0.0, duration: float = 0.5) -> void
     if is_instance_valid(hitFlashComponent):
         hitFlashComponent.White(init, delay, duration)
 
-func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false) -> TowerDefenseInGamePacketShow:
-    return resourceSpawnComponent.SpawnPacket(packetConfig, pos, aliveTime, isFall, useCost)
+func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false, useRandf: bool = true) -> TowerDefenseInGamePacketShow:
+    return resourceSpawnComponent.SpawnPacket(packetConfig, pos, aliveTime, isFall, useCost, useRandf)
 
 func YBCreate(pos: Vector2, num: int, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0, _collect: bool = false) -> void :
     resourceSpawnComponent.YBCreate(pos, num, _velocity, _gravity, _collect)
@@ -770,6 +785,9 @@ func JalapenoSunCreate(pos: Vector2, sunNum: int, movingMethod: TowerDefenseEnum
 
 func ExplodeSunCreate(pos: Vector2, sunNum: int, sunOnce: int, movingMethod: TowerDefenseEnum.SUN_MOVING_METHOD = TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, _speed: float = 0.0, _gravity: float = 0.0, _moveStopTime: float = -1) -> void :
     resourceSpawnComponent.ExplodeSunCreate(pos, sunNum, sunOnce, movingMethod, _speed, _gravity, _moveStopTime)
+
+func GoldShardCreate(pos: Vector2, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0) -> void :
+    resourceSpawnComponent.GoldShardCreate(pos, _velocity, _gravity)
 
 func CraterCreate(nolimit: bool = false, craterName: String = "CraterDayGround") -> void :
     if self is TowerDefensePlant:
@@ -803,7 +821,8 @@ func CreateSplash() -> TowerDefenseEffectSpriteOnce:
 func CreateIceTrap() -> TowerDefenseEffectParticlesOnce:
     return effectCreateComponent.CreateIceTrap()
 
-func WeakUp() -> void :
+func WakeUp() -> void :
+    buff.BuffDelete("Sleep")
     instance.wakeUp = true
 
 
@@ -835,15 +854,17 @@ func ArmorDamagePointReach(armorName: String, stage: int) -> void :
         var armorInstance: TowerDefenseArmorInstance = GetArmorFromName(armorName)
         if armorInstance:
             armorInstance.stageIndex = stage
-            match armorInstance.config.replaceMethod:
+            match armorInstance.slotConfig.replaceMethod:
                 "Media":
                     SetArmor(armorName, stage)
                 "Sprite":
-                    if armorInstance.sprite and stage < armorInstance.config.stageAnimeTexture.size():
-                        armorInstance.sprite.texture = armorInstance.config.stageAnimeTexture[stage]
+                    if armorInstance.sprite and stage < armorInstance.typeData.stageAnimeTexture.size():
+                        armorInstance.sprite.texture = armorInstance.typeData.stageAnimeTexture[stage]
 
 @warning_ignore("unused_parameter")
 func ArmorHitpointsEmpty(armorName: String) -> void :
+    if is_instance_valid(showHealthComponent):
+        showHealthComponent.MarkDirty()
     if Global.isMultiplayerMode and MultiPlayerManager.isHost and sync_id >= 0:
         MultiPlayerManager.SendArmorHitpointsEmpty(sync_id, armorName)
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
@@ -856,7 +877,7 @@ func ArmorHitpointsEmpty(armorName: String) -> void :
 
 @warning_ignore("unused_parameter")
 func AttackDeal(character: TowerDefenseCharacter, type: String, num: float) -> void :
-    pass
+    lastAttacker = character
 
 func UnlimitedFireInit() -> void :
     pass
@@ -917,6 +938,7 @@ func SyncAnimation(clipName: String, loopAnim: bool, blendTimeVal: float) -> voi
 
 func HitpointsNearDie() -> void :
     nearDie = true
+    characterNearDie.emit(self)
     targetRegistrationComponent.SyncTargetToServer()
 
 func HitpointsEmpty() -> void :

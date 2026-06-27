@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://8m82y256citr" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/Config/TowerDefenseZombieFarmer.tres" id="3"]
 [ext_resource type="Resource" uid="uid://uvhjh3judbpl" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/DamagePoint/Config/ZombieFarmerDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://blu3m8e333cr" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/DamagePoint/Config/ZombieFarmerDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://m8sifonxknij" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/Armor/Config/ZombieFarmerArmorHat.tres" id="6"]
-[ext_resource type="Resource" uid="uid://sol0aejh38gx" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/Armor/Config/ZombieFarmerArmorCone.tres" id="7"]
+[ext_resource type="Resource" uid="uid://sol0aejh38gx" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/Armor/Config/ZombieFarmerArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://m8sifonxknij" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/Armor/Config/ZombieFarmerArmorHat.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://cf57k7wf74i48" path="res://Asset/Anime/Character/Zombie/Chapter7/Farmer/ZombieFarmer.tscn" id="8"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="9"]
 [ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="10"]
@@ -51,17 +51,6 @@ image = SubResource("Image_ntbfg")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kwisq"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_3o6x1")
@@ -102,17 +91,6 @@ image = SubResource("Image_qyh8w")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wanp"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -153,17 +131,6 @@ image = SubResource("Image_oa6v1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aea3j"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -190,16 +157,16 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieFarmer")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"Cone": ExtResource("7"),
-"Hat": ExtResource("6"),
+"Cone": ExtResource("6"),
+"HatFarmer": ExtResource("7"),
 "Head": ExtResource("5")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/HeadSlot")
-DamagePartSlot/Hat = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/HatSlot")
 DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/HatSlot")
+DamagePartSlot/HatFarmer = NodePath("SpriteGroup/TransformPoint/ZombieFarmer/HatSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)

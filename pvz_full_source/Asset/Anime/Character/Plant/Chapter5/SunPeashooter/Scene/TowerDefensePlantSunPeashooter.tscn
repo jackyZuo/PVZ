@@ -38,12 +38,6 @@ image = SubResource("Image_dh7b1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yf53l"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_jduul")
@@ -84,12 +78,6 @@ image = SubResource("Image_42cvu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ag08y"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_dtnum")
@@ -104,22 +92,25 @@ shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dbvv1"]
+radius = 74.953316
+
 [sub_resource type="Resource" id="Resource_9c97e"]
 script = ExtResource("8")
 projectileName = &"WhiteFirePea"
 baseDamage = 40.0
 damageFlags = 2
-collisionFlags = 0
 fireMethodFlags = 5
 catapultHeight = 400.0
 Flag/Damage = 2
 Flag/FireMethod = 5
-Flag/Collision = 0
+Flag/Collision = 1
 "Override/Hit Chests Scale" = false
 "Override/Hit Nut Scale" = false
 "Override/Hit Frozen Scale" = false
 "Override/Catapult Height" = false
-"Override/Penetrate Num" = false
+"Override/Penetrate Num" = true
+Penetrate/Num = 3
 "Override/Penetrate Over Back" = false
 "Override/Back Out Ground" = false
 "Override/Back Duration" = false
@@ -159,18 +150,25 @@ position = Vector2(0, 30)
 
 [node name="SunPeashooter" parent="SpriteGroup/TransformPoint" index="0" unique_id=1595992645 instance=ExtResource("4")]
 material = SubResource("ShaderMaterial_yf53l")
-instance_shader_parameters/frameIndex = 11.351704888888912
+instance_shader_parameters/frameIndex = 0.0
 position = Vector2(0, -30)
 
 [node name="Head" parent="SpriteGroup/TransformPoint/SunPeashooter" index="0" unique_id=932237696]
 material = SubResource("ShaderMaterial_ag08y")
-instance_shader_parameters/frameIndex = 11.440160888888911
-position = Vector2(5.492386, 4.720558)
+instance_shader_parameters/frameIndex = 23.52146311111111
+position = Vector2(-3.4000015, 7.700001)
 
 [node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPeashooter/Head" index="0" unique_id=1737758406]
 position = Vector2(28.43, -17.59)
 
-[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPeashooter" index="1" unique_id=1506670202]
+[node name="FogArea" type="Area2D" parent="SpriteGroup/TransformPoint/SunPeashooter" index="1" unique_id=2028622088]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/TransformPoint/SunPeashooter/FogArea" index="0" unique_id=777733609]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_dbvv1")
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)
@@ -178,7 +176,7 @@ position = Vector2(0, 0)
 [node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=1755467812 node_paths=PackedStringArray("marker") instance=ExtResource("6")]
 unique_name_in_owner = true
 num = 50
-marker = [NodePath("../../SpriteGroup/TransformPoint/SunPeashooter/Marker2D")]
+marker = [NodePath("../../SpriteGroup/TransformPoint/SunPeashooter/Head/Marker2D")]
 
 [node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1065543092 node_paths=PackedStringArray("firePosMarker", "checkRayList", "sprite") instance=ExtResource("7")]
 unique_name_in_owner = true

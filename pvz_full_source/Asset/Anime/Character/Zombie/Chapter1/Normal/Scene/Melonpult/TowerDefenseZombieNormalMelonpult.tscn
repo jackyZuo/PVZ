@@ -5,11 +5,11 @@
 [ext_resource type="Resource" uid="uid://goeeq4spo1qp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalMelonpult.tres" id="3"]
 [ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="8"]
 [ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="9"]
-[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="10"]
 [ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://bxts8giuhpuwh" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Melonpult/ZombieNormalMelonpult.tscn" id="12"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="13"]
@@ -46,17 +46,6 @@ image = SubResource("Image_3khdj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wepp8"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_oiw4y")
@@ -97,17 +86,6 @@ image = SubResource("Image_c7b02")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dhne5"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_6pbdr")
@@ -133,7 +111,15 @@ catapultHeight = 400.0
 Flag/Damage = 10
 Flag/FireMethod = 2
 Flag/Collision = 43
-Catapult/Height = 400.0
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_7n7yj"]
 script = ExtResource("17")
@@ -173,23 +159,23 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("10"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
 "Helmet": ExtResource("9"),
-"Screendoor": ExtResource("8"),
+"Screendoor": ExtResource("10"),
 "SpecialHelmet": ExtResource("11")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/ConeSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/BucketSlot")
-DamagePartSlot/Screendoor = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/ScreendoorSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/BucketSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/ConeSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
+DamagePartSlot/Screendoor = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/ScreendoorSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalMelonpult/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]

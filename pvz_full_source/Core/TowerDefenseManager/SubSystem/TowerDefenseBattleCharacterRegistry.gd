@@ -9,6 +9,10 @@ var _effect_count: int = 0
 var _effect_count_frame: int = -1
 var _line_characters: Dictionary = {}
 var _line_characters_frame: int = -1
+var _column_characters: Dictionary = {}
+var _column_characters_frame: int = -1
+var _line_combined_cache: Dictionary = {}
+var _line_combined_frame: int = -1
 
 func Register(character: TowerDefenseCharacter) -> void :
     _active_characters.append(character)
@@ -63,8 +67,52 @@ func GetLineCharacters(line: int) -> Array:
         return _line_characters[line]
     return []
 
+
+func GetColumnCharacters(column: int) -> Array:
+    var current_frame: int = Engine.get_physics_frames()
+    if current_frame != _column_characters_frame:
+        _column_characters_frame = current_frame
+        _column_characters.clear()
+        for character in GetCleanCharacters():
+            var col_key: int = character.gridPos.x
+            if !_column_characters.has(col_key):
+                _column_characters[col_key] = []
+            _column_characters[col_key].append(character)
+    if _column_characters.has(column):
+        return _column_characters[column]
+    return []
+
+
+
+func GetCharactersForLine(line: int) -> Array:
+    var current_frame: int = Engine.get_physics_frames()
+    if current_frame != _line_combined_frame:
+        _line_combined_frame = current_frame
+        _line_combined_cache.clear()
+        var clean = GetCleanCharacters()
+        var all_line_check_chars: Array[TowerDefenseCharacter] = []
+
+        for character in clean:
+            var char_line: int = character.gridPos.y
+            if !_line_combined_cache.has(char_line):
+                _line_combined_cache[char_line] = []
+            _line_combined_cache[char_line].append(character)
+            if character.targetRegistrationComponent.allLineCheck:
+                all_line_check_chars.append(character)
+
+        if !all_line_check_chars.is_empty():
+            for line_key in _line_combined_cache.keys():
+                for alc_char in all_line_check_chars:
+                    if alc_char.gridPos.y != line_key:
+                        _line_combined_cache[line_key].append(alc_char)
+    if _line_combined_cache.has(line):
+        return _line_combined_cache[line]
+    return []
+
 func Clear() -> void :
     _active_characters.clear()
     _clean_characters.clear()
     _area_cache.clear()
     _line_characters.clear()
+    _column_characters.clear()
+    _line_combined_cache.clear()

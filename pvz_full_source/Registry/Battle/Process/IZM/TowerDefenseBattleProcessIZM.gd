@@ -294,7 +294,7 @@ func CheckFail() -> bool:
             if conveyorBeltFeature.running || conveyorBeltFeature.conveyorBeltManager.GetPacketCount() > 0:
                 canUseCheckFlag = false
     if canUseCheckFlag:
-        var zombieList: Array = TowerDefenseManager.GetCampTarget(TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE)
+        var zombieList: Array = TowerDefenseManager.GetCampFriendly(TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE)
         var zombieNum: int = zombieList.size()
         for zombie: TowerDefenseCharacter in zombieList:
             if zombie.config.name == "ZombieTarget":

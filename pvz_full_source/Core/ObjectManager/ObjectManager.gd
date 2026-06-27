@@ -22,6 +22,7 @@ func _ready() -> void :
     PoolCreate(preload("uid://733w81lrellb"), ObjectManagerConfig.OBJECT.COIN_TQ, 100, "Refresh", "Recycle")
     PoolCreate(preload("uid://c25ngfvpp0uo3"), ObjectManagerConfig.OBJECT.COIN_YB1, 100, "Refresh", "Recycle")
     PoolCreate(preload("uid://1twddwaolt4r"), ObjectManagerConfig.OBJECT.COIN_YB2, 100, "Refresh", "Recycle")
+    PoolCreate(preload("uid://dsfn18qda4271"), ObjectManagerConfig.OBJECT.COIN_GOLD_SHARD, 100, "Refresh", "Recycle")
 
     PoolCreate(preload("uid://ueeii5v2dl8q"), ObjectManagerConfig.OBJECT.PARTICLES_SPLASH, 500, "Refresh", "Recycle")
     PoolCreate(preload("uid://lcop8me7nwde"), ObjectManagerConfig.OBJECT.PARTICLES_RISE_DIRT, 200, "Refresh", "Recycle")

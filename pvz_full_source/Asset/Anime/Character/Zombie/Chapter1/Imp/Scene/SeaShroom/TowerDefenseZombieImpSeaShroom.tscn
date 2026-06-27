@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://bv0w26k8hdhid" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Config/TowerDefenseZombieImpSeaShroom.tres" id="3"]
 [ext_resource type="Resource" uid="uid://b1i34e3ocmogl" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://dh77v1ckvfdxu" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpPlantDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://cmjaxhp5g71q5" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://58r0tjmwweja" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://qgfffnlxkr4m" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://cs3au7yvdnjpi" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://58r0tjmwweja" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cmjaxhp5g71q5" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cs3au7yvdnjpi" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://dnbxvkk0ikxie" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://du5melf1cya26" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Sprite/SeaShroom/ZombieImpSeaShroom.tscn" id="11"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
@@ -42,14 +42,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_lptmt"]
 image = SubResource("Image_8a782")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_amjno"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyhb0"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_lptmt")
@@ -88,14 +82,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_yboyi"]
 image = SubResource("Image_d5obu")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivq6m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x73i2"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_yboyi")
@@ -160,21 +148,21 @@ headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
 damagePartClip = "particles"
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSeaShroom/HeadSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
@@ -182,15 +170,15 @@ position = Vector2(9, 40)
 scale = Vector2(0.906977, 0.944445)
 
 [node name="ZombieImpSeaShroom" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=496655966 instance=ExtResource("11")]
-material = SubResource("ShaderMaterial_amjno")
-instance_shader_parameters/frameIndex = 8.401455555555554
+material = SubResource("ShaderMaterial_xyhb0")
+instance_shader_parameters/frameIndex = 6.917773333333333
 position = Vector2(-12, -36)
 
 [node name="Head" parent="SpriteGroup/TransformPoint/ZombieImpSeaShroom" index="0" unique_id=764864368]
-material = SubResource("ShaderMaterial_ivq6m")
-instance_shader_parameters/frameIndex = 16.679242666666664
-position = Vector2(-19.494877, -25.934689)
-rotation = -0.30955067
+material = SubResource("ShaderMaterial_x73i2")
+instance_shader_parameters/frameIndex = 23.572908444444444
+position = Vector2(-14.524542, -31.350128)
+rotation = -0.19284916
 
 [node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieImpSeaShroom/Head" index="0" unique_id=1806445380]
 position = Vector2(-1.9686394, 21.816833)
@@ -198,17 +186,18 @@ rotation = -0.16529977
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpSeaShroom" index="1" unique_id=1679610570]
-position = Vector2(-2.7418709, -4.2347775)
-rotation = -0.07955066
-scale = Vector2(0.99837357, 0.99837357)
+position = Vector2(-0.4070177, -7.8385963)
+rotation = 0.037150837
+scale = Vector2(0.998737, 0.998737)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpSeaShroom" index="2" unique_id=1448527260]
-position = Vector2(14.822938, 24.008965)
-rotation = -1.0418607
-scale = Vector2(1.0572423, 1.0211562)
+position = Vector2(11.4806595, 20.028105)
+rotation = -0.38225147
+scale = Vector2(1.0549655, 1.0189586)
+skew = 0.04820037
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpSeaShroom" index="3" unique_id=1776460655]
-position = Vector2(-76.01534, 10)
+position = Vector2(-80.76312, 10)
 
 [node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1561858944 node_paths=PackedStringArray("firePosMarker", "checkRayList", "sprite") instance=ExtResource("13")]
 unique_name_in_owner = true
@@ -232,5 +221,8 @@ collide_with_bodies = false
 
 [node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
 groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieImpSeaShroom/GroundSlot")
+
+[node name="WaterInteractionComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="22" unique_id=2146103718]
+discardOffsetIn = 36.0
 
 [editable path="SpriteGroup/TransformPoint/ZombieImpSeaShroom"]

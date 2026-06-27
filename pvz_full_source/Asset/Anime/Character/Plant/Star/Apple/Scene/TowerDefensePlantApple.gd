@@ -29,7 +29,7 @@ func IdleProcessing(delta: float) -> void :
 
 func Run() -> void :
     for character: TowerDefenseCharacter in TowerDefenseManager.GetCampFriendly(camp):
-        character.WeakUp()
+        character.WakeUp()
     for bed in get_tree().get_nodes_in_group("ZombieBed"):
         bed.Destroy()
     AudioManager.AudioPlay("Apple", AudioManagerEnum.TYPE.SFX)

@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://d2k53yfebjg4o"]
+
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpk1k0s7x63ej" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.gd" id="2"]
+[ext_resource type="Script" uid="uid://kpo7v8oqqwcr" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventLuckyDrawItem.gd" id="3"]
+[ext_resource type="Script" uid="uid://d37vnt7i0gkc4" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventSunCreate.gd" id="4"]
+[ext_resource type="Script" uid="uid://b5cjb8ckv7e01" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventArmorClear.gd" id="5"]
+[ext_resource type="Script" uid="uid://dlx2xha5gxsoi" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHypnoses.gd" id="6"]
+[ext_resource type="Script" uid="uid://cni5q55batom1" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventLuckyDraw.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://be4wbndtyposh" path="res://Asset/Config/Projectile/Melon/Sprite/GoldMelon/ProjectileGoldMelon.tscn" id="8"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://c78e2034paimu" path="res://Prefab/Particles/Splats/GoldMelonpultSplats/GoldMelonpultSplats.tscn" id="10"]
+
+[sub_resource type="Resource" id="Resource_wpb3v"]
+script = ExtResource("1")
+projectileName = &"Melon"
+baseDamage = 80.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+Flag/Damage = 2
+Flag/FireMethod = 2
+Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_vq8qr"]
+script = ExtResource("2")
+projectileData = SubResource("Resource_wpb3v")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_k8hro"]
+script = ExtResource("3")
+event = SubResource("Resource_vq8qr")
+weight = 50.0
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_d7dl5"]
+script = ExtResource("1")
+projectileName = &"WinterMelon"
+baseDamage = 80.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+Flag/Damage = 2
+Flag/FireMethod = 2
+Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_yb65k"]
+script = ExtResource("2")
+projectileData = SubResource("Resource_d7dl5")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_45b6h"]
+script = ExtResource("3")
+event = SubResource("Resource_yb65k")
+weight = 30.0
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_1ol3j"]
+script = ExtResource("1")
+projectileName = &"CoinGold"
+baseDamage = 500.0
+collisionFlags = 43
+Flag/Damage = 3
+Flag/FireMethod = 1
+Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_7e4xe"]
+script = ExtResource("2")
+projectileData = SubResource("Resource_1ol3j")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_ljif8"]
+script = ExtResource("3")
+event = SubResource("Resource_7e4xe")
+weight = 10.0
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_v1ou0"]
+script = ExtResource("4")
+num = 50.0
+byCamp = true
+metadata/_custom_type_script = "uid://d37vnt7i0gkc4"
+
+[sub_resource type="Resource" id="Resource_igfld"]
+script = ExtResource("3")
+event = SubResource("Resource_v1ou0")
+weight = 6.0
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_ehqcg"]
+script = ExtResource("5")
+metadata/_custom_type_script = "uid://b5cjb8ckv7e01"
+
+[sub_resource type="Resource" id="Resource_fgudh"]
+script = ExtResource("3")
+event = SubResource("Resource_ehqcg")
+weight = 3.0
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_x88l2"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://dlx2xha5gxsoi"
+
+[sub_resource type="Resource" id="Resource_we7sl"]
+script = ExtResource("3")
+event = SubResource("Resource_x88l2")
+metadata/_custom_type_script = "uid://kpo7v8oqqwcr"
+
+[sub_resource type="Resource" id="Resource_tognw"]
+script = ExtResource("7")
+eventList = [SubResource("Resource_k8hro"), SubResource("Resource_45b6h"), SubResource("Resource_ljif8"), SubResource("Resource_igfld"), SubResource("Resource_fgudh"), SubResource("Resource_we7sl")]
+metadata/_custom_type_script = "uid://cni5q55batom1"
+
+[resource]
+script = ExtResource("9")
+name = "GoldMelon"
+baseDamage = 160.0
+projectileScene = ExtResource("8")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("10")
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_tognw")]
+rotateScale = 5.0
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 1)

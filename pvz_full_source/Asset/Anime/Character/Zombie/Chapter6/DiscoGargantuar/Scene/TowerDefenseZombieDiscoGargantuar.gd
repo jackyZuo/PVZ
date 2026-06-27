@@ -21,7 +21,7 @@ func RemoveDancer(dancer: TowerDefenseCharacter) -> void :
 
 func _ready() -> void :
     super._ready()
-    if Engine.is_editor_hint() || Global.isEditor:
+    if Engine.is_editor_hint():
         return
     dancingComponent = componentManager.GetComponentFromType("DancingComponent") as DancingComponent
     if is_instance_valid(dancingComponent) && dancerPacketName != "":

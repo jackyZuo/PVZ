@@ -26,6 +26,14 @@ func ShouldAutoCollect() -> bool:
 func OnDieDown() -> bool:
     return false
 
+func DieDown() -> void :
+    if isCollect:
+        return
+    if GameSaveManager.GetFeatureValue("SunCollect"):
+        Collection()
+        return
+    super.DieDown()
+
 func OnRefresh() -> void :
     gridPos = Vector2.ZERO
 

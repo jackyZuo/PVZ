@@ -112,6 +112,7 @@ var blink: bool = false
 
 var height: float = -1
 var savePos: Vector2 = Vector2.ZERO
+var originalSaveKey: String = ""
 
 
 
@@ -338,10 +339,13 @@ func ResetForPool() -> void :
     blink = false
     height = -1
     costMultiple = -1
+    originalSaveKey = ""
     thumbnailMode = false
 
 func Init(_config: TowerDefensePacketConfig) -> void :
     config = _config
+    if originalSaveKey == "":
+        originalSaveKey = config.saveKey
     _update_background_texture()
     baseItemCost = config.GetCost()
     itemCost = baseItemCost
@@ -386,27 +390,27 @@ func _create_sprite() -> void :
     sprite.light_mask = 0
     tempSubViewport.add_child(sprite)
     if config.overrideHypnoses:
-        var _mat: ShaderMaterial = sprite.material as ShaderMaterial
-        if _mat:
-            var _current: int = _mat.get_shader_parameter("effectFlags") if _mat.get_shader_parameter("effectFlags") != null else 0
-            _mat.set_shader_parameter("effectFlags", _current | 8)
+        var _current: int = sprite.get_instance_shader_parameter("effectFlags") if sprite.get_instance_shader_parameter("effectFlags") != null else 0
+        sprite.set_instance_shader_parameter("effectFlags", _current | 8)
     _update_sprite_layout()
     if characterConfig.armorData:
         if config.initArmor.size() > 0:
             for armorName: String in config.initArmor:
-                var armor: CharacterArmorConfig = characterConfig.armorData.armorDictionary[armorName]
-                match armor.replaceMethod:
-                    "Media":
-                        characterConfig.armorData.OpenArmorFliters(sprite, armorName)
-                        characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
-                    "Sprite":
-                        var slotNode: AdobeAnimateSlot = sprite.get_node(armor.replaceSpriteSlotPath)
-                        var _sprite: Sprite2D = Sprite2D.new()
-                        _sprite.texture = armor.stageAnimeTexture[0]
-                        _sprite.position = armor.replaceSpriteOffset
-                        _sprite.rotation = armor.replaceSpriteRotation
-                        _sprite.scale = armor.replaceSpriteScale
-                        slotNode.add_child(_sprite)
+                var slotConfig: ArmorSlotConfig = characterConfig.armorData.GetSlotConfig(armorName)
+                var typeData: TowerDefenseArmorTypeData = characterConfig.armorData.GetTypeData(armorName)
+                if typeData:
+                    match slotConfig.replaceMethod:
+                        "Media":
+                            characterConfig.armorData.OpenArmorFliters(sprite, armorName)
+                            characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
+                        "Sprite":
+                            var slotNode: AdobeAnimateSlot = sprite.get_node(slotConfig.slotPath)
+                            var _sprite: Sprite2D = Sprite2D.new()
+                            _sprite.texture = typeData.stageAnimeTexture[0]
+                            _sprite.position = slotConfig.offset
+                            _sprite.rotation = slotConfig.rotation
+                            _sprite.scale = slotConfig.scale
+                            slotNode.add_child(_sprite)
     if characterConfig.customData:
         var packetValue: Dictionary = GameSaveManager.GetTowerDefensePacketValue(config.saveKey)
         if packetValue.get_or_add("Key", {}).get_or_add("Custom", "") != "":
@@ -516,8 +520,9 @@ func _physics_process(delta: float) -> void :
                 queue_free()
             return
 
-    if start:
-        if Engine.get_physics_frames() % 10 == 0:
+    var isUpgradePacket: bool = has_meta("is_upgrade_packet")
+    if start || isUpgradePacket:
+        if Engine.get_physics_frames() % 10 == 0 && !isUpgradePacket:
             baseItemCost = config.GetCost()
             var finalCost: int = baseItemCost
             if !TowerDefenseManager.GetMapFeature().config.isHeaven || config.GetType() != TowerDefenseEnum.PACKET_TYPE.GOLD:
@@ -530,26 +535,27 @@ func _physics_process(delta: float) -> void :
             itemCost = finalCost
 
         var aliveFlag = true
-        if coldDownOpen:
-            if !TowerDefenseManager.pausePacket:
-                if !TowerDefenseManager.backPacket:
-                    if coldDownTimer > 0:
-                        coldDownTimer -= delta
+        if !isUpgradePacket:
+            if coldDownOpen:
+                if !TowerDefenseManager.pausePacket:
+                    if !TowerDefenseManager.backPacket:
+                        if coldDownTimer > 0:
+                            coldDownTimer -= delta
+                        else:
+                            coldDownOpen = false
                     else:
-                        coldDownOpen = false
-                else:
-                    if coldDownTimer < coldDown:
-                        coldDownTimer += delta
-            coldDownProgressBar.visible = true
-            coldDownProgressBar.value = coldDownTimer
-            aliveFlag = false
-        else:
-            coldDownProgressBar.visible = false
+                        if coldDownTimer < coldDown:
+                            coldDownTimer += delta
+                coldDownProgressBar.visible = true
+                coldDownProgressBar.value = coldDownTimer
+                aliveFlag = false
+            else:
+                coldDownProgressBar.visible = false
 
         if TowerDefenseManager.GetSun() < itemCost:
             aliveFlag = false
 
-        if aliveFlag:
+        if aliveFlag && !isUpgradePacket:
             if config.GetPlantCover().size() > 0:
                 var coverFlag: bool = false
                 for coverCheckName in config.GetPlantCover():
@@ -698,6 +704,18 @@ func Plant(gridPos: Vector2i, useSun: bool = true, executeEvent: bool = true) ->
         return character
     return character
 
+func PlantOnZombie(zombie: TowerDefenseCharacter, hypnoses: bool = false, useSun: bool = true, executeEvent: bool = true) -> TowerDefenseCharacter:
+    if !alive:
+        return
+    if Global.isMultiplayerMode and has_meta("packet_sync_id"):
+        set_meta("packet_planted", true)
+    var character = config.PlantOnZombie(zombie, hypnoses)
+    if !(Global.isEditor && SceneManager.currentScene == "LevelEditorStage"):
+        Use(useSun)
+    if executeEvent:
+        config.ExecuteEventPlant(self)
+    return character
+
 func Use(useSun: bool = true) -> void :
     if useCost && useSun:
         TowerDefenseManager.UseSun(itemCost)
@@ -743,6 +761,7 @@ func _ensure_thumbnail_rect() -> void :
     _thumbnail_rect = TextureRect.new()
     _thumbnail_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
     _thumbnail_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    _thumbnail_rect.light_mask = 0
     _thumbnail_rect.visible = false
     var parent = tempViewportContainer.get_parent()
     parent.add_child(_thumbnail_rect)

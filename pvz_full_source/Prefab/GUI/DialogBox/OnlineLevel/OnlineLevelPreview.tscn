@@ -6,17 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://biewbfqqa138j" path="res://Asset/Texture/GUI/LevelEditor/LevelEditorMapShowBox.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dwwg5awviq8g2" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="5"]
 [ext_resource type="Texture2D" uid="uid://dag3demp8ma71" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelPlayedNum.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://d0smlukjcx1r6" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButton.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://5lvxpd7jaoc4" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButtonPress.png" id="8"]
-[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="9"]
-[ext_resource type="Texture2D" uid="uid://becxfsjmy31td" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButton.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://c3mh3bdn1qs1k" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButtonPress.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://dg1a7i375fjlt" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelCollectionDiabled.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://bmlvcwwbxh3xe" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelCollection.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://byfj56o52om0k" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelLike.Disabled.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://cb3f5ubql3ad" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelLike.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://b3g1hlc1u7ivv" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelDislikeDisabled.png" id="16"]
-[ext_resource type="Texture2D" uid="uid://4g8m7v6hfwc6" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelDislike..png" id="17"]
+[ext_resource type="Texture2D" uid="uid://cpcnoxcul77rt" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelFinishNum.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://d0smlukjcx1r6" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButton.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://5lvxpd7jaoc4" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButtonPress.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://becxfsjmy31td" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButton.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://c3mh3bdn1qs1k" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButtonPress.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dg1a7i375fjlt" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelCollectionDiabled.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bmlvcwwbxh3xe" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelCollection.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://byfj56o52om0k" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelLike.Disabled.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://cb3f5ubql3ad" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelLike.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://b3g1hlc1u7ivv" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelDislikeDisabled.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://4g8m7v6hfwc6" path="res://Asset/Texture/GUI/LevelEditor/OnlineLevelDislike..png" id="18"]
 
 [node name="OnlineLevelPreview" type="Control" unique_id=936315367 node_paths=PackedStringArray("dragControl")]
 layout_mode = 3
@@ -204,13 +205,38 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 61.0
 offset_top = 24.0
-offset_right = 259.0
+offset_right = 284.44482
 offset_bottom = 53.0
 mouse_filter = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "游玩次数:加载中..."
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="CompletionRateTexture" type="TextureRect" parent="Layer/BackgroundTexture" unique_id=1928924350]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 453.4071
+offset_top = 371.40784
+offset_right = 520.4071
+offset_bottom = 445.40784
+texture = ExtResource("7")
+
+[node name="CompletionRateLabel" type="RichTextLabel" parent="Layer/BackgroundTexture/CompletionRateTexture" unique_id=1191025446]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 61.0
+offset_top = 24.0
+offset_right = 259.0
+offset_bottom = 53.0
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "通关率:加载中..."
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
@@ -236,20 +262,20 @@ offset_top = 18.8148
 offset_right = 920.111
 offset_bottom = 58.8148
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("8")
-texture_hover = ExtResource("8")
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("9")
+texture_hover = ExtResource("9")
 
-[node name="PlayButton" parent="Layer/BackgroundTexture" unique_id=2054160765 instance=ExtResource("9")]
+[node name="PlayButton" parent="Layer/BackgroundTexture" unique_id=2054160765 instance=ExtResource("10")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 289.0
 offset_top = 609.0
 offset_right = 675.0
 offset_bottom = 694.0
-texture_normal = ExtResource("10")
-texture_pressed = ExtResource("10")
-texture_hover = ExtResource("11")
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("12")
 text = "进入挑战"
 
 [node name="TextLabel" parent="Layer/BackgroundTexture/PlayButton" index="0"]
@@ -272,8 +298,8 @@ offset_bottom = 528.37
 mouse_default_cursor_shape = 2
 disabled = true
 toggle_mode = true
-texture_normal = ExtResource("12")
-texture_pressed = ExtResource("13")
+texture_normal = ExtResource("13")
+texture_pressed = ExtResource("14")
 
 [node name="CollectionLabel" type="RichTextLabel" parent="Layer/BackgroundTexture/CollectionButton" unique_id=1456341026]
 layout_mode = 0
@@ -298,14 +324,15 @@ offset_bottom = 528.37036
 mouse_default_cursor_shape = 2
 disabled = true
 toggle_mode = true
-texture_normal = ExtResource("14")
-texture_pressed = ExtResource("15")
+texture_normal = ExtResource("15")
+texture_pressed = ExtResource("16")
 
 [node name="LikeLabel" type="RichTextLabel" parent="Layer/BackgroundTexture/LikeButton" unique_id=2063505170]
 unique_name_in_owner = true
 layout_mode = 0
+offset_left = -5.9259644
 offset_top = 65.18519
-offset_right = 66.37037
+offset_right = 71.111084
 offset_bottom = 124.444405
 mouse_filter = 2
 theme_override_constants/outline_size = 10
@@ -325,14 +352,15 @@ offset_bottom = 528.37036
 mouse_default_cursor_shape = 2
 disabled = true
 toggle_mode = true
-texture_normal = ExtResource("16")
-texture_pressed = ExtResource("17")
+texture_normal = ExtResource("17")
+texture_pressed = ExtResource("18")
 
 [node name="DislikeLabel" type="RichTextLabel" parent="Layer/BackgroundTexture/DislikeButton" unique_id=1663144559]
 unique_name_in_owner = true
 layout_mode = 0
+offset_left = -5.9259644
 offset_top = 65.18519
-offset_right = 66.37037
+offset_right = 71.111084
 offset_bottom = 124.444405
 mouse_filter = 2
 theme_override_constants/outline_size = 10

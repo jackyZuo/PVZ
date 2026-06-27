@@ -26,6 +26,10 @@ func Enter() -> void :
     character.land.connect(Land)
     character.ySpeed = -300
     character.gravity = 490
+    if character.inWater:
+        character.groundHeight = 0.0
+        if is_instance_valid(character.groundHeightComponent):
+            character.groundHeightComponent.handleWaterHeight = false
 
 @warning_ignore("unused_parameter")
 func Step(delta: float) -> bool:
@@ -33,6 +37,14 @@ func Step(delta: float) -> bool:
     return character.nearDie || character.die || currentTime >= time
 
 func Exit() -> void :
+    if is_instance_valid(character):
+        if is_instance_valid(character.groundHeightComponent):
+            character.groundHeightComponent.handleWaterHeight = true
+        if character.inWater:
+            if "waterHeight" in character:
+                character.groundHeight = - character.waterHeight
+            elif is_instance_valid(character.groundHeightComponent):
+                character.groundHeight = - character.groundHeightComponent.waterHeight
     if !character.instance.hypnoses:
         character.instance.ArmorClear()
     if character is TowerDefenseZombie:
@@ -46,3 +58,5 @@ func Refresh(config: TowerDefenseCharacterBuffConfig) -> void :
 
 func Land() -> void :
     character.ySpeed = -300
+    if character.inWater:
+        character.groundHeight = 0.0

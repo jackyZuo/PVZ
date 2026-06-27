@@ -52,7 +52,7 @@ const awardString: Array = [
     "奖励30000金币", 
     "奖励40000金币+随机皮肤*1", 
     "奖励50000金币+随机皮肤*1", 
-    "奖励80000金币+随机皮肤*2", 
+    "奖励80000金币+随机皮肤*2+随机植物*1", 
 ]
 
 func Show() -> void :
@@ -150,7 +150,7 @@ func FreshFinish(num: int) -> void :
         11:
             awardLabel.text = "奖池：%d金币+随机皮肤*1" % 50000
         12:
-            awardLabel.text = "奖池：%d金币+随机皮肤*2" % 80000
+            awardLabel.text = "奖池：%d金币+随机皮肤*2+随机植物*1" % 80000
             Over(false)
         _:
             var tipsDialog = DialogManager.DialogCreate("DialogBoxTips")
@@ -308,6 +308,9 @@ func Over(fail: bool) -> void :
             data = RandomCustom()
             costomString += "\n" + data.get("String", "")
             coinNum += data.get("Coin", 0)
+            data = RandomPacket()
+            costomString += "\n" + data.get("String", "")
+            coinNum += data.get("Coin", 0)
     var broadCastConfig: BroadCastConfig = BroadCastConfig.new()
     broadCastConfig.broadCastString = "%s，您一共完成%d个关卡\n%s%s" % [methodString, finishNum, awardString[finishNum], costomString]
     BroadCastManager.BroadCastAdd(broadCastConfig)
@@ -365,6 +368,34 @@ func RandomCustom() -> Dictionary:
                 "Coin": 0
             }
     return {}
+
+func RandomPacket() -> Dictionary:
+    var exchangeList = load("res://Asset/Config/OnlineLevelExchange/OnlineLevelExchangeResource.json").data.get("Exchange", [])
+    var packetList: Array = []
+    for exchangeData in exchangeList:
+        if exchangeData.get("Type", "Packet") == "Packet":
+            packetList.append(exchangeData)
+    if packetList.is_empty():
+        return {}
+    var exchangeData = packetList.pick_random()
+    var key: String = exchangeData.get("Key", "")
+    var crystalNum: int = int(exchangeData.get("CrystalNum", 0))
+    var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig(key)
+    var characterName: String = tr(packetConfig.name)
+    var data = GameSaveManager.GetTowerDefensePacketValue(key)
+    if data.get("Unlock", false):
+        GameSaveManager.SetKeyValue("CrystalNum", GameSaveManager.GetKeyValue("CrystalNum") + crystalNum)
+        return {
+            "String": "你已获得%s,为你转化为%d在线水晶" % [characterName, crystalNum], 
+            "Coin": 0
+        }
+    else:
+        data["Unlock"] = true
+        GameSaveManager.SetTowerDefensePacketValue(key, data)
+        return {
+            "String": "恭喜你获得%s" % characterName, 
+            "Coin": 0
+        }
 
 func CreateCoin(num) -> void :
     while num >= 1000:

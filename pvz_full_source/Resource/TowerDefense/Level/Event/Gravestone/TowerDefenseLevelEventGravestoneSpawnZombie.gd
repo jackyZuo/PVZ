@@ -11,7 +11,7 @@ func GetName() -> String:
 func Execute() -> void :
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
         return
-    TowerDefenseBattleProcessWave.instance.GravestoneSpawn(zombieNames, zombieNum, delay, override)
+    TowerDefenseBattleFeatureWave.instance.GravestoneSpawn(zombieNames, zombieNum, delay, override)
 
 func Init(valueDictionary: Dictionary) -> void :
     zombieNames = valueDictionary.get("ZombieNames", [])

@@ -89,5 +89,36 @@ func ExportVariantSave() -> Dictionary:
 func ImportVariantSave(data: Dictionary) -> void :
     level = data.get("level", 1)
     if level > 1:
-        LevelSet(level)
+        LevelSetVisual(level)
     fireInterval = data.get("fireInterval", 2.0)
+
+func LevelSetVisual(lv: int) -> void :
+    match lv:
+        2:
+            sprite.SetFliters(["Upgrade1_eyebrow", "Upgrade1_helmet", "Upgrade2_barrel"], true)
+            attackComponent.eventList[0].num += 20
+            attackComponent.attackEventName = "fire"
+            attackComponent.attackAnimeClips = "Fire2"
+            fireParticles.scale *= 1.25
+            fireParticles.process_material.scale_max *= 1.25
+            fireParticles.process_material.scale_min *= 1.25
+            idleAnimeClip = "Idle2"
+            sleepAnimeClip = "Sleep2"
+        3:
+            sprite.SetFliters(["Upgrade1_eyebrow", "Upgrade1_eyebrow2", "Upgrade1_helmet", "Upgrade2_helmet", "Upgrade2_barrel", "Upgrade2_barrel2", "Upgrade2_face"], true)
+            attackComponent.eventList[0].num += 40
+            attackComponent.attackEventName = "fire"
+            attackComponent.attackAnimeClips = "Fire3"
+            fireParticles.process_material.scale_max *= 1.5
+            fireParticles.process_material.scale_min *= 1.5
+            idleAnimeClip = "Idle3"
+            sleepAnimeClip = "Sleep3"
+        4:
+            sprite.SetFliters(["Upgrade1_eyebrow", "Upgrade1_eyebrow2", "Upgrade1_helmet", "Upgrade2_helmet", "Upgrade2_barrel", "Upgrade2_barrel2", "Upgrade2_face"], true)
+            attackComponent.eventList[0].num += 60
+            attackComponent.attackEventName = "fire"
+            attackComponent.attackAnimeClips = "Fire4"
+            fireParticles.process_material.scale_max *= 1.75
+            fireParticles.process_material.scale_min *= 1.75
+            idleAnimeClip = "Idle4"
+            sleepAnimeClip = "Sleep4"

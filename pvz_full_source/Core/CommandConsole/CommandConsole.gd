@@ -146,19 +146,40 @@ func _HandleAutocomplete() -> void :
         return
     if _autocompleteIndex == -1:
         _autocompleteList.clear()
-        var searchPrefix: String = text
-        if searchPrefix.begins_with("/"):
-            searchPrefix = searchPrefix.substr(1)
-        searchPrefix = searchPrefix.to_lower()
-        for cmdName in CommandRegistry.GetAllCommands():
-            if cmdName.begins_with(searchPrefix):
-                _autocompleteList.append(cmdName)
+        var parts: PackedStringArray = CommandRegistry._ParseCommand(text.substr(1) if text.begins_with("/") else text)
+        if parts.size() <= 1:
+
+            var searchPrefix: String = text
+            if searchPrefix.begins_with("/"):
+                searchPrefix = searchPrefix.substr(1)
+            searchPrefix = searchPrefix.to_lower()
+            for cmdName in CommandRegistry.GetAllCommands():
+                if cmdName.begins_with(searchPrefix):
+                    _autocompleteList.append(cmdName)
+        else:
+
+            var cmdName: String = parts[0].to_lower()
+            var cmdConfig: CommandConfig = CommandRegistry.GetCommand(cmdName)
+            if cmdConfig && parts.size() - 2 < cmdConfig.argsInfo.size():
+                var argInfo: CommandArg = cmdConfig.argsInfo[parts.size() - 2]
+                if argInfo.suggestions.is_valid():
+                    var currentArg: String = parts[parts.size() - 1].to_lower()
+                    var candidates = argInfo.suggestions.call()
+                    if candidates is Array:
+                        for candidate in candidates:
+                            if str(candidate).to_lower().begins_with(currentArg):
+                                _autocompleteList.append(str(candidate))
         if _autocompleteList.size() == 0:
             return
         _autocompleteIndex = 0
     else:
         _autocompleteIndex = (_autocompleteIndex + 1) % _autocompleteList.size()
     if _autocompleteList.size() > 0:
+        var parts: PackedStringArray = CommandRegistry._ParseCommand(text.substr(1) if text.begins_with("/") else text)
         var selected: String = _autocompleteList[_autocompleteIndex]
-        _inputLine.text = "/" + selected + " "
+        if parts.size() <= 1:
+            _inputLine.text = "/" + selected + " "
+        else:
+            parts[parts.size() - 1] = selected
+            _inputLine.text = "/" + " ".join(parts) + " "
         _inputLine.caret_column = _inputLine.text.length()

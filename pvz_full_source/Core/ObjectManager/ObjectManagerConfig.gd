@@ -19,6 +19,7 @@ enum OBJECT{
     COIN_TQ = 25, 
     COIN_YB1 = 26, 
     COIN_YB2 = 27, 
+    COIN_GOLD_SHARD = 28, 
 
     PARTICLES_SPLASH = 201, 
     PARTICLES_RISE_DIRT = 202, 

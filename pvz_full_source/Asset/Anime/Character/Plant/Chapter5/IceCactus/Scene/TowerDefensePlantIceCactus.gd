@@ -37,7 +37,8 @@ func _ready() -> void :
 
     rayCast2D2.position.y = TowerDefenseManager.GetMapGridSize().y
     rayCast2D3.position.y = - TowerDefenseManager.GetMapGridSize().y
-
+    fireComponentExtendCactus.upOver.connect(UpOver)
+    fireComponentExtendCactus.downOver.connect(DownOver)
 
 func IdleEntered() -> void :
     super.IdleEntered()

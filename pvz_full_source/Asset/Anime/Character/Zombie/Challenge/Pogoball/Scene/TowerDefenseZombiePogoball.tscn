@@ -6,12 +6,17 @@
 [ext_resource type="Resource" uid="uid://c2mjb2w0pa1jv" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Config/TowerDefenseZombiePogoball.tres" id="4"]
 [ext_resource type="Resource" uid="uid://blusq7k3r2meh" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/DamagePoint/Config/ZombiePogoballDamagePointArm.tres" id="5"]
 [ext_resource type="Resource" uid="uid://3b5ub5vpm0bd" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/DamagePoint/Config/ZombiePogoballDamagePointHead.tres" id="6"]
-[ext_resource type="PackedScene" uid="uid://duk6kbxistmhr" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/ZombiePogoball.tscn" id="7"]
-[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="8"]
-[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="9"]
-[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="10"]
-[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="11"]
-[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="12"]
+[ext_resource type="Resource" uid="uid://3aah4neu70o3" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Armor/Config/ZombiePogoballArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://bbnsx5rd8agk4" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Armor/Config/ZombiePogoballArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://iwbqfu36ujap" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Armor/Config/ZombiePogoballArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://baj4e3pq0mj1q" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Armor/Config/ZombiePogoballArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://ebpwwtkbfm45" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/Armor/Config/ZombiePogoballArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://duk6kbxistmhr" path="res://Asset/Anime/Character/Zombie/Challenge/Pogoball/ZombiePogoball.tscn" id="12"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="13"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="14"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="15"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="16"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="17"]
 
 [sub_resource type="Resource" id="Resource_2n2di"]
 script = ExtResource("3")
@@ -44,19 +49,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_ocd5u"]
 image = SubResource("Image_0j2sv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2n2di"]
-shader = ExtResource("8")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7otul"]
+shader = ExtResource("13")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ocd5u")
@@ -65,7 +59,7 @@ shader_parameter/imageCustomBlendData = null
 shader_parameter/imageAnimeBlendData = null
 shader_parameter/imageAtlasSize = Vector2(245, 226)
 shader_parameter/uvs = [Rect2(0, 0, 120, 120), Rect2(155, 178, 20, 23), Rect2(85, 183, 25, 27), Rect2(110, 178, 24, 30), Rect2(163, 133, 50, 19), Rect2(57, 120, 53, 63), Rect2(120, 99, 64, 31), Rect2(110, 130, 53, 48), Rect2(194, 173, 19, 24), Rect2(0, 190, 15, 25), Rect2(32, 183, 27, 17), Rect2(0, 154, 32, 36), Rect2(230, 172, 15, 26), Rect2(205, 152, 32, 20), Rect2(175, 173, 19, 28), Rect2(213, 172, 17, 35), Rect2(163, 152, 42, 21), Rect2(59, 183, 26, 32), Rect2(134, 178, 21, 48), Rect2(120, 0, 98, 99), Rect2(0, 120, 57, 34), Rect2(184, 99, 57, 34)]
-shader_parameter/layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+shader_parameter/layerVisible = [false, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
 shader_parameter/mediaReplaceAtlas = null
 shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -95,19 +89,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_2e73a"]
 image = SubResource("Image_imre7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2m341"]
-shader = ExtResource("8")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7f6t"]
+shader = ExtResource("13")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -146,19 +129,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
 image = SubResource("Image_rag2u")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkfeh"]
-shader = ExtResource("8")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ckjw"]
+shader = ExtResource("13")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -188,12 +160,22 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoball")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
 damagePart = {
 "Arm": ExtResource("5"),
-"Head": ExtResource("6")
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("6"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
 }
 PreviewDamagePointPersontage = 1.0
-Armor = ["Pogo"]
+Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
+DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
+DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePogoball/HeadSlot")
 gravity = 490.0
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
@@ -202,38 +184,39 @@ position = Vector2(12.6, 40)
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(23, 44)
 
-[node name="ZombiePogoball" parent="SpriteGroup/TransformPoint" index="0" unique_id=1279910592 instance=ExtResource("7")]
-material = SubResource("ShaderMaterial_2n2di")
-instance_shader_parameters/frameIndex = 3.4647226666666664
+[node name="ZombiePogoball" parent="SpriteGroup/TransformPoint" index="0" unique_id=1279910592 instance=ExtResource("12")]
+material = SubResource("ShaderMaterial_7otul")
+instance_shader_parameters/frameIndex = 3.9877543030303024
 position = Vector2(-23, -44)
+Animation/LayerVisible/ball = false
 
 [node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombiePogoball" index="0" unique_id=1041720530]
-material = SubResource("ShaderMaterial_2m341")
-position = Vector2(-7.6578827, -49.448563)
-rotation = -0.05469746
+material = SubResource("ShaderMaterial_j7f6t")
+position = Vector2(-7.6892624, -48.58033)
+rotation = -0.062917635
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePogoball" index="1" unique_id=1419542342]
-position = Vector2(-0.08141327, -13.98847)
-rotation = -0.11558349
-scale = Vector2(0.7984225, 0.7984225)
+position = Vector2(0.88995934, -12.777252)
+rotation = -0.1465385
+scale = Vector2(0.79853356, 0.79853356)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePogoball" index="2" unique_id=662838587]
-position = Vector2(-25.831558, -5.9923687)
-rotation = -0.08076213
-scale = Vector2(0.79897135, 0.7993529)
+position = Vector2(-25.971064, -5.9741154)
+rotation = -0.085698724
+scale = Vector2(0.7989705, 0.79935277)
 
 [node name="PogoSlot" parent="SpriteGroup/TransformPoint/ZombiePogoball" index="3" unique_id=1446300196]
-position = Vector2(-11.810743, 8.8925705)
-rotation = -0.08076213
-scale = Vector2(0.79897135, 0.7993529)
+position = Vector2(-11.876955, 8.841425)
+rotation = -0.085698724
+scale = Vector2(0.7989705, 0.79935277)
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePogoball" index="4" unique_id=1114298737]
 position = Vector2(-40, -80)
 scale = Vector2(1, 1)
 
-[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=634896316 instance=ExtResource("9")]
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=634896316 instance=ExtResource("14")]
 visible = false
-material = SubResource("ShaderMaterial_qkfeh")
+material = SubResource("ShaderMaterial_1ckjw")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-12, -58)
 trueFrameRate = 180.0
@@ -245,15 +228,15 @@ position = Vector2(20.6, 34)
 position = Vector2(4, -2)
 
 [node name="Pogo" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="4" unique_id=1927600118]
-script = ExtResource("10")
+script = ExtResource("15")
 
 [node name="ToPogo" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="9" unique_id=1330664976]
-script = ExtResource("11")
+script = ExtResource("16")
 to = NodePath("../Pogo")
 event = &"ToPogo"
 delay_in_seconds = "0.0"
 
-[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=322116514 node_paths=PackedStringArray("checkArea") instance=ExtResource("12")]
+[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=322116514 node_paths=PackedStringArray("checkArea") instance=ExtResource("17")]
 unique_name_in_owner = true
 checkArea = NodePath("CheckJumpArea")
 checkIntreval = 0

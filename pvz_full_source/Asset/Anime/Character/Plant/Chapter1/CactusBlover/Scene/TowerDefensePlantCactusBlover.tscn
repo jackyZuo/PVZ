@@ -32,14 +32,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_wnltk"]
 image = SubResource("Image_dv2mf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ns4c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l06ws"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_wnltk")
@@ -68,7 +62,8 @@ Flag/Collision = 11
 "Override/Hit Nut Scale" = false
 "Override/Hit Frozen Scale" = false
 "Override/Catapult Height" = false
-"Override/Penetrate Num" = false
+"Override/Penetrate Num" = true
+Penetrate/Num = -1
 "Override/Penetrate Over Back" = false
 "Override/Back Out Ground" = false
 "Override/Back Duration" = false
@@ -88,8 +83,8 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="CactusBlover" parent="SpriteGroup/TransformPoint" index="0" unique_id=398038348 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_6ns4c")
-instance_shader_parameters/frameIndex = 26.913417333333335
+material = SubResource("ShaderMaterial_l06ws")
+instance_shader_parameters/frameIndex = 24.80437733333333
 position = Vector2(0, -30)
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]

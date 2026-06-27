@@ -49,7 +49,9 @@ func IdleProcessing(delta: float) -> void :
                 waitTimer += delta * timeScale
         else:
             waitGrab = false
-            buff.BuffClear()
+            for buffKey in buff.buffDictionary.keys():
+                if buffKey != "Hypnoses":
+                    buff.BuffDelete(buffKey)
             state.send_event("ToGrab")
 
 func Spawn() -> void :
@@ -158,10 +160,16 @@ func AnimeEvent(command: String, argument: Variant) -> void :
                 return
             grabOver = true
             AudioManager.AudioPlay("Floop", AudioManagerEnum.TYPE.SFX)
-            if instance.hypnoses:
-                return
             cell = TowerDefenseManager.GetMapCell(gridPos)
+
             var getTarget = cell.GetTarget(instance.collisionFlags, camp, false, true)
+
+            if !is_instance_valid(getTarget):
+                var targets = TowerDefenseManager.GetCharacterTargetNear(self)
+                for target in targets:
+                    if target.gridPos == gridPos:
+                        getTarget = target
+                        break
             if is_instance_valid(getTarget):
                 hasPlant = true
                 getTarget.die = true

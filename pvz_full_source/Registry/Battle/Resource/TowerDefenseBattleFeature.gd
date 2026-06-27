@@ -72,3 +72,6 @@ func GetProcess() -> TowerDefenseBattleProcess:
 
 func GetLevelControl() -> TowerDefenseInGameLevelControl:
     return control.levelControl
+
+func GetTree() -> SceneTree:
+    return control.get_tree()

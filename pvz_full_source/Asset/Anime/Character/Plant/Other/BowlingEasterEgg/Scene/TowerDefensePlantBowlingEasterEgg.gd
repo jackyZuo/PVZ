@@ -45,7 +45,7 @@ func AnimeCompleted(clip: String) -> void :
                     if TowerDefenseManager.CheckMapGridPosIn(_plantGridPos):
                         var plant = _packetConfig.Plant(_plantGridPos, true)
                         if is_instance_valid(plant):
-                            plant.WeakUp.call_deferred()
+                            plant.WakeUp.call_deferred()
                             if instance.hypnoses:
                                 plant.Hypnoses()
                             if Global.isMultiplayerMode and MultiPlayerManager.isHost:

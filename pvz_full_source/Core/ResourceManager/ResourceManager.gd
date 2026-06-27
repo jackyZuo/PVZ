@@ -65,7 +65,7 @@ signal loadPercentage(persontage: float, _stepName: String)
 
 var thread: Thread = Thread.new()
 
-var stepMax: int = 13
+var stepMax: int = 14
 var stepName: String = "LoadMap"
 var currentStep: int = 0
 
@@ -102,6 +102,12 @@ func Load() -> void :
 
 
     currentStep = 3
+    stepName = "LOAD_ARMOR"
+    loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
+
+    TowerDefenseArmorRegistry.Init()
+
+    currentStep = 4
     stepName = "LOAD_AUDIO"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -109,20 +115,24 @@ func Load() -> void :
         AUDIOS[audioName] = load(AUDIO_RESOURCE.data[audioName])
 
 
-    currentStep = 4
+    currentStep = 5
     stepName = "LOAD_CHARACTER"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
     for characterName: String in CHARACTER_RESOURCE.data.keys():
         var characterData: Dictionary = CHARACTER_RESOURCE.data.get(characterName, {}) as Dictionary
         if !characterData.is_empty():
-            _character_sprite_paths[characterName] = characterData.get("Sprite")
-            _character_scene_paths[characterName] = characterData.get("Scene")
+            var spritePath = characterData.get("Sprite")
+            if spritePath != null && spritePath != "":
+                _character_sprite_paths[characterName] = spritePath
+            var scenePath = characterData.get("Scene")
+            if scenePath != null && scenePath != "":
+                _character_scene_paths[characterName] = scenePath
             var characterPacketData: Dictionary = characterData.get("Packet", {}) as Dictionary
             for packetName: String in characterPacketData.keys():
                 _packet_paths[packetName] = characterPacketData.get(packetName)
 
-    currentStep = 5
+    currentStep = 6
     stepName = "LOAD_TALK"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -130,7 +140,7 @@ func Load() -> void :
         TALKS[talkName] = load(TALK_RESOURCE.data[talkName])
 
 
-    currentStep = 6
+    currentStep = 7
     stepName = "LOAD_TUTORIAL"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -138,7 +148,7 @@ func Load() -> void :
         TUTORIALS[tutorialName] = load(TUTORIAL_RESOURCE.data[tutorialName])
 
 
-    currentStep = 7
+    currentStep = 8
     stepName = "LOAD_PACKETBANK"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -161,7 +171,7 @@ func Load() -> void :
                 else:
                     config.category[categoryName] = includeConfig.category[categoryName].duplicate(true)
 
-    currentStep = 8
+    currentStep = 9
     stepName = "LOAD_COLLECTABLE"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -169,7 +179,7 @@ func Load() -> void :
         COLLECTABLES[collectableName] = load(COLLECTABLE_RESOURCE.data[collectableName])
 
 
-    currentStep = 9
+    currentStep = 10
     stepName = "LOAD_SHOVEL"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -177,7 +187,7 @@ func Load() -> void :
         SHOVELS[shovelName] = load(SHOVEL_RESOURCE.data[shovelName])
 
 
-    currentStep = 10
+    currentStep = 11
     stepName = "LOAD_MOWER"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -185,7 +195,7 @@ func Load() -> void :
         MOWERS[mowerName] = load(MOWER_RESOURCE.data[mowerName])
 
 
-    currentStep = 11
+    currentStep = 12
     stepName = "LOAD_SHOP"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -193,7 +203,7 @@ func Load() -> void :
         SHOPS[shopName] = load(SHOP_RESOURCE.data[shopName])
 
 
-    currentStep = 12
+    currentStep = 13
     stepName = "LOAD_LEVEL"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
@@ -205,13 +215,13 @@ func Load() -> void :
 
     LEVELS = LEVEL_RESOURCE.data.duplicate(true)
 
-    currentStep = 13
+    currentStep = 14
     stepName = "LOAD_MOD"
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
 
     ModManager.Find()
 
-    currentStep = 14
+    currentStep = 15
     stepName = ""
     loadPercentage.emit.call_deferred(float(currentStep) / float(stepMax), stepName)
     loadOver.emit.call_deferred()

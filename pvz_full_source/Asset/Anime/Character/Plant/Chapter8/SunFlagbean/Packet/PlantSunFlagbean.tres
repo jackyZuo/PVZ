@@ -2,10 +2,17 @@
 
 [ext_resource type="Resource" uid="uid://dwnf268etvm1d" path="res://Asset/Anime/Character/Plant/Chapter8/SunFlagbean/Config/TowerDefensePlantSunFlagbean.tres" id="1"]
 [ext_resource type="Script" uid="uid://c6d3po5310ugw" path="res://Resource/TowerDefense/PacketBank/Packet/TowerDefensePacketConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://p7yhpfahgp8d" path="res://Resource/UnlockCondition/UnlockConditionLevelFinishConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_l1y3y"]
+script = ExtResource("3")
+levelSaveKey = "Level8_8"
+metadata/_custom_type_script = "uid://p7yhpfahgp8d"
 
 [resource]
 script = ExtResource("2")
 saveKey = "PlantSunFlagbean"
+unlockCheckList = [SubResource("Resource_l1y3y")]
 name = "TOWERDEFENSE_PLANT_SUNFLAGBEAN_NAME"
 describe = "TOWERDEFENSE_PLANT_SUNFLAGBEAN_EXPRESTION"
 handbookDescribe = "TOWERDEFENSE_PLANT_SUNFLAGBEAN_HANDBOOK_EXPRESTION"

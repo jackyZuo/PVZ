@@ -1,6 +1,12 @@
 @tool
 extends TowerDefenseZombie
 
+func _ready() -> void :
+    super._ready()
+    if Engine.is_editor_hint():
+        return
+    targetRegistrationComponent.canCarry = false
+
 func _physics_process(delta: float) -> void :
     if Engine.is_editor_hint():
         return

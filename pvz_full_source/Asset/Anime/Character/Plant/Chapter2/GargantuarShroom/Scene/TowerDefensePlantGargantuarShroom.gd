@@ -11,7 +11,7 @@ func AttackDeal(character: TowerDefenseCharacter, type: String, num: float) -> v
         return
     if !is_instance_valid(character):
         return
-    if character.instance.ArmorHas("SpecialHelmet"):
+    if character.instance.unUseBuffFlags & TowerDefenseEnum.CHARACTER_BUFF_FLAGS.HYPNOSES:
         SkipInvincibleHurt(num)
         return
     if type == "Eat":

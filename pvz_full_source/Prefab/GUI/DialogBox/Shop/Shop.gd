@@ -144,7 +144,7 @@ func GardenButtomPressed() -> void :
 
 func TryLevelButtonPressed() -> void :
     AudioManager.AudioPlay("ButtonPress", AudioManagerEnum.TYPE.SFX)
-    var dialog = DialogManager.DialogCreate("TryLevel")
+    var dialog = DialogManager.DialogCreate("TryLevel", {"openedFromShop": true})
     TowerDefenseManager.coinBank.Hide.call_deferred()
     visible = false
     await dialog.close

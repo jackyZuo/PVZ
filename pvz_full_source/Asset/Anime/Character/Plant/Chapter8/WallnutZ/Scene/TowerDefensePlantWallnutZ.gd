@@ -25,7 +25,7 @@ func Timeout(timerName: String) -> void :
                 if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
                     timerComponent.Run("Spawn", 25.0)
                     return
-                var zombie = CreateCharacter("ZombieNormalWallnut", global_position, gridPos, 0.0)
+                var zombie = CreateCharacter("ZombieNormalWallnut", global_position, gridPos, groundHeight)
                 zombie.Rise(2.5)
                 if !instance.hypnoses:
                     zombie.Hypnoses()
@@ -34,7 +34,7 @@ func Timeout(timerName: String) -> void :
                     if is_instance_valid(control):
                         var _sync_id: int = control._get_next_sync_id()
                         control._register_sync_character(_sync_id, zombie)
-                        MultiPlayerManager.SendSpawnCharacterAt("ZombieNormalWallnut", gridPos.x, gridPos.y, _sync_id, instance.hitpointScale, transformPoint.scale.x, !instance.hypnoses, 2.5, true, global_position.x, global_position.y)
+                        MultiPlayerManager.SendSpawnCharacterAt("ZombieNormalWallnut", gridPos.x, gridPos.y, _sync_id, instance.hitpointScale, transformPoint.scale.x, !instance.hypnoses, 2.5, true, global_position.x, global_position.y, false, groundHeight)
             timerComponent.Run("Spawn", 25.0)
 
 @warning_ignore("unused_parameter")
@@ -57,7 +57,7 @@ func DestroySet() -> void :
         Destroy()
         return
     var zombiePacket: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("ZombieGargantuar")
-    var zombie: TowerDefenseZombie = zombiePacket.Create(global_position, gridPos, 0.0)
+    var zombie: TowerDefenseZombie = zombiePacket.Create(global_position, gridPos, groundHeight)
     characterNode.add_child(zombie)
     if !instance.hypnoses:
         zombie.Hypnoses()
@@ -77,7 +77,7 @@ func DestroySet() -> void :
         if is_instance_valid(control):
             var _sync_id: int = control._get_next_sync_id()
             control._register_sync_character(_sync_id, zombie)
-            MultiPlayerManager.SendSpawnCharacterAt("ZombieGargantuar", gridPos.x, gridPos.y, _sync_id, 1.0, 1.0, !instance.hypnoses, 0.0, true, global_position.x, global_position.y, true)
+            MultiPlayerManager.SendSpawnCharacterAt("ZombieGargantuar", gridPos.x, gridPos.y, _sync_id, 1.0, 1.0, !instance.hypnoses, 0.0, true, global_position.x, global_position.y, true, groundHeight)
     Destroy()
 
 func ExportVariantSave() -> Dictionary:

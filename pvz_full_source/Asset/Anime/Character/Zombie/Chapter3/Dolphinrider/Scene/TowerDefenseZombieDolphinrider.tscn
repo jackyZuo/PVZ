@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://h0ikl2ullv57" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Config/TowerDefenseZombieDolphinrider.tres" id="3"]
 [ext_resource type="Resource" uid="uid://b3ubc70a7n1db" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/DamagePoint/Config/ZombieDolphinriderDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://cmpwkc62dhvit" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/DamagePoint/Config/ZombieDolphinriderDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://hpapb5s2884t" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorHelmet.tres" id="6"]
-[ext_resource type="Resource" uid="uid://ryoresff6mb5" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorBlackHelmet.tres" id="7"]
-[ext_resource type="Resource" uid="uid://c1ghmtt3o6mxh" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorSpecialHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://cwxymwrx4flcy" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://ryoresff6mb5" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cwxymwrx4flcy" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorCone.tres" id="7"]
+[ext_resource type="Resource" uid="uid://hpapb5s2884t" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c1ghmtt3o6mxh" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorSpecialHelmet.tres" id="9"]
 [ext_resource type="PackedScene" uid="uid://b3qti1abse28p" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Sprite/Base/ZombieDolphinrider.tscn" id="10"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="11"]
 [ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="12"]
@@ -41,12 +41,6 @@ image = SubResource("Image_jdr8k")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajvg5"]
 shader = ExtResource("11")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_hp6ng")
@@ -82,39 +76,39 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("7"),
-"Cone": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
+"Cone": ExtResource("7"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("6"),
-"SpecialHelmet": ExtResource("8")
+"Helmet": ExtResource("8"),
+"SpecialHelmet": ExtResource("9")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
-DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
 DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
+DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
 
 [node name="ZombieDolphinrider" parent="SpriteGroup/TransformPoint" index="0" unique_id=1800874834 instance=ExtResource("10")]
 material = SubResource("ShaderMaterial_ajvg5")
-instance_shader_parameters/frameIndex = 2.373852888888889
+instance_shader_parameters/frameIndex = 13.447232444444444
 position = Vector2(-12, -33)
 trueFrameRate = 180.0
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="0"]
-position = Vector2(-22.412811, -46.122524)
-rotation = 0.021074064
-scale = Vector2(0.7996775, 0.7996775)
+position = Vector2(-21.670948, -46.037994)
+rotation = -0.012609525
+scale = Vector2(0.7999319, 0.7999319)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="1"]
-position = Vector2(21.291649, -12.090718)
-rotation = -0.032357328
-scale = Vector2(0.7998275, 0.7998275)
+position = Vector2(21.461746, -11.214046)
+rotation = -0.01065749
+scale = Vector2(0.7999041, 0.7999041)
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="2"]
 position = Vector2(-64.16, 18)
@@ -140,7 +134,14 @@ to = NodePath("../Run")
 event = &"ToRun"
 delay_in_seconds = "0.0"
 
-[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1165448060 node_paths=PackedStringArray("checkArea") instance=ExtResource("14")]
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="18" unique_id=1930686332]
+attackType = "Smash"
+checkVase = true
+
+[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
+groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieDolphinrider/GroundSlot")
+
+[node name="AttackComponent2" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="24" unique_id=1165448060 node_paths=PackedStringArray("checkArea") instance=ExtResource("14")]
 unique_name_in_owner = true
 checkArea = NodePath("CheckJumpArea")
 checkIntreval = 0
@@ -156,13 +157,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent2/CheckJumpArea" index="0" unique_id=1967608873]
 position = Vector2(-18.5, -1)
 shape = SubResource("RectangleShape2D_s12qd")
-
-[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1930686332]
-attackType = "Smash"
-checkVase = true
-
-[node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="20" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
-groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieDolphinrider/GroundSlot")
 
 [connection signal="state_entered" from="StateChart/CompoundState/Jump" to="." method="JumpEntered"]
 [connection signal="state_exited" from="StateChart/CompoundState/Jump" to="." method="JumpExited"]

@@ -1,15 +1,23 @@
 [gd_resource type="Resource" script_class="CharacterArmorData" format=3 uid="uid://btmkvvvpit7ji"]
 
 [ext_resource type="Resource" uid="uid://cwmj4t1ype2i3" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorChess.tres" id="1"]
-[ext_resource type="Resource" uid="uid://5qnngpp2s6rb" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorPogo.tres" id="2"]
-[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="3"]
+[ext_resource type="Resource" path="res://Registry/Armor/Config/Chess.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5qnngpp2s6rb" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorPogo.tres" id="3"]
+[ext_resource type="Resource" uid="uid://del2w0yx8aqs0" path="res://Registry/Armor/Config/Pogo.tres" id="4"]
+[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="5"]
 
 [resource]
-script = ExtResource("3")
-armorList = [ExtResource("2"), ExtResource("1")]
+script = ExtResource("5")
+armorList = [ExtResource("1"), ExtResource("3")]
 armorDictionary = {
-"Chess": ExtResource("1"),
-"Pogo": ExtResource("2")
+"Chess": {
+"slotConfig": ExtResource("1"),
+"typeData": ExtResource("2")
+},
+"Pogo": {
+"slotConfig": ExtResource("3"),
+"typeData": ExtResource("4")
+}
 }
 fliterAllDictionary = {
 "Chess": ["hat"],

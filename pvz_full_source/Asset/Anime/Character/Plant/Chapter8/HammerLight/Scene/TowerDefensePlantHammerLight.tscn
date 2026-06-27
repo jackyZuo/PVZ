@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt3uv3gvinhww" path="res://Asset/Anime/Character/Plant/Chapter8/HammerLight/HammerLight.tscn" id="4"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
 [ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bm8e0aiyhegy" path="res://Prefab/Particles/Explosion/Hammer/HammerExplosion.tscn" id="7"]
 
 [sub_resource type="Image" id="Image_s3l2i"]
 data = {
@@ -31,19 +32,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_qvvyx"]
 image = SubResource("Image_bkorq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xcoy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx0wb"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_qvvyx")
@@ -71,15 +61,19 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="HammerLight" parent="SpriteGroup/TransformPoint" index="0" unique_id=365456987 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_8xcoy")
-instance_shader_parameters/frameIndex = 27.254172
+material = SubResource("ShaderMaterial_hx0wb")
+instance_shader_parameters/frameIndex = 28.251488
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)
 
 [node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=206414620 node_paths=PackedStringArray("sprite") instance=ExtResource("6")]
+unique_name_in_owner = true
 sprite = NodePath("../../SpriteGroup/TransformPoint/HammerLight")
 checkIZM = false
 explodeUse = false
+reverseAudio = ""
+explodeAudio = ""
+explodeEffect = ExtResource("7")
 
 [connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

@@ -262,6 +262,11 @@ target.config.name.begins_with("ZombieYetiDigger"):
             targetNum -= 1
         elif target.scale.x < 0:
             targetNum -= 1
+    if targetNum == 0:
+        var zombieList: Array = GetTree().get_nodes_in_group("Zombie")
+        for zombie: TowerDefenseCharacter in zombieList:
+            if zombie.isDestroy && !zombie.skipDestroySet:
+                return false
     if targetNum > 0:
         levelControl.awardPos = targetList[0].global_position
     if targetNum == 0:

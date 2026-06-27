@@ -13,6 +13,8 @@ extends DialogBoxBase
 @onready var describeLabel: RichTextLabel = %DescribeLabel
 @onready var levelIdLabel: RichTextLabel = %LevelIDLabel
 @onready var playedNumLabel: RichTextLabel = %PlayedNumLabel
+@onready var completionRateTexture: TextureRect = %CompletionRateTexture
+@onready var completionRateLabel: RichTextLabel = %CompletionRateLabel
 @onready var dateLabel: RichTextLabel = %DateLabel
 
 @onready var collectionButton: TextureButton = %CollectionButton
@@ -36,6 +38,9 @@ var playedNum: int = 0
 var date: int = 0
 var likeNum: int = 0
 var dislikeNum: int = 0
+var completions: int = 0
+var failures: int = 0
+var abandons: int = 0
 var loadOver: bool = false
 
 func InitDialog(_id: String) -> void :
@@ -55,6 +60,9 @@ func InitDialogData(_levelData: Dictionary) -> void :
     date = levelData.get("uploadTime", "")
     likeNum = levelData.get("likes", 0)
     dislikeNum = levelData.get("dislikes", 0)
+    completions = levelData.get("completions", 0)
+    failures = levelData.get("failures", 0)
+    abandons = levelData.get("abandons", 0)
     nameLabel.text = levelName
     var mapConfig: TowerDefenseMapConfig = TowerDefenseManager.GetMapConfig(map)
     mapTexture.texture = mapConfig.mapTexture
@@ -62,7 +70,16 @@ func InitDialogData(_levelData: Dictionary) -> void :
     authorLabel.text = "作者:%s" % author
     describeLabel.text = "简介:%s" % description
     levelIdLabel.text = "关卡ID:%s" % id
-    playedNumLabel.text = "游玩次数:%d" % playedNum
+    var total: int = completions + failures + abandons
+    playedNumLabel.text = "游玩次数:%d" % total
+    var completionRate: float = 0.0
+    if total > 0:
+        completionRate = float(completions) / total * 100.0
+    completionRateLabel.text = "通关率:%.2f%%" % completionRate
+    if levelData.has("survivalRoundlimit") && levelData.get("survivalRoundlimit") != null:
+        var survivalRoundlimit: int = levelData.get("survivalRoundlimit", -1)
+        if survivalRoundlimit == -1:
+            completionRateTexture.visible = false
     dateLabel.text = "上传日期:%s" % Time.get_datetime_string_from_unix_time(date + Time.get_time_zone_from_system().bias * 60, true)
 
     var myCollectionData: Dictionary = GameSaveManager.GetKeyValue("OnlineMyCollection")

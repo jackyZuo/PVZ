@@ -184,10 +184,7 @@ func _physics_process(delta: float) -> void :
 
 
 func GetTarget() -> TowerDefenseCharacter:
-    var targetList = TowerDefenseManager.GetCharacterTargetNearFromArray(parent, TowerDefenseManager.GetCharacterTargetLineFromArea(parent, checkArea, false), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, true)
-    if targetList.size() > 0:
-        return targetList[0]
-    return null
+    return TowerDefenseManager.GetCharacterTargetNearestFromArea(parent, checkArea, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, true)
 
 
 
@@ -245,7 +242,7 @@ func _CheckTarget(projectileData: TowerDefenseProjectileCreateData, collectionFl
 func _CheckAreaTarget(collectionFlag: int, checkInterval: bool) -> bool:
     if !checkArea.has_overlapping_areas():
         return false
-    var areas: Array[Area2D] = checkArea.get_overlapping_areas()
+    var areas: Array = TowerDefenseManager.GetOverlappingAreasCached(checkArea)
     for area: Area2D in areas:
         var character = area.get_parent()
         if !(character is TowerDefenseCharacter):
@@ -360,7 +357,8 @@ func SetCheckLength(_checkLength: float) -> void :
 
 
 
-func CreateProjectile(posId: int, velocity: Vector2, projectileData: TowerDefenseProjectileCreateData, collisionFlags: int = -1, camp: TowerDefenseEnum.CHARACTER_CAMP = parent.camp, offset: Vector2 = Vector2.ZERO) -> TowerDefenseProjectile:
+
+func CreateProjectile(posId: int, velocity: Vector2, projectileData: TowerDefenseProjectileCreateData, collisionFlags: int = -1, camp: TowerDefenseEnum.CHARACTER_CAMP = parent.camp, offset: Vector2 = Vector2.ZERO, offsetLine: int = 0, filterByLine: bool = false) -> TowerDefenseProjectile:
     if collisionFlags == -1:
         collisionFlags = parent.instance.collisionFlags
     if projectileData == null:
@@ -377,52 +375,50 @@ func CreateProjectile(posId: int, velocity: Vector2, projectileData: TowerDefens
     if projectileConfig.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.CATAPULT:
         height -= parent.groundHeight
         if is_instance_valid(checkArea) || checkAllLine:
-            target = _FindCatapultTarget(collisionFlags, pos)
+            target = _FindCatapultTarget(collisionFlags, pos, offsetLine, filterByLine)
         elif is_instance_valid(firstCharacter):
             target = firstCharacter
     var projectile: TowerDefenseProjectile = CreateProjectilePosition(parent, target, height, pos, velocity * sign(parent.scale.x * parent.transformPoint.scale.x * parent.sprite.scale.x), projectileData, collisionFlags, camp, offset)
     projectile.gridPos.y = parent.gridPos.y
     projectile.checkHeight = checkHeight
     if projectileConfig.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.TRACK:
-        var targetList = TowerDefenseManager.GetProjectileTargetNearProjectile(projectile, collisionFlags, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false)
-        if targetList.size() > 0:
-            projectile.target = targetList[0]
+        target = TowerDefenseManager.GetProjectileTargetNearestProjectile(projectile, collisionFlags, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false)
+        if target != null:
+            projectile.target = target
     return projectile
 
 
 
 
 
-func _FindCatapultTarget(collisionFlags: int, pos: Vector2) -> TowerDefenseCharacter:
-    var targetList: Array
+
+
+@warning_ignore("unused_parameter")
+func _FindCatapultTarget(collisionFlags: int, pos: Vector2, offsetLine: int = 0, filterByLine: bool = false) -> TowerDefenseCharacter:
+    var target: TowerDefenseCharacter = null
     if checkAllLine:
+        var characterList: Array = TowerDefenseManager.GetCharacterTarget(parent, false, true)
+        if filterByLine:
+            var targetLine: int = clampi(parent.gridPos.y + offsetLine, 1, TowerDefenseManager.GetMapGridNum().y)
+            var lineCharacterList: Array = []
+            for character in characterList:
+                if character.gridPos.y == targetLine:
+                    lineCharacterList.append(character)
+            characterList = lineCharacterList
         if catapultFirstFar:
-            targetList = TowerDefenseManager.GetCharacterTargetFarFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTarget(parent, false, true), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, true)
+            target = TowerDefenseManager.GetCharacterTargetFarthestFromArrayWithCollisionFlags(parent, collisionFlags, characterList, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, false)
         else:
-            targetList = TowerDefenseManager.GetCharacterTargetNearFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTarget(parent, false, true), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, true)
+            target = TowerDefenseManager.GetCharacterTargetNearestFromArrayWithCollisionFlags(parent, collisionFlags, characterList, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, false)
     else:
         if catapultFirstFar:
-            targetList = TowerDefenseManager.GetCharacterTargetFarFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTargetLineFromAreaWithCollisionFlags(parent, collisionFlags, checkArea, false), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, true)
+            target = TowerDefenseManager.GetCharacterTargetFarthestFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTargetLineFromAreaWithCollisionFlags(parent, collisionFlags, checkArea, false), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, false)
         else:
-            targetList = TowerDefenseManager.GetCharacterTargetNearFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTargetLineFromAreaWithCollisionFlags(parent, collisionFlags, checkArea, false), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, true)
-    if !canTargetGargantuar:
-        targetList = targetList.filter( func(c: TowerDefenseCharacter): return !(c is TowerDefenseZombie && c.instance.zombiePhysique >= TowerDefenseEnum.ZOMBIE_PHYSIQUE.HUGE))
-    if !randomChoose && airFirst:
-        targetList.sort_custom(
-            func(a: TowerDefenseCharacter, b: TowerDefenseCharacter):
-                if collisionFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE:
-                    if !(a.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE) && (b.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE):
-                        return false
-                    elif (a.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE) && !(b.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE):
-                        return true
-                return abs(a.global_position.x - pos.x) < abs(b.global_position.x - pos.x)
-        )
-    if targetList.size() > 0:
-        if randomChoose:
-            return targetList.pick_random()
-        else:
-            return targetList[0]
-    return null
+            target = TowerDefenseManager.GetCharacterTargetNearestFromArrayWithCollisionFlags(parent, collisionFlags, TowerDefenseManager.GetCharacterTargetLineFromAreaWithCollisionFlags(parent, collisionFlags, checkArea, false), TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION, false, false)
+    if !is_instance_valid(target):
+        return null
+    if !canTargetGargantuar && target is TowerDefenseZombie && target.instance.zombiePhysique >= TowerDefenseEnum.ZOMBIE_PHYSIQUE.HUGE:
+        return null
+    return target
 
 
 
@@ -674,6 +670,11 @@ func AnimeEvent(command: String, argument: Variant) -> void :
 
 func Fire() -> void :
     AudioManager.AudioPlay(fireAudioName, AudioManagerEnum.TYPE.SFX)
+    var hasOffsetLine: bool = false
+    for config in fireProjectileList:
+        if config.offsetLine != 0:
+            hasOffsetLine = true
+            break
     for projectileConfigId in fireProjectileList.size():
         var projectileConfig: FireComponentFireProjectileConfig = fireProjectileList[projectileConfigId]
         if projectileConfig.fireEventNeed != "" && currentFireEvent != projectileConfig.fireEventNeed:
@@ -699,11 +700,11 @@ func Fire() -> void :
                 collisionFlags = checkConfig.collisionFlags
         else:
             collisionFlags = runningCheck.GetCollisionFlags() if is_instance_valid(runningCheck) else checkConfig.GetCollisionFlags()
-        var projectile: TowerDefenseProjectile = CreateProjectile(projectileConfig.firePosId, velocity, projectileData, collisionFlags, parent.camp, Vector2.ZERO)
+        var projectile: TowerDefenseProjectile = CreateProjectile(projectileConfig.firePosId, velocity, projectileData, collisionFlags, parent.camp, Vector2.ZERO, projectileConfig.offsetLine, hasOffsetLine)
         projectile.projectileSprite.rotation = deg_to_rad(projectileConfig.dir)
         projectile.projectileBodyNode.scale.x = parent.scale.x
         projectile.gridPos = parent.gridPos
-        projectile.checkAll = checkAllLine
+        projectile.checkAll = checkAllLine && !hasOffsetLine
         projectile.fireLength = fireLength
         if projectileConfig.projectileFlip:
             projectile.projectileBodyNode.scale.x = - projectile.projectileBodyNode.scale.x
@@ -711,10 +712,11 @@ func Fire() -> void :
         var transLine: int = offsetLine - projectile.gridPos.y
         if transLine != 0:
             projectile.gridPos.y += transLine
-            projectile.moveTween = create_tween()
-            projectile.moveTween.set_ease(Tween.EASE_OUT)
-            projectile.moveTween.set_trans(Tween.TRANS_QUAD)
-            projectile.moveTween.tween_property(projectile, ^"global_position:y", projectile.global_position.y + TowerDefenseManager.GetMapGridSize().y * transLine, 0.15)
+            if !(projectile.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.CATAPULT):
+                projectile.moveTween = create_tween()
+                projectile.moveTween.set_ease(Tween.EASE_OUT)
+                projectile.moveTween.set_trans(Tween.TRANS_QUAD)
+                projectile.moveTween.tween_property(projectile, ^"global_position:y", projectile.global_position.y + TowerDefenseManager.GetMapGridSize().y * transLine, 0.15)
         elif projectileConfig.offsetLine != 0:
             projectile.global_position.x -= 25
 

@@ -46,19 +46,21 @@ func _create_sprite() -> void :
     if characterConfig.armorData:
         if config.initArmor.size() > 0:
             for armorName: String in config.initArmor:
-                var armor: CharacterArmorConfig = characterConfig.armorData.armorDictionary[armorName]
-                match armor.replaceMethod:
-                    "Media":
-                        characterConfig.armorData.OpenArmorFliters(sprite, armorName)
-                        characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
-                    "Sprite":
-                        var slotNode: AdobeAnimateSlot = sprite.get_node(armor.replaceSpriteSlotPath)
-                        var _sprite: Sprite2D = Sprite2D.new()
-                        _sprite.texture = armor.stageAnimeTexture[0]
-                        _sprite.position = armor.replaceSpriteOffset
-                        _sprite.rotation = armor.replaceSpriteRotation
-                        _sprite.scale = armor.replaceSpriteScale
-                        slotNode.add_child(_sprite)
+                var slotConfig: ArmorSlotConfig = characterConfig.armorData.GetSlotConfig(armorName)
+                var typeData: TowerDefenseArmorTypeData = characterConfig.armorData.GetTypeData(armorName)
+                if typeData:
+                    match slotConfig.replaceMethod:
+                        "Media":
+                            characterConfig.armorData.OpenArmorFliters(sprite, armorName)
+                            characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
+                        "Sprite":
+                            var slotNode: AdobeAnimateSlot = sprite.get_node(slotConfig.slotPath)
+                            var _sprite: Sprite2D = Sprite2D.new()
+                            _sprite.texture = typeData.stageAnimeTexture[0]
+                            _sprite.position = slotConfig.offset
+                            _sprite.rotation = slotConfig.rotation
+                            _sprite.scale = slotConfig.scale
+                            slotNode.add_child(_sprite)
 
 func VisibilityChanged() -> void :
     if !is_inside_tree():
@@ -110,6 +112,7 @@ func _ensure_thumbnail_rect() -> void :
     _thumbnail_rect = TextureRect.new()
     _thumbnail_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
     _thumbnail_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    _thumbnail_rect.light_mask = 0
     _thumbnail_rect.visible = false
     var parent = vc.get_parent()
     parent.add_child(_thumbnail_rect)

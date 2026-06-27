@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://dawtxqv6me74a" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Config/TowerDefenseZombiePolevaulter.tres" id="3"]
 [ext_resource type="Resource" uid="uid://bjbjruearyoqb" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/DamagePoint/Config/ZombiePolevaulterDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://2y1ybcqob0e" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/DamagePoint/Config/ZombiePolevaulterDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://bldijc342sf01" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cfkg0xan7bx6p" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://brwtai4qhefeg" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://d3oopdudb7qik" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://cfkg0xan7bx6p" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://bldijc342sf01" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d3oopdudb7qik" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://cof14t5esjj1u" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://0b2gtxc1y85q" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/ZombiePolevaulter.tscn" id="11"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
@@ -42,17 +42,6 @@ image = SubResource("Image_xbqe2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3rpkt"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_quk0j")
@@ -79,21 +68,21 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]

@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://dk2k8imp6huep" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeEnter.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://c3w1gsfm0f7nt" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeEnterHover.png" id="9"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7kbu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_86ien"]
 shader = ExtResource("4")
 shader_parameter/brightStrength = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x7pa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwtrw"]
 shader = ExtResource("4")
 shader_parameter/brightStrength = 0.0
 
@@ -74,7 +74,7 @@ vertical_alignment = 1
 
 [node name="PreCustomButton" parent="PageLabel" unique_id=1972977615 instance=ExtResource("3")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_v7kbu")
+material = SubResource("ShaderMaterial_86ien")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,7 +93,7 @@ flip_h = true
 
 [node name="NextCustomButton" parent="PageLabel" unique_id=350430345 instance=ExtResource("3")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_7x7pa")
+material = SubResource("ShaderMaterial_iwtrw")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,10 +140,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -244.0
-offset_top = -228.0
-offset_right = 244.0
-offset_bottom = -188.0
+offset_left = -324.0
+offset_top = -231.0
+offset_right = 324.0
+offset_bottom = -185.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -151,6 +151,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 20
 placeholder_text = "输入关卡ID或关键字"
 
@@ -163,6 +164,30 @@ text = "进入关卡"
 unique_name_in_owner = true
 layout_mode = 2
 text = "搜索关卡"
+
+[node name="TypeOptionButton" type="OptionButton" parent="HBoxContainer" unique_id=1149536879]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+selected = 0
+item_count = 8
+popup/item_0/text = "所有类型"
+popup/item_0/id = 0
+popup/item_1/text = "常规模式"
+popup/item_1/id = 1
+popup/item_2/text = "砸罐子"
+popup/item_2/id = 2
+popup/item_3/text = "我是僵尸"
+popup/item_3/id = 3
+popup/item_4/text = "我是僵尸冒险"
+popup/item_4/id = 4
+popup/item_5/text = "生存"
+popup/item_5/id = 5
+popup/item_6/text = "无尽"
+popup/item_6/id = 6
+popup/item_7/text = "运气关"
+popup/item_7/id = 7
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1279719488]
 layout_mode = 1
@@ -256,6 +281,7 @@ texture_hover = ExtResource("9")
 [connection signal="pressed" from="PageLabel/NextCustomButton" to="." method="NextButtonpressed"]
 [connection signal="pressed" from="HBoxContainer/EnterLevelButton" to="." method="EnterLevelButtonPressed"]
 [connection signal="pressed" from="HBoxContainer/SearchLevelButton" to="." method="SearchLevelButtonPressed"]
+[connection signal="item_selected" from="HBoxContainer/TypeOptionButton" to="." method="TypeOptionButtonItemSelected"]
 [connection signal="pressed" from="HBoxContainer2/JumpPageToButton" to="." method="JumpPageToButtonPressed"]
 [connection signal="pressed" from="HBoxContainer3/MyCollectionButton" to="." method="MyCollectionButtonPressed"]
 [connection signal="pressed" from="HBoxContainer3/SmartRecommendationButton" to="." method="SmartRecommendationButtonPressed"]

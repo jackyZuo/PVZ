@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://cirhgwvob6dbg" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Config/TowerDefenseZombieBalloon.tres" id="3"]
 [ext_resource type="Resource" uid="uid://rmtgqs06s8xp" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/DamagePoint/Config/ZombieBalloonDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://2nmmd3yqewqk" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/DamagePoint/Config/ZombieBalloonDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://didmg6gw71jhq" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cxp5pd2dtae5w" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://jocdyem1u714" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://cq7o6mpq8btuj" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://cxp5pd2dtae5w" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://didmg6gw71jhq" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cq7o6mpq8btuj" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://dbrx3hot7ybc5" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/Armor/Config/ZombieBalloonArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://bbpus0bcjt8gm" path="res://Asset/Anime/Character/Zombie/Chapter1/Balloon/ZombieBalloon.tscn" id="11"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
@@ -42,17 +42,6 @@ image = SubResource("Image_so2x2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0km8m"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_48vnw")
@@ -93,17 +82,6 @@ image = SubResource("Image_rbbqn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lv3qk"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -144,17 +122,6 @@ image = SubResource("Image_qws0s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gr8u1"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_pgape")
@@ -195,17 +162,6 @@ image = SubResource("Image_tlye2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2f6as"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -231,21 +187,21 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieBalloon")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["Balloon"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieBalloon/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]

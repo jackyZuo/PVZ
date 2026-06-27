@@ -32,7 +32,7 @@ func Timeout(timerName: String) -> void :
                 if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
                     timerComponent.Run("Spawn", 25.0)
                     return
-                var zombie = CreateCharacter("ZombieCat", global_position, gridPos, 0.0)
+                var zombie = CreateCharacter("ZombieCat", global_position, gridPos, groundHeight)
                 zombie.Rise(2.5)
                 if !instance.hypnoses:
                     zombie.Hypnoses()
@@ -41,7 +41,7 @@ func Timeout(timerName: String) -> void :
                     if is_instance_valid(control):
                         var _sync_id: int = control._get_next_sync_id()
                         control._register_sync_character(_sync_id, zombie)
-                        MultiPlayerManager.SendSpawnCharacterAt("ZombieCat", gridPos.x, gridPos.y, _sync_id, instance.hitpointScale, transformPoint.scale.x, !instance.hypnoses, 2.5, true, global_position.x, global_position.y)
+                        MultiPlayerManager.SendSpawnCharacterAt("ZombieCat", gridPos.x, gridPos.y, _sync_id, instance.hitpointScale, transformPoint.scale.x, !instance.hypnoses, 2.5, true, global_position.x, global_position.y, false, groundHeight)
             timerComponent.Run("Spawn", 25.0)
 
 @warning_ignore("unused_parameter")

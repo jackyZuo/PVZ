@@ -85,6 +85,7 @@ func Hit(character: TowerDefenseCharacter) -> void :
 func Flip() -> void :
     if !instance.sleep:
         sprite.SetAnimation("Attack", false, 0.2)
+        sprite.AddAnimation("Idle", 0.0, true)
     else:
         sprite.SetAnimation("Attack", false, 0.2)
         sprite.AddAnimation("Sleep", 0.0, true)

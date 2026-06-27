@@ -1,7 +1,7 @@
 @tool
 extends TowerDefensePlant
 
-func GravebusterOver() -> void :
+func GravebusterOver(graveStone: TowerDefenseGravestone) -> void :
     var sunMinePacket: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantSunMine")
     if cell.CanPacketPlant(sunMinePacket):
         var sunMine = sunMinePacket.Plant(gridPos)

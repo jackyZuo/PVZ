@@ -134,6 +134,9 @@ func CanArmorDraw() -> bool:
                     if !character.instance.canBeCollection:
                         continue
                     if character.camp != parent.camp:
+                        var gridDist: Vector2i = (character.gridPos - parent.gridPos).abs()
+                        if float(gridDist.x) > checkRange.x || float(gridDist.y) > checkRange.y:
+                            continue
                         var armorList: Array[TowerDefenseArmorInstance] = []
                         armorList.append_array(character.GetArmorHeadCover())
                         armorList.append_array(character.GetArmorShield())
@@ -178,6 +181,9 @@ func GetCanArmorDrawCharacterList() -> Array:
                     if !character.instance.canBeCollection:
                         continue
                     if character.camp != parent.camp:
+                        var gridDist: Vector2i = (character.gridPos - parent.gridPos).abs()
+                        if float(gridDist.x) > checkRange.x || float(gridDist.y) > checkRange.y:
+                            continue
                         var armorList: Array[TowerDefenseArmorInstance] = []
                         armorList.append_array(character.GetArmorHeadCover())
                         armorList.append_array(character.GetArmorShield())
@@ -239,6 +245,9 @@ func ArmorDrawNear() -> TowerDefenseArmorInstance:
                         continue
                     if parent.global_position.distance_squared_to(character.global_position) < lengthMin:
                         if character.camp != parent.camp:
+                            var gridDist: Vector2i = (character.gridPos - parent.gridPos).abs()
+                            if float(gridDist.x) > checkRange.x || float(gridDist.y) > checkRange.y:
+                                continue
                             var armorList: Array[TowerDefenseArmorInstance] = []
                             armorList.append_array(character.GetArmorHeadCover())
                             armorList.append_array(character.GetArmorShield())
@@ -272,7 +281,7 @@ func ArmorDrawNear() -> TowerDefenseArmorInstance:
 
 func ArmorBreakDown(delta: float) -> void :
     if breakDownTimer > 0.0:
-        breakDownTimer -= delta
+        breakDownTimer -= delta * parent.timeScale
         if is_instance_valid(magnet):
             magnet.scale = Vector2.ONE * (breakDownTimer / breakDownTime)
         return

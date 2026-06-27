@@ -77,6 +77,8 @@ func InitExplode(size: Vector2, eventList: Array[TowerDefenseCharacterEventBase]
                     continue
                 if exclude.has(character):
                     continue
+                if !character.instance.canBeCollection:
+                    continue
                 if !(collisionFlags & character.instance.maskFlags) && collisionFlags != -1:
                     continue
                 for event: TowerDefenseCharacterEventBase in eventList:
@@ -109,6 +111,8 @@ func InitExplodeLine(line: int, eventList: Array[TowerDefenseCharacterEventBase]
         if !character.hitBox.monitorable:
             continue
         if exclude.has(character):
+            continue
+        if !character.instance.canBeCollection:
             continue
         if character.config.name != "ItemLadder":
             if !(collisionFlags & character.instance.maskFlags) && collisionFlags != -1:
@@ -143,6 +147,8 @@ func InitExplodeColumn(column: int, eventList: Array[TowerDefenseCharacterEventB
         if !character.hitBox.monitorable:
             continue
         if exclude.has(character):
+            continue
+        if !character.instance.canBeCollection:
             continue
         if character.config.name != "ItemLadder":
             if !(collisionFlags & character.instance.maskFlags) && collisionFlags != -1:

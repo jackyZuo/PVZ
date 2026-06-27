@@ -21,7 +21,7 @@ func BackButtonPressed() -> void :
 func TryLevelButtonPressed() -> void :
     AudioManager.AudioPlay("ButtonPress", AudioManagerEnum.TYPE.SFX)
     Global.enterTryLevelGroup = "Star"
-    var dialog = DialogManager.DialogCreate("TryLevel")
+    var dialog = DialogManager.DialogCreate("TryLevel", {"openedFromStarExchange": true})
     TowerDefenseManager.coinBank.Hide.call_deferred()
     visible = false
     await dialog.close

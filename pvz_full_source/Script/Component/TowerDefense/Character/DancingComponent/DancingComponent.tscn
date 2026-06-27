@@ -6,50 +6,50 @@
 [ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="4"]
 [ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="5"]
 
-[node name="DancingComponent" type="Node2D" unique_id=1847897142]
+[node name="DancingComponent" type="Node2D" unique_id=2096086565]
 script = ExtResource("1")
 
-[node name="StateChart" type="Node" parent="." unique_id=1114924637]
+[node name="StateChart" type="Node" parent="." unique_id=631915400]
 unique_name_in_owner = true
 process_mode = 4
 script = ExtResource("2")
 
-[node name="CompoundState" type="Node" parent="StateChart" unique_id=1410529727]
+[node name="CompoundState" type="Node" parent="StateChart" unique_id=1677933326]
 script = ExtResource("3")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=831601765]
+[node name="Idle" type="Node" parent="StateChart/CompoundState" unique_id=1645874821]
 script = ExtResource("4")
 
-[node name="MoonWalk" type="Node" parent="StateChart/CompoundState" unique_id=2102634157]
+[node name="MoonWalk" type="Node" parent="StateChart/CompoundState" unique_id=1569684053]
 script = ExtResource("4")
 
-[node name="Dance" type="Node" parent="StateChart/CompoundState" unique_id=1023630539]
+[node name="Dance" type="Node" parent="StateChart/CompoundState" unique_id=1614340726]
 script = ExtResource("4")
 
-[node name="Point" type="Node" parent="StateChart/CompoundState" unique_id=764490592]
+[node name="Point" type="Node" parent="StateChart/CompoundState" unique_id=1489265757]
 script = ExtResource("4")
 
-[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=1741533922]
+[node name="ToIdle" type="Node" parent="StateChart/CompoundState" unique_id=485838329]
 process_mode = 4
 script = ExtResource("5")
 to = NodePath("../Idle")
 event = &"ToIdle"
 delay_in_seconds = "0.0"
 
-[node name="ToMoonWalk" type="Node" parent="StateChart/CompoundState" unique_id=1053927044]
+[node name="ToMoonWalk" type="Node" parent="StateChart/CompoundState" unique_id=2033894408]
 script = ExtResource("5")
 to = NodePath("../MoonWalk")
 event = &"ToMoonWalk"
 delay_in_seconds = "0.0"
 
-[node name="ToDance" type="Node" parent="StateChart/CompoundState" unique_id=412217066]
+[node name="ToDance" type="Node" parent="StateChart/CompoundState" unique_id=1993672161]
 script = ExtResource("5")
 to = NodePath("../Dance")
 event = &"ToDance"
 delay_in_seconds = "0.0"
 
-[node name="ToPoint" type="Node" parent="StateChart/CompoundState" unique_id=1657598730]
+[node name="ToPoint" type="Node" parent="StateChart/CompoundState" unique_id=2079411556]
 script = ExtResource("5")
 to = NodePath("../Point")
 event = &"ToPoint"

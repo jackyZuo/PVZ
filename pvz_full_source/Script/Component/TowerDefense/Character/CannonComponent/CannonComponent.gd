@@ -80,6 +80,9 @@ var canFire: bool = false:
 var targetPos: Vector2 = Vector2.ZERO
 
 
+var _restTimerPaused: bool = false
+
+
 func GetName() -> String:
     return "CannonComponent"
 
@@ -112,6 +115,14 @@ func _ready() -> void :
 func _physics_process(delta: float) -> void :
     if !alive || !is_instance_valid(parent):
         return
+    if !parent.inGame:
+        if timerComponent.IsRunning("Rest"):
+            timerComponent.Stop("Rest")
+            _restTimerPaused = true
+        return
+    if _restTimerPaused:
+        _restTimerPaused = false
+        timerComponent.Run("Rest", restTime)
     if autoAttack:
         if canFire:
             canFire = false
@@ -146,6 +157,8 @@ func IdleEntered() -> void :
         return
     if parent.instance.sleep:
         return
+    if !parent.componentAlive:
+        return
     if timerComponent.IsRunning("Rest"):
         state.send_event("ToRest")
         parent.Component()
@@ -157,7 +170,7 @@ func IdleEntered() -> void :
 
 @warning_ignore("unused_parameter")
 func IdleProcessing(delta: float) -> void :
-    if parent.instance.sleep:
+    if parent.instance.sleep || !parent.componentAlive:
         canFire = false
     else:
         canFire = true
@@ -199,8 +212,14 @@ func ChargeEntered() -> void :
 
 @warning_ignore("unused_parameter")
 func ChargeProcessing(delta: float) -> void :
-    if is_instance_valid(sprite) && is_instance_valid(parent):
+    if !is_instance_valid(sprite):
+        return
+    if !TowerDefenseManager.IsIZMMode():
+        if !is_instance_valid(parent):
+            return
         sprite.timeScale = parent.timeScale * chargeAnimeTimeScale
+    else:
+        sprite.timeScale = chargeAnimeTimeScale
 
 
 func ChargeExited() -> void :
@@ -229,8 +248,14 @@ func _fire_marker_projectile() -> void :
 
 @warning_ignore("unused_parameter")
 func FireProcessing(delta: float) -> void :
-    if is_instance_valid(sprite) && is_instance_valid(parent):
+    if !is_instance_valid(sprite):
+        return
+    if !TowerDefenseManager.IsIZMMode():
+        if !is_instance_valid(parent):
+            return
         sprite.timeScale = parent.timeScale * fireAnimeTimeScale
+    else:
+        sprite.timeScale = fireAnimeTimeScale
 
 
 func FireExited() -> void :

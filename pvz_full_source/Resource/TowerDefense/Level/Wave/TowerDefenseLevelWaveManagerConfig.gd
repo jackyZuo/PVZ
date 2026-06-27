@@ -39,13 +39,13 @@ func Init(waveManagerData: Dictionary) -> void :
     if waveManagerData.has("SpawnOverride"):
         spawnOverride = TowerDefenseCharacterOverride.new()
         spawnOverride.Init(waveManagerData.get("SpawnOverride", {}))
-    var dynamicList: Array = waveManagerData.get("Dynamic", {}) as Array
+    var dynamicList: Array = waveManagerData.get("Dynamic", []) as Array
     for dynamicDictionary: Dictionary in dynamicList:
         var dynamicConfig: TowerDefenseLevelDynamicConfig = TowerDefenseLevelDynamicConfig.new()
         if !dynamicDictionary.is_empty():
             dynamicConfig.Init(dynamicDictionary)
         dynamic.append(dynamicConfig)
-    var waveList: Array = waveManagerData.get("Wave", {}) as Array
+    var waveList: Array = waveManagerData.get("Wave", []) as Array
     for waveDictionary: Dictionary in waveList:
         var waveConfig: TowerDefenseLevelWaveConfig = TowerDefenseLevelWaveConfig.new()
         waveConfig.Init(waveDictionary)

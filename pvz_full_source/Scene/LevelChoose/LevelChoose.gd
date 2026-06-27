@@ -53,6 +53,8 @@ func _ready() -> void :
         var chapterIndex: int = GameSaveManager.GetKeyValue("AdventureChapterIndex")
         if chapterIndex != -1:
             Select(chapterIndex)
+    elif Global.currentChapterId != -1 && Global.enterLevelMode == "LevelChoose":
+        Select(Global.currentChapterId)
 
     normalLabel.modulate = Color.WHITE
     difficultLabel.modulate = Color.WHITE
@@ -183,6 +185,8 @@ func Back() -> void :
     match currentMode:
         MODE.CHAPTER:
             GameSaveManager.Save()
+            if Global.currentLevelChoose in ["MiniGames", "Puzzle", "IZM2"]:
+                Global.mainMenuShowMoreModes = true
             SceneManager.ChangeScene("MainMenu")
         MODE.LEVEL:
             informationLabel.text = "章节选择"

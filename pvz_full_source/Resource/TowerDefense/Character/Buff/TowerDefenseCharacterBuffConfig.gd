@@ -60,4 +60,6 @@ static func CreateBuffByKey(buffKey: String) -> TowerDefenseCharacterBuffConfig:
             return TowerDefenseCharacterBuffSquid.new()
         "TabooBean":
             return TowerDefenseCharacterBuffTabooBean.new()
+        "Coffee":
+            return TowerDefenseCharacterBuffCoffee.new()
     return null

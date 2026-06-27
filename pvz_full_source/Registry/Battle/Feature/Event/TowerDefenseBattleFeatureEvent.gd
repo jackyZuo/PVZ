@@ -41,7 +41,7 @@ func GameInit() -> void :
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
         await _wait_and_execute_phase("init")
         return
-    await TowerDefenseManager.ExecuteLevelEvent(eventInit)
+    TowerDefenseManager.ExecuteLevelEvent(eventInit)
     if Global.isMultiplayerMode and MultiPlayerManager.isHost:
         _broadcast_event_execute("init", eventInit)
 
@@ -53,7 +53,7 @@ func GameReady() -> void :
         if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
             await _wait_and_execute_phase("ready")
             return
-        await TowerDefenseManager.ExecuteLevelEvent(eventReady)
+        TowerDefenseManager.ExecuteLevelEvent(eventReady)
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:
             _broadcast_event_execute("ready", eventReady)
 
@@ -62,22 +62,22 @@ func GameStart() -> void :
         return
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
         if _event_sync_buffer.has("start"):
-            await _execute_events_from_data(_event_sync_buffer["start"])
+            _execute_events_from_data(_event_sync_buffer["start"])
             _event_sync_buffer.erase("start")
         return
     var _config: TowerDefenseLevelConfig = GetLevelControl().config
-    await TowerDefenseManager.ExecuteLevelEvent(eventStart)
+    TowerDefenseManager.ExecuteLevelEvent(eventStart)
     if Global.isMultiplayerMode and MultiPlayerManager.isHost:
         _broadcast_event_execute("start", eventStart)
 
 func _wait_and_execute_phase(phase: String) -> void :
     if _event_sync_buffer.has(phase):
-        await _execute_events_from_data(_event_sync_buffer[phase])
+        _execute_events_from_data(_event_sync_buffer[phase])
         _event_sync_buffer.erase(phase)
         return
     while !_event_sync_buffer.has(phase):
         await control.get_tree().process_frame
-    await _execute_events_from_data(_event_sync_buffer[phase])
+    _execute_events_from_data(_event_sync_buffer[phase])
     _event_sync_buffer.erase(phase)
 
 func _broadcast_event_execute(phase: String, events: Array[TowerDefenseLevelEventBase]) -> void :
@@ -100,8 +100,7 @@ func _execute_events_from_data(events_data: Variant) -> void :
             continue
         var event_value: Dictionary = event_data.get("Value", {})
         event.Init(event_value)
-        @warning_ignore("redundant_await")
-        await event.Execute()
+        event.Execute()
 
 func ApplyRemoteEventExecute(phase: String, events_data: Array) -> void :
     _event_sync_buffer[phase] = events_data

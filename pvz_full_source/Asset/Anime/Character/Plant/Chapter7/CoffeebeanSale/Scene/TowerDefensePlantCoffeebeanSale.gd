@@ -19,7 +19,7 @@ func PreSpawn() -> void :
         if !characterList.is_empty():
             for character in characterList:
                 if is_instance_valid(character):
-                    character.WeakUp()
+                    character.WakeUp()
                     if !instance.hypnoses:
                         character.packet.ChangeCostAdd(changeCost)
 
@@ -32,7 +32,7 @@ func Explode() -> void :
         if !characterList.is_empty():
             for character in characterList:
                 if is_instance_valid(character):
-                    character.WeakUp()
+                    character.WakeUp()
                     if !instance.hypnoses && character.packet.ChangeCostAdd(changeCost):
                         pass
                     else:

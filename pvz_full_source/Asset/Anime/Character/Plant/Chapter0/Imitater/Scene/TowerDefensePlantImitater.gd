@@ -26,7 +26,7 @@ func Explode() -> void :
         if _packetConfig.characterConfig is TowerDefensePlantConfig:
             var plant = _packetConfig.Plant(gridPos, true)
             if is_instance_valid(plant):
-                plant.WeakUp.call_deferred()
+                plant.WakeUp.call_deferred()
                 plant.SetSpriteGroupShaderParameter("imitater", true)
                 if instance.hypnoses:
                     plant.Hypnoses()

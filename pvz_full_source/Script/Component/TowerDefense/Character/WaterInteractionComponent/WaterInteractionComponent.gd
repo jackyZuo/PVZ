@@ -50,6 +50,7 @@ func _ready() -> void :
     saveTransformPointScaleY = parent.transformPoint.scale.y
     saveSpriteGroupScaleY = parent.spriteGroup.scale.y
     BattleEventBus.screenTransformChanged.connect(_on_screen_transform_changed)
+    set_process(false)
 
 func _on_screen_transform_changed() -> void :
     if isInWater:
@@ -73,6 +74,7 @@ func GetScaleRatioY() -> float:
 
 func InWater() -> void :
     isInWater = true
+    set_process(true)
     _lastScaleRatioY = GetScaleRatioY()
     if is_instance_valid(shadowComponent):
         shadowComponent.SetVisible(false)
@@ -84,12 +86,10 @@ func InWater() -> void :
     var scaledOffsetIn: float = discardOffsetIn * GetScaleRatioY() + parent.groundHeight
     var targetPosIn: float = (vt * (parent.spriteGroup.global_position + Vector2(0, scaledOffsetIn))).y
     parent.SetSpriteGroupShaderParameter("discardDownPos", targetPosIn)
-    var _spriteMaterial: ShaderMaterial = parent.sprite.material as ShaderMaterial
-    if is_instance_valid(_spriteMaterial) && _spriteMaterial.get_shader_parameter("discardDownPos") != null:
-        activeTween = create_tween()
-        activeTween.set_ease(Tween.EASE_OUT)
-        activeTween.set_trans(Tween.TRANS_CUBIC)
-        activeTween.tween_property(_spriteMaterial, "shader_parameter/discardDownPos", targetPosIn, 1.0)
+    activeTween = create_tween()
+    activeTween.set_ease(Tween.EASE_OUT)
+    activeTween.set_trans(Tween.TRANS_CUBIC)
+    activeTween.tween_method(_set_discard_down_pos, targetPosIn, targetPosIn, 1.0)
     parent.CreateSplash()
     if is_instance_valid(waterLineSprite):
         waterLineSprite.visible = true
@@ -106,6 +106,7 @@ func InWater() -> void :
 
 func OutWater() -> void :
     isInWater = false
+    set_process(false)
     outFromWater = true
     if is_instance_valid(shadowComponent):
         shadowComponent.SetVisible( !parent.invisible)
@@ -120,13 +121,11 @@ func OutWater() -> void :
     var targetPosOut: float = (vt * (parent.spriteGroup.global_position + Vector2(0, scaledOffsetOut))).y
     var targetPosOutFinal: float = (vt * (parent.spriteGroup.global_position + Vector2(0, scaledOffsetOutTarget))).y
     parent.SetSpriteGroupShaderParameter("discardDownPos", targetPosOut)
-    var _spriteMaterial: ShaderMaterial = parent.sprite.material as ShaderMaterial
-    if is_instance_valid(_spriteMaterial) && _spriteMaterial.get_shader_parameter("discardDownPos") != null:
-        activeTween = create_tween()
-        activeTween.set_parallel(true)
-        activeTween.set_ease(Tween.EASE_OUT)
-        activeTween.set_trans(Tween.TRANS_CUBIC)
-        activeTween.tween_property(_spriteMaterial, "shader_parameter/discardDownPos", targetPosOutFinal, 1.0)
+    activeTween = create_tween()
+    activeTween.set_parallel(true)
+    activeTween.set_ease(Tween.EASE_OUT)
+    activeTween.set_trans(Tween.TRANS_CUBIC)
+    activeTween.tween_method(_set_discard_down_pos, targetPosOut, targetPosOutFinal, 1.0)
     if is_instance_valid(waterLineSprite):
         waterLineSprite.visible = false
     if handleDuckytobe && is_instance_valid(duckytobeSprite):
@@ -154,3 +153,7 @@ func InWaterDiscardSet() -> void :
 func OutWaterDiscardSet() -> void :
     isInWater = false
     parent.SetSpriteGroupShaderParameter("discardDownPos", 10000.0)
+
+func _set_discard_down_pos(value: float) -> void :
+    if is_instance_valid(parent):
+        parent.SetSpriteGroupShaderParameter("discardDownPos", value)

@@ -3,7 +3,12 @@ extends TowerDefenseItem
 
 @onready var fireComponent: FireComponent = %FireComponent
 
-var projectileName: String = "Pea"
+@export var projectileName: String = "Pea":
+    set(_projectileName):
+        projectileName = _projectileName
+        if !is_node_ready():
+            await ready
+        fireComponent.fireCheckList[0].projectile.projectileName = projectileName
 
 func _ready() -> void :
     super._ready()

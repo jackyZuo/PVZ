@@ -96,14 +96,17 @@ func AnimeCompleted(clip: String) -> void :
         "Load":
             Idle()
 
+func Hypnoses(time: float = -1, canFliter: bool = true) -> void :
+    super.Hypnoses(time, canFliter)
+    for packetConfig: TowerDefensePacketConfig in jalaList:
+        packetConfig.overrideHypnoses = instance.hypnoses
+
 func DestroySet() -> void :
     AudioManager.AudioPlay("VaseBreaking", AudioManagerEnum.TYPE.SFX)
     var effect: TowerDefenseEffectParticlesOnce = TowerDefenseManager.CreateEffectParticlesOnce(chunksEffect, gridPos)
     effect.global_position = transformPoint.global_position - Vector2(0, 30.0)
     characterNode.add_child(effect)
     for packetConfig: TowerDefensePacketConfig in jalaList:
-        if instance.hypnoses:
-            packetConfig.overrideHypnoses = true
         TowerDefenseManager.SpawnPacket(packetConfig, global_position + Vector2(0, - groundHeight), 15.0, false)
     await get_tree().physics_frame
 
@@ -133,9 +136,15 @@ func HammerAnimeCompleted(clip: String) -> void :
 func AddJala(packetConfig: TowerDefensePacketConfig) -> void :
     if packetConfig.saveKey == "PlantPresentBox":
         packetConfig = TowerDefenseManager.GetPacketConfig(jalaNameList.pick_random())
+    if instance.hypnoses:
+        packetConfig.overrideHypnoses = true
     packetConfig.ColdDownDecreaseAdd(self, "JalaVase", 0.25)
     sprite.SetAnimation("Load", false, 0.1)
     jalaList.append(packetConfig)
+    UpdateVaseAppearance()
+    ExecuteJala(packetConfig)
+
+func UpdateVaseAppearance() -> void :
     match jalaList.size():
         1:
             sprite.SetReplace("JalaVase_body.png", JALA_VASE_BODY_2)
@@ -149,7 +158,6 @@ func AddJala(packetConfig: TowerDefensePacketConfig) -> void :
             sprite.SetReplace("JalaVase_jala.png", JALA_VASE_JALA_5)
             sprite.SetReplace("JalaVase_back.png", JALA_VASE_BACK_5)
             chunksEffect = JALA_VASE_CHUNKS_2
-    ExecuteJala(packetConfig)
 
 func ExecuteJala(packetConfig: TowerDefensePacketConfig) -> void :
     match packetConfig.saveKey:
@@ -179,12 +187,17 @@ func ExecuteJala(packetConfig: TowerDefensePacketConfig) -> void :
             pass
 
 func ExportVariantSave() -> Dictionary:
+    var jalaSaveKeys: Array = []
+    for packetConfig: TowerDefensePacketConfig in jalaList:
+        jalaSaveKeys.append(packetConfig.saveKey)
     return {
         "isMoseIn": isMoseIn, 
         "pressed": pressed, 
         "over": over, 
         "timeNeed": timeNeed, 
         "pressAwait": pressAwait, 
+        "jalaSaveKeys": jalaSaveKeys, 
+        "timerList": timerList.duplicate(), 
     }
 
 func ImportVariantSave(data: Dictionary) -> void :
@@ -193,3 +206,16 @@ func ImportVariantSave(data: Dictionary) -> void :
     over = data.get("over", false)
     timeNeed = data.get("timeNeed", 50.0)
     pressAwait = data.get("pressAwait", false)
+    jalaList.clear()
+    var jalaSaveKeys: Array = data.get("jalaSaveKeys", [])
+    for saveKey: String in jalaSaveKeys:
+        var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig(saveKey)
+        if instance.hypnoses:
+            packetConfig.overrideHypnoses = true
+        packetConfig.ColdDownDecreaseAdd(self, "JalaVase", 0.25)
+        jalaList.append(packetConfig)
+    UpdateVaseAppearance()
+    var savedTimerList: Array = data.get("timerList", [0.0, 0.0, 0.0, 0.0])
+    for i in range(timerList.size()):
+        if i < savedTimerList.size():
+            timerList[i] = savedTimerList[i]

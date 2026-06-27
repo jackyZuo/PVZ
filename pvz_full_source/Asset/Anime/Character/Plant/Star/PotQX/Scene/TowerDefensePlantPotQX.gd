@@ -52,7 +52,7 @@ func CreateHologramCharacter() -> void :
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
         return
     var packetList: Array[TowerDefensePacketConfig] = []
-    for charcter: TowerDefenseCharacter in cell.GetCharacterListSave(false):
+    for charcter: TowerDefenseCharacter in cell.GetCharacterListSave(true):
         if charcter == self:
             continue
         if !charcter.config.canCopy:

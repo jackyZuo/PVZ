@@ -34,7 +34,11 @@ func DigProcessing(delta: float) -> void :
     shadowSprite.visible = false
     if attackComponent.CanAttack():
         if !nearDie && !sprite.pause && sprite.timeScale > 0 && useAttackDps:
-            attackComponent.AttackDps(delta, config.attack)
+            if is_instance_valid(attackComponent.target):
+                if attackComponent.target.instance.collisionFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_GROUND:
+                    attackComponent.AttackDps(delta, config.attack)
+                else:
+                    attackComponent.target = null
     elif !sprite.pause:
         if global_position.x > TowerDefenseManager.GetMapGroundRight():
             global_position.x -= speed * delta * sprite.timeScale * transformPoint.scale.x * 2.0 * (-1 if sprite.playBack else 1)
@@ -126,7 +130,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantPotatoMine")
     if cell.CanPacketPlant(packetConfig, true):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos, true, true)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

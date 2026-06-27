@@ -31,6 +31,10 @@ func _ready() -> void :
     currentVersionLabel.text = "当前版本:%s" % Global.version
     AudioManager.AudioPlay("MainMenu", AudioManagerEnum.TYPE.MUSIC)
 
+    if Global.mainMenuShowMoreModes:
+        Global.mainMenuShowMoreModes = false
+        camera.global_position.x = moreGameMarker.global_position.x
+
     if Global.isMultiplayerMode:
         DialogManager.DialogCreate("MultiplayerLobby")
         if MultiPlayerManager.currentMatchId == "":
@@ -52,6 +56,8 @@ func AdventureButtonPressed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "Adventure"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
     adventureButton.global_position += Vector2.ONE * 2
 
@@ -59,6 +65,8 @@ func ChallengeButtonPressed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "Challenge"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
     challengeButton.global_position += Vector2.ONE * 2
 
@@ -66,6 +74,8 @@ func SurvivalButtonPressed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "Survival"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
     survivalButton.global_position += Vector2.ONE * 2
 
@@ -73,6 +83,8 @@ func PuzzleGameButtonPressed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "Puzzle"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
 
 
@@ -80,6 +92,8 @@ func MiniGameButtonPresed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "MiniGames"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
     return
 
@@ -87,6 +101,8 @@ func IZM2GameButtonPresed() -> void :
     if wait:
         return
     Global.currentLevelChoose = "IZM2"
+    Global.currentChapterId = -1
+    Global.currentLevelId = -1
     SceneManager.ChangeScene("LevelChoose")
     return
 

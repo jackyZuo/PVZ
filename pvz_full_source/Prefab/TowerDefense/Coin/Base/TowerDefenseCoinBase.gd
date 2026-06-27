@@ -26,7 +26,7 @@ var autoCollect: bool = false
 
 var randFreshIndex: int = 0
 
-@export_enum("Silver", "Gold", "Diamond", "LuckyBag", "YQ", "YB1", "YB2") var coinObjectId: int
+@export_enum("Silver", "Gold", "Diamond", "LuckyBag", "YQ", "YB1", "YB2", "GoldShard") var coinObjectId: int
 
 signal collect(_num: int)
 

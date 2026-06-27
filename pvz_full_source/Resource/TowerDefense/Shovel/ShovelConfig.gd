@@ -9,6 +9,7 @@ class_name ShovelConfig extends Resource
 @export var handbookStory: String
 
 @export var eventList: Array[ShovelEventConfig]
+@export var shovelableNames: Array[String] = []
 
 func Execute(character: TowerDefenseCharacter):
     for event in eventList:

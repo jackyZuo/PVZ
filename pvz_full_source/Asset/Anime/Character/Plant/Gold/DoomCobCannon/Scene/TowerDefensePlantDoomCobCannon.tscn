@@ -36,19 +36,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_7okge"]
 image = SubResource("Image_efnw7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_klarl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybryj"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_7okge")
@@ -76,6 +65,15 @@ catapultHeight = 400.0
 Flag/Damage = 2
 Flag/FireMethod = 1
 Flag/Collision = 63
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [node name="TowerDefensePlantDoomCobCannon" unique_id=1914587403 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 script = ExtResource("2")
@@ -93,7 +91,6 @@ texture = ExtResource("4")
 [node name="PumpkinCannonCob" type="Sprite2D" parent="." index="1" unique_id=1307829338]
 visible = false
 position = Vector2(132.5046, -58.6818)
-rotation = 1.5707079
 scale = Vector2(1.0552443, 0.93707293)
 skew = 1.2993813e-05
 texture = ExtResource("5")
@@ -107,18 +104,19 @@ scale = Vector2(1.8488373, 1)
 position = Vector2(39, 30)
 
 [node name="DoomCobCannon" parent="SpriteGroup/TransformPoint" index="0" unique_id=1128723220 instance=ExtResource("6")]
-material = SubResource("ShaderMaterial_klarl")
+material = SubResource("ShaderMaterial_ybryj")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-39, -30)
 Animation/Clip = "Idle"
 
 [node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/DoomCobCannon" index="0" unique_id=1815139906]
 unique_name_in_owner = true
-position = Vector2(136.8089, -57.24755)
-rotation = 1.5707048
-scale = Vector2(0.79993606, 0.80009466)
+position = Vector2(-28.87456, -55.239044)
+rotation = 0.0106879985
+scale = Vector2(0.80964273, 0.79292977)
+skew = -0.0106880665
 script = ExtResource("8")
-followSlotId = 16
+followSlotId = 18
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
 [node name="MouseMask" type="ColorRect" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1539506873]

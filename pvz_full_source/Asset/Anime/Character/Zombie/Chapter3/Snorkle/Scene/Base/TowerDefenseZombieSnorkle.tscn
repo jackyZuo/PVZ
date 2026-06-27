@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://b1w66hcooinge" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Config/TowerDefenseZombieSnorkle.tres" id="3"]
 [ext_resource type="Resource" uid="uid://co537d8wk2trx" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://csk4e2hffpd8y" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://dat20ya1dcy8c" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorHelmet.tres" id="6"]
-[ext_resource type="Resource" uid="uid://dswwhb2lomp7n" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dswwhb2lomp7n" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dat20ya1dcy8c" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorHelmet.tres" id="7"]
 [ext_resource type="Resource" uid="uid://d2ou8b5l3dpji" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorSpecialHelmet.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://bkrcpah82r3ie" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Sprite/Base/ZombieSnorkle.tscn" id="9"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="10"]
@@ -37,17 +37,6 @@ image = SubResource("Image_x3e4i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ts7mi"]
 shader = ExtResource("10")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_w88bf")
@@ -75,17 +64,17 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("6"),
+"Helmet": ExtResource("7"),
 "SpecialHelmet": ExtResource("8")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]

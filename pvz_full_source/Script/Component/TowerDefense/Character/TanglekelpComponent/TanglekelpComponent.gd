@@ -54,12 +54,6 @@ func _ready() -> void :
     grabFliterClose.clear()
 
 
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        return
-
-
 
 
 func IdleEntered() -> void :
@@ -142,8 +136,18 @@ func Drag(character: TowerDefenseCharacter) -> void :
                     character.sprite.pause = false
                     character.hitBox.monitorable = true
                 else:
-                    character.die = true
-                    character.Destroy()
+
+                    if character is TowerDefensePlant:
+                        if is_instance_valid(character.cell) && is_instance_valid(character.cell.itemShield):
+                            if character.cell.itemShield.ShieldBlockLethal():
+                                character.sprite.pause = false
+                                character.hitBox.monitorable = true
+                            else:
+                                character.die = true
+                                character.Destroy()
+                    else:
+                        character.die = true
+                        character.Destroy()
             else:
                 character.sprite.pause = false
                 character.hitBox.monitorable = true

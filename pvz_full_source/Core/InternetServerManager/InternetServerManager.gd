@@ -14,10 +14,15 @@ signal share_level_failed(message: String)
 signal get_shared_level_success(data: PackedByteArray)
 signal get_shared_level_failed(message: String)
 
+signal daily_level_month_loaded(year: int, month: int)
+
 var versionGetOver: bool = false
 var newVersion: String = ""
 
 var dailyLevelGetOver: bool = false
+var dailyLevelLoadedMonths: Dictionary = {}
+var dailyLevelRequestYear: int = 0
+var dailyLevelRequestMonth: int = 0
 
 func _ready() -> void :
     versionHttpRequest.request("https://api.pvzhe.com/new_version", Global.header)
@@ -64,9 +69,19 @@ func VersionHTTPRequestCompleted(result: int, response_code: int, headers: Packe
                 if !Global.hasNewVersion:
                     GetDailyLevel()
 
-func GetDailyLevel() -> void :
+func GetDailyLevel(year: int = 0, month: int = 0) -> void :
+    if year == 0 || month == 0:
+        var datetime = Time.get_datetime_dict_from_system()
+        year = datetime.year
+        month = datetime.month
+    var monthKey: String = "%d-%02d" % [year, month]
+    if dailyLevelLoadedMonths.has(monthKey):
+        daily_level_month_loaded.emit(year, month)
+        return
+    dailyLevelRequestYear = year
+    dailyLevelRequestMonth = month
     dailyLevelHTTPRequest.cancel_request()
-    dailyLevelHTTPRequest.request("https://api.pvzhe.com/get_daily_levels", Global.header)
+    dailyLevelHTTPRequest.request("https://api.pvzhe.com/get_daily_levels?year=%d&month=%d" % [year, month], Global.header)
 
 @warning_ignore("unused_parameter")
 func DailyLevelHTTPRequestCompleted(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void :
@@ -76,17 +91,28 @@ func DailyLevelHTTPRequestCompleted(result: int, response_code: int, headers: Pa
     var json = JSON.new()
     json.parse(body.get_string_from_utf8())
     if json.data:
-        ResourceManager.DAILY_LEVEL_DATA = json.get_data()
+        var responseData: Dictionary = json.get_data()
+        if ResourceManager.DAILY_LEVEL_DATA.is_empty():
+            ResourceManager.DAILY_LEVEL_DATA = responseData
+        else:
+            if responseData.has("LevelDateMap"):
+                for key in responseData["LevelDateMap"]:
+                    ResourceManager.DAILY_LEVEL_DATA["LevelDateMap"][key] = responseData["LevelDateMap"][key]
+            if responseData.has("LevelMeta"):
+                for key in responseData["LevelMeta"]:
+                    ResourceManager.DAILY_LEVEL_DATA["LevelMeta"][key] = responseData["LevelMeta"][key]
+        var monthKey: String = "%d-%02d" % [dailyLevelRequestYear, dailyLevelRequestMonth]
+        dailyLevelLoadedMonths[monthKey] = true
         dailyLevelGetOver = true
+        daily_level_month_loaded.emit(dailyLevelRequestYear, dailyLevelRequestMonth)
 
-
-func GetOnlineLevelPage(pageIndex: int = 1, suffix: String = "", search: String = "") -> void :
+func GetOnlineLevelPage(pageIndex: int = 1, suffix: String = "", suffix2: String = "", search: String = "") -> void :
     pageIndex = clamp(pageIndex, 1, 100000)
     onlineLevelHTTPRequest.cancel_request()
     if search != "":
-        onlineLevelHTTPRequest.request("https://api.pvzhe.com/workshop/levels?page=%d%s&search=%s" % [pageIndex, suffix, search.uri_encode()], Global.header)
+        onlineLevelHTTPRequest.request("https://api.pvzhe.com/workshop/levels?page=%d%s%s&search=%s" % [pageIndex, suffix, suffix2, search.uri_encode()], Global.header)
     else:
-        onlineLevelHTTPRequest.request("https://api.pvzhe.com/workshop/levels?page=%d%s" % [pageIndex, suffix], Global.header)
+        onlineLevelHTTPRequest.request("https://api.pvzhe.com/workshop/levels?page=%d%s%s" % [pageIndex, suffix, suffix2], Global.header)
 
 @warning_ignore("unused_parameter")
 func OnlineLevelHTTPRequestCompleted(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void :

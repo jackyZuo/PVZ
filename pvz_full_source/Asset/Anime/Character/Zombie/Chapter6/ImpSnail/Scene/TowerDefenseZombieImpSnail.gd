@@ -83,24 +83,25 @@ func AnimeCompleted(clip: String) -> void :
             return
         over = true
         if !hasShell:
+            await get_tree().physics_frame
+            Destroy()
             return
         var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("ZombieSnailShell")
         var shell = packetConfig.Create(global_position, gridPos, 0)
         characterNode.add_child(shell)
         if instance.hypnoses:
             shell.Hypnoses.call_deferred()
-        var _hitpointScale: float = instance.hitpointScale
         var _scale: Vector2 = transformPoint.scale
         ( func():
             if is_instance_valid(shell):
                 if is_instance_valid(shell.instance):
-                    shell.instance.hitpointScale = _hitpointScale
+                    shell.instance.hitpointScale = instance.hitpointScale
                 if is_instance_valid(shell.transformPoint):
                     shell.transformPoint.scale = _scale).call_deferred()
         shell.set_deferred("invisible", invisible)
         var shellArmor = shell.GetArmorFromName("Shell")
         var armor = GetArmorFromName("Shell")
-        shellArmor.Hurt(armor.config.damagePoint - armor.hitPoints)
+        shellArmor.Hurt(armor.config.damagePoint - armor.hitPoints / armor.hitpointScale)
         if instance.hypnoses:
             shell.Hypnoses()
         shell.Walk.call_deferred()

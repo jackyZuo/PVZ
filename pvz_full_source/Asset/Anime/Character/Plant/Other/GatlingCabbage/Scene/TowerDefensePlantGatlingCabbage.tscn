@@ -36,19 +36,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_2d068"]
 image = SubResource("Image_bgf67")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdnm5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21i8g"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2d068")
@@ -68,13 +57,22 @@ script = ExtResource("8")
 projectileName = &"Cabbage"
 baseDamage = 40.0
 damageFlags = 10
-collisionFlags = 3
+collisionFlags = 43
 fireMethodFlags = 2
 catapultHeight = 400.0
 Flag/Damage = 10
 Flag/FireMethod = 2
-Flag/Collision = 3
+Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = true
 Catapult/Height = 400.0
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_oav85"]
 script = ExtResource("9")
@@ -85,8 +83,8 @@ metadata/_custom_type_script = "uid://bd70pedr27fla"
 script = ExtResource("10")
 projectile = SubResource("Resource_oav85")
 useParentCollision = false
-collisionFlags = 3
-Flag/Collision = 3
+collisionFlags = 43
+Flag/Collision = 43
 metadata/_custom_type_script = "uid://duxe603jas8ga"
 
 [sub_resource type="Resource" id="Resource_54137"]
@@ -96,6 +94,15 @@ catapultHeight = 400.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_3rhwc"]
 script = ExtResource("9")
@@ -138,16 +145,16 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="GatlingCabbage" parent="SpriteGroup/TransformPoint" index="0" unique_id=367233608 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_bdnm5")
-instance_shader_parameters/frameIndex = 6.751348888888888
+material = SubResource("ShaderMaterial_21i8g")
+instance_shader_parameters/frameIndex = 9.557972
 position = Vector2(0, -30)
 Animation/MediaReplace/Cabbagepult_blink1.png = null
 Animation/MediaReplace/Cabbagepult_blink2.png = null
 
 [node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/GatlingCabbage" index="0" unique_id=1861862180]
-position = Vector2(-66.33208, -16.88352)
-rotation = -0.3953415
-scale = Vector2(0.9987652, 0.9987652)
+position = Vector2(-68.01425, -10.991423)
+rotation = -0.6424923
+scale = Vector2(0.997943, 0.997943)
 script = ExtResource("6")
 followSlotId = 7
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
@@ -156,10 +163,10 @@ metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 position = Vector2(14.1167, 12.9167)
 
 [node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/GatlingCabbage" index="1" unique_id=1859347878]
-position = Vector2(12.344055, -12.103205)
-rotation = -0.025480308
-scale = Vector2(0.55612767, 0.5775586)
-skew = 0.025480151
+position = Vector2(12.531631, -9.839863)
+rotation = -0.08281587
+scale = Vector2(0.5562107, 0.5450063)
+skew = 0.08281577
 script = ExtResource("6")
 followSlotId = 14
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"

@@ -34,17 +34,6 @@ image = SubResource("Image_ugj8y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5k8w"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_wmf1a")
@@ -83,18 +72,18 @@ position = Vector2(12, 33)
 
 [node name="ZombieGhost" parent="SpriteGroup/TransformPoint" index="0" unique_id=957327467 instance=ExtResource("6")]
 material = SubResource("ShaderMaterial_v5k8w")
-instance_shader_parameters/frameIndex = 1.6254799999968177
+instance_shader_parameters/frameIndex = 3.696238666666667
 position = Vector2(-12, -33)
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="0" unique_id=1239486802]
-position = Vector2(-14.04694, -46.50373)
+position = Vector2(-14.934406, -45.616264)
 rotation = 0.0
 scale = Vector2(0.7999878, 0.7999878)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="1" unique_id=1324770709]
-position = Vector2(4.605645, 1.7720127)
-rotation = -0.05283603
-scale = Vector2(0.79980606, 0.79980606)
+position = Vector2(3.9967527, 2.0533676)
+rotation = -0.05270765
+scale = Vector2(0.79976445, 0.79976445)
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="2" unique_id=40988141]
 position = Vector2(-44.1338, -40)
@@ -112,5 +101,6 @@ alive = false
 groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieGhost/GroundSlot")
 
 [connection signal="area_entered" from="HitBox" to="." method="HitBoxEntered"]
+[connection signal="area_exited" from="HitBox" to="." method="HitBoxExited"]
 
 [editable path="SpriteGroup/TransformPoint/ZombieGhost"]

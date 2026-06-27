@@ -83,6 +83,35 @@ theme_override_constants/outline_size = 5
 text = "后台运行"
 alignment = 1
 
+[node name="PhonkCheckBox" type="CheckBox" parent="CenterContainer/VBoxContainer" unique_id=1626244285]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "果冻弹性效果"
+alignment = 1
+
+[node name="PhonkIntensityHBox" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1626244286]
+layout_mode = 2
+
+[node name="PhonkIntensityLabel" type="Label" parent="CenterContainer/VBoxContainer/PhonkIntensityHBox" unique_id=1626244287]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "果冻弹性强度:1"
+
+[node name="PhonkIntensitySlider" type="HSlider" parent="CenterContainer/VBoxContainer/PhonkIntensityHBox" unique_id=1626244288]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+value = 1.0
+rounded = true
+
 [node name="BackButton" parent="CenterContainer/VBoxContainer" unique_id=760354512 instance=ExtResource("2")]
 custom_minimum_size = Vector2(240, 48)
 layout_mode = 2
@@ -113,6 +142,8 @@ text = "返回游戏"
 [connection signal="toggled" from="CenterContainer/VBoxContainer/PacketUIFrontCheckBox" to="." method="PacketUIFrontCheckBoxToggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/MapEffectCheckBox" to="." method="MapEffectCheckBoxToggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/BackgrounderCheckBox" to="." method="BackgrounderCheckBoxToggled"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/PhonkCheckBox" to="." method="PhonkCheckBoxToggled"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/PhonkIntensityHBox/PhonkIntensitySlider" to="." method="PhonkIntensitySliderChanged"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="BackButtonPressed"]
 
 [editable path="CenterContainer/VBoxContainer/BackButton"]

@@ -65,7 +65,6 @@ func DestroySet() -> void :
 
 @warning_ignore("unused_parameter")
 func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO) -> float:
-    if sprite.clip == "Roll":
-        if type == "Jala":
-            Destroy()
+    if type == "Jala":
+        Destroy()
     return 0

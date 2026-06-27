@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://3lmw15vhg42g" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Config/TowerDefenseZombiePaper.tres" id="3"]
 [ext_resource type="Resource" uid="uid://c2mqh3r8jnnma" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/DamagePoint/Config/ZombiePaperDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://b2fo0h5w2lsk6" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/DamagePoint/Config/ZombiePaperDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://bamb6imty1eih" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cf3lr2ru555q2" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://denwx2evnn8bk" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://dgy6npgxd3wcm" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://cf3lr2ru555q2" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://bamb6imty1eih" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dgy6npgxd3wcm" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://c83m8nxr67g0c" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://drbscotikcmbv" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/ZombiePaper.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://df6ws2yafp4hr" path="res://Asset/Texture/Character/Armor/Paper/ZombiePaper1.png" id="12"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="15"]
 [ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="16"]
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_g4mh1"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -27,9 +27,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_g4mh1")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_3uxjx"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -39,21 +39,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_3uxjx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uxjx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2xgy"]
 shader = ExtResource("14")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -78,21 +67,21 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombiePaper")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["Paper"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombiePaper/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
@@ -127,7 +116,7 @@ position = Vector2(-40, -80)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2036502769 instance=ExtResource("13")]
 visible = false
-material = SubResource("ShaderMaterial_3uxjx")
+material = SubResource("ShaderMaterial_t2xgy")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(3, -36)
 trueFrameRate = 180.0

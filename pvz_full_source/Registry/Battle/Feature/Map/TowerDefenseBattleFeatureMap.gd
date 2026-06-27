@@ -67,6 +67,9 @@ func SaveFeature() -> Dictionary:
     var changeConfigPath: String = ""
     if is_instance_valid(changeConfig):
         changeConfigPath = changeConfig.resource_path
+    var configPath: String = ""
+    if is_instance_valid(config):
+        configPath = config.resource_path
     var result: Dictionary = {
         "isSwich": isSwich, 
         "switchTimer": switchTimer, 
@@ -81,6 +84,7 @@ func SaveFeature() -> Dictionary:
         "targetZombieLine": targetZombieData, 
         "mowerHasRun": mowerFeature.mowerHasRun if mowerFeature else false, 
         "changeConfigPath": changeConfigPath, 
+        "configPath": configPath, 
     }
     print("[Save] Feature[Map]保存完成: gridData=%d行, mowerLine=%d, brainLine=%d, isSwich=%s, isChange=%s" % [gridData.size(), mowerData.size(), brainData.size(), isSwich, isChange])
     return result
@@ -128,6 +132,11 @@ func LoadFeature(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void
     var changeConfigPath: String = _data.get("changeConfigPath", "")
     if changeConfigPath != "":
         changeConfig = load(changeConfigPath)
+    var configPath: String = _data.get("configPath", "")
+    if configPath != "" && ResourceLoader.exists(configPath):
+        var savedConfig: TowerDefenseMapConfig = load(configPath)
+        if is_instance_valid(savedConfig) && savedConfig.resource_path != config.resource_path:
+            MapChange(savedConfig, 0.0)
     if strigeRow >= 0 && is_instance_valid(currentMap):
         currentMap.UseStripe(strigeRow)
     print("[Load] Feature[Map]加载完成: isSwich=%s, isChange=%s, gridData=%d行, mowerLine=%d, brainLine=%d" % [isSwich, isChange, plantGrid.size(), _data.get("mowerLine", []).size(), _data.get("brainLine", []).size()])
@@ -163,6 +172,7 @@ func _SaveCell(cellInstance: TowerDefenseCellInstance) -> Dictionary:
         "slot": slotData, 
         "characterSurround": cellInstance.characterSurround.name.validate_node_name() if is_instance_valid(cellInstance.characterSurround) else "", 
         "characterLadder": cellInstance.characterLadder.name.validate_node_name() if is_instance_valid(cellInstance.characterLadder) else "", 
+        "itemShield": cellInstance.itemShield.name.validate_node_name() if is_instance_valid(cellInstance.itemShield) else "", 
     }
 
 func _LoadCellInto(cellInstance: TowerDefenseCellInstance, cellData: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void :
@@ -198,6 +208,14 @@ func _LoadCellInto(cellInstance: TowerDefenseCellInstance, cellData: Dictionary,
     var ladderName: String = cellData.get("characterLadder", "")
     if ladderName != "" and _owner.charcterDicionary.has(ladderName):
         cellInstance.characterLadder = _owner.charcterDicionary[ladderName]
+
+    var shieldName: String = cellData.get("itemShield", "")
+    if shieldName != "" and _owner.charcterDicionary.has(shieldName):
+        cellInstance.itemShield = _owner.charcterDicionary[shieldName]
+
+
+        var hasPlant: bool = cellInstance.HasSlotCharacterList() or is_instance_valid(cellInstance.characterSurround)
+        cellInstance.itemShield.instance.canBeCollection = !hasPlant
 
 
 

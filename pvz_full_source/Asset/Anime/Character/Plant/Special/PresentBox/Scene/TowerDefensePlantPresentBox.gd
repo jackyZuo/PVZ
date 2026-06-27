@@ -28,7 +28,7 @@ func Explode() -> void :
             packetConfig = TowerDefenseManager.GetPacketConfig(plantRandom)
         if plantList.size() > 1:
             var plant = packetConfig.Plant(gridPos, true)
-            plant.WeakUp.call_deferred()
+            plant.WakeUp.call_deferred()
             if instance.hypnoses:
                 plant.Hypnoses()
             if Global.isMultiplayerMode and MultiPlayerManager.isHost:

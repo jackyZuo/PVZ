@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bvyltpxxmsmip"]
+
+[ext_resource type="Texture2D" uid="uid://dj3ddmm65mlum" path="res://Asset/Anime/Particles/Splats/IcePopcornParticles.png" id="1"]
+[ext_resource type="Material" uid="uid://dob2sbkae2q0h" path="res://Prefab/Particles/Splats/MeteorStarSplats/MeteorStarSplats.tres" id="2"]
+[ext_resource type="Script" uid="uid://dywgdjamo0ovs" path="res://Extends/Particles/GPUParticles2DOnece.gd" id="3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wiwmn"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="IcePopcornSplats" type="GPUParticles2D" unique_id=1114095384]
+material = SubResource("CanvasItemMaterial_wiwmn")
+emitting = false
+amount = 16
+texture = ExtResource("1")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = ExtResource("2")
+script = ExtResource("3")

@@ -25,17 +25,6 @@ metadata/_custom_type_script = "uid://dtvfjfgy00epu"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_en1pb"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = null
@@ -73,7 +62,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.8)
 
-[node name="TowerDefensePlantSunPad" unique_id=95989368 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+[node name="TowerDefensePlantSunPad" unique_id=1625331902 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 z_index = -13
 script = ExtResource("2")
 allEventList = [SubResource("Resource_cko82")]
@@ -93,28 +82,28 @@ texture = null
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(0, 30)
 
-[node name="SunPad" parent="SpriteGroup/TransformPoint" index="0" unique_id=1288316253 instance=ExtResource("6")]
+[node name="SunPad" parent="SpriteGroup/TransformPoint" index="0" unique_id=134733679 instance=ExtResource("6")]
 material = SubResource("ShaderMaterial_en1pb")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(0, -30)
 offset = Vector2(-40, -20.838247)
 
-[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunPad" index="0" unique_id=38017239]
+[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunPad" index="0" unique_id=835032169]
 position = Vector2(-40.35, -15.338247)
 script = ExtResource("8")
 followSlotId = 3
 useScale = false
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
-[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPad/PotSlot" index="0" unique_id=870614262]
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPad/PotSlot" index="0" unique_id=838013161]
 position = Vector2(41.35, 10.1448)
 
-[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1223294932]
+[node name="FogArea" type="Area2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=271390556]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=537898492]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteGroup/FogArea" index="0" unique_id=1836303019]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_tr5a7")
 
@@ -124,23 +113,23 @@ position = Vector2(0, 30)
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)
 
-[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1863442325 node_paths=PackedStringArray("posMark") instance=ExtResource("9")]
+[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=1939848513 node_paths=PackedStringArray("posMark") instance=ExtResource("9")]
 posMark = NodePath("../../SpriteGroup/TransformPoint/SunPad/PotSlot/Marker2D")
 heightFollow = true
 hideShadow = false
 
-[node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=181185137 node_paths=PackedStringArray("marker") instance=ExtResource("10")]
+[node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=392621475 node_paths=PackedStringArray("marker") instance=ExtResource("10")]
 unique_name_in_owner = true
 marker = [NodePath("../../SpriteGroup/TransformPoint/SunPad/PotSlot/Marker2D")]
 
-[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1949037436 instance=ExtResource("11")]
+[node name="ReverseInjuryComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=1179249219 instance=ExtResource("11")]
 unique_name_in_owner = true
 eventList = [SubResource("Resource_tr5a7")]
 staticTime = 1.5
 targetEffectType = "Sprite"
 targetEffectScene = ExtResource("13")
 
-[node name="Light" type="PointLight2D" parent="." index="7" unique_id=527448004]
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=693600129]
 unique_name_in_owner = true
 visible = false
 scale = Vector2(0.5625, 0.515625)

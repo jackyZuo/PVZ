@@ -3,7 +3,10 @@ class_name TowerDefenseArmorInstance extends Resource
 var character: TowerDefenseCharacter
 var sprite: Sprite2D = null
 
-@export_storage var config: CharacterArmorConfig
+var typeData: TowerDefenseArmorTypeData
+var slotConfig: ArmorSlotConfig
+
+var damagePointBase: float
 
 @export_storage var hitpointsSave: float
 @export_storage var hitPoints: float
@@ -31,7 +34,7 @@ signal remove(instance: TowerDefenseArmorInstance)
 
 func Export() -> Dictionary:
     var data: Dictionary = {
-        "config": config, 
+        "slotConfig": slotConfig, 
         "hitpointsSave": hitpointsSave, 
         "hitPoints": hitPoints, 
         "armorMethodFlags": armorMethodFlags, 
@@ -42,7 +45,7 @@ func Export() -> Dictionary:
 
 func ExportSave() -> Dictionary:
     var data: Dictionary = {}
-    data["armorName"] = config.armorName
+    data["armorName"] = slotConfig.armorName
     data["hitpointsSave"] = hitpointsSave
     data["hitPoints"] = hitPoints
     data["stageIndex"] = stageIndex
@@ -63,30 +66,40 @@ func ImportSave(data: Dictionary) -> void :
             SetDamageStage(stageIndex)
     stageIndex = savedStageIndex
 
-func _init(_character: TowerDefenseCharacter, _config: CharacterArmorConfig) -> void :
+func _init(_character: TowerDefenseCharacter, _slotConfig: ArmorSlotConfig) -> void :
     character = _character
-    config = _config
+    slotConfig = _slotConfig
 
-    hitPoints = config.damagePoint
-    hitpointsSave = config.damagePoint
-    armorMethodFlags = config.armorMethodFlags
+    if !slotConfig:
+        isRemove = true
+        return
+
+    TowerDefenseArmorRegistry.Init()
+    typeData = TowerDefenseArmorRegistry.GetArmorType(slotConfig.armorName)
+    if typeData == null:
+        isRemove = true
+        return
+
+    damagePointBase = slotConfig.damagePoint if slotConfig.damagePoint >= 0 else typeData.damagePoint
+    hitPoints = damagePointBase
+    hitpointsSave = damagePointBase
+    armorMethodFlags = typeData.armorMethodFlags
 
     if armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DAMAGEABLE:
-        stagePersontage = config.stagePersontage
+        stagePersontage = typeData.stagePersontage
 
-    match config.replaceMethod:
+    match slotConfig.replaceMethod:
         "Media":
-            character.SetArmor(config.armorName, 0)
+            character.SetArmor(slotConfig.armorName, 0)
         "Sprite":
-            var slot: AdobeAnimateSlot = character.get_node(character.damagePartSlot[config.armorName])
+            var slot: AdobeAnimateSlot = character.sprite.get_node(slotConfig.slotPath)
             sprite = Sprite2D.new()
 
-            sprite.texture = config.stageAnimeTexture[0]
-            sprite.position = config.replaceSpriteOffset
-            sprite.rotation = config.replaceSpriteRotation
-            sprite.scale = config.replaceSpriteScale
+            sprite.texture = typeData.stageAnimeTexture[0]
+            sprite.position = slotConfig.offset
+            sprite.rotation = slotConfig.rotation
+            sprite.scale = slotConfig.scale
             slot.add_child(sprite)
-
 
 func Hurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, createDamagePart: bool = true, ignoreLimit: bool = false) -> float:
     num = DealHurt(num, playSplatAudio, velocity, createDamagePart, ignoreLimit)
@@ -95,8 +108,8 @@ func Hurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.Z
 func DealHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, createDamagePart: bool = true, ignoreLimit: bool = false) -> float:
     if isRemove:
         return num
-    if !ignoreLimit && config.limitMaxHit != -1.0:
-        num = min(num, config.limitMaxHit)
+    if !ignoreLimit && typeData.limitMaxHit != -1.0:
+        num = min(num, typeData.limitMaxHit)
     if hitPoints > num:
         character.armorHurt.emit(num)
         hitPoints -= num
@@ -105,9 +118,9 @@ func DealHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vecto
         character.armorHurt.emit(hitPoints)
         num -= hitPoints
         hitPoints = 0
-    if config.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.SHIELD:
-        if character.damagePartSlot.has(config.armorName):
-            var slot: AdobeAnimateSlot = character.get_node(character.damagePartSlot[config.armorName]) as AdobeAnimateSlot
+    if typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.SHIELD:
+        if character.damagePartSlot.has(slotConfig.armorName):
+            var slot: AdobeAnimateSlot = character.get_node(character.damagePartSlot[slotConfig.armorName]) as AdobeAnimateSlot
             slot.mode = 1
             slot.position += Vector2(randf_range(-2, 2), randf_range(-2, 2))
             slot.get_tree().create_timer(0.025, false).timeout.connect(
@@ -115,12 +128,12 @@ func DealHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vecto
                     if is_instance_valid(slot):
                         slot.mode = 0
             )
-    var impactAudio: String = config.impactAudio
+    var impactAudio: String = typeData.impactAudio
     if playSplatAudio && impactAudio != "":
         AudioManager.AudioPlay(impactAudio, AudioManagerEnum.TYPE.SFX)
     if hitPoints > 0:
         if armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DAMAGEABLE:
-            var persontage: float = hitPoints / (config.damagePoint * hitpointScale)
+            var persontage: float = hitPoints / (damagePointBase * hitpointScale)
             if stageIndex < stagePersontage.size():
                 while persontage <= stagePersontage[stageIndex]:
                     stageIndex += 1
@@ -145,14 +158,14 @@ func IsMetallic() -> bool:
     return armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.METALLIC
 
 func Remove() -> void :
-    var damageAudio: String = config.damageAudio
+    var damageAudio: String = typeData.damageAudio
     if damageAudio != "":
         AudioManager.AudioPlay(damageAudio, AudioManagerEnum.TYPE.SFX)
-    match config.replaceMethod:
+    match slotConfig.replaceMethod:
         "Media":
-            character.ClearArmor(config.armorName)
+            character.ClearArmor(slotConfig.armorName)
             if is_instance_valid(character.sprite):
-                character.sprite.SetReplace(config.replaceMediaName, null)
+                character.sprite.SetReplace(slotConfig.replaceMediaName, null)
         "Sprite":
             if is_instance_valid(sprite):
                 if sprite.get_parent():
@@ -171,14 +184,14 @@ func Draw() -> TowerDefenseMagnet:
     return magnet
 
 func DamagePartCreate(velocity: Vector2 = Vector2.ZERO) -> void :
-    character.DamagePartCreate(config.armorName, sprite, velocity)
+    character.DamagePartCreate(slotConfig.armorName, sprite, velocity)
     sprite = null
 
 func SetDamageStage(index: int) -> void :
-    match config.replaceMethod:
+    match slotConfig.replaceMethod:
         "Media":
-            character.SetArmor(config.armorName, index)
+            character.SetArmor(slotConfig.armorName, index)
         "Sprite":
             if sprite:
-                sprite.texture = config.stageAnimeTexture[index]
+                sprite.texture = typeData.stageAnimeTexture[index]
     damagePointReach.emit(self, stageIndex)

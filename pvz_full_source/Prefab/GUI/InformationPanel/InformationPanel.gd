@@ -71,20 +71,22 @@ func InitPacket(packetConfig: TowerDefensePacketConfig) -> void :
     if characterConfig.armorData:
         if packetConfig.initArmor.size() > 0:
             for armorName: String in packetConfig.initArmor:
-                var armor: CharacterArmorConfig = characterConfig.armorData.armorDictionary[armorName]
-                match armor.replaceMethod:
-                    "Media":
-                        characterConfig.armorData.OpenArmorFliters(currentCharcter.sprite, armorName)
-                        characterConfig.armorData.SetArmorReplace(currentCharcter.sprite, armorName, 0)
-                    "Sprite":
-                        var slotNode: AdobeAnimateSlot = currentCharcter.sprite.get_node(armor.replaceSpriteSlotPath)
-                        var _sprite: Sprite2D = Sprite2D.new()
-                        _sprite.texture = armor.stageAnimeTexture[0]
-                        _sprite.position = armor.replaceSpriteOffset
-                        _sprite.rotation = armor.replaceSpriteRotation
-                        _sprite.scale = armor.replaceSpriteScale
-                        _sprite.light_mask = 0
-                        slotNode.add_child(_sprite)
+                var slotConfig: ArmorSlotConfig = characterConfig.armorData.GetSlotConfig(armorName)
+                var typeData: TowerDefenseArmorTypeData = characterConfig.armorData.GetTypeData(armorName)
+                if typeData:
+                    match slotConfig.replaceMethod:
+                        "Media":
+                            characterConfig.armorData.OpenArmorFliters(currentCharcter.sprite, armorName)
+                            characterConfig.armorData.SetArmorReplace(currentCharcter.sprite, armorName, 0)
+                        "Sprite":
+                            var slotNode: AdobeAnimateSlot = currentCharcter.sprite.get_node(slotConfig.slotPath)
+                            var _sprite: Sprite2D = Sprite2D.new()
+                            _sprite.texture = typeData.stageAnimeTexture[0]
+                            _sprite.position = slotConfig.offset
+                            _sprite.rotation = slotConfig.rotation
+                            _sprite.scale = slotConfig.scale
+                            _sprite.light_mask = 0
+                            slotNode.add_child(_sprite)
 
     scrollContainer.scroll_vertical = 0
     if characterConfig is TowerDefensePlantConfig:

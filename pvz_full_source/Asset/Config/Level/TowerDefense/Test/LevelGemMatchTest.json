@@ -1,0 +1,79 @@
+{
+	"Version": 1.0,
+	"Name": "LevelGemMatchTest",
+	"Description": "宝石迷阵测试关卡",
+	"LevelName": "宝石迷阵",
+	"LevelNumber": 1.0,
+	"NextLevel": "",
+	"HomeWorld": "Morden",
+	"Process": {
+		"Name": "Empty",
+		"Data": {
+
+		}
+	},
+	"Feature": [
+		{
+			"Name": "Camera",
+			"Data": {}
+		},
+		{
+			"Name": "PacketPick",
+			"Data": {}
+		},
+		{
+			"Name": "Map",
+			"Data": {
+				"MapName": "Frontlawn"
+			}
+		},
+		{
+			"Name": "BGM",
+			"Data": {
+				"BGMName": "Backyard"
+			}
+		},
+		{
+			"Name": "SeedBank",
+			"Data": {
+				"PlantColumn": false,
+				"ColdDownStart": false,
+				"ColdDownUse": true,
+				"Method": "Choose",
+				"Packet": []
+			}
+		},
+		{
+			"Name": "Sun",
+			"Data": {
+				"Open": false,
+				"Begin": 50.0,
+				"SpawnInterval": 12.0,
+				"SpawnNum": 50.0,
+				"MovingMethod": "Land"
+			}
+		},
+		{
+			"Name": "GemMatch",
+			"Data": {
+				"boardRows": 5.0,
+				"boardCols": 9.0,
+				"plantList": [
+					"PlantPeaShooterSingle",
+					"PlantSnowPea",
+					"PlantWallnut",
+					"PlantSunflowerPea"
+				],
+				"sunPerMatch": 25.0,
+				"fallSpeed": 300.0,
+				"fillHoleCost": 200,
+				"plantUpgradeList": [
+					{"from": "PlantPeaShooterSingle", "to": "PlantPeaShooter", "cost": 5000},
+					{"from": "PlantPeaShooter", "to": "PlantGatlingPea", "cost": 10000},
+					{"from": "PlantSnowPea", "to": "PlantIceSpearPea", "cost": 5000},
+					{"from": "PlantWallnut", "to": "PlantTallnut", "cost": 2000}
+				]
+			}
+		}
+	]
+}

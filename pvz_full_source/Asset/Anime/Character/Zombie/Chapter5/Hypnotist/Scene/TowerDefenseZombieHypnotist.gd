@@ -166,12 +166,14 @@ func AnimeEvent(command: String, argument: Variant) -> void :
             var characterList = cell.characterList.duplicate()
             for target in characterList:
                 if is_instance_valid(target):
+                    if target is TowerDefenseGravestone: continue
+                    if target is TowerDefenseCrater: continue
                     hasPlant = true
                     target.Destroy(false)
-                    target.spritePause = true
+                    if "spritePause" in target:
+                        target.spritePause = true
                     target.shadowSprite.visible = false
                     target.shadowSprite.texture = null
-                    target.buff.BuffDelete("Sleep")
                     target.reparent(self.spriteGroup)
             if hasPlant:
                 TowerDefenseExplode.CreateExplode(global_position, Vector2(1.25, 1.25), rangeEvent, characterList, camp, instance.collisionFlags)

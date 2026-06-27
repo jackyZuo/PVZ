@@ -629,3 +629,10 @@ func ImportVariantSave(data: Dictionary) -> void :
     restTime = data.get("restTime", 5.0)
     restTimer = data.get("restTimer", 0.0)
     stateMethodList = data.get("stateMethodList", [])
+
+    if stage >= 1 and is_instance_valid(sprite):
+        sprite.DamagePointSet("Stage1")
+    if stage >= 2 and is_instance_valid(sprite):
+        sprite.DamagePointSet("Stage2")
+    if stage >= 3 and is_instance_valid(sprite):
+        sprite.DamagePointSet("Stage3")

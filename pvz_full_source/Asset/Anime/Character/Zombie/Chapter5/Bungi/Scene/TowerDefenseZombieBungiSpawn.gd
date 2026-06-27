@@ -31,20 +31,30 @@ func _ready() -> void :
             character.isGround = false
             add_child(character)
             if instance.hypnoses:
-                character.scale.x = - sign(character.scale.x) * character.scale.x
-                character.instance.hypnoses = true
-                if character is TowerDefenseZombie:
-                    character.camp = TowerDefenseEnum.CHARACTER_CAMP.PLANT
-                elif character is TowerDefensePlant:
-                    character.camp = TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE
+                character.scale.x = - character.scale.x
             character.instance.canBeCollection = false
             character.shadowSprite.visible = false
             character.PreSpawn()
+            if character is TowerDefenseZombie:
+                if is_instance_valid(character.attackComponent):
+                    character.attackComponent.alive = false
+                character.instance.collisionFlags = 0
+                character.instance.maskFlags = 0
+                if character.inWater:
+                    if is_instance_valid(character.waterInteractionComponent):
+                        if is_instance_valid(character.waterInteractionComponent.activeTween):
+                            character.waterInteractionComponent.activeTween.kill()
+                        character.waterInteractionComponent.isInWater = false
+                    character.SetSpriteGroupShaderParameter("discardDownPos", 10000.0)
+                    if is_instance_valid(character.waterLineSprite):
+                        character.waterLineSprite.visible = false
+                    if is_instance_valid(character.duckytobeSprite):
+                        character.duckytobeSprite.visible = false
             if is_instance_valid(override):
                 override.ExecuteCharacter(character)
             character.global_position = global_position
             if character is TowerDefenseZombie:
-                TowerDefenseBattleProcessWave.instance.AddSpawnCharacter(character)
+                TowerDefenseBattleFeatureWave.instance.AddSpawnCharacter(character)
     Walk()
 
 func HitpointsNearDie() -> void :
@@ -131,19 +141,28 @@ func PutCharacter() -> void :
         character.groundHeight = character.cell.GetGroundHeight()
         character.z = character.groundHeight
     if instance.hypnoses:
+        character.scale.x = abs(character.scale.x)
         character.Hypnoses()
-        if character is TowerDefenseZombie:
-            character.camp = TowerDefenseEnum.CHARACTER_CAMP.PLANT
-        elif character is TowerDefensePlant:
-            character.camp = TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE
     if is_instance_valid(cell):
         if !cell.IsWater():
             character.shadowSprite.visible = !character.invisible
     character.instance.canBeCollection = true
+    if character is TowerDefenseZombie:
+        if is_instance_valid(character.attackComponent):
+            character.attackComponent.alive = true
+        character.instance.collisionFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE
+        character.instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE
     character.global_position = TowerDefenseManager.GetMapCellPlantPos(gridPos)
     character.shadowSprite.scale = character.shadowComponent.saveShadowScale
     character.shadowComponent.saveShadowPosition = character.global_position + Vector2(12, 36)
     character.shadowSprite.global_position = character.global_position + Vector2(12, 36)
+    if is_instance_valid(cell) && cell.IsWater() && character is TowerDefenseZombie && character.inWater:
+        if is_instance_valid(character.waterInteractionComponent):
+            character.waterInteractionComponent.InWaterDiscardSet()
+        if is_instance_valid(character.waterLineSprite):
+            character.waterLineSprite.visible = true
+        if is_instance_valid(character.duckytobeSprite):
+            character.duckytobeSprite.visible = true
     if is_instance_valid(cell):
         if character is TowerDefensePlant:
             cell.CharacterPlant(character.packet, character)

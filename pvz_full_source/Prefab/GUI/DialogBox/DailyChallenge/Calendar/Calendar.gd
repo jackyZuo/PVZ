@@ -79,7 +79,9 @@ func _generate_dates() -> void :
         var empty_label = Label.new()
         grid_dates.add_child(empty_label)
 
-    var levelDataMap: Dictionary = ResourceManager.DAILY_LEVEL_DATA["LevelDateMap"]
+    var levelDataMap: Dictionary = {}
+    if !ResourceManager.DAILY_LEVEL_DATA.is_empty() && ResourceManager.DAILY_LEVEL_DATA.has("LevelDateMap"):
+        levelDataMap = ResourceManager.DAILY_LEVEL_DATA["LevelDateMap"]
     for days in range(1, days_in_month + 1):
         var button = BUTTON_SCENE.instantiate()
         button.set_text(str(days))
@@ -87,11 +89,11 @@ func _generate_dates() -> void :
         grid_dates.add_child(button)
         buttons.append(button)
         button.button_group = DATE_BUTTON_GROUP
-        button.disabled = ResourceManager.DAILY_LEVEL_DATA.is_empty() || !ResourceManager.DAILY_LEVEL_DATA["LevelDateMap"].has("%d-%02d-%02d" % [year, month, days])
+        var dateString: String = "%d-%02d-%02d" % [year, month, days]
+        button.disabled = ResourceManager.DAILY_LEVEL_DATA.is_empty() || !ResourceManager.DAILY_LEVEL_DATA.has("LevelDateMap") || !ResourceManager.DAILY_LEVEL_DATA["LevelDateMap"].has(dateString)
         if button.disabled:
             button.focus_mode = Control.FOCUS_NONE
         else:
-            var dateString: String = "%d-%02d-%02d" % [year, month, days]
             if levelDataMap.has(dateString):
                 var finishFlag: bool = true
                 var levelList: Array = levelDataMap[dateString]

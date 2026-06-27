@@ -27,7 +27,7 @@ func AttackDeal(character: TowerDefenseCharacter, type: String, num: float) -> v
             return
     match type:
         "Eat":
-            SkipInvincibleHurt(40)
+            SkipInvincibleHurt(max(40.0, num))
             character.Garlic()
 
 func ExportVariantSave() -> Dictionary:

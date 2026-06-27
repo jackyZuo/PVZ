@@ -173,7 +173,8 @@ func CanAttack() -> bool:
 
             var _target = cell.GetTarget(parent.instance.collisionFlags, parent.camp, false)
             if is_instance_valid(_target):
-                target = _target
+                if parent.CanCollision(_target.instance.maskFlags):
+                    target = _target
 
 
 
@@ -208,16 +209,20 @@ func CanAttackOnce() -> bool:
                 if is_instance_valid(cell):
                     var chacrater: TowerDefenseCharacter = cell.GetTarget(parent.instance.collisionFlags, parent.camp, false)
                     if is_instance_valid(chacrater):
-                        target = chacrater
+                        if parent.CanCollision(chacrater.instance.maskFlags):
+                            target = chacrater
         return is_instance_valid(target)
     else:
         var characterList = TowerDefenseManager.GetCharacterTargetFromArea(parent, checkArea, false, false)
         if checkGravestone:
             characterList = characterList.filter(
                 func(checkCharacter):
-                    return !(checkCharacter is TowerDefenseGravestone)
+                    if checkCharacter is TowerDefenseGravestone:
+                        return checkCharacter.canAttack
+                    return true
             )
-        return characterList.size() > 0
+            return characterList.size() > 0
+        return TowerDefenseManager.GetCharacterHasTargetFromArea(parent, checkArea, false, false)
 
 
 
@@ -241,7 +246,8 @@ func GetTarget() -> TowerDefenseCharacter:
                 if is_instance_valid(cell):
                     var _target: TowerDefenseCharacter = cell.GetTarget(parent.instance.collisionFlags, parent.camp, false)
                     if is_instance_valid(_target):
-                        character = _target
+                        if parent.CanCollision(_target.instance.maskFlags):
+                            character = _target
         target = character
         return character
     target = null
@@ -279,14 +285,15 @@ func GetTargetList() -> Array:
                         return false
                 if filterGravestone:
                     if checkCharacter is TowerDefenseGravestone:
-                        return false
+                        if checkCharacter.camp != TowerDefenseEnum.CHARACTER_CAMP.ALL:
+                            return false
                 if checkLine:
                     if checkCharacter.gridPos.y != parent.gridPos.y && !checkCharacter.targetRegistrationComponent.allLineCheck:
                         return false
                 return true
         )
     else:
-        var areas = checkArea.get_overlapping_areas()
+        var areas = TowerDefenseManager.GetOverlappingAreasCached(checkArea)
         for area: Area2D in areas:
             var checkCharacter = area.get_parent()
             if checkCharacter is TowerDefenseCharacter:
@@ -333,7 +340,8 @@ func GetTargetList() -> Array:
                             continue
                 if filterGravestone:
                     if checkCharacter is TowerDefenseGravestone:
-                        continue
+                        if checkCharacter.camp != TowerDefenseEnum.CHARACTER_CAMP.ALL:
+                            continue
                 if !checkBowling:
                     if checkCharacter is TowerDefensePlantBowlingBase:
                         continue
@@ -362,7 +370,7 @@ func GetCharcterList() -> Array:
     var characterList: Array = []
     var filterGravestone: bool = !checkGravestone || parent is TowerDefenseZombie
 
-    var areas = checkArea.get_overlapping_areas()
+    var areas = TowerDefenseManager.GetOverlappingAreasCached(checkArea)
     for area: Area2D in areas:
         var checkCharacter = area.get_parent()
         if checkCharacter is TowerDefenseCharacter:
@@ -376,7 +384,8 @@ func GetCharcterList() -> Array:
                 continue
             if filterGravestone:
                 if checkCharacter is TowerDefenseGravestone:
-                    continue
+                    if checkCharacter.camp != TowerDefenseEnum.CHARACTER_CAMP.ALL:
+                        continue
             if !checkBowling:
                 if checkCharacter is TowerDefensePlantBowlingBase:
                     continue
@@ -415,14 +424,18 @@ func AttackDps(delta: float, num: float) -> float:
     EventExecuteDps(character, delta)
     if TowerDefenseManager.GetMapIsVampire():
         parent.instance.hitpoints += hitNum
+        if is_instance_valid(parent.showHealthComponent):
+            parent.showHealthComponent.MarkDirty()
     var numGet: float = character.instance.Hurt(hitNum, false, Vector2.ZERO, false)
+    if is_instance_valid(character.showHealthComponent):
+        character.showHealthComponent.MarkDirty()
     if character is TowerDefensePlant:
         if numGet > 0 || character.instance.die:
             AudioManager.AudioPlay("Gulp", AudioManagerEnum.TYPE.SFX)
     if attackDpsTimer > 0.0:
         attackDpsTimer -= delta
     else:
-        attackDpsTimer = 1.5
+        attackDpsTimer = 1.0
         character.Bright()
         AudioManager.AudioPlay(eatAudio, AudioManagerEnum.TYPE.SFX)
     return numGet
@@ -617,7 +630,7 @@ func AttackProcessing(delta: float) -> void :
         state.send_event("ToIdle")
         return
     if !parent.componentAlive:
-
+        state.send_event("ToIdle")
         return
     if parent.die || parent.nearDie:
         state.send_event("ToIdle")

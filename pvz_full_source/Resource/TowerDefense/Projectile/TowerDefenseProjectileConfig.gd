@@ -33,6 +33,9 @@ class_name TowerDefenseProjectileConfig extends Resource
 @export var rangeSize: Vector2 = Vector2(0.5, 0.5)
 @export var hitPesontage: float = 0.25
 
+@export_group("Track")
+@export var trackSearchInterval: int = 15
+
 @export_group("")
 
 @export_storage var damageFlags: int = TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITBODY + TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD

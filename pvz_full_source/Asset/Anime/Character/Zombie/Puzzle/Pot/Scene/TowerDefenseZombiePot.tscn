@@ -35,17 +35,6 @@ image = SubResource("Image_6ib6t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d52fr"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejotj")
@@ -86,17 +75,6 @@ image = SubResource("Image_ufomw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7h8ta"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -111,7 +89,7 @@ shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0
 shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_dqdcs"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -121,9 +99,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_dqdcs")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_36cwp"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -133,21 +111,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_36cwp")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_36cwp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elvlk"]
 shader = ExtResource("7")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -172,13 +139,13 @@ config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/ZombiePot")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePot/HeadSlot")
 damagePart = {
-"Hat": ExtResource("5"),
+"HatPot": ExtResource("5"),
 "Head": ExtResource("4")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePot/HeadSlot")
-DamagePartSlot/Hat = NodePath("SpriteGroup/TransformPoint/ZombiePot/HatSlot")
+DamagePartSlot/HatPot = NodePath("SpriteGroup/TransformPoint/ZombiePot/HatSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
@@ -204,7 +171,7 @@ scale = Vector2(0.7991532, 0.7991532)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1201874957 instance=ExtResource("8")]
 visible = false
-material = SubResource("ShaderMaterial_36cwp")
+material = SubResource("ShaderMaterial_elvlk")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-2, -38)
 trueFrameRate = 180.0

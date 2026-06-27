@@ -9,4 +9,4 @@ func Explode() -> void :
             var buffFluorescence: TowerDefenseCharacterBuffFluorescence = TowerDefenseCharacterBuffFluorescence.new()
             buffFluorescence.time = 50
             character.BuffAdd(buffFluorescence)
-            character.WeakUp()
+            character.WakeUp()

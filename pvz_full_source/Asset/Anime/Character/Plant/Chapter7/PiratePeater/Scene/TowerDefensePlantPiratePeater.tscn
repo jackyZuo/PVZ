@@ -37,19 +37,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_w2g8i"]
 image = SubResource("Image_018b8")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ti7v1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgoog"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_w2g8i")
@@ -88,19 +77,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_2j52b"]
 image = SubResource("Image_og6ft")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5p5i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rt05g"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2j52b")
@@ -139,19 +117,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_rhefl"]
 image = SubResource("Image_uaqln")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywpxn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dc5wn"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_rhefl")
@@ -190,19 +157,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_ct3g1"]
 image = SubResource("Image_6xx7f")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7woc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1oqkj"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ct3g1")
@@ -224,15 +180,35 @@ baseDamage = 40.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_0x1in"]
 script = ExtResource("7")
 projectileName = &"PeaBomb"
 baseDamage = 40.0
+hitChestsScale = 3.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = true
+HitChests/Scale = 3.0
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_mrqpg"]
@@ -253,6 +229,15 @@ baseDamage = 80.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_ygcsc"]
@@ -307,27 +292,27 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="PiratePeater" parent="SpriteGroup/TransformPoint" index="0" unique_id=1213213646 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_ti7v1")
-instance_shader_parameters/frameIndex = 7.166999999999999
+material = SubResource("ShaderMaterial_pgoog")
+instance_shader_parameters/frameIndex = 9.549905333333331
 position = Vector2(0, -30)
 
 [node name="Head1" parent="SpriteGroup/TransformPoint/PiratePeater" index="0" unique_id=1849293417]
-material = SubResource("ShaderMaterial_u5p5i")
-instance_shader_parameters/frameIndex = 7.329899111111111
-position = Vector2(-14.461401, -17.667)
+material = SubResource("ShaderMaterial_rt05g")
+instance_shader_parameters/frameIndex = 9.549905333333331
+position = Vector2(-16.599905, -19.206717)
 
 [node name="Head2" parent="SpriteGroup/TransformPoint/PiratePeater" index="1" unique_id=640353875]
-material = SubResource("ShaderMaterial_ywpxn")
-instance_shader_parameters/frameIndex = 7.329899111111111
-position = Vector2(-10.138571, -5.4577484)
+material = SubResource("ShaderMaterial_dc5wn")
+instance_shader_parameters/frameIndex = 9.299401333333334
+position = Vector2(-11.830433, -1.2876663)
 
 [node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PiratePeater/Head2" index="0" unique_id=619833557]
 position = Vector2(21.162, -2.6)
 
 [node name="Head3" parent="SpriteGroup/TransformPoint/PiratePeater" index="2" unique_id=1918118580]
-material = SubResource("ShaderMaterial_n7woc")
-instance_shader_parameters/frameIndex = 7.329899111111111
-position = Vector2(16.09531, 10.652542)
+material = SubResource("ShaderMaterial_1oqkj")
+instance_shader_parameters/frameIndex = 9.133549333333333
+position = Vector2(16.63998, 11.809956)
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)

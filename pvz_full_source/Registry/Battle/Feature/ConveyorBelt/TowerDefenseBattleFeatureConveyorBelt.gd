@@ -22,15 +22,16 @@ func Init(_data: Dictionary) -> void :
     packetList = config.packetList.duplicate(true)
     conveyorBeltManager.Init(config.type)
     await control.get_tree().create_timer(0.1, false).timeout
-    if is_instance_valid(TowerDefenseBattleProcessWave.instance):
-        TowerDefenseBattleProcessWave.instance.bigWaveBegin.connect(WaveEventExecute)
+    if is_instance_valid(TowerDefenseBattleFeatureWave.instance):
+        TowerDefenseBattleFeatureWave.instance.bigWaveBegin.connect(WaveEventExecute)
 
 func GameInit() -> void :
     if data.is_empty():
         conveyorBeltManager.visible = false
 
 func GameInitFromProgress() -> void :
-    pass
+    if !data.is_empty() and is_instance_valid(conveyorBeltManager):
+        conveyorBeltManager.visible = true
 
 func GameStart() -> void :
     if is_instance_valid(conveyorBeltManager) and conveyorBeltManager.visible:
@@ -86,6 +87,9 @@ func LoadFeature(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void
     if is_instance_valid(conveyorBeltManager):
         for child in conveyorBeltManager.GetPacketChildren():
             if is_instance_valid(child):
+                var parent: Node = child.get_parent()
+                if is_instance_valid(parent):
+                    parent.remove_child(child)
                 child.queue_free()
         for packetData: Dictionary in _data.get("packetList", []):
             var saveKey: String = packetData.get("saveKey", "")
@@ -110,8 +114,8 @@ func LoadFeature(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void
                     packet.showCost = true
                     packet.start = true
             packet.Reset()
-            packet.position = Vector2(packetData.get("posX", 0.0), packetData.get("posY", 0.0))
             packet.pressed.connect(TowerDefenseManager.GetPacketPickControl().PickPacket)
+        conveyorBeltManager.ResetPacketPositions()
 
 
 

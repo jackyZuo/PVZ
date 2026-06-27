@@ -37,19 +37,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_da2fn"]
 image = SubResource("Image_ttp13")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_24ygo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t5ws"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_da2fn")
@@ -75,7 +64,16 @@ catapultHeight = 400.0
 Flag/Damage = 10
 Flag/FireMethod = 2
 Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = true
 Catapult/Height = 400.0
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_24ygo"]
 script = ExtResource("9")
@@ -86,8 +84,8 @@ metadata/_custom_type_script = "uid://bd70pedr27fla"
 script = ExtResource("10")
 projectile = SubResource("Resource_24ygo")
 useParentCollision = false
-collisionFlags = 11
-Flag/Collision = 11
+collisionFlags = 43
+Flag/Collision = 43
 metadata/_custom_type_script = "uid://duxe603jas8ga"
 
 [sub_resource type="Resource" id="Resource_020ik"]
@@ -108,16 +106,16 @@ Custom = []
 itemLayer = 0
 
 [node name="Melonnut" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1725676624 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_24ygo")
+material = SubResource("ShaderMaterial_3t5ws")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-1, -31)
 trueFrameRate = 180.0
 Animation/Clip = "Roll"
 
 [node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Melonnut" index="0" unique_id=2018156071]
-position = Vector2(55.103683, 10.576195)
-rotation = 2.5046675
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-35.04511, -33.229763)
+rotation = -0.06939229
+scale = Vector2(0.99999994, 0.9999999)
 script = ExtResource("6")
 followSlotId = 2
 useScale = false

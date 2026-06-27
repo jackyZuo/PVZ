@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void :
     if die || nearDie:
         return
     catapultComponent.PhysicsProcess(delta)
-    TowerDefenseManager.SetIceCapPos(gridPos.y, iceCapMarker.global_position)
+    if !instance.hypnoses:
+        TowerDefenseManager.SetIceCapPos(gridPos.y, iceCapMarker.global_position)
 
 func IdleEntered() -> void :
     super.IdleEntered()
@@ -61,8 +62,11 @@ func WalkProcessing(delta: float) -> void :
 
 func HitpointsEmpty() -> void :
     super.HitpointsEmpty()
-    catapultComponent.CreateDeathEffect()
-    Destroy()
+    if !isExplode:
+        catapultComponent.CreateDeathEffect()
+        Destroy()
+    else:
+        spritePause = true
 
 func DamagePointReach(damangePointName: String) -> void :
     super.DamagePointReach(damangePointName)

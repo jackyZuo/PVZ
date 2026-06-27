@@ -25,17 +25,14 @@ const GENERAL_PROGRESS_FLAG: PackedScene = preload("res://Prefab/GUI/ProgressMet
     set(_previewWave):
         previewWave = _previewWave
         previewWave = clamp(previewWave, 0, waveNum)
-        if previewWave % waveInterval == 0:
-            if hideItem || flagList.is_empty():
-                return
-            for flag: GeneralProgressFlag in flagList:
-                flag.reach = false
-            @warning_ignore("integer_division")
-            var flagIndex: int = previewWave / waveInterval
-            if flagIndex > flagList.size():
-                flagIndex = flagList.size()
-            for flagId in range(flagIndex):
-                flagList[flagId].reach = true
+        if hideItem || flagList.is_empty():
+            return
+        @warning_ignore("integer_division")
+        var flagIndex: int = previewWave / waveInterval
+        if flagIndex > flagList.size():
+            flagIndex = flagList.size()
+        for flagId in range(flagList.size()):
+            flagList[flagId].reach = flagId < flagIndex
 
 var flagList: Array[GeneralProgressFlag] = []
 
@@ -81,3 +78,10 @@ func FlagRefresh() -> void :
         var flag: GeneralProgressFlag = GENERAL_PROGRESS_FLAG.instantiate() as GeneralProgressFlag
         flagContainer.add_child(flag)
         flagList.insert(0, flag)
+
+    @warning_ignore("integer_division")
+    var flagIndex: int = previewWave / waveInterval
+    if flagIndex > flagList.size():
+        flagIndex = flagList.size()
+    for flagId in range(flagList.size()):
+        flagList[flagId].reach = flagId < flagIndex

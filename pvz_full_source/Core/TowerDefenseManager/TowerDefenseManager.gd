@@ -45,6 +45,11 @@ var backZombie: bool = false
 static var deathList: Array[Dictionary] = []
 
 static var luckyBagNum: int = 0
+static var goldShardNum: int = 0
+
+
+var _group_cache: Dictionary = {}
+var _group_cache_frame: int = -1
 
 func CharacterRegister(character: TowerDefenseCharacter) -> void :
     characterRegistry.Register(character)
@@ -63,6 +68,20 @@ func _GetCleanCharacters() -> Array[TowerDefenseCharacter]:
 func _GetOverlappingAreasCached(checkArea: Area2D) -> Array:
     return characterRegistry.GetOverlappingAreasCached(checkArea)
 
+
+func GetOverlappingAreasCached(checkArea: Area2D) -> Array:
+    return characterRegistry.GetOverlappingAreasCached(checkArea)
+
+
+func _GetNodesInGroupCached(groupName: String) -> Array:
+    var current_frame: int = Engine.get_physics_frames()
+    if current_frame != _group_cache_frame:
+        _group_cache_frame = current_frame
+        _group_cache.clear()
+    if !_group_cache.has(groupName):
+        _group_cache[groupName] = get_tree().get_nodes_in_group(groupName)
+    return _group_cache[groupName]
+
 func _ready() -> void :
     eventBus = BattleEventBus
     characterRegistry = TowerDefenseBattleCharacterRegistry.new()
@@ -77,14 +96,10 @@ func MapIsChange() -> void :
     gridBeginPos = GetMapGridBeginPos()
     gridNum = GetMapGridNum()
 
-func CharacterDestroy(_packet: TowerDefensePacketConfig, pos: Vector2, _gridPos: Vector2, _camp: TowerDefenseEnum.CHARACTER_CAMP, _scale: float = 1.0, _hitpointScale: float = 1.0) -> void :
+func CharacterDestroy(_packet: TowerDefensePacketConfig, pos: Vector2, _gridPos: Vector2, _camp: TowerDefenseEnum.CHARACTER_CAMP, _scale: float = 1.0, _hitpointScale: float = 1.0, _invisible: bool = false) -> void :
     if !is_instance_valid(_packet):
         return
     if !_packet.characterConfig is TowerDefenseZombieConfig:
-        return
-    if _packet.saveKey == "ZombieAngel":
-        return
-    if pos.x < GetMapCellPos(Vector2(4, 0)).x:
         return
     deathList.append(
         {
@@ -94,7 +109,9 @@ func CharacterDestroy(_packet: TowerDefensePacketConfig, pos: Vector2, _gridPos:
             "Time": TowerDefenseManager.runGameTime, 
             "Camp": _camp, 
             "Scale": _scale, 
-            "HitpointScale": _hitpointScale
+            "HitpointScale": _hitpointScale, 
+            "Invisible": _invisible, 
+            "RelifeAngel": _packet.saveKey != "ZombieAngel" && pos.x >= GetMapCellPos(Vector2(4, 0)).x
         }
     )
 
@@ -241,7 +258,7 @@ func GetPacketConfigCostLowerWithTypeList(cost: int, typeList: Array[TowerDefens
             packetConfigList.append(packetConfig.duplicate(true))
     return packetConfigList
 
-func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false) -> TowerDefenseInGamePacketShow:
+func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false, useRandf: bool = true) -> TowerDefenseInGamePacketShow:
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
         return null
     var height: float = randf_range(TowerDefenseManager.GetMapGridBeginPos().y + 200, TowerDefenseManager.GetMapGroundDown() - TowerDefenseManager.GetMapGridBeginPos().y)
@@ -268,7 +285,11 @@ func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime
     else:
         packet.height = 1
         packet.moveComponent.gravity = 980.0
-        velocity_x = randf_range(-50, -30) if randf() > 0.5 else randf_range(30, 50)
+        if useRandf:
+            if randf() > 0.5:
+                velocity_x = randf_range(-80, -50)
+            else:
+                velocity_x = randf_range(30, 80)
         velocity_y = -300.0
         packet.moveComponent.velocity = Vector2(velocity_x, velocity_y)
     packet.pressed.connect(TowerDefenseManager.GetPacketPickControl().PickPacket)
@@ -652,6 +673,12 @@ func LuckyBagCreate(pos: Vector2, height: float = 0.0, velocity: Vector2 = Vecto
     item.gridPos.y = 200
     item.reparent(characterNode, false)
 
+func GoldShardCreate(pos: Vector2, height: float = 0.0, velocity: Vector2 = Vector2.ZERO, gravity: float = 0.0) -> void :
+    var characterNode = GetCharacterNode()
+    var item = TowerDefenseManager.FallingObjectItemCreate(ObjectManagerConfig.OBJECT.COIN_GOLD_SHARD, pos, height, velocity, gravity)
+    item.gridPos.y = 200
+    item.reparent(characterNode, false)
+
 
 
 
@@ -912,7 +939,7 @@ func GetMowerNum() -> int:
     return GetMower().size()
 
 func GetMower() -> Array:
-    return get_tree().get_nodes_in_group("Mower")
+    return _GetNodesInGroupCached("Mower")
 
 func CreateMower(line: int) -> TowerDefenseMower:
     var mowerFeature: TowerDefenseBattleFeatureMower = GetMowerFeature()
@@ -1040,12 +1067,10 @@ func GetEffectDirtName() -> String:
 
 
 func GetPlant() -> Array:
-    var plantList = get_tree().get_nodes_in_group("Plant")
-    return plantList
+    return _GetNodesInGroupCached("Plant")
 
 func GetZombie() -> Array:
-    var zombieList = get_tree().get_nodes_in_group("Zombie")
-    return zombieList
+    return _GetNodesInGroupCached("Zombie")
 
 func GetCharacter() -> Array:
     var characterList = _GetCleanCharacters().filter(
@@ -1055,12 +1080,10 @@ func GetCharacter() -> Array:
     return characterList
 
 func GetProjectile() -> Array:
-    var projectileList = get_tree().get_nodes_in_group("Projectile")
-    return projectileList
+    return _GetNodesInGroupCached("Projectile")
 
 func GetEffect() -> Array:
-    var effectList = get_tree().get_nodes_in_group("Effect")
-    return effectList
+    return _GetNodesInGroupCached("Effect")
 
 func GetEffectCount() -> int:
     return characterRegistry.GetEffectCount()
@@ -1269,6 +1292,27 @@ func GetCharacterTargetFarFromArray(character: TowerDefenseCharacter, array: Arr
 
 func GetCharacterTargetFarFromArrayWithCollisionFlags(character: TowerDefenseCharacter, collisionFlags: int, array: Array, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, checkLine: bool = false, fliterGravestone: bool = false) -> Array:
     return targetSystem.GetCharacterTargetFarFromArrayWithCollisionFlags(character, collisionFlags, array, method, checkLine, fliterGravestone)
+
+func GetCharacterTargetNearest(character: TowerDefenseCharacter, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, checkLine: bool = false, fliterGravestone: bool = false) -> TowerDefenseCharacter:
+    return targetSystem.GetCharacterTargetNearest(character, method, checkLine, fliterGravestone)
+
+func GetCharacterTargetNearestFromArray(character: TowerDefenseCharacter, array: Array, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, checkLine: bool = false, fliterGravestone: bool = false) -> TowerDefenseCharacter:
+    return targetSystem.GetCharacterTargetNearestFromArray(character, array, method, checkLine, fliterGravestone)
+
+func GetCharacterTargetNearestFromArrayWithCollisionFlags(character: TowerDefenseCharacter, collisionFlags: int, array: Array, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, checkLine: bool = false, fliterGravestone: bool = false) -> TowerDefenseCharacter:
+    return targetSystem.GetCharacterTargetNearestFromArrayWithCollisionFlags(character, collisionFlags, array, method, checkLine, fliterGravestone)
+
+func GetCharacterTargetFarthestFromArrayWithCollisionFlags(character: TowerDefenseCharacter, collisionFlags: int, array: Array, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, checkLine: bool = false, fliterGravestone: bool = false) -> TowerDefenseCharacter:
+    return targetSystem.GetCharacterTargetFarthestFromArrayWithCollisionFlags(character, collisionFlags, array, method, checkLine, fliterGravestone)
+
+func GetProjectileTargetNearestProjectile(projectile: TowerDefenseProjectile, collisionFlags: int = -1, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, fliterGravestone: bool = true) -> TowerDefenseCharacter:
+    return targetSystem.GetProjectileTargetNearestProjectile(projectile, collisionFlags, method, fliterGravestone)
+
+func GetCharacterTargetNearestFromArea(character: TowerDefenseCharacter, checkArea: Area2D, method: TowerDefenseEnum.TARGET_NEAR_METHOD = TowerDefenseEnum.TARGET_NEAR_METHOD.DEFAULT, fliterGravestone: bool = false) -> TowerDefenseCharacter:
+    return targetSystem.GetCharacterTargetNearestFromArea(character, checkArea, method, fliterGravestone)
+
+func GetCharactersForLine(line: int) -> Array:
+    return characterRegistry.GetCharactersForLine(line)
 
 func BungiSpawn(packetName: String, gridPos: Vector2i, override: TowerDefenseCharacterOverride = null, hypnoses: bool = false) -> void :
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:

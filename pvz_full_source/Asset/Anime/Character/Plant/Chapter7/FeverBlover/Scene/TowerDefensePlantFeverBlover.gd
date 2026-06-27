@@ -61,7 +61,7 @@ func Run() -> void :
     sprite.AddAnimation("Loop", 0.0, true, 0.0)
     instance.invincible = true
     run = true
-    get_tree().create_timer(15.0, false).timeout.connect(_SafetyDestroy)
+    get_tree().create_timer(5.0, false).timeout.connect(_SafetyDestroy)
 
 func AnimeEvent(command: String, argument: Variant) -> void :
     super.AnimeEvent(command, argument)

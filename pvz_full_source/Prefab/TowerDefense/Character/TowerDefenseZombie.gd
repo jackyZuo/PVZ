@@ -56,12 +56,15 @@ var isPause: bool = false:
             groundHeightComponent.alive = true
 
 var isGarlic: bool = false
+var isGarlicBird: bool = false
 var isChangeLine: bool = false
 var inSwimPlay: bool = false
 var inGround: bool = false
 var startAttack: bool = false
 var sizeUpNum: int = 2
-var isCarry: bool = false
+var hasGhost: bool = false
+var ghostCharacter: TowerDefenseZombie = null
+var hasSpikeball: bool = false
 
 var rect: Rect2
 
@@ -136,6 +139,8 @@ func _auto_register_sync() -> void :
         MultiPlayerManager.SendSpawnCharacterAt(config.name, gridPos.x, gridPos.y, new_sync_id, instance.hitpointScale if is_instance_valid(instance) else 1.0, transformPoint.scale.x, instance.hypnoses if is_instance_valid(instance) else false, 0.0, true, global_position.x, global_position.y)
 
 func _exit_tree() -> void :
+    if Engine.is_editor_hint():
+        return
     if is_instance_valid(BattleEventBus) && BattleEventBus.showZombieHealth.is_connected(_on_show_zombie_health):
         BattleEventBus.showZombieHealth.disconnect(_on_show_zombie_health)
 
@@ -148,7 +153,7 @@ func _physics_process(delta: float) -> void :
         return
     super._physics_process(delta)
     sprite.pause = TowerDefenseManager.pauseZombie || spritePause
-    sprite.playBack = TowerDefenseManager.backZombie
+    sprite.playBack = TowerDefenseManager.backZombie || isGarlicBird
     if TowerDefenseManager.GetMapFeature():
         if is_instance_valid(cell):
             var cellPos: Vector2 = TowerDefenseManager.GetMapCellPos(gridPos)

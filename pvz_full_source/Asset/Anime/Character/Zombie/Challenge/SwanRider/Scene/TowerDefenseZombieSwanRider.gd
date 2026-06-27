@@ -7,6 +7,7 @@ var over: bool = false
 var isFly: bool = false
 var speed: float = 30.0
 var isFlying: bool = false
+var mowerKill: bool = false
 
 var carryCharacter: TowerDefenseCharacter
 
@@ -76,9 +77,12 @@ func DestroySet() -> void :
     if is_instance_valid(carryCharacter):
         carryCharacter.isGround = false
         carryCharacter.groundHeight = groundHeight
-        carryCharacter.set_deferred("isPause", false)
+        carryCharacter.isPause = false
         carryCharacter = null
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost:
+        return
+    if mowerKill:
+        await get_tree().physics_frame
         return
     var packetName: String = "ZombieNormal"
     if useCone:
@@ -169,7 +173,7 @@ func Hypnoses(time: float = -1, canFliter: bool = true) -> void :
     if is_instance_valid(carryCharacter):
         carryCharacter.isGround = false
         carryCharacter.groundHeight = groundHeight
-        carryCharacter.set_deferred("isPause", false)
+        carryCharacter.isPause = false
         carryCharacter = null
 
 func Blow() -> void :

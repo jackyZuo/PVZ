@@ -83,7 +83,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantWinterMelon")
     if cell.CanPacketPlant(packetConfig, true):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos, true, true)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

@@ -6,10 +6,10 @@
 [ext_resource type="Resource" uid="uid://ccsadnxj1r2nw" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/DamagePoint/Config/ZombieAxeDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://c5s7entg7tll" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/DamagePoint/Config/ZombieAxeDamagePointHead.tres" id="5"]
 [ext_resource type="Resource" uid="uid://dq1yfraxd288l" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorAxe.tres" id="6"]
-[ext_resource type="Resource" uid="uid://de4uav1ecgh01" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorCone.tres" id="7"]
+[ext_resource type="Resource" uid="uid://yvw45jwk4m42" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorBlackHelmet.tres" id="7"]
 [ext_resource type="Resource" uid="uid://u3oinlsw7w58" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorBucket.tres" id="8"]
-[ext_resource type="Resource" uid="uid://c3vi037hqf3o1" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorHelmet.tres" id="9"]
-[ext_resource type="Resource" uid="uid://yvw45jwk4m42" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorBlackHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://de4uav1ecgh01" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c3vi037hqf3o1" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorHelmet.tres" id="10"]
 [ext_resource type="Resource" uid="uid://klkmmp4ljwgc" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorSpecialHelmet.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://b0cbgf64rcjev" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/ZombieAxe.tscn" id="12"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="13"]
@@ -45,19 +45,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_jg5eb"]
 image = SubResource("Image_1uutb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ancq4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkatr"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_jg5eb")
@@ -72,18 +61,25 @@ shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[sub_resource type="Resource" id="Resource_proj"]
+[sub_resource type="Resource" id="Resource_n103y"]
 script = ExtResource("17")
-projectileName = &"AxeDefault"
-baseDamage = 450.0
-hitNutScale = 2.0
+projectileName = &"Axe"
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_fcps"]
 script = ExtResource("18")
-projectileData = SubResource("Resource_proj")
+projectileData = SubResource("Resource_n103y")
 metadata/_custom_type_script = "uid://bd70pedr27fla"
 
 [sub_resource type="Resource" id="Resource_fcchk"]
@@ -99,7 +95,7 @@ metadata/_custom_type_script = "uid://ndtiv4yt0fsj"
 script = ExtResource("2")
 fireInterval = 3.0
 fireNum = 1
-projectileName = "AxeDefault"
+projectileName = "Axe"
 useAttackDps = false
 swimAnimeClip = "Swim"
 attackAnimeClip = "Attack"
@@ -112,48 +108,50 @@ headSlot = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
 "Axe": ExtResource("6"),
-"BlackHelmet": ExtResource("10"),
+"BlackHelmet": ExtResource("7"),
 "Bucket": ExtResource("8"),
-"Cone": ExtResource("7"),
+"Cone": ExtResource("9"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("9"),
+"Helmet": ExtResource("10"),
 "SpecialHelmet": ExtResource("11")
 }
 PreviewDamagePointPersontage = 1.0
-Armor = []
+Armor = ["Axe"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieAxe/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
 DamagePartSlot/Axe = NodePath("SpriteGroup/TransformPoint/ZombieAxe/AxeSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
 
 [node name="ZombieAxe" parent="SpriteGroup/TransformPoint" index="0" unique_id=187105600 instance=ExtResource("12")]
-material = SubResource("ShaderMaterial_ancq4")
-instance_shader_parameters/frameIndex = 1.6296533333330327
+material = SubResource("ShaderMaterial_qkatr")
+instance_shader_parameters/frameIndex = 17.68617525925309
 position = Vector2(-12, -33)
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="0" unique_id=313735605]
-position = Vector2(-20.514418, -51.837654)
-scale = Vector2(0.7408227, 0.7408227)
+position = Vector2(-21.957998, -48.76593)
+rotation = -0.02509827
+scale = Vector2(0.7405973, 0.7405973)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="1" unique_id=449739607]
-position = Vector2(14.431751, -3.164487)
-rotation = -0.19522373
-scale = Vector2(0.7362768, 0.74194354)
+position = Vector2(14.367545, 0.42752647)
+rotation = -0.2948981
+scale = Vector2(0.7358462, 0.7414997)
+skew = 0.030918717
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="2" unique_id=1629898313]
 visible = false
 
 [node name="AxeSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="3" unique_id=1524035924]
-position = Vector2(-35.016003, 24.098377)
-rotation = -0.044223554
-scale = Vector2(0.79998523, 0.79998523)
+position = Vector2(-33.136383, 28.795734)
+rotation = 0.023195505
+scale = Vector2(0.79995686, 0.79995686)
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(4, -2)
@@ -169,6 +167,7 @@ delay_in_seconds = "0.0"
 
 [node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=174911861 instance=ExtResource("16")]
 unique_name_in_owner = true
+fireInterval = 3.0
 fireCheckList = [SubResource("Resource_fcchk")]
 fireProjectileList = [SubResource("Resource_fcfpc")]
 

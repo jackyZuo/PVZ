@@ -36,19 +36,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_v8s4q"]
 image = SubResource("Image_6nass")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vh8uv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaxny"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_v8s4q")
@@ -87,19 +76,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_s4n56"]
 image = SubResource("Image_cp7uf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqmsb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_py5lh"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_s4n56")
@@ -136,13 +114,13 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="DoomTanglekelp" parent="SpriteGroup/TransformPoint" index="0" unique_id=878862441 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_vh8uv")
-instance_shader_parameters/frameIndex = 15.321739999994795
+material = SubResource("ShaderMaterial_oaxny")
+instance_shader_parameters/frameIndex = 0.7265679999992984
 position = Vector2(0, -30)
 
 [node name="DoomTanglekelpGrab" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="2" unique_id=738555491 instance=ExtResource("6")]
 visible = false
-material = SubResource("ShaderMaterial_rqmsb")
+material = SubResource("ShaderMaterial_py5lh")
 instance_shader_parameters/frameIndex = 0.0
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
@@ -169,6 +147,7 @@ screenColorBlinkUse = true
 craterCreateUse = true
 
 [node name="TanglekelpComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1967004272 node_paths=PackedStringArray("attackComponent") instance=ExtResource("11")]
+unique_name_in_owner = true
 attackComponent = NodePath("../AttackComponent")
 grabSpriteScene = ExtResource("6")
 

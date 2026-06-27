@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://djkqrk6gf2elf" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Scene/TowerDefenseZombieGargantuarDigger.gd" id="2"]
 [ext_resource type="Resource" uid="uid://1pdvnv5no5p" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Config/TowerDefenseZombieGargantuarDigger.tres" id="3"]
 [ext_resource type="Resource" uid="uid://dpx8iia408p2f" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Armor/Config/ZombieGargantuarDiggerArmorHardHat.tres" id="4"]
-[ext_resource type="PackedScene" uid="uid://1tmyhwrvi5us" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/ZombieGargantuarDigger.tscn" id="5"]
-[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="6"]
-[ext_resource type="Texture2D" uid="uid://cjcrpsdfy23k3" path="res://Asset/Texture/Character/Armor/HardHat/ZombieHardHat1.png" id="7"]
-[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="8"]
-[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="9"]
+[ext_resource type="Resource" uid="uid://dr7prib0ki3nw" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Armor/Config/ZombieGargantuarDiggerArmorPick.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://1tmyhwrvi5us" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/ZombieGargantuarDigger.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="7"]
+[ext_resource type="Texture2D" uid="uid://cjcrpsdfy23k3" path="res://Asset/Texture/Character/Armor/HardHat/ZombieHardHat1.png" id="8"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="9"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="10"]
 
 [sub_resource type="Image" id="Image_gktv4"]
 data = {
@@ -47,18 +48,7 @@ data = {
 image = SubResource("Image_c4if7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_inape"]
-shader = ExtResource("6")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+shader = ExtResource("7")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_vjn88")
@@ -86,17 +76,19 @@ config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar/HeadSlot")
 damagePart = {
-"HardHat": ExtResource("4")
+"HardHat": ExtResource("4"),
+"Pick": ExtResource("5")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["HardHat"]
 DamagePartSlot/HardHat = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar/HardHatSlot")
+DamagePartSlot/Pick = null
 
-[node name="ZombieGargantuar" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=941168180 instance=ExtResource("5")]
+[node name="ZombieGargantuar" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=941168180 instance=ExtResource("6")]
 material = SubResource("ShaderMaterial_inape")
 instance_shader_parameters/frameIndex = 6.079924444444444
 position = Vector2(-12, -36)
-Animation/MediaReplace/Zombie_digger_hardhat.png = ExtResource("7")
+Animation/MediaReplace/Zombie_digger_hardhat.png = ExtResource("8")
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="0" unique_id=157877954]
 position = Vector2(-50.026955, -86.782394)
@@ -126,28 +118,28 @@ skew = -0.05848992
 position = Vector2(-1.5, -6.5)
 
 [node name="Dig" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="7" unique_id=1943944536]
-script = ExtResource("8")
+script = ExtResource("9")
 
 [node name="Drill" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="8" unique_id=838029415]
-script = ExtResource("8")
+script = ExtResource("9")
 
 [node name="Land" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="9" unique_id=592453162]
-script = ExtResource("8")
+script = ExtResource("9")
 
 [node name="ToDig" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="17" unique_id=1520247533]
-script = ExtResource("9")
+script = ExtResource("10")
 to = NodePath("../Dig")
 event = &"ToDig"
 delay_in_seconds = "0.0"
 
 [node name="ToDrill" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="18" unique_id=2040627468]
-script = ExtResource("9")
+script = ExtResource("10")
 to = NodePath("../Drill")
 event = &"ToDrill"
 delay_in_seconds = "0.0"
 
 [node name="ToLand" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="19" unique_id=1802370006]
-script = ExtResource("9")
+script = ExtResource("10")
 to = NodePath("../Land")
 event = &"ToLand"
 delay_in_seconds = "0.0"

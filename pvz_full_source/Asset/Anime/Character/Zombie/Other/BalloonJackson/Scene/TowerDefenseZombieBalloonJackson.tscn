@@ -5,91 +5,15 @@
 [ext_resource type="Resource" uid="uid://iw7eaclskbyn" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Config/TowerDefenseZombieBalloonJackson.tres" id="3"]
 [ext_resource type="Resource" uid="uid://u2nidy0npqhy" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/DamagePoint/Config/ZombieBalloonJacksonDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://cy73x65gjhaki" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/DamagePoint/Config/ZombieBalloonJacksonDamagePointHead.tres" id="5"]
-[ext_resource type="Script" uid="uid://3gswocg6uh6g" path="res://Resource/General/Character/Armor/CharacterArmorConfig.gd" id="6"]
-[ext_resource type="Texture2D" uid="uid://bwi80yrsftrj7" path="res://Asset/Texture/Character/Armor/Cone/ZombieCone1.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://bujah2iiggkwx" path="res://Asset/Texture/Character/Armor/Cone/ZombieCone2.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://de4momje20smp" path="res://Asset/Texture/Character/Armor/Cone/ZombieCone3.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://bsh6g1gtv07mv" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket1.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://c8j6e6siocnub" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket2.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://dgcx0y0jelv7v" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket3.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://b1yls1ul6s8q4" path="res://Asset/Texture/Character/Armor/Helmet/ZombieHelmet1.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://b8pl6ewrq84ws" path="res://Asset/Texture/Character/Armor/Helmet/ZombieHelmet2.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://c5vbv6umliqdg" path="res://Asset/Texture/Character/Armor/Helmet/ZombieHelmet3.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://4bhk575c1fyl" path="res://Asset/Texture/Character/Armor/BlackHelmet/ZombieBlackHelmet1.png" id="16"]
-[ext_resource type="Texture2D" uid="uid://cottsdh88u0xr" path="res://Asset/Texture/Character/Armor/BlackHelmet/ZombieBlackHelmet2.png" id="17"]
-[ext_resource type="Texture2D" uid="uid://kr474xubfg0v" path="res://Asset/Texture/Character/Armor/BlackHelmet/ZombieBlackHelmet3.png" id="18"]
-[ext_resource type="Texture2D" uid="uid://nsoxuw2ao4ng" path="res://Asset/Texture/Character/Armor/SpecialHelmet/ZombieSpecialHelmet1.png" id="19"]
-[ext_resource type="Texture2D" uid="uid://ct756urs1c848" path="res://Asset/Texture/Character/Armor/SpecialHelmet/ZombieSpecialHelmet2.png" id="20"]
-[ext_resource type="Texture2D" uid="uid://dhv1apqow1p2d" path="res://Asset/Texture/Character/Armor/SpecialHelmet/ZombieSpecialHelmet3.png" id="21"]
-[ext_resource type="PackedScene" uid="uid://dkcf0cugt6oq1" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/ZombieBalloonJackson.tscn" id="22"]
-[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="23"]
-[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="24"]
-[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="25"]
-
-[sub_resource type="Resource" id="Resource_q0wyk"]
-script = ExtResource("6")
-armorName = "Cone"
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteSlotPath = NodePath("HeadSlot")
-replaceSpriteOffset = Vector2(7, -30)
-stageAnimeTexture = [ExtResource("7"), ExtResource("8"), ExtResource("9")]
-destroyFliter = "anim_cone"
-impactAudio = "PlasticHit"
-Flag/Method = 200
-
-[sub_resource type="Resource" id="Resource_8xjb2"]
-script = ExtResource("6")
-armorName = "Bucket"
-damagePoint = 1100.0
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteSlotPath = NodePath("HeadSlot")
-replaceSpriteOffset = Vector2(2, -15)
-stageAnimeTexture = [ExtResource("10"), ExtResource("11"), ExtResource("12")]
-destroyFliter = "anim_bucket"
-impactAudio = "ShieldHit"
-armorMethodFlags = 216
-Flag/Method = 216
-
-[sub_resource type="Resource" id="Resource_msf5s"]
-script = ExtResource("6")
-armorName = "Helmet"
-damagePoint = 1400.0
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteSlotPath = NodePath("HeadSlot")
-replaceSpriteOffset = Vector2(7, -5)
-stageAnimeTexture = [ExtResource("13"), ExtResource("14"), ExtResource("15")]
-impactAudio = "PlasticHit"
-armorMethodFlags = 216
-Flag/Method = 216
-
-[sub_resource type="Resource" id="Resource_4dard"]
-script = ExtResource("6")
-armorName = "BlackHelmet"
-damagePoint = 3000.0
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteSlotPath = NodePath("HeadSlot")
-replaceSpriteOffset = Vector2(7, -5)
-stageAnimeTexture = [ExtResource("16"), ExtResource("17"), ExtResource("18")]
-impactAudio = "PlasticHit"
-armorMethodFlags = 216
-Flag/Method = 216
-
-[sub_resource type="Resource" id="Resource_e0542"]
-script = ExtResource("6")
-armorName = "SpecialHelmet"
-damagePoint = 3000.0
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteSlotPath = NodePath("HeadSlot")
-replaceSpriteOffset = Vector2(7, -5)
-stageAnimeTexture = [ExtResource("19"), ExtResource("20"), ExtResource("21")]
-impactAudio = "PlasticHit"
-armorMethodFlags = 216
-Flag/Method = 216
+[ext_resource type="Resource" uid="uid://c0njxblkh001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c0njxbuck001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://c0njxcone001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c0njxhelm001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c0njxspch001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorSpecialHelmet.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://dkcf0cugt6oq1" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/ZombieBalloonJackson.tscn" id="11"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="13"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="14"]
 
 [sub_resource type="Image" id="Image_1c7sb"]
 data = {
@@ -116,18 +40,7 @@ data = {
 image = SubResource("Image_af7ll")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m07ck"]
-shader = ExtResource("23")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+shader = ExtResource("12")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_6vfev")
@@ -167,18 +80,7 @@ data = {
 image = SubResource("Image_4vlym")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7k3w"]
-shader = ExtResource("23")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+shader = ExtResource("12")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2xmoa")
@@ -202,27 +104,27 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": SubResource("Resource_4dard"),
-"Bucket": SubResource("Resource_8xjb2"),
-"Cone": SubResource("Resource_q0wyk"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": SubResource("Resource_msf5s"),
-"SpecialHelmet": SubResource("Resource_e0542")
+"Helmet": ExtResource("9"),
+"SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["Balloon"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/HeadSlot")
-DamagePartSlot/Cone = null
-DamagePartSlot/Bucket = null
-DamagePartSlot/Helmet = null
 DamagePartSlot/BlackHelmet = null
+DamagePartSlot/Bucket = null
+DamagePartSlot/Cone = null
+DamagePartSlot/Helmet = null
 DamagePartSlot/SpecialHelmet = null
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
 
-[node name="ZombieBalloonJackson" parent="SpriteGroup/TransformPoint" index="0" unique_id=1736038134 instance=ExtResource("22")]
+[node name="ZombieBalloonJackson" parent="SpriteGroup/TransformPoint" index="0" unique_id=1736038134 instance=ExtResource("11")]
 material = SubResource("ShaderMaterial_m07ck")
 instance_shader_parameters/frameIndex = 8.851015555555556
 position = Vector2(-4, -29)
@@ -250,28 +152,28 @@ scale = Vector2(0.59969807, 0.59969807)
 position = Vector2(-12.209999, -60)
 
 [node name="Fly" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="4" unique_id=751174533]
-script = ExtResource("24")
+script = ExtResource("13")
 
 [node name="FlyAttack" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="5" unique_id=712989296]
-script = ExtResource("24")
+script = ExtResource("13")
 
 [node name="Pop" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="6" unique_id=1998734619]
-script = ExtResource("24")
+script = ExtResource("13")
 
 [node name="ToPop" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="11" unique_id=1090326558]
-script = ExtResource("25")
+script = ExtResource("14")
 to = NodePath("../Pop")
 event = &"ToPop"
 delay_in_seconds = "0.0"
 
 [node name="ToFly" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="12" unique_id=262532230]
-script = ExtResource("25")
+script = ExtResource("14")
 to = NodePath("../Fly")
 event = &"ToFly"
 delay_in_seconds = "0.0"
 
 [node name="ToFlyAttack" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="13" unique_id=97448429]
-script = ExtResource("25")
+script = ExtResource("14")
 to = NodePath("../FlyAttack")
 event = &"ToFlyAttack"
 delay_in_seconds = "0.0"

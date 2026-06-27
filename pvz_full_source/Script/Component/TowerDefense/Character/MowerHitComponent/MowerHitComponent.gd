@@ -51,6 +51,8 @@ func Hit(character: TowerDefenseCharacter) -> void :
     if character.config is TowerDefenseZombieConfig:
         if character.config.physique >= TowerDefenseEnum.ZOMBIE_PHYSIQUE.HUGE:
             if character.instance.zombiePhysique != TowerDefenseEnum.ZOMBIE_PHYSIQUE.BOSS:
+                if "mowerKill" in character:
+                    character.mowerKill = true
                 character.Bright()
                 character.instance.DealHurt(100000, false)
                 _send_mower_kill_sync(character)

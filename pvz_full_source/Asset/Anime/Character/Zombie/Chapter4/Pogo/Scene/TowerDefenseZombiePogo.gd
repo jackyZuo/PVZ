@@ -72,9 +72,22 @@ func ArmorHitpointsEmpty(armorName: String) -> void :
                 instance.unUseBuffFlags = 0
             isJump = false
             hasPogo = false
+            if is_instance_valid(groundHeightComponent):
+                groundHeightComponent.handleWaterHeight = true
+            if inWater:
+                groundHeight = - waterHeight
             Walk()
 
+func InWater() -> void :
+    super.InWater()
+    if hasPogo:
+        groundHeight = 0.0
+        if is_instance_valid(groundHeightComponent):
+            groundHeightComponent.handleWaterHeight = false
+
 func OutWater() -> void :
+    if hasPogo && is_instance_valid(groundHeightComponent):
+        groundHeightComponent.handleWaterHeight = true
     super.OutWater()
     if !hasPogo:
         return
@@ -137,5 +150,9 @@ func Block(target: TowerDefenseCharacter) -> void :
     instance.ArmorDelete("Pogo")
     hasPogo = false
     isJump = false
+    if is_instance_valid(groundHeightComponent):
+        groundHeightComponent.handleWaterHeight = true
+    if inWater:
+        groundHeight = - waterHeight
     AudioManager.AudioPlay("Bonk", AudioManagerEnum.TYPE.SFX)
     Walk()

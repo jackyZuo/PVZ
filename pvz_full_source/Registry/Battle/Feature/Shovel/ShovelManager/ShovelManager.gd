@@ -97,14 +97,14 @@ func ProcessShovelPick(cell: TowerDefenseCellInstance, gridPos: Vector2i, mouseP
         var gridSize: Vector2 = TowerDefenseManager.GetMapGridSize()
         var offset: Vector2 = mousePos - cellPos + Vector2(0, groundHeight)
         var percentage: float = offset.y / gridSize.y
-        var shovelPlant: TowerDefenseCharacter = cell.GetShovelCharacter(percentage)
+        var shovelPlant: TowerDefenseCharacter = cell.GetShovelCharacter(percentage, shovelConfig)
         if shovelPlant != lastShovelPlant:
             if is_instance_valid(lastShovelPlant):
                 lastShovelPlant.SetSpriteGroupShaderParameter("brightStrength", 0.0)
             lastShovelPlant = shovelPlant
         if shovelPlant:
             shovelPlant.Bright(0.5, 0.0)
-        if cell.CanShovel(percentage):
+        if cell.CanShovel(percentage, shovelConfig):
             if mapControl.IsConfirmInput():
                 AudioManager.AudioPlay("ShovelDig", AudioManagerEnum.TYPE.SFX)
                 if Global.isMultiplayerMode:

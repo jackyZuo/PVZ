@@ -35,3 +35,6 @@ func ToSquash() -> void :
     squashComponent.alive = true
     instance.hitpoints = 300
     instance.die = false
+    instance.nearDie = false
+    nearDie = false
+    die = false

@@ -1,0 +1,150 @@
+[gd_scene format=4 uid="uid://treuqfy4hfvb"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://lqc0vdyi4ayk" path="res://Asset/Anime/Character/Plant/Other/CherryMine/Scene/TowerDefensePlantCherryMine.gd" id="2"]
+[ext_resource type="Script" uid="uid://devmippfvkome" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffCherry.gd" id="3"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="4"]
+[ext_resource type="Resource" uid="uid://c8dgmil70as2a" path="res://Asset/Anime/Character/Plant/Other/CherryMine/Config/TowerDefensePlantCherryMine.tres" id="5"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="6"]
+[ext_resource type="PackedScene" uid="uid://c34qar8qcmjh4" path="res://Asset/Anime/Character/Plant/Other/CherryMine/CherryMine.tscn" id="7"]
+[ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="8"]
+[ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://javfd7hs7mjm" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponent.tscn" id="11"]
+[ext_resource type="Script" uid="uid://c3wiwula8chdo" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.gd" id="12"]
+[ext_resource type="PackedScene" uid="uid://d0mi22nivopry" path="res://Prefab/Particles/Explosion/CherryMineExplosion/CherryMineExplosion.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://dbxioa701nscp" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponent.tscn" id="14"]
+
+[sub_resource type="Resource" id="Resource_pg2wj"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://devmippfvkome"
+
+[sub_resource type="Resource" id="Resource_umdp6"]
+script = ExtResource("4")
+buffList = [SubResource("Resource_pg2wj")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vy3vg"]
+shader = ExtResource("6")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = null
+shader_parameter/imageAnimeData = null
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(0, 0)
+shader_parameter/uvs = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/layerVisible = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="Image" id="Image_aocl0"]
+data = {
+"data": PackedByteArray("AikXPwAAAAAAAAAAAikXP2ZmGkJmZnpCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/ADMzPwAAAAAAAAAAADMzP83MvkEzM3dCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP2ZmokEAAGRCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMz4UHNzCFCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMPzMza0EzM4RCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMPwAA1kEAAIlCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMPwAAKkIAAIFCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AMxMPwAAAAAAAAAAAMxMP83M+EEzM4pCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 87
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_irvo8"]
+image = SubResource("Image_aocl0")
+
+[sub_resource type="Image" id="Image_6lqmy"]
+data = {
+"data": PackedByteArray("AACIQQAAAAAAAAAAAAAAAAAAcEEAAIA/AAAAAAAAAAAA/39HAAAAQAAAAAAAAAAAAP9/RwAAQEAAAAAAAAAAAAD/f0cAAIBAAAAAAAAAAAAA/39HAACgQAAAAAAAAAAAAP9/RwAAwEAAAAAAAAAAAAD/f0cAAOBAAAAAAAAAAAAA/39HAAAAQQAAAAAAAAAAAP9/RwAAEEEAAAAAAAAAAAD/f0cAACBBAAAAAAAAAAAAAEBBAAAwQQAAAAAAAAAAAP9/RwAAQEEAAAAAAAAAAAD/f0cAAFBBAAAAAAAAAAAA/39HAABgQQAAAAAAAAAAAP9/RwAAcEEAAAAAAAAAAAD/f0cAAIBBAAAAAAAAAAAA/39HAACIQQAAAAAAAAAAAP9/RwAAkEEAAAAAAAAAAAD/f0cAAJhBAAAAAAAAAAAAAABBAACgQQAAAAAAAAAAAP9/RwAAqEEAAAAAAAAAAAAAmEEAALBBAAAAAAAAAAAAAGBBAAC4QQAAAAAAAAAAAACAQQAAwEEAAAAAAAAAAAAAkEEAAMhBAAAAAAAAAAAA/39HAADQQQAAAAAAAAAAAP9/RwAA2EEAAAAAAAAAAAD/f0cAAOBBAAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 29
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4qt8o"]
+image = SubResource("Image_6lqmy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3pc0"]
+shader = ExtResource("6")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_4qt8o")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_irvo8")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(411, 272)
+shader_parameter/uvs = [Rect2(282, 231, 45, 41), Rect2(237, 119, 101, 66), Rect2(389, 44, 19, 16), Rect2(389, 86, 15, 7), Rect2(327, 185, 44, 24), Rect2(389, 0, 22, 17), Rect2(389, 93, 14, 15), Rect2(389, 73, 18, 13), Rect2(361, 230, 28, 28), Rect2(237, 185, 46, 46), Rect2(237, 26, 132, 93), Rect2(237, 0, 138, 26), Rect2(237, 231, 45, 17), Rect2(0, 0, 237, 237), Rect2(389, 108, 10, 10), Rect2(327, 230, 34, 19), Rect2(389, 29, 20, 15), Rect2(327, 209, 35, 21), Rect2(389, 17, 22, 12), Rect2(389, 60, 19, 13)]
+shader_parameter/layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xotnw"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Resource_qy0fv"]
+script = ExtResource("12")
+type = "Mine"
+metadata/_custom_type_script = "uid://c3wiwula8chdo"
+
+[node name="TowerDefensePlantCherryMine" unique_id=887943218 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+readyTime = 15.0
+eventlist = [SubResource("Resource_umdp6")]
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CherryMine")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+material = SubResource("ShaderMaterial_vy3vg")
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CherryMine" parent="SpriteGroup/TransformPoint" index="0" unique_id=965843860 instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_v3pc0")
+instance_shader_parameters/frameIndex = 0.42448549982968264
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, 0)
+
+[node name="ToFire" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="7" unique_id=839546187]
+script = ExtResource("8")
+to = NodePath("../Fire")
+event = &"ToFire"
+delay_in_seconds = "0.0"
+
+[node name="Fire" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="8" unique_id=753708647]
+script = ExtResource("9")
+
+[node name="AttackComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="8" unique_id=202055863 node_paths=PackedStringArray("checkArea") instance=ExtResource("10")]
+unique_name_in_owner = true
+attackType = "Default"
+checkArea = NodePath("CheckArea")
+checkLine = true
+
+[node name="CheckArea" type="Area2D" parent="ComponentManager/AttackComponent" index="0" unique_id=1328920468]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentManager/AttackComponent/CheckArea" index="0" unique_id=289953972]
+position = Vector2(-1, 0.75)
+shape = SubResource("RectangleShape2D_xotnw")
+
+[node name="ExplodeComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="9" unique_id=206414620 instance=ExtResource("11")]
+explodeAudio = "MineExplosion"
+explodeEvent = [SubResource("Resource_qy0fv")]
+explodeEffect = ExtResource("13")
+
+[node name="PotatoComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="23" unique_id=1470571880 node_paths=PackedStringArray("attackComponent", "explodeComponent", "sprite") instance=ExtResource("14")]
+unique_name_in_owner = true
+attackComponent = NodePath("../AttackComponent")
+explodeComponent = NodePath("../ExplodeComponent")
+sprite = NodePath("../../SpriteGroup/TransformPoint/CherryMine")
+
+[connection signal="state_entered" from="StateChart/CompoundState/Fire" to="." method="FireEntered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Fire" to="." method="FireExited"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/Fire" to="." method="FireProcessing"]
+[connection signal="explode" from="ComponentManager/ExplodeComponent" to="." method="Explode"]

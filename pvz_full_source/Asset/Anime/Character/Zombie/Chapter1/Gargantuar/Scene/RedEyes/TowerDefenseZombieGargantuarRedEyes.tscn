@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://be74ryvl4k6y7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieGargantuarBase.tscn" id="1"]
 [ext_resource type="Script" uid="uid://dg3pre851y0sr" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Scene/RedEyes/TowerDefenseZombieGargantuarRedEyes.gd" id="2"]
 [ext_resource type="Resource" uid="uid://c0htp5ig8owav" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Config/TowerDefenseZombieGargantuarRedEyes.tres" id="3"]
-[ext_resource type="Resource" uid="uid://c1eumy3cpy2a0" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorBucket.tres" id="4"]
-[ext_resource type="Resource" uid="uid://c4v416ks2xk7j" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorBlackHelmet.tres" id="5"]
-[ext_resource type="Resource" uid="uid://3hqi6b5h245c" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorSpecialHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c4v416ks2xk7j" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorBlackHelmet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c1eumy3cpy2a0" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorBucket.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cuby4qhrxt5uo" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://bj3dms6cau0di" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorScreendoor.tres" id="7"]
 [ext_resource type="Resource" uid="uid://dhhuc6aqb3fn0" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorShield.tres" id="8"]
-[ext_resource type="Resource" uid="uid://cuby4qhrxt5uo" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://3hqi6b5h245c" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Armor/Config/ZombieGargantuarArmorSpecialHelmet.tres" id="9"]
 [ext_resource type="PackedScene" uid="uid://cmf6p5u5cs8ts" path="res://Asset/Anime/Character/Zombie/Chapter1/Gargantuar/Sprite/RedEyes/ZombieGargantuarRedEyes.tscn" id="10"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="11"]
 [ext_resource type="Texture2D" uid="uid://bsh6g1gtv07mv" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket1.png" id="12"]
@@ -52,17 +52,6 @@ image = SubResource("Image_pbk0x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2dfl"]
 shader = ExtResource("11")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_blxs3")
@@ -88,21 +77,21 @@ config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HeadSlot")
 damagePart = {
-"BlackHelmet": ExtResource("5"),
-"Bucket": ExtResource("4"),
-"Helmet": ExtResource("9"),
+"BlackHelmet": ExtResource("4"),
+"Bucket": ExtResource("5"),
+"Helmet": ExtResource("6"),
 "Screendoor": ExtResource("7"),
 "Shield": ExtResource("8"),
-"SpecialHelmet": ExtResource("6")
+"SpecialHelmet": ExtResource("9")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/BucketSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HelmetSlot")
-DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/BucketSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HelmetSlot")
 DamagePartSlot/Screendoor = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/ScreenDoorSlot")
 DamagePartSlot/Shield = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/ScreenDoorSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HelmetSlot")
+DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarRedEyes/HeadSlot")
 
 [node name="ZombieGargantuarRedEyes" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=440460430 instance=ExtResource("10")]
 material = SubResource("ShaderMaterial_u2dfl")

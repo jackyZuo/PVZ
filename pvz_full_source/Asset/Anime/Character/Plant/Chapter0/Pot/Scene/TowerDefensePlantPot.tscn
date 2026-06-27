@@ -11,17 +11,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xulyi"]
 shader = ExtResource("6")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 1.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = null
@@ -62,17 +51,6 @@ image = SubResource("Image_sqyg2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bshfs"]
 shader = ExtResource("6")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_34akg")
@@ -87,7 +65,7 @@ shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[node name="TowerDefensePlantPot" unique_id=1118889474 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+[node name="TowerDefensePlantPot" unique_id=1737864043 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 z_index = -13
 script = ExtResource("2")
 config = ExtResource("3")
@@ -100,13 +78,13 @@ position = Vector2(0, 47)
 scale = Vector2(0.821918, 0.77551)
 texture = null
 
-[node name="AdobeAnimateSlot" type="Node2D" parent="ShadowSprite" index="0" unique_id=753884532]
+[node name="AdobeAnimateSlot" type="Node2D" parent="ShadowSprite" index="0" unique_id=1930965549]
 position = Vector2(-26.558334, 22.25)
 scale = Vector2(0.7509061, 0.7999878)
 script = ExtResource("4")
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
-[node name="ShadowSprite2" type="Sprite2D" parent="ShadowSprite/AdobeAnimateSlot" index="0" unique_id=2130110292]
+[node name="ShadowSprite2" type="Sprite2D" parent="ShadowSprite/AdobeAnimateSlot" index="0" unique_id=605569437]
 unique_name_in_owner = true
 z_index = -10
 position = Vector2(35.4053, -26.2011)
@@ -119,19 +97,19 @@ material = SubResource("ShaderMaterial_xulyi")
 [node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
 position = Vector2(0, 30)
 
-[node name="Pot" parent="SpriteGroup/TransformPoint" index="0" unique_id=1662920823 instance=ExtResource("7")]
+[node name="Pot" parent="SpriteGroup/TransformPoint" index="0" unique_id=261741786 instance=ExtResource("7")]
 material = SubResource("ShaderMaterial_bshfs")
 instance_shader_parameters/frameIndex = 5.049103568183854
 position = Vector2(0, -26)
 
-[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Pot" index="0" unique_id=2098385008]
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Pot" index="0" unique_id=1984465396]
 position = Vector2(-32.85, -6.6013374)
 scale = Vector2(0.7999878, 0.7999878)
 script = ExtResource("4")
 followSlotId = 6
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
-[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Pot/AdobeAnimateSlot" index="0" unique_id=597198571]
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Pot/AdobeAnimateSlot" index="0" unique_id=1548323743]
 position = Vector2(40, 0)
 
 [node name="ShowHealthComponent" parent="SpriteGroup" index="1" unique_id=1448292904]
@@ -140,5 +118,5 @@ position = Vector2(0, 30)
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)
 
-[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=4549545 node_paths=PackedStringArray("posMark") instance=ExtResource("8")]
+[node name="SlotComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="7" unique_id=623771430 node_paths=PackedStringArray("posMark") instance=ExtResource("8")]
 posMark = NodePath("../../SpriteGroup/TransformPoint/Pot/AdobeAnimateSlot/Marker2D")

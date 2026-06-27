@@ -167,6 +167,25 @@ func GetPacketCount() -> int:
     else:
         return mobilePacketContainer1.get_child_count() + mobilePacketContainer2.get_child_count()
 
+func ResetPacketPositions() -> void :
+    if !isMobileUI:
+        var id: int = 0
+        for child in packetContainer.get_children():
+            if child is TowerDefenseInGamePacketShow:
+                child.position = Vector2(13 + 53.0 * id, 0.0)
+                id += 1
+    else:
+        var id1: int = 0
+        for child in mobilePacketContainer1.get_children():
+            if child is TowerDefenseInGamePacketShow:
+                child.position = Vector2(0.0, 16 + 61.0 * id1)
+                id1 += 1
+        var id2: int = 0
+        for child in mobilePacketContainer2.get_children():
+            if child is TowerDefenseInGamePacketShow:
+                child.position = Vector2(0.0, 16 + 61.0 * id2)
+                id2 += 1
+
 func AddPacketToUI(packet: TowerDefenseInGamePacketShow) -> void :
     if isMobileUI:
         packet.position = Vector2(0.0, 680.0)

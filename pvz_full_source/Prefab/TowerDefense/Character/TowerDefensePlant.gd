@@ -5,6 +5,9 @@ var waterInteractionComponent: WaterInteractionComponent
 var plantAnimeComponent: PlantAnimeComponent
 var puzzleShaderComponent: PuzzleShaderComponent
 
+var targetZombie: TowerDefenseCharacter = null
+var zombiePlaceDamage: float = 0.0
+
 @export var plantAnimeClip: String = ""
 
 func ShouldUpdateGridPos() -> bool:
@@ -26,8 +29,13 @@ func _ready() -> void :
     if config.plantGridType.has(TowerDefenseEnum.PLANTGRIDTYPE.AIR):
         shadowComponent.shadowDisabled = true
         shadowSprite.visible = false
+    if config.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.SPIKE && !(config.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.POT):
+        shadowComponent.shadowDisabled = true
+        shadowSprite.visible = false
 
 func _exit_tree() -> void :
+    if Engine.is_editor_hint():
+        return
     if is_instance_valid(BattleEventBus) && BattleEventBus.showPlantHealth.is_connected(_on_show_plant_health):
         BattleEventBus.showPlantHealth.disconnect(_on_show_plant_health)
 
@@ -38,6 +46,14 @@ func _physics_process(delta: float) -> void :
     super._physics_process(delta)
     if Engine.is_editor_hint():
         return
+    if is_instance_valid(targetZombie):
+        global_position = targetZombie.global_position
+    if (Engine.get_physics_frames() + randFreshIndex) % FRAME_CHECK_INTERVAL == 0:
+        instance.RefreshDamagePoint()
+
+func _on_target_zombie_destroyed() -> void :
+    targetZombie = null
+    Destroy()
 
 func IdleEntered() -> void :
     super.IdleEntered()
@@ -66,8 +82,10 @@ func AnimeCompleted(clip: String) -> void :
 
 func InWater() -> void :
     super.InWater()
-    waterInteractionComponent.InWater()
+    if is_instance_valid(waterInteractionComponent):
+        waterInteractionComponent.InWater()
 
 func OutWater() -> void :
     super.OutWater()
-    waterInteractionComponent.OutWater()
+    if is_instance_valid(waterInteractionComponent):
+        waterInteractionComponent.OutWater()

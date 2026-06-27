@@ -94,3 +94,5 @@ func Drain() -> void :
     characterNode.add_child(effect)
     maxHpCharacter.Hurt(drainHp)
     instance.hitpoints += drainHp
+    if is_instance_valid(showHealthComponent):
+        showHealthComponent.MarkDirty()

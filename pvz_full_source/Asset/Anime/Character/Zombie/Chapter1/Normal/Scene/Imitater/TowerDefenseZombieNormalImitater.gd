@@ -104,9 +104,9 @@ func HeadAnimeCompleted(clip: String) -> void :
                 if instance.hypnoses:
                     zombie.Hypnoses()
                 zombie.SetSpriteGroupShaderParameter("imitater", true)
-                if is_instance_valid(TowerDefenseBattleProcessWave.instance):
-                    TowerDefenseBattleProcessWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
-                    TowerDefenseBattleProcessWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
+                if is_instance_valid(TowerDefenseBattleFeatureWave.instance):
+                    TowerDefenseBattleFeatureWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
+                    TowerDefenseBattleFeatureWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
             Destroy.call_deferred()
 
 func Purify() -> void :
@@ -118,7 +118,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantLmitater")
     if cell.CanPacketPlant(packetConfig):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

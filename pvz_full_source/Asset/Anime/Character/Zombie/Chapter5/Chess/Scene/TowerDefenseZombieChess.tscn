@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://bui7xoe5jvlv1" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Config/TowerDefenseZombieChess.tres" id="3"]
 [ext_resource type="Resource" uid="uid://c1xjutrchstc7" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/DamagePoint/Config/ZombieChessDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://c8hhv71jnnd2y" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/DamagePoint/Config/ZombieChessDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://5qnngpp2s6rb" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorPogo.tres" id="6"]
-[ext_resource type="Resource" uid="uid://cwmj4t1ype2i3" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorChess.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cwmj4t1ype2i3" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorChess.tres" id="6"]
+[ext_resource type="Resource" uid="uid://5qnngpp2s6rb" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorPogo.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://dw4i5413q1eul" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/ZombieChess.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://y7kf43erkag" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Zombie_chess_hat1.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="10"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="13"]
 [ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="14"]
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_mjasg"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -25,9 +25,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_mjasg")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_cgrgs"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -37,21 +37,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_cgrgs")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgrgs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_annrk"]
 shader = ExtResource("11")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -80,16 +69,16 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieChess")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieChess/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"Chess": ExtResource("7"),
+"Chess": ExtResource("6"),
 "Head": ExtResource("5"),
-"Pogo": ExtResource("6")
+"Pogo": ExtResource("7")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieChess/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieChess/HeadSlot")
-DamagePartSlot/Pogo = NodePath("SpriteGroup/TransformPoint/ZombieChess/PogoSlot")
 DamagePartSlot/Chess = NodePath("SpriteGroup/TransformPoint/ZombieChess/ChessSlot")
+DamagePartSlot/Pogo = NodePath("SpriteGroup/TransformPoint/ZombieChess/PogoSlot")
 gravity = 490.0
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
@@ -140,7 +129,7 @@ scale = Vector2(1, 1)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=634896316 instance=ExtResource("10")]
 visible = false
-material = SubResource("ShaderMaterial_cgrgs")
+material = SubResource("ShaderMaterial_annrk")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-12, -58)
 trueFrameRate = 180.0

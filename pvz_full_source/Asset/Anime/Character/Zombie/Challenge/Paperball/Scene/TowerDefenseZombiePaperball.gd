@@ -122,7 +122,12 @@ func AnimeEvent(command: String, argument: Variant) -> void :
                 var effect = TowerDefenseManager.CreateEffectParticlesOnce(HAMMER_EXPLOSION, gridPos)
                 effect.global_position = global_position
                 characterNode.add_child(effect)
-                attackComponent.Attack(500.0)
+                var impactTarget = attackComponent.target
+                if is_instance_valid(impactTarget):
+                    impactTarget.AttackDeal(self, attackComponent.attackType, 500.0)
+                    if is_instance_valid(impactTarget.cell):
+                        impactTarget.cell.AttackDeal(self, attackComponent.attackType, 500.0)
+                    impactTarget.Hurt(500.0, true, Vector2.ZERO)
                 var tween = create_tween()
                 tween.set_ease(Tween.EASE_OUT)
                 tween.set_trans(Tween.TRANS_QUAD)

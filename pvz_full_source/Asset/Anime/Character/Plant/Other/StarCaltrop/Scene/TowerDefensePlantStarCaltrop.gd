@@ -29,10 +29,6 @@ extends TowerDefensePlant
             await ready
         fireComponent.fireCheckList[0].projectile.projectileName = projectileName
 
-func ComponentAttack() -> void :
-    AudioManager.AudioPlay("ProjectileThrow", AudioManagerEnum.TYPE.SFX)
-    attackComponent.AttackAllFlag(attack, TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITBODY)
-
 func ExportVariantSave() -> Dictionary:
     return {"attack": attack, 
         "fireNum": fireNum, 
@@ -44,3 +40,8 @@ func ImportVariantSave(data: Dictionary) -> void :
     fireNum = data.get("fireNum", 1)
     projectileName = data.get("projectileName", "StarCaltrop")
     fireInterval = data.get("fireInterval", 1.5)
+
+
+func Attack() -> void :
+    AudioManager.AudioPlay("ProjectileThrow", AudioManagerEnum.TYPE.SFX)
+    attackComponent.AttackAllFlag(attack, TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITBODY)

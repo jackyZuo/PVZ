@@ -25,6 +25,8 @@ func Step(delta: float) -> bool:
     else:
         timer = 0.0
         character.instance.DealHurt(20, true)
+        if is_instance_valid(character.showHealthComponent):
+            character.showHealthComponent.MarkDirty()
     character.sprite.meshColor *= POISONING_COLOR
     currentTime += delta
     return currentTime >= time

@@ -9,6 +9,7 @@ var jumpMove: bool = false
 var isJump: bool = false
 var isBlock: bool = false
 var moveTween: Tween
+var jumpTarget: TowerDefenseCharacter
 
 func _ready() -> void :
     super._ready()
@@ -65,26 +66,27 @@ func JumpEntered() -> void :
     sprite.SetAnimation("Jump", false, 0.2)
     instance.collisionFlags = 0
     instance.maskFlags = 0
+    jumpTarget = attackComponent2.target
 
 @warning_ignore("unused_parameter")
 func JumpProcessing(delta: float) -> void :
     sprite.timeScale = timeScale * 2.0
     if isJump:
-        if attackComponent2.CanAttack():
-            if is_instance_valid(attackComponent2.target):
-                if attackComponent2.target.instance.height >= TowerDefenseEnum.CHARACTER_HEIGHT.TALL:
-                    jumpOver = true
-                    global_position.x = attackComponent2.target.global_position.x + 40
-                    gridPos = TowerDefenseManager.GetMapGridPos(global_position)
-                    isBlock = true
-                    AudioManager.AudioPlay("Bonk", AudioManagerEnum.TYPE.SFX)
-                    Walk()
-                    if is_instance_valid(moveTween):
-                        if moveTween.is_running():
-                            moveTween.kill()
+        if is_instance_valid(jumpTarget):
+            if jumpTarget.instance.height >= TowerDefenseEnum.CHARACTER_HEIGHT.TALL:
+                jumpOver = true
+                global_position.x = jumpTarget.global_position.x + 40
+                gridPos = TowerDefenseManager.GetMapGridPos(global_position)
+                isBlock = true
+                AudioManager.AudioPlay("Bonk", AudioManagerEnum.TYPE.SFX)
+                Walk()
+                if is_instance_valid(moveTween):
+                    if moveTween.is_running():
+                        moveTween.kill()
 
 func JumpExited() -> void :
     isJump = false
+    jumpTarget = null
     if !inWater:
         shadowSprite.visible = !invisible
     instance.collisionFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE

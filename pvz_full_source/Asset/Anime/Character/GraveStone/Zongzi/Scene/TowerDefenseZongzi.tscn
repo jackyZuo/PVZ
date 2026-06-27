@@ -1,0 +1,69 @@
+[gd_scene format=4 uid="uid://c2wvomr8fqrlp"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bqykiwd4wpx8m" path="res://Asset/Anime/Character/GraveStone/Zongzi/Scene/TowerDefenseZongzi.gd" id="2"]
+[ext_resource type="Resource" uid="uid://tcgyfq3wt045" path="res://Asset/Anime/Character/GraveStone/Zongzi/Config/TowerDefenseZongzi.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bx8004mjs5xlf" path="res://Asset/Anime/Character/GraveStone/Zongzi/Zongzi.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/EntryAnimationComponent/EntryAnimationComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_3uj00"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_38lpw"]
+image = SubResource("Image_3uj00")
+
+[sub_resource type="Image" id="Image_hxf8t"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_6vfh8"]
+image = SubResource("Image_hxf8t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vfh8"]
+shader = ExtResource("5")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_6vfh8")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_38lpw")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(119, 95)
+shader_parameter/uvs = [Rect2(0, 0, 119, 95)]
+shader_parameter/layerVisible = [true, false]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseZongzi" unique_id=993489319 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+rise = false
+canBeAttacked = false
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/Zongzi")
+camp = 2
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12, 36)
+scale = Vector2(1.826, 1.565)
+
+[node name="Zongzi" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1313846696 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_6vfh8")
+instance_shader_parameters/frameIndex = 0.8600408805867087
+position = Vector2(-8, 0)
+scale = Vector2(0.75, 0.75)
+
+[node name="EntryAnimationComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="18" unique_id=1482477654 instance=ExtResource("6")]

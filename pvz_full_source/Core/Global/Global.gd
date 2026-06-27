@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-var version: String = "0.21.1.0"
+var version: String = "0.23.0.0"
 var header: PackedStringArray = []
 var isMobile: bool = false
 signal animeFrameRateChange()
@@ -41,6 +41,7 @@ var currentLevelChoose: String = "Adventure"
 var currentChapterId: int = -1
 var currentLevelId: int = -1
 var currentAwardMode: bool = false
+var mainMenuShowMoreModes: bool = false
 var currentAwardType: TowerDefenseEnum.LEVEL_REWARDTYPE = TowerDefenseEnum.LEVEL_REWARDTYPE.NOONE
 var currentAwardValue: String = ""
 var currentDiyLevelUid: String = ""

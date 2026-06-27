@@ -6,11 +6,11 @@
 [ext_resource type="Resource" uid="uid://4osgipib31m8" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Config/TowerDefenseZombieJackbox.tres" id="4"]
 [ext_resource type="Resource" uid="uid://cdxetlc5yvbvw" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/DamagePoint/Config/ZombieJackboxDamagePointArm.tres" id="5"]
 [ext_resource type="Resource" uid="uid://cytp71toc3llu" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/DamagePoint/Config/ZombieJackboxDamagePointHead.tres" id="6"]
-[ext_resource type="Resource" uid="uid://eakjcfnkvk83" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombieJackboxArmorJackbox.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cpo75jfcrj5hk" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorBlackHelmet.tres" id="7"]
 [ext_resource type="Resource" uid="uid://bjqwrh2qsb7up" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorBucket.tres" id="8"]
 [ext_resource type="Resource" uid="uid://ksphtdgy7iis" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorCone.tres" id="9"]
 [ext_resource type="Resource" uid="uid://d13ae6ujl52h6" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorHelmet.tres" id="10"]
-[ext_resource type="Resource" uid="uid://cpo75jfcrj5hk" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorBlackHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://eakjcfnkvk83" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombieJackboxArmorJackbox.tres" id="11"]
 [ext_resource type="Resource" uid="uid://cs60goofuyev6" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorSpecialHelmet.tres" id="12"]
 [ext_resource type="PackedScene" uid="uid://n51avv4ftbrw" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/ZombieJackbox.tscn" id="13"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="14"]
@@ -48,12 +48,6 @@ image = SubResource("Image_m1e4e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kyjhp"]
 shader = ExtResource("14")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_e2ag4")
@@ -94,12 +88,6 @@ image = SubResource("Image_jchts")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28xc5"]
 shader = ExtResource("14")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -140,12 +128,6 @@ image = SubResource("Image_jdk12")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_di4nk"]
 shader = ExtResource("14")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/effectFlags = 0
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -172,23 +154,23 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieJackbox")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
 damagePart = {
 "Arm": ExtResource("5"),
-"BlackHelmet": ExtResource("11"),
+"BlackHelmet": ExtResource("7"),
 "Bucket": ExtResource("8"),
 "Cone": ExtResource("9"),
 "Head": ExtResource("6"),
 "Helmet": ExtResource("10"),
-"Jackbox": ExtResource("7"),
+"Jackbox": ExtResource("11"),
 "SpecialHelmet": ExtResource("12")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["Jackbox"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
-DamagePartSlot/Jackbox = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/JackboxSlot")
+DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
 DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
 DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
 DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
-DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
+DamagePartSlot/Jackbox = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/JackboxSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]

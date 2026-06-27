@@ -56,6 +56,7 @@ func CreateProjectile() -> void :
         var heightOffset: float = randf_range(0, 200)
         var projectileData: TowerDefenseProjectileCreateData = TowerDefenseProjectileCreateData.new(&"CoinGold")
         projectileData.baseDamage = 500
+        projectileData.collisionFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM
         var projectile: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByData(null, null, GetGroundHeight(self.global_position.y) + 30 - _cell.GetGroundHeight(), pos, Vector2(randf_range(50, 100), 0.0), projectileData, -1, camp)
         projectile.gridPos.y = y
         projectile.z = height + heightOffset
@@ -68,6 +69,7 @@ func LandOver(pos2: Vector2, gridPos2: Vector2i) -> void :
     var projectileData2: TowerDefenseProjectileCreateData = TowerDefenseProjectileCreateData.new(&"CoinGold")
     projectileData2.baseDamage = 500
     projectileData2.fireMethodFlags = TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.TRACK
+    projectileData2.collisionFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM
     var projectile2: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByData(null, null, 0.0, pos2, Vector2(300.0, 0.0), projectileData2, -1, camp)
     projectile2.gridPos = gridPos2
 

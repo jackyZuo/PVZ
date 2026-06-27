@@ -8,6 +8,8 @@ static func EventGet(eventName: String) -> TowerDefenseCharacterEventBase:
 
         "LuckyBagCreate":
             return TowerDefenseCharacterEventLuckyBagCreate.new()
+        "GoldShardCreate":
+            return TowerDefenseCharacterEventGoldShardCreate.new()
         "SnowBallSpawn":
             return TowerDefenseCharacterEventSnowBallSpawn.new()
         "YBCreate":
@@ -31,7 +33,9 @@ static func EventGet(eventName: String) -> TowerDefenseCharacterEventBase:
         "Purify":
             return TowerDefenseCharacterEventPurify.new()
         "WakeUp":
-            return TowerDefenseCharacterEventWeakUp.new()
+            return TowerDefenseCharacterEventWakeUp.new()
+        "PacketCreate":
+            return TowerDefenseCharacterEventPacketCreate.new()
         "PacketSpawn":
             return TowerDefenseCharacterEventPacketSpawn.new()
 

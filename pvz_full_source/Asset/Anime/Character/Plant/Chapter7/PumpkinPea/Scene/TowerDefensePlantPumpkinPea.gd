@@ -62,5 +62,14 @@ func ImportVariantSave(data: Dictionary) -> void :
     projectileName = data.get("projectileName", "Pea")
     level = data.get("level", 1)
     if level > 1:
-        LevelSet(level)
+        LevelSetVisual(level)
     fireInterval = data.get("fireInterval", 2.0)
+
+func LevelSetVisual(lv: int) -> void :
+    match lv:
+        2:
+            sprite.SetFliters(["Upgrade1_eyebrow", "Upgrade1_helmet", "Upgrade2_barrel"], true)
+            fireComponent.fireEventName = "fire&fire2"
+        3:
+            sprite.SetFliters(["Upgrade1_eyebrow", "Upgrade1_helmet", "Upgrade1_helmet2", "Upgrade2_helmet", "Upgrade2_barrel", "Upgrade2_barrel2", "Upgrade2_face"], true)
+            fireComponent.fireEventName = "fire&fire2&fire3"

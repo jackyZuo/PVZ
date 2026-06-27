@@ -32,17 +32,6 @@ image = SubResource("Image_8673u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmsdk"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_d2kn6")
@@ -57,8 +46,9 @@ shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[node name="TowerDefenseGraveStoneDefault" unique_id=1931086568 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+[node name="TowerDefenseGraveStoneDefault" unique_id=756997336 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 script = ExtResource("2")
+canBeAttacked = false
 idleAnimeClip = "Idle1&Idle10&Idle11&Idle12&Idle13&Idle14&Idle15&Idle16&Idle17&Idle18&Idle19&Idle2&Idle20&Idle3&Idle4&Idle5&Idle6&Idle7&Idle8&Idle9"
 config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneDefault")
@@ -66,7 +56,7 @@ sprite = NodePath("SpriteGroup/TransformPoint/GraveStoneDefault")
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
 position = Vector2(0, 26)
 
-[node name="GraveStoneDefault" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1751514897 instance=ExtResource("4")]
+[node name="GraveStoneDefault" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=699304542 instance=ExtResource("4")]
 material = SubResource("ShaderMaterial_fmsdk")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(0, -18)

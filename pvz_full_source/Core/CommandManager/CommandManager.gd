@@ -25,6 +25,7 @@ extends Control
 @onready var gameSpeedSlider: HSlider = %GameSpeedSlider
 @onready var fpsLabel: Label = %FpsLabel
 @onready var waveInfoLabel: Label = %WaveInfoLabel
+@onready var characterCountLabel: Label = %CharacterCountLabel
 
 @export var debug: bool = false
 
@@ -43,7 +44,6 @@ extends Control
 @export var debugWavePaused: bool = false
 @export var debugNoZombieSpawn: bool = false
 @export var debugBrainInvincible: bool = false
-@export var debugVaseXRay: bool = false
 
 func _ready() -> void :
     if !debug:
@@ -63,12 +63,17 @@ func _process(_delta: float) -> void :
     if !debug:
         return
     fpsLabel.text = "FPS: %d" % Engine.get_frames_per_second()
-    if is_instance_valid(TowerDefenseBattleProcessWave.instance):
-        var wave = TowerDefenseBattleProcessWave.instance
+    if is_instance_valid(TowerDefenseBattleFeatureWave.instance):
+        var wave = TowerDefenseBattleFeatureWave.instance
         var totalWaves = wave.config.wave.size() if wave.config else 0
         waveInfoLabel.text = "波次: %d/%d\n血量: %.0f/%.0f" % [wave.currentWave, totalWaves, wave.currentHpPoint, wave.currentHpPointTotal]
         if waveSpinBox.max_value != totalWaves:
             waveSpinBox.max_value = max(1, totalWaves)
+    var registry = TowerDefenseManager.characterRegistry
+    if is_instance_valid(registry):
+        var plantCount: int = get_tree().get_node_count_in_group("Plant")
+        var zombieCount: int = get_tree().get_node_count_in_group("Zombie")
+        characterCountLabel.text = "植物: %d  僵尸: %d  总数: %d" % [plantCount, zombieCount, plantCount + zombieCount]
 
 func Init() -> void :
     openAllLevelCheckBox.button_pressed = debugOpenAllLevel
@@ -164,7 +169,7 @@ func LoadLevelButtonPressed() -> void :
     )
 
 func SkipToWave() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         return
     var targetWave = int(waveSpinBox.value)
@@ -174,7 +179,7 @@ func SkipToWave() -> void :
         await get_tree().create_timer(0.2, false).timeout
 
 func SkipToFinalWave() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         return
     if !wave.waveStart:
@@ -185,7 +190,7 @@ func SkipToFinalWave() -> void :
         await get_tree().create_timer(0.2, false).timeout
 
 func SkipWaveWait() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         return
     wave.timer = wave.nextWaveTime
@@ -198,7 +203,7 @@ func KillAllZombies() -> void :
                 zombie.Hurt(1000000000000)
 
 func InstantWin() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         return
     KillAllZombies()

@@ -19,7 +19,6 @@ var dolphin: bool = true:
             await ready
         if !dolphin:
             attackComponent.attackType = "Eat"
-            attackComponent.checkVase = false
             if isReady:
                 await get_tree().physics_frame
                 if is_inside_tree():
@@ -69,6 +68,9 @@ func WalkProcessing(delta: float) -> void :
         if global_position.x < TowerDefenseManager.GetMapGroundRight():
             AudioManager.AudioPlay("DolphinAppears", AudioManagerEnum.TYPE.SFX)
             audioPlay = true
+    if !dolphin && attackComponent.CanAttack():
+        if is_instance_valid(attackComponent.target) && attackComponent.target is TowerDefenseVase:
+            attackComponent.SmashAttackCell(config.smashAttack)
 
 func Walk() -> void :
     if dolphin && inWater:

@@ -10,7 +10,7 @@ func _ready() -> void :
 func AttackEntered() -> void :
     super.AttackEntered()
     if inWater:
-        instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_WATER
+        instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM
 
 func AttackExited() -> void :
     super.AttackExited()
@@ -33,7 +33,7 @@ func OutWater() -> void :
     var tween = create_tween()
     tween.tween_property(sprite, ^"offset", Vector2(-50, -80), 0.25)
     global_position.x -= scale.x * transformPoint.scale.x * 30.0
-    instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_WATER
+    instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM
 
 func DieEntered() -> void :
     super.DieEntered()
@@ -69,7 +69,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantTanglekelp")
     if cell.CanPacketPlant(packetConfig):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

@@ -11,6 +11,9 @@ script = ExtResource("2")
 flyAnimeClip = "Fly"
 landAnimeClip = "Land"
 
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(4, -2)
+
 [node name="Fly" type="Node" parent="StateChart/CompoundState" parent_id_path=PackedInt32Array(124629617) index="4" unique_id=334732733]
 script = ExtResource("3")
 
@@ -32,7 +35,7 @@ delay_in_seconds = "0.0"
 [node name="ImpThrowComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="17" unique_id=-1294967295 instance=ExtResource("5")]
 
 [node name="WaterInteractionComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=2146103718]
-discardOffsetIn = 15.0
+discardOffsetIn = 28.0
 
 [connection signal="land" from="." to="." method="Land"]
 [connection signal="state_entered" from="StateChart/CompoundState/Fly" to="." method="FlyEntered"]

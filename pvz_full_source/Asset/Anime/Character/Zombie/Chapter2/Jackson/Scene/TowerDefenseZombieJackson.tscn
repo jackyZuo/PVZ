@@ -43,17 +43,6 @@ image = SubResource("Image_mqk7c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf4ar"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_hvl1o")
@@ -94,17 +83,6 @@ image = SubResource("Image_xwgo6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4jye"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -145,17 +123,6 @@ image = SubResource("Image_jdy6a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4v1a"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -176,6 +143,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0.8, 1, 0, 1, 0.15, 1, 0.1925, 1, 0.33, 1,
 
 [node name="TowerDefenseZombieJackson" unique_id=394339861 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
 script = ExtResource("2")
+dancerPacketName = ""
 duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieJackson/ZombieDuckytube")
 waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
 garlicReplace = "Zombie_jackson_head.png"
@@ -218,26 +186,23 @@ position = Vector2(12, 33)
 material = SubResource("ShaderMaterial_gf4ar")
 instance_shader_parameters/frameIndex = 3.361459907549455
 position = Vector2(-12, -33)
-trueFrameRate = 180.0
 
-[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieJackson" index="0"]
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieJackson" index="0" unique_id=1202584863]
 material = SubResource("ShaderMaterial_m4jye")
-instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-28.106613, -44.647038)
 rotation = -0.073551916
-trueFrameRate = 180.0
 
-[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="1"]
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="1" unique_id=1480721874]
 position = Vector2(-22.667873, -43.14173)
 rotation = -0.033551916
 scale = Vector2(0.79989594, 0.79989594)
 
-[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="2"]
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="2" unique_id=918420927]
 position = Vector2(2.2621317, 1.8732643)
 rotation = -0.033551916
 scale = Vector2(0.79989594, 0.79989594)
 
-[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="3"]
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieJackson" index="3" unique_id=444749147]
 position = Vector2(-54.674347, -39.79578)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2112862568 instance=ExtResource("14")]
@@ -260,7 +225,7 @@ position = Vector2(4, -2)
 [node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="19" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
 groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieJackson/GroundSlot")
 
-[node name="DancingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="24" unique_id=832589139 node_paths=PackedStringArray("attackComponent", "groundMoveComponent", "sprite", "spotlight", "spotlight2") instance=ExtResource("16")]
+[node name="DancingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="24" unique_id=218436618 node_paths=PackedStringArray("attackComponent", "groundMoveComponent", "sprite", "spotlight", "spotlight2") instance=ExtResource("16")]
 attackComponent = NodePath("../AttackComponent")
 groundMoveComponent = NodePath("../GroundMoveComponent")
 walkTimeInit = 2

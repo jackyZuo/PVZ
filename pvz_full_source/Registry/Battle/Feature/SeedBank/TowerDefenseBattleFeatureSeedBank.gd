@@ -42,6 +42,10 @@ func SaveFeature() -> Dictionary:
     if is_instance_valid(seedBank):
         for packet: TowerDefenseInGamePacketShow in seedBank.packetList:
             if is_instance_valid(packet):
+                var changeCostListSave: Array = []
+                if is_instance_valid(packet.config):
+                    for changeCost: TowerDefensePacketChangeCost in packet.config.changeCostList:
+                        changeCostListSave.append(changeCost.ExportSave())
                 packetDataList.append({
                     "saveKey": packet.config.saveKey, 
                     "showLove": packet.showLove, 
@@ -65,6 +69,8 @@ func SaveFeature() -> Dictionary:
                     "savePosX": packet.savePos.x, 
                     "savePosY": packet.savePos.y, 
                     "overrideSave": packet.config.override.Export() if is_instance_valid(packet.config) and is_instance_valid(packet.config.override) else {}, 
+                    "canChangeCost": packet.config.canChangeCost if is_instance_valid(packet.config) else true, 
+                    "changeCostList": changeCostListSave, 
                 })
     var result: Dictionary = {
         "sunNum": TowerDefenseManager.GetSun(), 
@@ -88,12 +94,12 @@ func LoadFeature(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void
         var saveKey: String = packetData.get("saveKey", "")
         if saveKey != "":
             packet.config = TowerDefenseManager.GetPacketConfig(saveKey)
+            var overrideData: Dictionary = packetData.get("overrideSave", {})
+            if overrideData.size() > 0 and is_instance_valid(packet.config):
+                var override: TowerDefensePacketOverride = TowerDefensePacketOverride.new()
+                override.Init(overrideData)
+                packet.config.override = override
             packet.Init(packet.config)
-        var overrideData: Dictionary = packetData.get("overrideSave", {})
-        if overrideData.size() > 0 and is_instance_valid(packet.config):
-            var override: TowerDefensePacketOverride = TowerDefensePacketOverride.new()
-            override.Init(overrideData)
-            packet.config.override = override
         packet.showLove = packetData.get("showLove", false)
         packet.showCost = packetData.get("showCost", true)
         packet.onlyDraw = packetData.get("onlyDraw", false)
@@ -113,6 +119,11 @@ func LoadFeature(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig) -> void
         packet.blink = packetData.get("blink", false)
         packet.height = packetData.get("height", -1)
         packet.savePos = Vector2(packetData.get("savePosX", 0.0), packetData.get("savePosY", 0.0))
+        if is_instance_valid(packet.config):
+            packet.config.canChangeCost = packetData.get("canChangeCost", true)
+            packet.config.changeCostList.clear()
+            for changeCostData: Dictionary in packetData.get("changeCostList", []):
+                packet.config.changeCostList.append(TowerDefensePacketChangeCost.ImportSave(changeCostData))
         seedBank.packetList.append(packet)
         seedBank.packetNameSet[saveKey] = true
     print("[Load] Feature[SeedBank]加载完成: sunNum=%d, packetNum=%d, packetList=%d" % [_data.get("sunNum", 50), _data.get("packetNum", 0), _data.get("packetList", []).size()])

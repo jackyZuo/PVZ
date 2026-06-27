@@ -26,7 +26,7 @@ func _ready() -> void :
     instance.invincible = true
     instance.keepAlive = true
     await get_tree().create_timer(0.1, false).timeout
-    if !attackComponent2.CanAttack():
+    if !squashComponent.IsRunning():
         instance.invincible = false
 
 func _physics_process(delta: float) -> void :

@@ -5,11 +5,11 @@
 [ext_resource type="Resource" uid="uid://dx81rkfmar6kw" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalIcenut.tres" id="3"]
 [ext_resource type="Resource" uid="uid://bj7i58sh5mr24" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantWallnutDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="8"]
 [ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="9"]
-[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="10"]
 [ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://bvk4fik6ugjyl" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Icenut/ZombieNormalIcenut.tscn" id="12"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="13"]
@@ -44,19 +44,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_xqrm2"]
 image = SubResource("Image_4l4gk")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnkds"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v12n"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_xqrm2")
@@ -95,19 +84,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_q5fst"]
 image = SubResource("Image_faxcb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwtj8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6llrp"]
 shader = ExtResource("13")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_q5fst")
@@ -129,6 +107,15 @@ catapultHeight = 400.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_fps0"]
 script = ExtResource("17")
@@ -162,38 +149,38 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("10"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
 "Helmet": ExtResource("9"),
-"Screendoor": ExtResource("8"),
+"Screendoor": ExtResource("10"),
 "SpecialHelmet": ExtResource("11")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/ConeSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/BucketSlot")
-DamagePartSlot/Screendoor = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/ScreendoorSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/BucketSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/ConeSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
+DamagePartSlot/Screendoor = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/ScreendoorSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieNormalIcenut/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
 
 [node name="ZombieNormalIcenut" parent="SpriteGroup/TransformPoint" index="0" unique_id=466521053 instance=ExtResource("12")]
-material = SubResource("ShaderMaterial_fnkds")
-instance_shader_parameters/frameIndex = 14.773020444444445
+material = SubResource("ShaderMaterial_7v12n")
+instance_shader_parameters/frameIndex = 19.910662666666667
 position = Vector2(-12, -33)
 
 [node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="0" unique_id=1491904057]
-material = SubResource("ShaderMaterial_uwtj8")
-instance_shader_parameters/frameIndex = 14.773020444444445
-position = Vector2(-21.151876, -77.708595)
-rotation = -0.114017695
+material = SubResource("ShaderMaterial_6llrp")
+instance_shader_parameters/frameIndex = 14.288274666666668
+position = Vector2(-33.57041, -69.298775)
+rotation = -0.3090175
 
 [node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut/Head" index="0" unique_id=1712621631]
 position = Vector2(8.390408, 23.516197)
@@ -202,29 +189,29 @@ scale = Vector2(0.9999913, 1.0000086)
 skew = -3.0755997e-05
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="1" unique_id=838125608]
-position = Vector2(-4.6152935, -51.259285)
-rotation = 0.1359823
-scale = Vector2(0.79877967, 0.79877967)
+position = Vector2(-12.204638, -46.53621)
+rotation = -0.059017513
+scale = Vector2(0.79943866, 0.79943866)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="2" unique_id=513344227]
-position = Vector2(10.644922, -0.9993744)
-rotation = -0.109446004
-scale = Vector2(0.7976351, 0.7976351)
+position = Vector2(8.59012, 1.3547764)
+rotation = -0.1330379
+scale = Vector2(0.79897416, 0.79897416)
 
 [node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="3" unique_id=1246110024]
-position = Vector2(5.5380898, -75.37326)
-rotation = 0.11166668
-scale = Vector2(0.79846257, 0.79846257)
+position = Vector2(-7.005411, -72.27016)
+rotation = -0.08362506
+scale = Vector2(0.79648584, 0.79648584)
 
 [node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="4" unique_id=1079498045]
-position = Vector2(-0.32590103, -66.06425)
-rotation = 0.21258825
-scale = Vector2(0.79905367, 0.79905367)
+position = Vector2(-10.959911, -61.613846)
+rotation = -0.057631668
+scale = Vector2(0.7983473, 0.7983473)
 
 [node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalIcenut" index="5" unique_id=58156734]
-position = Vector2(-15.676958, -3.4591217)
-rotation = 0.027742427
-scale = Vector2(0.79935044, 0.79935044)
+position = Vector2(-15.885834, 0.47187042)
+rotation = -0.066411376
+scale = Vector2(0.798583, 0.798583)
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(4, -2)

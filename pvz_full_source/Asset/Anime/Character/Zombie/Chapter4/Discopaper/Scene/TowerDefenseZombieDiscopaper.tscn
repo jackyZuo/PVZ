@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://domu0k4tfig2c" path="res://addons/godot_state_charts/atomic_state.gd" id="13"]
 [ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="14"]
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_rtgmd"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -25,9 +25,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_rtgmd")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_yau5a"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -37,21 +37,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_yau5a")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yau5a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8c8sd"]
 shader = ExtResource("11")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -69,6 +58,7 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 [node name="TowerDefenseZombieDiscopaper" unique_id=138166499 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
 script = ExtResource("2")
 spotlightGrandient = ExtResource("3")
+dancerPacketName = "ZombieBackuppaper"
 duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieDisco/ZombieDuckytube")
 waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
 garlicReplace = "Zombie_dancer__head.png"
@@ -115,7 +105,7 @@ scale = Vector2(0.7998602, 0.7998602)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2121023955 instance=ExtResource("10")]
 visible = false
-material = SubResource("ShaderMaterial_yau5a")
+material = SubResource("ShaderMaterial_8c8sd")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-3, -62)
 trueFrameRate = 180.0

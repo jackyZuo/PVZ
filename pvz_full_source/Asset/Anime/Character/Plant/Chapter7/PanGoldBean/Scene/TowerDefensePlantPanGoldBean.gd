@@ -9,7 +9,7 @@ func Explode() -> void :
         )
         for character in characterList:
             if is_instance_valid(character):
-                character.WeakUp()
+                character.WakeUp()
                 if character.cost > 0 && !instance.hypnoses:
                     var coinGoldCount = floor(character.cost / 50)
                     for i in coinGoldCount:
@@ -32,7 +32,7 @@ func Explode() -> void :
                 packetConfig = TowerDefenseManager.GetPacketConfig(packetRandom)
             if packetList.size() > 1:
                 var plant = packetConfig.Plant(gridPos, true)
-                plant.WeakUp()
+                plant.WakeUp()
                 if instance.hypnoses:
                     plant.Hypnoses()
                 for character in characterList:

@@ -84,13 +84,12 @@ func InWater() -> void :
     var viewport: Viewport = get_viewport()
     var vt: Transform2D = viewport.get_screen_transform()
     vt.origin = Vector2.ZERO
-    parent.SetSpriteGroupShaderParameter("discardDownPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 45))).y)
-    var _spriteMaterial: ShaderMaterial = parent.sprite.material as ShaderMaterial
-    if is_instance_valid(_spriteMaterial) && _spriteMaterial.get_shader_parameter("discardDownPos") != null:
-        var tween = create_tween()
-        tween.set_ease(Tween.EASE_OUT)
-        tween.set_trans(Tween.TRANS_CUBIC)
-        tween.tween_property(_spriteMaterial, "shader_parameter/discardDownPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 45))).y, 1.0)
+    var target_pos: float = (vt * (parent.spriteGroup.global_position + Vector2(0, 45))).y
+    parent.SetSpriteGroupShaderParameter("discardDownPos", target_pos)
+    var tween = create_tween()
+    tween.set_ease(Tween.EASE_OUT)
+    tween.set_trans(Tween.TRANS_CUBIC)
+    tween.tween_method(_set_discard_down_pos, target_pos, target_pos, 1.0)
 
     parent.CreateSplash()
 
@@ -105,18 +104,20 @@ func OutWater() -> void :
     var viewport: Viewport = get_viewport()
     var vt: Transform2D = viewport.get_screen_transform()
     vt.origin = Vector2.ZERO
-    parent.SetSpriteGroupShaderParameter("discardDownPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 56))).y)
-    var _spriteMaterial: ShaderMaterial = parent.sprite.material as ShaderMaterial
-    var tween: Tween = null
-    if is_instance_valid(_spriteMaterial) && _spriteMaterial.get_shader_parameter("discardDownPos") != null:
-        tween = create_tween()
-        tween.set_ease(Tween.EASE_OUT)
-        tween.set_trans(Tween.TRANS_CUBIC)
-        tween.tween_property(_spriteMaterial, "shader_parameter/discardDownPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 86))).y, 1.0)
+    var target_pos_out: float = (vt * (parent.spriteGroup.global_position + Vector2(0, 56))).y
+    var target_pos_out_final: float = (vt * (parent.spriteGroup.global_position + Vector2(0, 86))).y
+    parent.SetSpriteGroupShaderParameter("discardDownPos", target_pos_out)
+    var tween: Tween = create_tween()
+    tween.set_ease(Tween.EASE_OUT)
+    tween.set_trans(Tween.TRANS_CUBIC)
+    tween.tween_method(_set_discard_down_pos, target_pos_out, target_pos_out_final, 1.0)
 
     if is_instance_valid(waterLineSprite):
         waterLineSprite.visible = false
 
-    if is_instance_valid(tween):
-        await tween.finished
+    await tween.finished
     parent.SetSpriteGroupShaderParameter("discardDownPos", 10000.0)
+
+func _set_discard_down_pos(value: float) -> void :
+    if is_instance_valid(parent):
+        parent.SetSpriteGroupShaderParameter("discardDownPos", value)

@@ -6,16 +6,16 @@ const _EFFECT_FLAGS: Dictionary = {
     "imitater": 16, "redHeat": 32, "puzzle": 64, "poisoning": 128, "blink": 256, 
 }
 
-func _SetEffectFlag(_material: ShaderMaterial, effect: String, enable: bool) -> void :
-    if !_material || !_EFFECT_FLAGS.has(effect):
+func _SetEffectFlag(_sprite: AdobeAnimateSpriteBase, effect: String, enable: bool) -> void :
+    if !_sprite || !_EFFECT_FLAGS.has(effect):
         return
     var flag: int = _EFFECT_FLAGS[effect]
-    var current: int = _material.get_shader_parameter("effectFlags") if _material.get_shader_parameter("effectFlags") != null else 0
+    var current: int = _sprite.get_instance_shader_parameter("effectFlags") if _sprite.get_instance_shader_parameter("effectFlags") != null else 0
     if enable:
         current |= flag
     else:
         current &= ~ flag
-    _material.set_shader_parameter("effectFlags", current)
+    _sprite.set_instance_shader_parameter("effectFlags", current)
 
 const ZOMBIE_BOSS_FOOT = preload("uid://bdbupeo1kkd7d")
 const ZOMBIE_BOSS_FOOT_DAMAGE_1 = preload("uid://vbdobkdjpwic")
@@ -113,18 +113,18 @@ func DamagePointSet(damagePointName: String) -> void :
             headSmoke1.visible = true
             headSmoke2.visible = true
         "Stage3":
-            _SetEffectFlag(material, "blink", true)
-            _SetEffectFlag(arm.material, "blink", true)
-            _SetEffectFlag(headSprite.material, "blink", true)
+            _SetEffectFlag(self, "blink", true)
+            _SetEffectFlag(arm, "blink", true)
+            headSprite.set_instance_shader_parameter("effectFlags", headSprite.get_instance_shader_parameter("effectFlags") | _EFFECT_FLAGS["blink"])
             headSmoke3.visible = true
         "Death":
             driver.timeScale = 1.5
             driver.SetAnimation("Death", false, 0.2)
             driver.AddAnimation("Flag", 0.0, false, 0.0)
             driver.AddAnimation("FlagLoop", 0.0, true, 0.0)
-            _SetEffectFlag(material, "blink", false)
-            _SetEffectFlag(arm.material, "blink", false)
-            _SetEffectFlag(headSprite.material, "blink", false)
+            _SetEffectFlag(self, "blink", false)
+            _SetEffectFlag(arm, "blink", false)
+            headSprite.set_instance_shader_parameter("effectFlags", headSprite.get_instance_shader_parameter("effectFlags") & ~ _EFFECT_FLAGS["blink"])
             headSmoke1.visible = false
             headSmoke2.visible = false
             headSmoke3.visible = false

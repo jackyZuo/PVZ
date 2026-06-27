@@ -34,6 +34,7 @@ func Init(_data: Dictionary) -> void :
         tweenList.append([])
     BattleEventBus.blowAllEffectEmit.connect(BlowAllEffectEmit)
     BattleEventBus.blowLineEffectEmit.connect(BlowLineEffectEmit)
+    BattleEventBus.gameVictory.connect(HideFog)
 
 func GameInit() -> void :
     for x in range(beginColumn, mapGridNum.x + 10, 1):
@@ -117,6 +118,13 @@ func SyncDeserialize(_data: Dictionary) -> void :
                             if fog_item.gridPos.x == grid_x and fog_item.gridPos.y == grid_y:
                                 fog_item.visible = false
                                 break
+
+func GameFail() -> void :
+    HideFog()
+
+func HideFog() -> void :
+    if is_instance_valid(fogNode):
+        fogNode.visible = false
 
 
 

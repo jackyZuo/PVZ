@@ -32,17 +32,6 @@ image = SubResource("Image_u2rck")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7kbw"]
 shader = ExtResource("1")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_hvl1o")
@@ -81,19 +70,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_2e73a"]
 image = SubResource("Image_adi7q")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2eb3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyd58"]
 shader = ExtResource("1")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_2e73a")
@@ -104,16 +82,17 @@ shader_parameter/imageAtlasSize = Vector2(97, 146)
 shader_parameter/uvs = [Rect2(0, 0, 97, 59), Rect2(0, 59, 97, 87)]
 shader_parameter/layerVisible = [false, true, false]
 shader_parameter/mediaReplaceAtlas = null
-shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/mediaReplaceUse = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[node name="ZombieJackson" type="Node2D" unique_id=1379950638]
+[node name="ZombieJackson" type="Node2D" unique_id=2084009287]
 material = SubResource("ShaderMaterial_p7kbw")
 instance_shader_parameters/frameIndex = 0.0
 script = ExtResource("2")
 flashAnimeData = ExtResource("3")
 offset = Vector2(-40, -80)
+trueFrameRate = 180.0
 Animation/Clip = "MoonWalk"
 Animation/LayerVisible/AnimeClips = false
 Animation/LayerVisible/AnimeEvents = false
@@ -162,37 +141,38 @@ Animation/MediaReplace/Zombie_jackson_head.png = null
 Animation/MediaReplace/Zombie_jaw.png = null
 metadata/_custom_type_script = "uid://dcjlwjqgdivmr"
 
-[node name="ZombieDuckytube" parent="." unique_id=1704892175 node_paths=PackedStringArray("parentSprite") instance=ExtResource("4")]
+[node name="ZombieDuckytube" parent="." unique_id=1202584863 node_paths=PackedStringArray("parentSprite") instance=ExtResource("4")]
 visible = false
-material = SubResource("ShaderMaterial_m2eb3")
+material = SubResource("ShaderMaterial_vyd58")
 instance_shader_parameters/frameIndex = 0.0
-position = Vector2(-25.2, -47.95)
-rotation = 0.030434087
+position = Vector2(-24.224758, -51.68144)
+rotation = 0.071697675
 offset = Vector2(3.43, 50.295)
 offsetRotate = -0.04
+trueFrameRate = 180.0
 parentSprite = NodePath("..")
 Layer = 13
 
-[node name="HeadSlot" type="Node2D" parent="." unique_id=1083108962]
-position = Vector2(-19.74741, -45.71421)
-rotation = 0.070434086
-scale = Vector2(0.7996145, 0.7996145)
+[node name="HeadSlot" type="Node2D" parent="." unique_id=1480721874]
+position = Vector2(-19.078712, -49.35653)
+rotation = 0.111697674
+scale = Vector2(0.79968256, 0.79968256)
 script = ExtResource("5")
 followSlotId = 15
 offset = Vector2(25, 30)
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
-[node name="ArmSlot" type="Node2D" parent="." unique_id=881366262]
-position = Vector2(0.45084572, 1.3153763)
-rotation = 0.070434086
-scale = Vector2(0.7996145, 0.7996145)
+[node name="ArmSlot" type="Node2D" parent="." unique_id=918420927]
+position = Vector2(-0.6510415, 0.8518429)
+rotation = 0.10053195
+scale = Vector2(0.7996531, 0.7996531)
 script = ExtResource("5")
 followSlotId = 20
 offset = Vector2(10, 20)
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 
-[node name="GroundSlot" type="Node2D" parent="." unique_id=477622159]
-position = Vector2(-97.03333, -38.25)
+[node name="GroundSlot" type="Node2D" parent="." unique_id=444749147]
+position = Vector2(-62.938457, -39.3838)
 script = ExtResource("5")
 followSlotId = 1
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"

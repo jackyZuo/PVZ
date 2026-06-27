@@ -25,7 +25,9 @@ func AreaEntered(area: Area2D) -> void :
             return
         if character.camp != camp:
             return
-        if character.config.fireMethodFlags & (TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.CATAPULT | TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.TRACK):
+        if character.config.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.CATAPULT:
+            return
+        if character.trackOpen && !(character.config.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.TRACK):
             return
         projectileList.append(character.config)
         character.Over()
@@ -37,9 +39,15 @@ func AreaEntered(area: Area2D) -> void :
 
 func Attack(_projectileList: Array) -> void :
     var projectileData: TowerDefenseProjectileCreateData = TowerDefenseProjectileCreateData.new(&"Chest")
-    projectileData.baseDamage = 200
+    projectileData.baseDamage = 100
     var fireProjectile = fireComponent.CreateProjectileByData(0, Vector2(600, 0), projectileData, -1, camp, Vector2.ZERO)
     fireProjectile.projectileBodyNode.scale.x = scale.x
     fireProjectile.gridPos = gridPos
     fireProjectile.metaData = _projectileList
     fireProjectile.set_meta("richwood_fire", true)
+
+func DestroySet() -> void :
+    var goldShardCreateEvent: TowerDefenseCharacterEventGoldShardCreate = TowerDefenseCharacterEventGoldShardCreate.new()
+    goldShardCreateEvent.num = 1
+    goldShardCreateEvent.Execute(global_position, self)
+    await get_tree().physics_frame

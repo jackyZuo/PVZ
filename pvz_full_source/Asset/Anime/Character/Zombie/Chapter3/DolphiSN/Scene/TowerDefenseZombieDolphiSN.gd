@@ -62,6 +62,9 @@ func WalkProcessing(delta: float) -> void :
         if global_position.x < TowerDefenseManager.GetMapGroundRight():
             AudioManager.AudioPlay("DolphinAppears", AudioManagerEnum.TYPE.SFX)
             audioPlay = true
+    if !dolphin && attackComponent.CanAttack():
+        if is_instance_valid(attackComponent.target) && attackComponent.target is TowerDefenseVase:
+            attackComponent.SmashAttackCell(config.smashAttack)
 
 func Walk() -> void :
     if dolphin && inWater:

@@ -35,3 +35,5 @@ func Hypnoses(time: float = -1, canFliter: bool = true) -> void :
     changeCost.method = "Increase"
     if TowerDefenseManager.IsIZMMode() || TowerDefenseManager.IsIZM2Mode():
         changeCost.method = "Decrease"
+    instance.invincible = true
+    instance.canBeCollection = false

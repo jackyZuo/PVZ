@@ -41,9 +41,15 @@ func Exit() -> void :
     character.instance.hypnoses = false
     character.camp = saveCamp
     character.scale.x = 1
+    if character is TowerDefenseZombie && !character.die:
+        if is_instance_valid(character.attackComponent):
+            character.attackComponent.target = null
+        character.Walk()
 
 @warning_ignore("unused_parameter")
 func Refresh(config: TowerDefenseCharacterBuffConfig) -> void :
+    if time == -1:
+        return
     time = max(time, config.time)
     if config.time == -1:
         time = -1

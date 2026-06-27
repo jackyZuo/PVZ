@@ -19,7 +19,7 @@ public class StateChartDebugger : NodeWrapper
 
 	public static StateChartDebugger Of(Node stateChartDebugger)
 	{
-		if (!(stateChartDebugger.GetScript().As<Script>() is GDScript gdScript) || !gdScript.ResourcePath.EndsWith("state_chart_debugger.gd"))
+		if (!(stateChartDebugger.GetScript().As<Script>() is GDScript gDScript) || !gDScript.ResourcePath.EndsWith("state_chart_debugger.gd"))
 		{
 			throw new ArgumentException("Given node is not a state chart debugger.");
 		}

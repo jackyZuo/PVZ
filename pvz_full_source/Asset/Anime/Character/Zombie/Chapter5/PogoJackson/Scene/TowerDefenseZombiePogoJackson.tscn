@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Script/Component/TowerDefense/Character/DancingComponent/DancingComponent.tscn" id="15"]
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_0wok2"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -26,9 +26,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_0wok2")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_ae3xr"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -38,21 +38,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_ae3xr")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae3xr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r881r"]
 shader = ExtResource("10")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -76,6 +65,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0.8, 1, 0, 1, 0.15, 1, 0.1925, 1, 0.33, 1,
 
 [node name="TowerDefenseZombiePogoJackson" unique_id=1393774867 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
 script = ExtResource("2")
+dancerPacketName = ""
 duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoJackson/ZombieDuckytube")
 waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
 garlicReplace = "Zombie_jackson_head.png"
@@ -132,7 +122,7 @@ position = Vector2(-70.66333, -38.73)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1504891509 instance=ExtResource("9")]
 visible = false
-material = SubResource("ShaderMaterial_ae3xr")
+material = SubResource("ShaderMaterial_r881r")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-6, -44)
 trueFrameRate = 180.0
@@ -172,7 +162,7 @@ unique_name_in_owner = true
 position = Vector2(4, -1.5)
 shape = SubResource("RectangleShape2D_lkkbw")
 
-[node name="DancingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=1627685911 node_paths=PackedStringArray("attackComponent", "groundMoveComponent", "sprite", "spotlight", "spotlight2") instance=ExtResource("15")]
+[node name="DancingComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=625509821 node_paths=PackedStringArray("attackComponent", "groundMoveComponent", "sprite", "spotlight", "spotlight2") instance=ExtResource("15")]
 attackComponent = NodePath("../AttackComponent")
 groundMoveComponent = NodePath("../GroundMoveComponent")
 dancerPacketName = "ZombiePogoDancer"

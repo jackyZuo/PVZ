@@ -204,7 +204,8 @@ func _EmitChooseOver() -> void :
     chooseOver.emit()
     var reSelectPacketList: Array = []
     for packet: TowerDefenseInGamePacketShow in packetBank.seedBank.packetList:
-        reSelectPacketList.append(packet.config.saveKey)
+        var saveKey: String = packet.originalSaveKey if packet.originalSaveKey != "" else packet.config.saveKey
+        reSelectPacketList.append(saveKey)
     if TowerDefenseManager.IsIZMMode() || TowerDefenseManager.IsIZM2Mode():
         GameSaveManager.SetKeyValue("ZombiePacketReSlect", reSelectPacketList)
     else:
@@ -298,7 +299,8 @@ func LoadPacketGroup(id: int) -> void :
 func SavePacketGroup(id: int) -> void :
     var packetGroupList: Array = []
     for packet: TowerDefenseInGamePacketShow in packetBank.seedBank.packetList:
-        packetGroupList.append(packet.config.saveKey)
+        var saveKey: String = packet.originalSaveKey if packet.originalSaveKey != "" else packet.config.saveKey
+        packetGroupList.append(saveKey)
     if TowerDefenseManager.IsIZMMode() || TowerDefenseManager.IsIZM2Mode():
         GameSaveManager.SetKeyValue("ZombiePacketGroup%d" % id, packetGroupList)
     else:

@@ -1,15 +1,23 @@
 [gd_resource type="Resource" script_class="CharacterArmorData" format=3 uid="uid://crwqs0joihdn8"]
 
 [ext_resource type="Resource" uid="uid://cn7vsu36esvj7" path="res://Asset/Anime/Character/Zombie/Chapter3/ZombieShieldArmor/Armor/Config/ZombieShieldArmorArmorHelmetEP.tres" id="1"]
-[ext_resource type="Resource" uid="uid://bbq3127jes545" path="res://Asset/Anime/Character/Zombie/Chapter3/ZombieShieldArmor/Armor/Config/ZombieShieldArmorArmorShield.tres" id="2"]
-[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="3"]
+[ext_resource type="Resource" path="res://Registry/Armor/Config/HelmetEP.tres" id="2"]
+[ext_resource type="Resource" uid="uid://bbq3127jes545" path="res://Asset/Anime/Character/Zombie/Chapter3/ZombieShieldArmor/Armor/Config/ZombieShieldArmorArmorShield.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bwjp81a3rash5" path="res://Registry/Armor/Config/Shield.tres" id="4"]
+[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="5"]
 
 [resource]
-script = ExtResource("3")
-armorList = [ExtResource("1"), ExtResource("2")]
+script = ExtResource("5")
+armorList = [ExtResource("1"), ExtResource("3")]
 armorDictionary = {
-"HelmetEP": ExtResource("1"),
-"Shield": ExtResource("2")
+"HelmetEP": {
+"slotConfig": ExtResource("1"),
+"typeData": ExtResource("2")
+},
+"Shield": {
+"slotConfig": ExtResource("3"),
+"typeData": ExtResource("4")
+}
 }
 fliterAllDictionary = {
 "HelmetEP": ["anim_helmet"],

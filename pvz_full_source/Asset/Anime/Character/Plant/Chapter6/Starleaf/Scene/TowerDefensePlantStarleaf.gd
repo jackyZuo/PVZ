@@ -14,10 +14,9 @@ func BlockCharacter() -> void :
     sprite.SetAnimation("Block", false, 0.1)
     sprite.AddAnimation("Idle", 0.0, true, 0.0)
     await get_tree().physics_frame
-    var targetList: Array = TowerDefenseManager.GetCharacterTargetNear(self, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION)
-    if targetList.size() <= 0:
+    var target: TowerDefenseCharacter = TowerDefenseManager.GetCharacterTargetNearest(self, TowerDefenseEnum.TARGET_NEAR_METHOD.POSITION)
+    if target == null:
         return
-    var target: TowerDefenseCharacter = targetList[0]
     var _cell = TowerDefenseManager.GetMapCell(target.gridPos)
     var height: float = 0
     if is_instance_valid(_cell):

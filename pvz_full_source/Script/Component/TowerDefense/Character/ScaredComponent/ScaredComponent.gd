@@ -50,12 +50,6 @@ func _ready() -> void :
         sprite.animeCompleted.connect(AnimeCompleted)
 
 
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        return
-
-
 
 
 func IdleEntered() -> void :

@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://bnu2he1w6opb7" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Config/TowerDefenseZombieImpSunpult.tres" id="3"]
 [ext_resource type="Resource" uid="uid://b1i34e3ocmogl" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://dh77v1ckvfdxu" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpPlantDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://cmjaxhp5g71q5" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorCone.tres" id="6"]
+[ext_resource type="Resource" uid="uid://58r0tjmwweja" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBlackHelmet.tres" id="6"]
 [ext_resource type="Resource" uid="uid://qgfffnlxkr4m" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBucket.tres" id="7"]
-[ext_resource type="Resource" uid="uid://cs3au7yvdnjpi" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://58r0tjmwweja" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cmjaxhp5g71q5" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cs3au7yvdnjpi" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://dnbxvkk0ikxie" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://borcqbvteqs1h" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Sprite/Sunpult/ZombieImpSunpult.tscn" id="11"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
@@ -45,19 +45,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_lptmt"]
 image = SubResource("Image_87csl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2we4g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhwfb"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_lptmt")
@@ -96,19 +85,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_356jy"]
 image = SubResource("Image_0lg4j")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhwfb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sudlj"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_356jy")
@@ -134,7 +112,15 @@ catapultHeight = 400.0
 Flag/Damage = 10
 Flag/FireMethod = 2
 Flag/Collision = 43
-Catapult/Height = 400.0
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_waxhx"]
 script = ExtResource("18")
@@ -172,21 +158,21 @@ headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
 damagePartClip = "particles"
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
+"BlackHelmet": ExtResource("6"),
 "Bucket": ExtResource("7"),
-"Cone": ExtResource("6"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
@@ -194,20 +180,21 @@ position = Vector2(9, 40)
 scale = Vector2(0.906977, 0.944445)
 
 [node name="ZombieImpSunpult" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=496655966 instance=ExtResource("11")]
-material = SubResource("ShaderMaterial_2we4g")
-instance_shader_parameters/frameIndex = 22.617974666666665
+material = SubResource("ShaderMaterial_fhwfb")
+instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-12, -36)
 
 [node name="Head" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="0" unique_id=764864368]
-material = SubResource("ShaderMaterial_fhwfb")
-instance_shader_parameters/frameIndex = 1.4209213333333333
-position = Vector2(-13.520216, -31.372478)
-rotation = -0.169268
+material = SubResource("ShaderMaterial_sudlj")
+instance_shader_parameters/frameIndex = 4.749500952380952
+position = Vector2(-5.75, -38.15)
+rotation = -0.010367077
 
 [node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieImpSunpult/Head" index="0" unique_id=959116005]
-position = Vector2(-73.14767, -10.194769)
-rotation = -0.14303613
-scale = Vector2(0.36879513, 0.35156846)
+position = Vector2(-77.3004, 3.7827168)
+rotation = -0.4781054
+scale = Vector2(0.38941672, 0.33183575)
+skew = -2.6583672e-05
 script = ExtResource("13")
 followSlotId = 2
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
@@ -219,18 +206,18 @@ position = Vector2(30.935326, -15.827517)
 position = Vector2(-18.731264, 17.052639)
 
 [node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="1" unique_id=1679610570]
-position = Vector2(0.03999996, -7.532858)
-rotation = 0.060732
-scale = Vector2(0.9988103, 0.9988103)
+position = Vector2(3.8715973, -12.453209)
+rotation = 0.21963292
+scale = Vector2(0.9992705, 0.9992705)
 
 [node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="2" unique_id=1448527260]
-position = Vector2(13.040293, 23.59103)
-rotation = -0.956661
-scale = Vector2(1.0558099, 1.0197034)
-skew = 0.048181772
+position = Vector2(12.899817, 19.709927)
+rotation = -0.84906316
+scale = Vector2(1.0600996, 1.0239577)
+skew = 0.04820621
 
 [node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="3" unique_id=1776460655]
-position = Vector2(-48.78016, 10)
+position = Vector2(-100, 10)
 
 [node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=2076937758 node_paths=PackedStringArray("marker") instance=ExtResource("14")]
 unique_name_in_owner = true
@@ -263,8 +250,14 @@ target_position = Vector2(-2000, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="GroundHeightComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="13" unique_id=709243207]
+waterHeight = 15.0
+
 [node name="GroundMoveComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="23" unique_id=1451306300 node_paths=PackedStringArray("groundNode")]
 groundNode = NodePath("../../SpriteGroup/TransformPoint/ZombieImpSunpult/GroundSlot")
+
+[node name="WaterInteractionComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="24" unique_id=2146103718]
+inWaterLine = true
 
 [connection signal="grow" from="ComponentManager/GrowUpComponent" to="." method="GowUp"]
 

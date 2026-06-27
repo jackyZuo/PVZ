@@ -11,7 +11,7 @@ func AttackEntered() -> void :
         instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GROUND_CHARACTRE | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.GRIDITEM
 
 func AttackExited() -> void :
-    super.AttackEntered()
+    super.AttackExited()
     if inWater:
         instance.maskFlags = TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_WATER
 
@@ -23,8 +23,6 @@ func InWater() -> void :
 
 
 func OutWater() -> void :
-    groundHeight = -100
-    z = -100
     super.OutWater()
     var tween = create_tween()
     tween.tween_property(sprite, ^"offset", Vector2(-50, -80), 0.25)

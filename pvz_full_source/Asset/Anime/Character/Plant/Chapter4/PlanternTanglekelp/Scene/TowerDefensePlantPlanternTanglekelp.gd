@@ -57,9 +57,13 @@ func DestroySet() -> void :
     if targetList.size() > 0:
         if inWater:
             for target in targetList:
+                if !is_instance_valid(target) || !CanCollision(target.instance.maskFlags):
+                    continue
                 tanglekelpComponent.Drag(target)
         else:
             for target in targetList:
+                if !is_instance_valid(target) || !CanCollision(target.instance.maskFlags):
+                    continue
                 HitBack(target)
 
         await get_tree().create_timer(0.6, false).timeout

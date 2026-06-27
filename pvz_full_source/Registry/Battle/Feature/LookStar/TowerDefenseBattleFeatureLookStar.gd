@@ -68,13 +68,13 @@ func FreshGround() -> void :
 func IsOpen() -> bool:
     return config.open
 
-func OnWaveReachFinal(waveProcess: TowerDefenseBattleProcessWave) -> bool:
+func OnWaveReachFinal(waveFeature: TowerDefenseBattleFeatureWave) -> bool:
     if !config.open || isfinish:
         return false
-    waveProcess.waveFinal = false
-    waveProcess.currentWave -= waveProcess.config.flagWaveInterval
-    waveProcess.spawnOver = false
-    waveProcess.nextWaveTime = waveProcess.config.spawnColStart
+    waveFeature.waveFinal = false
+    waveFeature.currentWave -= waveFeature.config.flagWaveInterval
+    waveFeature.spawnOver = false
+    waveFeature.nextWaveTime = waveFeature.config.spawnColStart
     return true
 
 func SaveFeature() -> Dictionary:

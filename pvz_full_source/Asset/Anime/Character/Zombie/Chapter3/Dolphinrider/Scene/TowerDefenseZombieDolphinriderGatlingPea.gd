@@ -11,7 +11,6 @@ var dolphin: bool = true:
         if !dolphin:
             useAttackDps = true
             attackComponent.attackType = "Eat"
-            attackComponent.checkVase = false
             useAttackDps = true
             walkAnimeClip = "Walk"
             attackAnimeClip = "Eat"
@@ -79,6 +78,9 @@ func WalkProcessing(delta: float) -> void :
         if global_position.x < TowerDefenseManager.GetMapGroundRight():
             AudioManager.AudioPlay("DolphinAppears", AudioManagerEnum.TYPE.SFX)
             audioPlay = true
+    if !dolphin && attackComponent.CanAttack():
+        if is_instance_valid(attackComponent.target) && attackComponent.target is TowerDefenseVase:
+            attackComponent.SmashAttackCell(config.smashAttack)
 
 func Walk() -> void :
     if dolphin && inWater:
@@ -253,7 +255,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantGatlingPea")
     if cell.CanPacketPlant(packetConfig, true):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos, true, true)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

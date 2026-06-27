@@ -19,12 +19,18 @@ func _ready() -> void :
         await parent.ready
 
 func Garlic() -> void :
+    if parent.isPause:
+        return
     if parent.nearDie || parent.die:
         parent.Die()
         return
     if parent.instance.unUseBuffFlags & TowerDefenseEnum.CHARACTER_BUFF_FLAGS.GARLIC:
         return
     if parent.isGarlic:
+        return
+    while parent.isRise:
+        await parent.get_tree().process_frame
+    if !is_instance_valid(parent) || parent.nearDie || parent.die:
         return
     parent.isGarlic = true
     parent.state.send_event("ToGarlic")
@@ -72,13 +78,20 @@ func ChangeLine() -> void :
     changeLineTween.set_parallel(true)
     changeLineTween.tween_property(parent, ^"global_position:y", parent.global_position.y + mapGridSize.y * moveDir, 1.0)
     changeLineTween.tween_property(parent.shadowComponent, ^"saveShadowPosition:y", parent.shadowComponent.saveShadowPosition.y + mapGridSize.y * moveDir, 1.0)
+    var _carryCharacter = parent.get("carryCharacter")
+    if _carryCharacter != null && is_instance_valid(_carryCharacter) && _carryCharacter is TowerDefenseCharacter:
+        changeLineTween.tween_property(_carryCharacter, ^"global_position:y", _carryCharacter.global_position.y + mapGridSize.y * moveDir, 1.0)
+        _carryCharacter.gridPos.y += moveDir
+    var _ghostCharacter = parent.get("ghostCharacter")
+    if _ghostCharacter != null && is_instance_valid(_ghostCharacter):
+        changeLineTween.tween_property(_ghostCharacter, ^"global_position:y", _ghostCharacter.global_position.y + mapGridSize.y * moveDir, 1.0)
+        _ghostCharacter.gridPos.y += moveDir
     if parent.inWater:
         var viewport: Viewport = parent.get_viewport()
         var vt: Transform2D = viewport.get_screen_transform()
         vt.origin = Vector2.ZERO
-        var _spriteMaterial: ShaderMaterial = parent.sprite.material as ShaderMaterial
-        if is_instance_valid(_spriteMaterial) && _spriteMaterial.get_shader_parameter("discardDownPos") != null:
-            changeLineTween.tween_property(_spriteMaterial, "shader_parameter/discardDownPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 36 + mapGridSize.y * moveDir))).y, 1.0)
+        var target_pos: float = (vt * (parent.spriteGroup.global_position + Vector2(0, 36 + mapGridSize.y * moveDir))).y
+        changeLineTween.tween_method(_set_discard_down_pos, target_pos, target_pos, 1.0)
     parent.gridPos.y += moveDir
     while changeLineTween != null && is_instance_valid(changeLineTween) && changeLineTween.is_valid():
         await parent.get_tree().process_frame
@@ -108,3 +121,7 @@ func SyncDeserialize(_data: Dictionary) -> void :
     _sync_deserializing = true
     if _data.has("is_change_line"):
         parent.isChangeLine = _data.get("is_change_line", false)
+
+func _set_discard_down_pos(value: float) -> void :
+    if is_instance_valid(parent):
+        parent.SetSpriteGroupShaderParameter("discardDownPos", value)

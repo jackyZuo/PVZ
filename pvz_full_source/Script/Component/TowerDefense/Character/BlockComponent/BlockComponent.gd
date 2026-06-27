@@ -45,6 +45,8 @@ func _physics_process(delta: float) -> void :
         return
     if !parent.inGame:
         return
+    if !parent.componentAlive:
+        return
     if is_instance_valid(parent.cell):
         if is_instance_valid(parent.cell.characterLadder):
             parent.cell.characterLadder.Block(parent)

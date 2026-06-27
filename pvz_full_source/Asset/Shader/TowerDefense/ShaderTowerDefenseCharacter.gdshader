@@ -5,12 +5,12 @@ const vec4 redHeatColor = vec4( 0.78 , 0.0 , 0.0 , 1.0 ) ;
 const vec4 puzzleColor = vec4( 0.81 , 0.74 , 0.5 , 1.0 ) ;
 const vec4 poisoningColor = vec4( 0.35 , 1.0 , 0.0 , 1.0 ) ;
 
-uniform float brightStrength : hint_range(0.0, 0.5, 0.001) = 0.0 ;
-uniform float whiteStrength : hint_range(0.0, 1.0, 0.001) = 0.0 ;
-uniform float discardUpPos : hint_range(-10000, 10000.0, 0.001) = -10000.0 ;
-uniform float discardDownPos : hint_range(-10000, 10000.0, 0.001) = 10000.0 ;
-uniform float surfacePos : hint_range(-10000, 10000.0, 0.001) = 0.0 ;
-uniform int effectFlags = 0 ;
+instance uniform float brightStrength : hint_range(0.0, 0.5, 0.001) = 0.0 ;
+instance uniform float whiteStrength : hint_range(0.0, 1.0, 0.001) = 0.0 ;
+instance uniform float discardUpPos : hint_range(-10000, 10000.0, 0.001) = -10000.0 ;
+instance uniform float discardDownPos : hint_range(-10000, 10000.0, 0.001) = 10000.0 ;
+instance uniform float surfacePos : hint_range(-10000, 10000.0, 0.001) = 0.0 ;
+instance uniform int effectFlags = 0 ;
 
 const int EFFECT_ASH = 1 << 0 ;
 const int EFFECT_ICE_SPEED_DOWN = 1 << 1 ;

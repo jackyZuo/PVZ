@@ -2,6 +2,7 @@
 class_name TowerDefenseGravestone extends TowerDefenseCharacter
 
 @export var rise: bool = true
+@export var canBeAttacked: bool = false
 
 func _ready() -> void :
     if Engine.is_editor_hint():

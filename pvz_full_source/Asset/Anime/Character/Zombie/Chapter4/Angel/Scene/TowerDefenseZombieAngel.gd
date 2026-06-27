@@ -68,7 +68,7 @@ func WalkProcessing(delta: float) -> void :
     else:
         var deathList: Array[Dictionary] = TowerDefenseManager.deathList.duplicate(true)
         deathList = deathList.filter( func(characterData):
-            return characterData.has("Camp") && camp == characterData["Camp"]
+            return characterData.has("RelifeAngel") && characterData["RelifeAngel"] && characterData.has("Camp") && camp == characterData["Camp"]
         )
         if deathList.size() > 0:
             spawnTimer = 15.0
@@ -152,7 +152,7 @@ func CreateDeathCharacter() -> void :
         return
     var deathList: Array[Dictionary] = []
     for _characterData in TowerDefenseManager.deathList:
-        if _characterData.has("Camp") && camp == _characterData["Camp"]:
+        if _characterData.has("RelifeAngel") && _characterData["RelifeAngel"] && _characterData.has("Camp") && camp == _characterData["Camp"]:
             deathList.append(_characterData)
     if deathList.size() <= 0:
         return
@@ -164,7 +164,7 @@ func CreateDeathCharacter() -> void :
     characterNode.add_child(effect)
     var _packet: TowerDefensePacketConfig = characterData["Packet"]
     var character = _packet.Create(characterData["Pos"], characterData["GridPos"], 0.0)
-    character.invisible = invisible
+    character.invisible = characterData["Invisible"]
     characterNode.add_child(character)
     if is_instance_valid(character.transformPoint):
         character.transformPoint.scale = characterData["Scale"] * Vector2.ONE

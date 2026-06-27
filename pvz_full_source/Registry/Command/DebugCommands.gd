@@ -33,6 +33,16 @@ static func Register() -> void :
             CommandArg.new("value", TYPE_STRING, false, "toggle", "on/off")])
     CommandRegistry.RegisterCommand("debuglist", "列出所有调试选项", "/debuglist", 
         _CmdDebugList)
+    CommandRegistry.RegisterCommand("phonk", "切换Phonk果冻抖动效果", "/phonk <on/off> [intensity]", 
+        _CmdPhonk, 
+        [CommandArg.new("state", TYPE_STRING, true, null, "on/off"), 
+            CommandArg.new("intensity", TYPE_FLOAT, false, "1.0", "强度倍率")])
+    CommandRegistry.RegisterCommand("dismember", "切换僵尸肢解效果", "/dismember <on/off>", 
+        _CmdDismember, 
+        [CommandArg.new("state", TYPE_STRING, true, null, "on/off")])
+    CommandRegistry.RegisterCommand("shovel", "更换铲子", "/shovel <铲子名称/list>", 
+        _CmdShovel, 
+        [CommandArg.new("name", TYPE_STRING, true, null, "铲子名称/list", ShovelCommand.GetShovelNames)])
 
 static func _GetTree() -> SceneTree:
     return Engine.get_main_loop() as SceneTree
@@ -46,7 +56,7 @@ static func _CmdKillAll() -> void :
 
 static func _CmdInstantWin() -> void :
     _CmdKillAll()
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         CommandConsole.PrintError("当前不在战斗中")
         return
@@ -57,7 +67,7 @@ static func _CmdInstantWin() -> void :
     CommandConsole.PrintSuccess("已直接胜利")
 
 static func _CmdSkipWaveWait() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         CommandConsole.PrintError("当前不在战斗中")
         return
@@ -66,7 +76,7 @@ static func _CmdSkipWaveWait() -> void :
     CommandConsole.PrintSuccess("已跳过等待")
 
 static func _CmdSkipToFinalWave() -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         CommandConsole.PrintError("当前不在战斗中")
         return
@@ -79,7 +89,7 @@ static func _CmdSkipToFinalWave() -> void :
     CommandConsole.PrintSuccess("已跳到最终波")
 
 static func _CmdSkipToWave(targetWave: int) -> void :
-    var wave = TowerDefenseBattleProcessWave.instance
+    var wave = TowerDefenseBattleFeatureWave.instance
     if !wave:
         CommandConsole.PrintError("当前不在战斗中")
         return
@@ -149,8 +159,7 @@ static func _CmdDebug(option: String, value: String = "toggle") -> void :
         "nolose": "debugNoLose", 
         "wavepaused": "debugWavePaused", 
         "nozombiespawn": "debugNoZombieSpawn", 
-        "braininvincible": "debugBrainInvincible",
-        "vasexray": "debugVaseXRay",
+        "braininvincible": "debugBrainInvincible", 
     }
     var key: String = option.to_lower()
     if !debugVars.has(key):
@@ -182,12 +191,68 @@ static func _CmdDebugList() -> void :
         ["nolose", "禁用失败"], 
         ["wavepaused", "暂停波次"], 
         ["nozombiespawn", "禁止僵尸生成"], 
-        ["braininvincible", "脑子无敌"],
-        ["vasexray", "开罐子透视"],
+        ["braininvincible", "脑子无敌"], 
     ]
+    var varNameMap: Dictionary = {
+        "openalllevel": "debugOpenAllLevel", 
+        "coinmax": "debugCoinMax", 
+        "sunmax": "debugSunMax", 
+        "packetselect": "debugPacketSelect", 
+        "packetopenall": "debugPacketOpenAll", 
+        "packetcolddown": "debugPacketColdDown", 
+        "openallcustom": "debugOpenAllCustom", 
+        "openglove": "debugOpenGlove", 
+        "unlimitedfire": "debugUnlimitedFire", 
+        "plantinvincible": "debugPlantInvincible", 
+        "nolose": "debugNoLose", 
+        "wavepaused": "debugWavePaused", 
+        "nozombiespawn": "debugNoZombieSpawn", 
+        "braininvincible": "debugBrainInvincible", 
+    }
     CommandConsole.PrintLine("[color=cyan]═══════ 调试选项列表 ═══════[/color]")
     for item in debugVars:
-        var varName: String = "debug" + item[0].capitalize().replace(" ", "")
-        var currentState: bool = CommandManager.get(varName)
+        var varName: String = varNameMap[item[0]]
+        var currentState: bool = CommandManager.get(varName) if CommandManager.get(varName) != null else false
         var stateStr: String = "[color=green]ON[/color]" if currentState else "[color=red]OFF[/color]"
         CommandConsole.PrintLine("[color=green]/debug %s[/color] %s - %s" % [item[0], stateStr, item[1]])
+
+static func _CmdPhonk(state: String, intensity: float = 1.0) -> void :
+    match state.to_lower():
+        "on", "true", "1":
+            PhonkComponent.phonkEnabled = true
+            PhonkComponent.InjectAll()
+        "off", "false", "0":
+            PhonkComponent.phonkEnabled = false
+            PhonkComponent.RemoveAll()
+        _:
+            PhonkComponent.phonkEnabled = !PhonkComponent.phonkEnabled
+            if PhonkComponent.phonkEnabled:
+                PhonkComponent.InjectAll()
+            else:
+                PhonkComponent.RemoveAll()
+    PhonkComponent.phonkIntensity = intensity
+    var stateStr: String = "[color=green]ON[/color]" if PhonkComponent.phonkEnabled else "[color=red]OFF[/color]"
+    CommandConsole.PrintSuccess("Phonk果冻抖动 %s  强度: %.1f" % [stateStr, PhonkComponent.phonkIntensity])
+
+static func _CmdDismember(state: String) -> void :
+    match state.to_lower():
+        "on", "true", "1":
+            DismemberComponent.dismemberEnabled = true
+            DismemberComponent.InjectAll()
+        "off", "false", "0":
+            DismemberComponent.dismemberEnabled = false
+            DismemberComponent.RemoveAll()
+        _:
+            DismemberComponent.dismemberEnabled = !DismemberComponent.dismemberEnabled
+            if DismemberComponent.dismemberEnabled:
+                DismemberComponent.InjectAll()
+            else:
+                DismemberComponent.RemoveAll()
+    var stateStr: String = "[color=green]ON[/color]" if DismemberComponent.dismemberEnabled else "[color=red]OFF[/color]"
+    CommandConsole.PrintSuccess("僵尸肢解 %s" % stateStr)
+
+static func _CmdShovel(name: String) -> void :
+    if name.to_lower() == "list":
+        ShovelCommand.ListShovels()
+    else:
+        ShovelCommand.ChangeShovel(name)

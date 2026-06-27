@@ -84,6 +84,20 @@ var methodList: Array[TowerDefenseProjectileMethod] = []
 
 static var _projectileServer: Node = null
 
+
+var _track_cache_frame: int = -1
+var _track_cache_target: TowerDefenseCharacter = null
+var _track_cache_valid: bool = false
+var _track_search_interval: int = 15
+var _track_no_target_interval: int = 60
+var _track_consecutive_no_target: int = 0
+var _track_force_search: bool = false
+
+
+static var _track_search_budget: int = 10
+static var _track_search_budget_used: int = 0
+static var _track_search_budget_frame: int = -1
+
 signal landOver(pos: Vector2, gridPos: Vector2i)
 
 func Refresh() -> void :
@@ -126,6 +140,11 @@ func Refresh() -> void :
     extId = -1
     blocked = false
     methodList.clear()
+
+    _track_cache_frame = -1
+    _track_cache_target = null
+    _track_cache_valid = false
+    _track_consecutive_no_target = 0
     for connection in landOver.get_connections():
         landOver.disconnect(connection.callable)
 
@@ -439,14 +458,19 @@ func _process_track(delta: float) -> void :
         if target.nearDie || target.die || !CanTarget(target) || !CanCollision(target.instance.maskFlags):
             target_valid = false
     if target_valid:
-        if is_instance_valid(target.hitBox) && target.hitBox.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
+        if !is_instance_valid(target.hitBox) || target.hitBox.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
             target_valid = false
     if !target_valid:
         target = null
-        find_track_target()
-    if (Engine.get_physics_frames() + randFreshIndex) % 30 == 0:
+        find_track_target_cached()
+
+
+    var current_frame: int = Engine.get_physics_frames()
+
+    var current_interval: int = _track_search_interval if is_instance_valid(target) else _track_no_target_interval
+    if current_frame % current_interval == 0:
         gridPos = TowerDefenseManager.GetMapGridPos(global_position)
-        find_track_target()
+        find_track_target_cached()
 
     if is_instance_valid(target):
         var targetAngleVector: Vector2 = (target.global_position - global_position).normalized()
@@ -462,7 +486,9 @@ func _process_track(delta: float) -> void :
 func _process_track_check() -> void :
     if over:
         return
-    if (Engine.get_physics_frames() + randFreshIndex) % 10 != 0:
+
+    var current_interval: int = _track_search_interval if is_instance_valid(target) else _track_no_target_interval
+    if (Engine.get_physics_frames() + randFreshIndex) % current_interval != 0:
         return
     var target_valid: bool = is_instance_valid(target)
     if target_valid:
@@ -476,7 +502,7 @@ func _process_track_check() -> void :
             target_valid = false
     if !target_valid:
         target = null
-        find_track_target()
+        find_track_target_cached()
     if !is_instance_valid(target):
         if extId >= 0 && _projectileServer:
             _projectileServer.unregister_projectile(extId)
@@ -747,12 +773,65 @@ func disable_monitoring() -> void :
 
 func target_died_from_extension() -> void :
     target = null
-    find_track_target()
+    _track_cache_valid = false
+    find_track_target_cached()
+
+
+func find_track_target_cached() -> void :
+    var current_frame: int = Engine.get_physics_frames()
+
+
+    var budget_current_frame: int = Engine.get_physics_frames()
+    if budget_current_frame != _track_search_budget_frame:
+        _track_search_budget_frame = budget_current_frame
+        _track_search_budget_used = 0
+
+
+    if !_track_force_search && _track_search_budget_used >= _track_search_budget:
+        return
+
+
+    if _track_cache_valid && is_instance_valid(_track_cache_target):
+
+        var cache_valid: bool = true
+        if !_track_cache_target.targetRegistrationComponent.canProjectileCheck:
+            cache_valid = false
+        if _track_cache_target.nearDie || _track_cache_target.die || !CanTarget(_track_cache_target) || !CanCollision(_track_cache_target.instance.maskFlags):
+            cache_valid = false
+        if !is_instance_valid(_track_cache_target.hitBox) || _track_cache_target.hitBox.process_mode == ProcessMode.PROCESS_MODE_DISABLED:
+            cache_valid = false
+        if cache_valid:
+            target = _track_cache_target
+
+            _track_consecutive_no_target = 0
+            if is_instance_valid(target) && _projectileServer && extId >= 0:
+                _projectileServer.set_projectile_target(extId, target.get_instance_id())
+            return
+
+
+    _find_track_target_internal()
+
+    _track_search_budget_used += 1
+
+    _track_force_search = false
+
+    _track_cache_frame = current_frame
+    _track_cache_target = target
+    _track_cache_valid = is_instance_valid(target)
+
+    if is_instance_valid(target):
+        _track_consecutive_no_target = 0
+    else:
+        _track_consecutive_no_target += 1
+
 
 func find_track_target() -> void :
+    _find_track_target_internal()
+
+func _find_track_target_internal() -> void :
     if !is_instance_valid(target):
         if is_instance_valid(magneticTarget) && !magneticTarget.nearDie && !magneticTarget.die && CanTarget(magneticTarget) && CanCollision(magneticTarget.instance.maskFlags) && magneticTarget.targetRegistrationComponent.canProjectileCheck:
-            if !is_instance_valid(magneticTarget.hitBox) || magneticTarget.hitBox.process_mode != ProcessMode.PROCESS_MODE_DISABLED:
+            if is_instance_valid(magneticTarget.hitBox) && magneticTarget.hitBox.process_mode != ProcessMode.PROCESS_MODE_DISABLED:
                 target = magneticTarget
                 if is_instance_valid(target) && _projectileServer && extId >= 0:
                     _projectileServer.set_projectile_target(extId, target.get_instance_id())
@@ -804,6 +883,17 @@ func SetTrack(isChange: bool = false) -> void :
     if !isChange:
         global_position.y = projectileBodyNode.global_position.y
         projectileBodyNode.position.y = 0
+
+    _track_cache_frame = -1
+    _track_cache_target = null
+    _track_cache_valid = false
+    _track_consecutive_no_target = 0
+    _track_force_search = true
+
+    if config != null:
+        _track_search_interval = config.trackSearchInterval
+
+        _track_no_target_interval = config.trackSearchInterval * 4
     hitBox.position.y = -20
     hitBox.set_deferred(&"position", Vector2(hitBox.position.x, 0.0))
     if extId >= 0 && _projectileServer:

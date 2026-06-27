@@ -26,3 +26,26 @@ func Execute(num: int, packet: TowerDefensePacketConfig) -> int:
         "Set":
             num = amontDictionary[packet.type]
     return num
+
+func ExportSave() -> Dictionary:
+    var amountDict: Dictionary = {}
+    for pktType: TowerDefenseEnum.PACKET_TYPE in amontDictionary.keys():
+        amountDict[pktType] = amontDictionary[pktType]
+    return {
+        "method": method, 
+        "amontDictionary": amountDict, 
+        "key": key, 
+        "lockCost": lockCost, 
+        "skip": skip, 
+    }
+
+static func ImportSave(data: Dictionary) -> TowerDefensePacketChangeCost:
+    var changeCost: TowerDefensePacketChangeCost = TowerDefensePacketChangeCost.new()
+    changeCost.method = data.get("method", "Increase")
+    var amountDict: Dictionary = data.get("amontDictionary", {})
+    for pktType: int in amountDict.keys():
+        changeCost.amontDictionary[pktType as TowerDefenseEnum.PACKET_TYPE] = amountDict[pktType]
+    changeCost.key = data.get("key", "")
+    changeCost.lockCost = data.get("lockCost", false)
+    changeCost.skip = data.get("skip", false)
+    return changeCost

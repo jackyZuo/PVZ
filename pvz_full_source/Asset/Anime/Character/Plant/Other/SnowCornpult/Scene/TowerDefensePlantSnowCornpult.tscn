@@ -38,19 +38,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_fp663"]
 image = SubResource("Image_xm5y3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2hld"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d53f0"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_fp663")
@@ -68,12 +57,22 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 [sub_resource type="Resource" id="Resource_l2hld"]
 script = ExtResource("8")
 projectileName = &"SnowPea"
-collisionFlags = 3
+collisionFlags = 43
 fireMethodFlags = 2
+catapultHeight = 400.0
 Flag/Damage = 3
 Flag/FireMethod = 2
-Flag/Collision = 3
-Catapult/Height = 300.0
+Flag/Collision = 43
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = true
+Catapult/Height = 400.0
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_d53f0"]
@@ -83,11 +82,20 @@ baseDamage = 40.0
 damageFlags = 2
 collisionFlags = 43
 fireMethodFlags = 2
-catapultHeight = 600.0
+catapultHeight = 400.0
 Flag/Damage = 2
 Flag/FireMethod = 2
 Flag/Collision = 43
-Catapult/Height = 600.0
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = true
+Catapult/Height = 400.0
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_qa56g"]
@@ -104,14 +112,24 @@ metadata/_custom_type_script = "uid://cpuai8clntobl"
 [sub_resource type="Resource" id="Resource_3o2jt"]
 script = ExtResource("8")
 projectileName = &"SnowPea"
+baseDamage = 20.0
 damageFlags = 2
 collisionFlags = 43
 fireMethodFlags = 2
-catapultHeight = 600.0
+catapultHeight = 400.0
 Flag/Damage = 2
 Flag/FireMethod = 2
 Flag/Collision = 43
-Catapult/Height = 600.0
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = true
+Catapult/Height = 400.0
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_vyp1e"]
@@ -135,8 +153,8 @@ metadata/_custom_type_script = "uid://b2g7lmmlfx8we"
 script = ExtResource("12")
 projectile = SubResource("Resource_c50u6")
 useParentCollision = false
-collisionFlags = 3
-Flag/Collision = 3
+collisionFlags = 43
+Flag/Collision = 43
 metadata/_custom_type_script = "uid://duxe603jas8ga"
 
 [sub_resource type="Resource" id="Resource_g03mw"]
@@ -145,6 +163,15 @@ projectileName = &"SnowPea"
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_pm0vh"]
@@ -155,6 +182,15 @@ damageFlags = 2
 Flag/Damage = 2
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_ss75l"]
@@ -174,6 +210,15 @@ projectileName = &"SnowPea"
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_poonj"]
@@ -228,12 +273,12 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="SnowCornpult" parent="SpriteGroup/TransformPoint" index="0" unique_id=2002974393 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_l2hld")
-instance_shader_parameters/frameIndex = 9.506612000000102
+material = SubResource("ShaderMaterial_d53f0")
+instance_shader_parameters/frameIndex = 3.4947466666665
 position = Vector2(0, -30)
 
 [node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SnowCornpult" index="0" unique_id=693966101]
-position = Vector2(-50.5, -21.473553)
+position = Vector2(-51.67017, -29.577202)
 scale = Vector2(0.7999878, 0.7999878)
 script = ExtResource("6")
 followSlotId = 12
@@ -243,10 +288,8 @@ metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 position = Vector2(14.1167, 12.9167)
 
 [node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/SnowCornpult" index="1" unique_id=218496741]
-position = Vector2(18.691559, -5.5427246)
-rotation = -0.08455762
-scale = Vector2(0.55640227, 0.5459634)
-skew = 0.08455753
+position = Vector2(18.61702, -7.098423)
+scale = Vector2(0.55540466, 0.569874)
 script = ExtResource("6")
 followSlotId = 10
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
@@ -268,6 +311,8 @@ fireInterval = 2.0
 fireCheckList = [SubResource("Resource_y31kf"), SubResource("Resource_1bony")]
 fireProjectileList = [SubResource("Resource_3w88d"), SubResource("Resource_ry5vm")]
 useCollisionEveryPos = true
+readyConfirmProjectile = true
+checkHeight = false
 
 [node name="Area2D" type="Area2D" parent="ComponentManager/FireComponent" index="0" unique_id=669180990]
 collision_layer = 0

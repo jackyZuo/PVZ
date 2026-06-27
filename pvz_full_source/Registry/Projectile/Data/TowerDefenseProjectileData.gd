@@ -24,3 +24,6 @@ class_name TowerDefenseProjectileData extends Resource
 @export var useRange: bool = false
 @export var rangeSize: Vector2 = Vector2(0.5, 0.5)
 @export var hitPesontage: float = 0.25
+
+@export_group("Flag")
+@export var isFire: bool = false

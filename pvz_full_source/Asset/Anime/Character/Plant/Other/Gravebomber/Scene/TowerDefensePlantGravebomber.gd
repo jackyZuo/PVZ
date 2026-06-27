@@ -3,7 +3,7 @@ extends TowerDefensePlant
 
 @onready var explodeComponent: ExplodeComponent = %ExplodeComponent
 
-func GravebusterOver() -> void :
+func GravebusterOver(graveStone: TowerDefenseGravestone) -> void :
     explodeComponent.Explode()
     if instance.hypnoses:
         return
@@ -16,4 +16,4 @@ func GravebusterOver() -> void :
             var checkCell: TowerDefenseCellInstance = TowerDefenseManager.GetMapCell(Vector2i(x, y))
             for character: TowerDefenseCharacter in checkCell.characterList:
                 if character is TowerDefenseGravestone:
-                    character.ExplodeHurt(100000, "Bomb", false)
+                    character.Destroy()

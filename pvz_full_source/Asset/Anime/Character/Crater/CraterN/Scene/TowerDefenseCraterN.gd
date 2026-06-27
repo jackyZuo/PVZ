@@ -11,7 +11,7 @@ func DieDown() -> void :
         Destroy()
         return
     var zombiePacket: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("ZombieNecromancer")
-    var zombie: TowerDefenseZombie = zombiePacket.Create(global_position, gridPos, 0.0)
+    var zombie: TowerDefenseZombie = zombiePacket.Create(global_position, gridPos, groundHeight)
     zombie.over = true
     characterNode.add_child(zombie)
     await get_tree().create_timer(0.1, false).timeout
@@ -22,6 +22,6 @@ func DieDown() -> void :
         if is_instance_valid(control):
             var _sync_id: int = control._get_next_sync_id()
             control._register_sync_character(_sync_id, zombie)
-            MultiPlayerManager.SendSpawnCharacterAt("ZombieNecromancer", gridPos.x, gridPos.y, _sync_id, 1.0, 1.0, false, 0.0, true, global_position.x, global_position.y, true)
+            MultiPlayerManager.SendSpawnCharacterAt("ZombieNecromancer", gridPos.x, gridPos.y, _sync_id, 1.0, 1.0, false, 0.0, true, global_position.x, global_position.y, true, groundHeight)
     await get_tree().physics_frame
     Destroy()

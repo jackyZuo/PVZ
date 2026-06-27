@@ -5,27 +5,16 @@
 [ext_resource type="Resource" uid="uid://dk6a4445hgk3d" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Config/TowerDefenseZombieDuck.tres" id="3"]
 [ext_resource type="Resource" uid="uid://dcf4jlp7c5shy" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/DamagePoint/Config/ZombieDuckDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://1eq1spanepgn" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/DamagePoint/Config/ZombieDuckDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://le7h1dggibce" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBucket.tres" id="6"]
-[ext_resource type="Resource" uid="uid://by7kwmpve5wkr" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorCone.tres" id="7"]
-[ext_resource type="Resource" uid="uid://b15w5fw1578wa" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorHelmet.tres" id="8"]
-[ext_resource type="Resource" uid="uid://dtc2i4pyai75g" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://dtc2i4pyai75g" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://le7h1dggibce" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://by7kwmpve5wkr" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://b15w5fw1578wa" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorHelmet.tres" id="9"]
 [ext_resource type="Resource" uid="uid://b3nojrbfbp2yd" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorSpecialHelmet.tres" id="10"]
 [ext_resource type="PackedScene" uid="uid://cdx8flivkmr4f" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/ZombieDuck.tscn" id="11"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="12"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uwtm"]
 shader = ExtResource("12")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = null
@@ -40,7 +29,7 @@ shader_parameter/mediaReplaceRect = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0
 shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
-[node name="TowerDefenseZombieDuck" unique_id=816540655 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+[node name="TowerDefenseZombieDuck" unique_id=933009062 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
 script = ExtResource("2")
 swimAnimeClip = "Swim"
 dieWaterAnimeClip = "SwimDeath"
@@ -50,27 +39,27 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieDuck")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("9"),
-"Bucket": ExtResource("6"),
-"Cone": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("8"),
+"Helmet": ExtResource("9"),
 "SpecialHelmet": ExtResource("10")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieDuck/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
+DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
 DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombieDuck/BucketSlot")
 DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombieDuck/ConeSlot")
 DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
-DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(12, 33)
 
-[node name="ZombieDuck" parent="SpriteGroup/TransformPoint" index="0" unique_id=1339142562 instance=ExtResource("11")]
+[node name="ZombieDuck" parent="SpriteGroup/TransformPoint" index="0" unique_id=1260758068 instance=ExtResource("11")]
 material = SubResource("ShaderMaterial_7uwtm")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-12, -33)

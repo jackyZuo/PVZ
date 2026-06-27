@@ -2,7 +2,7 @@
 class_name GravebusterComponent extends ComponentBase
 
 
-signal over()
+signal over(graveStone: TowerDefenseGravestone)
 
 
 @onready var state: StateChart = %StateChart
@@ -49,12 +49,6 @@ func _ready() -> void :
     await get_tree().physics_frame
     if is_instance_valid(cell):
         graveStone = cell.FindSlotParent(parent)
-
-
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        return
 
 
 
@@ -131,7 +125,7 @@ func StartGravebuster() -> void :
     graveStoneTween.set_parallel(true)
     graveStoneTween.tween_property(sprite, ^"position:y", -30, 5.0)
     if is_instance_valid(graveStone):
-        graveStoneTween.tween_property(graveStone.sprite.material, ^"shader_parameter/discardUpPos", (vt * (parent.spriteGroup.global_position + Vector2(0, 0))).y, 5.0)
+        graveStoneTween.tween_method(_set_grave_discard_up_pos, (vt * (parent.spriteGroup.global_position + Vector2(0, -30))).y, (vt * (parent.spriteGroup.global_position + Vector2(0, 0))).y, 5.0)
     await graveStoneTween.finished
     if GameSaveManager.GetFeatureValue("Coins"):
         var dropVelocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0)
@@ -150,7 +144,7 @@ func StartGravebuster() -> void :
 
 
 func Over() -> void :
-    over.emit()
+    over.emit(graveStone)
     parent.Destroy()
 
 func SyncSerialize() -> Dictionary:
@@ -164,3 +158,7 @@ func SyncDeserialize(_data: Dictionary) -> void :
     if _data.has("drop_velocity_x"):
         _sync_drop_velocity = Vector2(_data.get("drop_velocity_x", 0.0), _data.get("drop_velocity_y", 0.0))
         _sync_deserializing = true
+
+func _set_grave_discard_up_pos(value: float) -> void :
+    if is_instance_valid(graveStone) && is_instance_valid(graveStone.sprite):
+        graveStone.sprite.set_instance_shader_parameter("discardUpPos", value)

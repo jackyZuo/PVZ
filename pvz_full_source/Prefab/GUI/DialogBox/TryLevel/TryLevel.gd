@@ -12,6 +12,12 @@ const DEBUFF_FINISH = preload("uid://dpm2kwh72n3p4")
 @onready var colourButton: TextureButton = %ColourButton
 
 var currentGroup: String
+var openedFromShop: bool = false
+var openedFromStarExchange: bool = false
+
+func Init(data: Dictionary) -> void :
+    openedFromShop = data.get("openedFromShop", false)
+    openedFromStarExchange = data.get("openedFromStarExchange", false)
 
 func _ready() -> void :
     super._ready()
@@ -87,13 +93,21 @@ func BackButtonPressed() -> void :
 
 func ShopButtonPressed() -> void :
     AudioManager.AudioPlay("ButtonPress", AudioManagerEnum.TYPE.SFX)
-    DialogManager.DialogCreate("Shop")
-    Close()
+    if openedFromShop:
+        Close()
+    else:
+        DialogManager.DialogCreate("Shop")
+        Close()
 
 func StarExchangeButtonPressed() -> void :
     AudioManager.AudioPlay("ButtonPress", AudioManagerEnum.TYPE.SFX)
-    DialogManager.DialogCreate("StarExchange")
-    Close()
+    if openedFromStarExchange:
+        Close()
+    else:
+        var dialog = DialogManager.DialogCreate("StarExchange")
+        visible = false
+        await dialog.close
+        visible = true
 
 func AlmanacButtonPressed() -> void :
     AudioManager.AudioPlay("ButtonPress", AudioManagerEnum.TYPE.SFX)

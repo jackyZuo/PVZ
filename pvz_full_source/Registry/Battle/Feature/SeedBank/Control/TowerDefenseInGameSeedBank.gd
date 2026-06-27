@@ -31,6 +31,8 @@ var sunNumShow: float = 50.0:
 var packetNum: int = 0
 var packetList: Array[TowerDefenseInGamePacketShow] = []
 var packetNameSet: Dictionary = {}
+var packetColdDownState: Dictionary = {}
+var hasGameStarted: bool = false
 
 var mobilePreset: bool = false
 
@@ -171,7 +173,8 @@ func AddPacket(_packetConfig: TowerDefensePacketConfig, isStart: bool = false) -
 func DeletePacket(_packet: TowerDefenseInGamePacketShow) -> void :
     var id: int = packetList.find(_packet)
     packetNameSet.erase(_packet.config.saveKey)
-    TowerDefenseManager.GetPacketBankFeature().PacketAlive(_packet.config.saveKey)
+    var restoreKey: String = _packet.originalSaveKey if _packet.originalSaveKey != "" else _packet.config.saveKey
+    TowerDefenseManager.GetPacketBankFeature().PacketAlive(restoreKey)
     packetList.remove_at(id)
     _packet.queue_free()
     packetNum -= 1
@@ -183,14 +186,27 @@ func DeleteAllPacket() -> void :
             clearList.append(packet)
             continue
         packetNameSet.erase(packet.config.saveKey)
-        TowerDefenseManager.GetPacketBankFeature().PacketAlive(packet.config.saveKey)
+        var restoreKey: String = packet.originalSaveKey if packet.originalSaveKey != "" else packet.config.saveKey
+        TowerDefenseManager.GetPacketBankFeature().PacketAlive(restoreKey)
         packet.queue_free()
     packetList = clearList
     packetNum = packetList.size()
 
 func Prepare() -> void :
+    packetNameSet.clear()
+    if hasGameStarted:
+        packetColdDownState.clear()
+        for packet: Node in packetContainer.get_children():
+            if packet is TowerDefenseInGamePacketShow:
+                if is_instance_valid(packet.config):
+                    packetColdDownState[packet.config.saveKey] = {
+                        "coldDownOpen": packet.coldDownOpen, 
+                        "coldDownTimer": packet.coldDownTimer
+                    }
     for packet: Node in packetContainer.get_children():
         if packet is TowerDefenseInGamePacketShow:
+            if is_instance_valid(packet.config):
+                packetNameSet[packet.config.saveKey] = true
             packet.alive = true
             packet.lock = false
             packet.onlyDraw = false
@@ -217,11 +233,22 @@ func Start() -> void :
             packet.onlyDraw = false
             packet.start = true
             packet.StartInit()
+            if packetColdDownState.has(packet.config.saveKey):
+                var savedState: Dictionary = packetColdDownState[packet.config.saveKey]
+                packet.coldDownOpen = savedState["coldDownOpen"]
+                packet.coldDownTimer = savedState["coldDownTimer"]
+                if packet.coldDownOpen:
+                    packet.coldDownProgressBar.visible = true
+                    packet.coldDownProgressBar.max_value = packet.coldDown
+                    packet.coldDownProgressBar.value = packet.coldDownTimer
             packet.pressed.connect(TowerDefenseManager.GetPacketPickControl().PickPacket)
             if packet.pressed.is_connected(DeletePacket):
                 packet.pressed.disconnect(DeletePacket)
+    hasGameStarted = true
+    packetColdDownState.clear()
 
 func StartFromProgress() -> void :
+    hasGameStarted = true
     for packet: Node in packetContainer.get_children():
         if packet is TowerDefenseInGamePacketShow:
             packet.start = true

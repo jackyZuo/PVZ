@@ -25,7 +25,11 @@ func DigProcessing(delta: float) -> void :
     shadowSprite.visible = false
     if attackComponent.CanAttack():
         if !nearDie && !sprite.pause && sprite.timeScale > 0 && useAttackDps:
-            attackComponent.AttackDps(delta, config.attack)
+            if is_instance_valid(attackComponent.target):
+                if attackComponent.target.instance.collisionFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_GROUND:
+                    attackComponent.AttackDps(delta, config.attack)
+                else:
+                    attackComponent.target = null
     elif !sprite.pause:
         if global_position.x > TowerDefenseManager.GetMapGroundRight():
             global_position.x -= speed * delta * sprite.timeScale * transformPoint.scale.x * 2.0 * (-1 if sprite.playBack else 1)
@@ -75,7 +79,10 @@ func WalkEntered() -> void :
 
 func Walk() -> void :
     if digOver:
-        state.send_event("ToWalk")
+        if instance.collisionFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_GROUND:
+            state.send_event("ToDrill")
+        else:
+            state.send_event("ToWalk")
     else:
         state.send_event("ToDig")
 

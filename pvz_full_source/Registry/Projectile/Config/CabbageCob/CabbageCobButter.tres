@@ -7,14 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://dbemoaoatqkjd" path="res://Asset/Config/Projectile/CabbageCob/Sprite/CabbageCobButter/ProjectileCabbageCobButter.tscn" id="5"]
 [ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="6"]
 
-[sub_resource type="Resource" id="Resource_c77gh"]
+[sub_resource type="Resource" id="Resource_gug0n"]
 script = ExtResource("1")
+time = 4.0
 butterSprite = null
 metadata/_custom_type_script = "uid://bwpkekpvo7sto"
 
-[sub_resource type="Resource" id="Resource_et3ri"]
+[sub_resource type="Resource" id="Resource_5svkd"]
 script = ExtResource("2")
-buffList = [SubResource("Resource_c77gh")]
+buffList = [SubResource("Resource_gug0n")]
 metadata/_custom_type_script = "uid://dtvfjfgy00epu"
 
 [sub_resource type="Resource" id="Resource_yuy0r"]
@@ -25,6 +26,15 @@ damageFlags = 2
 Flag/Damage = 2
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_58a7j"]
@@ -41,6 +51,15 @@ catapultHeight = 800.0
 Flag/Damage = 2
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 metadata/_custom_type_script = "uid://gwcq00h6i7sn"
 
 [sub_resource type="Resource" id="Resource_3442b"]
@@ -51,12 +70,13 @@ metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
 [resource]
 script = ExtResource("6")
 name = "CabbageCobButter"
+baseDamage = 80.0
 projectileScene = ExtResource("5")
 splatAudio = "ProjectileHit"
 splatScene = null
 hitEffect = null
 hitTargetEventList = [SubResource("Resource_3442b")]
-hitCharacterEventList = [SubResource("Resource_et3ri")]
+hitCharacterEventList = [SubResource("Resource_5svkd")]
 hitGroundEventList = [SubResource("Resource_58a7j")]
 rotateFollowVelocity = true
 useRange = true

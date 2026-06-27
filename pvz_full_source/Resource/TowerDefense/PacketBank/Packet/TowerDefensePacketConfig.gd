@@ -38,6 +38,8 @@ class_name TowerDefensePacketConfig extends Resource
 @export_storage var plantUseCell: bool = true
 @export var izmPlantAllCell: bool = false
 @export var izmPlantLeft: bool = false
+@export_category("ZombiePlace")
+@export var canPlaceOnZombie: bool = false
 
 var changeCostList: Array[TowerDefensePacketChangeCost] = []
 var coldDownDecreaseDictionary: Dictionary = {}
@@ -359,6 +361,39 @@ func Plant(gridPos: Vector2i, playAudio: bool = true, noLimit: bool = false) -> 
             AudioManager.AudioPlay("PlantWater", AudioManagerEnum.TYPE.SFX)
         else:
             AudioManager.AudioPlay("Plant", AudioManagerEnum.TYPE.SFX)
+    if is_instance_valid(TowerDefenseInGameLevelControl.instance):
+        TowerDefenseInGameLevelControl.instance.hasSpawn = true
+    return character
+
+func PlantOnZombie(zombie: TowerDefenseCharacter, hypnoses: bool = false, playAudio: bool = true) -> TowerDefenseCharacter:
+    if !is_instance_valid(zombie):
+        return null
+    if zombie.camp != (TowerDefenseEnum.CHARACTER_CAMP.PLANT if hypnoses else TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE):
+        return null
+    var charcaterName: String = characterConfig.name
+    var chacraterScene: PackedScene = TowerDefenseManager.GetChacraterScene(charcaterName)
+    var character: TowerDefenseCharacter = chacraterScene.instantiate()
+    if characterConfig.armorData:
+        if initArmor.size() > 0:
+            for armor in initArmor:
+                character.currentArmor.append(str(armor))
+    var characterNode: Node2D = TowerDefenseManager.GetCharacterNode()
+    character.global_position = zombie.global_position
+    character.gridPos = zombie.gridPos
+    character.cost = characterConfig.cost
+    character.packet = self
+    if packetFlip:
+        character.scale.x = - character.scale.x
+    characterNode.add_child(character)
+    if is_instance_valid(override):
+        if is_instance_valid(override.characterOverride):
+            override.characterOverride.ExecuteCharacter(character)
+    if character is TowerDefensePlant or character is TowerDefenseItem:
+        character.targetZombie = zombie
+        character.itemLayer = TowerDefenseEnum.LAYER_GROUNDITEM.EFFECT
+        zombie.destroy.connect(character._on_target_zombie_destroyed)
+    if playAudio:
+        AudioManager.AudioPlay("Plant", AudioManagerEnum.TYPE.SFX)
     if is_instance_valid(TowerDefenseInGameLevelControl.instance):
         TowerDefenseInGameLevelControl.instance.hasSpawn = true
     return character

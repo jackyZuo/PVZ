@@ -47,6 +47,10 @@ func _ready() -> void :
     produceComponent.produceInterval = produceInterval
     produceComponent.num = sunNum
 
+func Hypnoses(time: float = -1, canFliter: bool = true) -> void :
+    super.Hypnoses(time, canFliter)
+    produceComponent.produceType = "BrainSun" if instance.hypnoses else "Sun"
+
 func ExportVariantSave() -> Dictionary:
     return {"fireNum": fireNum, 
         "projectileName": projectileName, 

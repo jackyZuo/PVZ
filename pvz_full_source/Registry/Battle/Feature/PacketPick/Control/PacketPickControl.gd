@@ -48,14 +48,36 @@ func FreePreviewSprites() -> void :
             sprite.queue_free()
     plantSpriteList.clear()
 
-func ApplyArmorSprite(sprite: AdobeAnimateSprite, armor: CharacterArmorConfig) -> void :
-    var slotNode: AdobeAnimateSlot = sprite.get_node(armor.replaceSpriteSlotPath)
+func ApplyArmorSprite(sprite: AdobeAnimateSprite, slotConfig: ArmorSlotConfig, typeData: TowerDefenseArmorTypeData) -> void :
+    var slotNode: AdobeAnimateSlot = sprite.get_node(slotConfig.slotPath)
     var armorSprite: Sprite2D = Sprite2D.new()
-    armorSprite.texture = armor.stageAnimeTexture[0]
-    armorSprite.position = armor.replaceSpriteOffset
-    armorSprite.rotation = armor.replaceSpriteRotation
-    armorSprite.scale = armor.replaceSpriteScale
+    armorSprite.texture = typeData.stageAnimeTexture[0]
+    armorSprite.position = slotConfig.offset
+    armorSprite.rotation = slotConfig.rotation
+    armorSprite.scale = slotConfig.scale
     slotNode.add_child(armorSprite)
+
+func FindZombieAtPosition(mousePos: Vector2, targetCamp: TowerDefenseEnum.CHARACTER_CAMP = TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE) -> TowerDefenseCharacter:
+    var zombies: Array = TowerDefenseManager.GetZombie()
+    var nearestZombie: TowerDefenseCharacter = null
+    var gridSize: Vector2 = TowerDefenseManager.GetMapGridSize()
+    var nearestDist: float = min(gridSize.x, gridSize.y) * 0.6
+    for zombie: TowerDefenseCharacter in zombies:
+        if !is_instance_valid(zombie):
+            continue
+        if zombie.die || zombie.nearDie:
+            continue
+        if zombie.instance.invincible:
+            continue
+        if !zombie.instance.canBeCollection:
+            continue
+        if zombie.camp != targetCamp:
+            continue
+        var dist: float = zombie.global_position.distance_to(mousePos)
+        if dist < nearestDist:
+            nearestDist = dist
+            nearestZombie = zombie
+    return nearestZombie
 
 @warning_ignore("unused_parameter")
 func ProcessPacketPick(cell: TowerDefenseCellInstance, gridPos: Vector2i, mousePos: Vector2) -> bool:
@@ -71,7 +93,24 @@ func ProcessPacketPick(cell: TowerDefenseCellInstance, gridPos: Vector2i, mouseP
             followSprite.position = mapControl.spriteNode.get_local_mouse_position() - Vector2(0.0, 20.0)
     for sprite in plantSpriteList:
         sprite.visible = false
-    if is_instance_valid(cell):
+    var zombiePlaceFlag: bool = false
+    if packetPick.config.canPlaceOnZombie:
+        var hypnoses: bool = packetPick.config.GetHypnoses()
+        var targetCamp: TowerDefenseEnum.CHARACTER_CAMP = TowerDefenseEnum.CHARACTER_CAMP.PLANT if hypnoses else TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE
+        var targetZombie: TowerDefenseCharacter = FindZombieAtPosition(mousePos, targetCamp)
+        if is_instance_valid(targetZombie):
+            zombiePlaceFlag = true
+            if plantSpriteList.size() > 0:
+                plantSpriteList[0].visible = true
+                plantSpriteList[0].global_position = targetZombie.global_position
+            if mapControl.IsConfirmInput():
+                packetPick.PlantOnZombie(targetZombie, packetPick.config.GetHypnoses())
+                if !Global.isEditor || SceneManager.currentScene != "LevelEditorStage":
+                    Release()
+                else:
+                    LevelEditorMapEditor.instance.levelConfig.canExport = false
+                return true
+    if !zombiePlaceFlag && is_instance_valid(cell):
         var plantFlag: bool = true
         if !TowerDefenseManager.CheckMapGridPosIn(gridPos):
             plantFlag = false
@@ -224,18 +263,20 @@ func PickPacket(_packet: TowerDefenseInGamePacketShow) -> void :
         if characterConfig.armorData:
             if _packet.config.initArmor.size() > 0:
                 for armorName: String in _packet.config.initArmor:
-                    var armor: CharacterArmorConfig = characterConfig.armorData.armorDictionary[armorName]
-                    match armor.replaceMethod:
-                        "Media":
-                            characterConfig.armorData.OpenArmorFliters(followSprite, armorName)
-                            characterConfig.armorData.SetArmorReplace(followSprite, armorName, 0)
-                            for sprite in plantSpriteList:
-                                characterConfig.armorData.OpenArmorFliters(sprite, armorName)
-                                characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
-                        "Sprite":
-                            ApplyArmorSprite(followSprite, armor)
-                            for sprite in plantSpriteList:
-                                ApplyArmorSprite(sprite, armor)
+                    var slotConfig: ArmorSlotConfig = characterConfig.armorData.GetSlotConfig(armorName)
+                    var typeData: TowerDefenseArmorTypeData = characterConfig.armorData.GetTypeData(armorName)
+                    if typeData:
+                        match slotConfig.replaceMethod:
+                            "Media":
+                                characterConfig.armorData.OpenArmorFliters(followSprite, armorName)
+                                characterConfig.armorData.SetArmorReplace(followSprite, armorName, 0)
+                                for sprite in plantSpriteList:
+                                    characterConfig.armorData.OpenArmorFliters(sprite, armorName)
+                                    characterConfig.armorData.SetArmorReplace(sprite, armorName, 0)
+                            "Sprite":
+                                ApplyArmorSprite(followSprite, slotConfig, typeData)
+                                for sprite in plantSpriteList:
+                                    ApplyArmorSprite(sprite, slotConfig, typeData)
 
         if characterConfig.customData:
             var packetValue: Dictionary = GameSaveManager.GetTowerDefensePacketValue(_packet.config.saveKey)

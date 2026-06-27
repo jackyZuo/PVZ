@@ -43,7 +43,7 @@ public class CompoundState : StateChartState
 
 	public new static CompoundState Of(Node state)
 	{
-		if (!(state.GetScript().As<Script>() is GDScript gdScript) || !gdScript.ResourcePath.EndsWith("compound_state.gd"))
+		if (!(state.GetScript().As<Script>() is GDScript gDScript) || !gDScript.ResourcePath.EndsWith("compound_state.gd"))
 		{
 			throw new ArgumentException("Given node is not a compound state.");
 		}

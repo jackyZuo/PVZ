@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://b6ti6bdw6pusk"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://beb7m1rweniov" path="res://Asset/Anime/Character/Plant/Other/HurtTallnut/Scene/TowerDefensePlantHurtTallnut.gd" id="2"]
+[ext_resource type="Resource" uid="uid://by0qhgonjy4ns" path="res://Asset/Anime/Character/Plant/Other/HurtTallnut/Config/TowerDefensePlantHurtTallnut.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bnrpslgi7xn7s" path="res://Asset/Anime/Character/Plant/Other/HurtTallnut/HurtTallnut.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="PackedScene" uid="uid://fd6u1lxx523v" path="res://Script/Component/TimerComponent/TimerComponent.tscn" id="6"]
+
+[sub_resource type="Image" id="Image_se2f5"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAA/ONQP83MzL0AABXCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAitFNP2ssZrv/wmc7EVpPPwEAUL9m5hDCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAENZOP+dQ57u1CuY7JM9NPzQzw7/NzAzCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAi9lPP75XLryMPSs8QUNMPzMzD8A0swjCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA/ttQP7KYabwNmWI8abZKP83MPMCamQTCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAi9lPP75XLryMPSs8QUNMPzMzD8A0swjCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAENZOP+dQ57u1CuY7JM9NPzMzw7/NzAzCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAitFNP2osZrv9wmc7EVpPPwAAUL9m5hDCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAA/ONQP83MzL0AABXCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAVdFNPxItZjurwme7EVpPPwAAQD4zMxLCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAqNVOP1VR5ztiCua7JM9NPzMz8z5mZg/CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA8thPP+hXLjxOPSu8QUNMPzIzQz+amQzCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAL9tQP7CYaTy8mGK8abZKP2Zmhj/NzAnCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA8thPP+hXLjxOPSu8QUNMPzIzQz+amQzCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAqNVOP1VR5ztiCua7JM9NPzIz8z5mZg/CAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAVdFNPxAtZjuqwme7EVpPPwAAQD4zMxLCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAA/ONQP83MzL0AABXCAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 17,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_7t11f"]
+image = SubResource("Image_se2f5")
+
+[sub_resource type="Image" id="Image_6304o"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAA=="),
+"format": "RGBAFloat",
+"height": 17,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0c563"]
+image = SubResource("Image_6304o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6kn1"]
+shader = ExtResource("5")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_0c563")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_7t11f")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(250, 292)
+shader_parameter/uvs = [Rect2(0, 0, 99, 146), Rect2(99, 0, 99, 146), Rect2(99, 146, 99, 146), Rect2(198, 0, 52, 33), Rect2(198, 33, 52, 33)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7r4n"]
+size = Vector2(72, 90)
+
+[node name="TowerDefensePlantHurtTallnut" unique_id=1249247228 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/HurtTallnut")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 35)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="HurtTallnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=689272902 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_k6kn1")
+instance_shader_parameters/frameIndex = 1.0272466666666666
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_f7r4n")
+
+[node name="TimerComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="11" unique_id=1423992022 instance=ExtResource("6")]
+unique_name_in_owner = true
+timerDictionary = {
+"Health": 1.0
+}
+
+[connection signal="timeout" from="ComponentManager/TimerComponent" to="." method="Timeout"]

@@ -92,6 +92,8 @@ var _current_mesh_rid: RID
 var _last_draw_frame: int = -1
 @export var meshColor: Color = Color.WHITE:
     set(_meshColor):
+        if meshColor == _meshColor:
+            return
         meshColor = _meshColor
         if !is_node_ready():
             await ready
@@ -255,8 +257,10 @@ func _SetProcessEnabled(enabled: bool) -> void :
     _process_enabled = enabled
     if onlyDraw:
         set_physics_process(enabled)
+        set_process(false)
     else:
         set_process(enabled)
+        set_physics_process(false)
 
 func _ready() -> void :
     visibility_changed.connect(_UpdateVisibilityCache)

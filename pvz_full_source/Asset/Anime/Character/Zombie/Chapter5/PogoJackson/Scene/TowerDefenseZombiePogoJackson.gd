@@ -32,7 +32,7 @@ var timer: float = 5.0
 
 func _ready() -> void :
     super._ready()
-    if Engine.is_editor_hint() || Global.isEditor:
+    if Engine.is_editor_hint():
         return
     dancingComponent = componentManager.GetComponentFromType("DancingComponent") as DancingComponent
     if is_instance_valid(dancingComponent):
@@ -172,6 +172,10 @@ func ArmorHitpointsEmpty(armorName: String) -> void :
             instance.unUseBuffFlags = 0
             isJump = false
             hasPogo = false
+            if is_instance_valid(groundHeightComponent):
+                groundHeightComponent.handleWaterHeight = true
+            if inWater:
+                groundHeight = - waterHeight
             Walk()
 
 func AnimeEvent(command: String, argument: Variant) -> void :
@@ -293,7 +297,16 @@ func ImportVariantSave(data: Dictionary) -> void :
     isSpawn = data.get("isSpawn", false)
     timer = data.get("timer", 5.0)
 
+func InWater() -> void :
+    super.InWater()
+    if hasPogo:
+        groundHeight = 0.0
+        if is_instance_valid(groundHeightComponent):
+            groundHeightComponent.handleWaterHeight = false
+
 func OutWater() -> void :
+    if hasPogo && is_instance_valid(groundHeightComponent):
+        groundHeightComponent.handleWaterHeight = true
     super.OutWater()
     if !hasPogo:
         return
@@ -332,5 +345,9 @@ func Block(target: TowerDefenseCharacter) -> void :
     instance.ArmorDelete("Pogo")
     hasPogo = false
     isJump = false
+    if is_instance_valid(groundHeightComponent):
+        groundHeightComponent.handleWaterHeight = true
+    if inWater:
+        groundHeight = - waterHeight
     AudioManager.AudioPlay("Bonk", AudioManagerEnum.TYPE.SFX)
     Walk()

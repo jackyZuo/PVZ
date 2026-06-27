@@ -39,19 +39,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_elf4c"]
 image = SubResource("Image_n5v1x")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsqsx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iaca"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_elf4c")
@@ -86,6 +75,15 @@ catapultHeight = 400.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_fps0"]
 script = ExtResource("12")
@@ -106,7 +104,6 @@ script = ExtResource("2")
 fireInterval = 1.5
 fireNum = 1
 projectileName = "SnowPea"
-eventList = []
 config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/IceTallnut")
 PreviewDamagePointPersontage = 1.0
@@ -119,8 +116,8 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="IceTallnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=956229683 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_dsqsx")
-instance_shader_parameters/frameIndex = 14.665125333333393
+material = SubResource("ShaderMaterial_8iaca")
+instance_shader_parameters/frameIndex = 1.755093333333333
 position = Vector2(0, -30)
 trueFrameRate = 180.0
 

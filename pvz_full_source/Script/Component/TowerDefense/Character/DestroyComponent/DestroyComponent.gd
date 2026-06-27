@@ -42,7 +42,7 @@ func Destroy(freeInstance: bool = true) -> void :
         _scale = parent.transformPoint.scale.x
     HitBoxDestroy()
     parent.destroy.emit(parent)
-    BattleEventBus.characterDestroy.emit(parent.packet, parent.global_position, parent.gridPos, parent.camp, _scale, _hitpointScale)
+    BattleEventBus.characterDestroy.emit(parent.packet, parent.global_position, parent.gridPos, parent.camp, _scale, _hitpointScale, parent.invisible)
     if freeInstance:
         for event: TowerDefenseCharacterEventBase in parent.dieEvent:
             event.Execute(parent.global_position, parent)
@@ -98,3 +98,5 @@ func SmashDestroy() -> void :
 func HitBoxDestroy() -> void :
     if is_instance_valid(parent.hitBox):
         parent.hitBox.queue_free()
+    if is_instance_valid(parent.targetRegistrationComponent):
+        parent.targetRegistrationComponent.canProjectileCheck = false

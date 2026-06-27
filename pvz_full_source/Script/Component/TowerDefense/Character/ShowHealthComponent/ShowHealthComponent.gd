@@ -15,6 +15,9 @@ class_name ShowHealthComponent extends ComponentBase
 @export var parent: TowerDefenseCharacter
 
 
+var _dirty: bool = true
+
+
 func GetName() -> String:
     return "ShowHealthComponent"
 
@@ -23,13 +26,18 @@ func _ready() -> void :
     z_index = 10
 
 
+func MarkDirty() -> void :
+    _dirty = true
+
+
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void :
     if !alive:
         return
-    if Engine.get_physics_frames() % 5:
-        return
     global_transform = Transform2D(0.0, Vector2.ONE, 0.0, global_position)
+    if !_dirty:
+        return
+    _dirty = false
     var _activeShield: TowerDefenseArmorInstance = null
     for _armor: TowerDefenseArmorInstance in parent.instance.armorShield:
         if !_armor.isRemove:
@@ -76,3 +84,5 @@ func SetAlive(_alive: bool) -> void :
         shieldHitpointLabel.visible = false
         helmetHitpointLabel.visible = false
         bodyHitpointLabel.visible = false
+    else:
+        _dirty = true

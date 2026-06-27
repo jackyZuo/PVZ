@@ -35,11 +35,15 @@ static func RegisterInit() -> void :
     RegisterFeature("Tutorial", TowerDefenseBattleFeatureTutorial.new())
     RegisterFeature("Event", TowerDefenseBattleFeatureEvent.new())
     RegisterFeature("Hammer", TowerDefenseBattleFeatureHammer.new())
+    RegisterFeature("GemMatch", TowerDefenseBattleFeatureGemMatch.new())
+    RegisterFeature("Wave", TowerDefenseBattleFeatureWave.new())
 
     RegisterProcess("Wave", TowerDefenseBattleProcessWave.new())
     RegisterProcess("Vase", TowerDefenseBattleProcessVase.new())
     RegisterProcess("IZM", TowerDefenseBattleProcessIZM.new())
+    RegisterProcess("IZM2", TowerDefenseBattleProcessIZM2.new())
     RegisterProcess("Quiz", TowerDefenseBattleProcessQuiz.new())
+    RegisterProcess("Empty", TowerDefenseBattleProcessEmpty.new())
     RegisterDependence()
 
 static func RegisterDependence() -> void :
@@ -67,10 +71,14 @@ static func RegisterDependence() -> void :
     SetFeatureDependence("Tutorial", [], [])
     SetFeatureDependence("Event", [], [])
     SetFeatureDependence("Hammer", [], [])
-    SetProcessDependence("Wave", ["Map", "Mower", "Sun", "Progess", "Camera", "SeedBank", "PacketBank", "LookStar"], [])
+    SetFeatureDependence("GemMatch", ["Map", "Sun", "SeedBank"], [])
+    SetFeatureDependence("Wave", ["Map", "Mower", "Sun", "Progess", "Camera", "SeedBank", "PacketBank", "LookStar"], [])
+    SetProcessDependence("Wave", ["Map", "Mower", "Sun", "Progess", "Camera", "SeedBank", "PacketBank", "LookStar", "Wave"], [])
     SetProcessDependence("Vase", ["Map", "Mower"], [])
     SetProcessDependence("IZM", ["Map", "Brain"], [])
+    SetProcessDependence("IZM2", ["Map", "Mower", "Sun", "Progess", "Camera", "SeedBank", "PacketBank", "LookStar", "Wave"], [])
     SetProcessDependence("Quiz", ["Map", "Brain"], [])
+    SetProcessDependence("Empty", ["Map", "Camera"], [])
 
 
 
@@ -120,8 +128,7 @@ static func GetProcessByFinishMethod(finishMethod: TowerDefenseEnum.LEVEL_FINISH
         TowerDefenseEnum.LEVEL_FINISH_METHOD.QUIZ:
             processName = "Quiz"
         TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
-            processName = "Wave"
-    var process: TowerDefenseBattleProcess = GetProcess(processName)
-    if process is TowerDefenseBattleProcessWave && finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
-        process.isIZM2 = true
-    return process
+            processName = "IZM2"
+        TowerDefenseEnum.LEVEL_FINISH_METHOD.EMPTY:
+            processName = "Empty"
+    return GetProcess(processName)

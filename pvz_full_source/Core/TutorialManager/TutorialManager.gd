@@ -7,6 +7,12 @@ var stepExe: bool = false
 
 signal tutorialFinish()
 
+func _ready() -> void :
+    SceneManager.sceneChange.connect(
+        func(_sceneName: String):
+            TutorialClear()
+    )
+
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void :
     if stepExe:

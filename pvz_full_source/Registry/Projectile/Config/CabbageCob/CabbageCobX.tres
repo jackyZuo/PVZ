@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dq252nuc6m5ap"]
+
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpk1k0s7x63ej" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bppnlsk2abnn1" path="res://Asset/Config/Projectile/CabbageCob/Sprite/CabbageCobX/ProjectileCabbageCobX.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="4"]
+
+[sub_resource type="Resource" id="Resource_uaxjr"]
+script = ExtResource("1")
+projectileName = &"Cabbage"
+baseDamage = 40.0
+fireMethodFlags = 2
+Flag/Damage = 3
+Flag/FireMethod = 2
+Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_fxmbs"]
+script = ExtResource("2")
+projectileData = SubResource("Resource_uaxjr")
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_f703w"]
+script = ExtResource("1")
+projectileName = &"Cabbage"
+baseDamage = 40.0
+fireMethodFlags = 2
+Flag/Damage = 3
+Flag/FireMethod = 2
+Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_2xnbt"]
+script = ExtResource("2")
+projectileData = SubResource("Resource_f703w")
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[resource]
+script = ExtResource("4")
+name = "CabbageCobX"
+baseDamage = 100.0
+projectileScene = ExtResource("3")
+splatAudio = "ProjectileHit"
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_2xnbt")]
+hitGroundEventList = [SubResource("Resource_fxmbs")]
+rotateFollowVelocity = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)

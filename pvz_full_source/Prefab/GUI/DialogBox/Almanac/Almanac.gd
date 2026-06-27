@@ -93,9 +93,9 @@ func InitPlant() -> void :
         var packet: TowerDefenseInGamePacketShow = TowerDefenseManager.CreatePacketShow()
         packet.setMobileLayout = GameSaveManager.GetConfigValue("MobilePreset")
         plantPacketContainer.add_child(packet)
-        _SetLightMask(packet)
         packet.thumbnailMode = true
         packet.Init(config)
+        _SetLightMask(packet)
         packet.showLove = true
         packet.loveChange.connect(PlantLoveChange)
         packet.pressed.connect(PlantPacketChoose)
@@ -160,8 +160,8 @@ func InitZombie() -> void :
         var config: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig(configName)
         var packet = ALMANAC_ZOMBIE_WIDOW.instantiate()
         zombiePacketContainer.add_child(packet)
-        _SetLightMask(packet)
         packet.Init(config)
+        _SetLightMask(packet)
         packet.pressed.connect(ZombiePacketChoose)
         batchCount += 1
         if batchCount >= 8:
@@ -187,23 +187,23 @@ func InitProp() -> void :
     var getShovelConfigList: Array = TowerDefenseManager.GetShovelList()
     for configName: String in getShovelConfigList:
         var config: ShovelConfig = TowerDefenseManager.GetShovel(configName)
-        if !config.Unlock():
+        if !config || !config.Unlock():
             continue
         var packet = ALMANAC_PROP_WIDOW.instantiate()
         propShovelContainer.add_child(packet)
-        _SetLightMask(packet)
         packet.InitShovel(config)
+        _SetLightMask(packet)
         packet.pressedShovel.connect(PropShovelChoose)
 
     var getMowerConfigList: Array = TowerDefenseManager.GetMowerList()
     for configName: String in getMowerConfigList:
         var config: MowerConfig = TowerDefenseManager.GetMowerConfig(configName)
-        if !config.Unlock():
+        if !config || !config.Unlock():
             continue
         var packet = ALMANAC_PROP_WIDOW.instantiate()
         propMowerContainer.add_child(packet)
-        _SetLightMask(packet)
         packet.InitMower(config)
+        _SetLightMask(packet)
         packet.pressedMower.connect(PropMowerChoose)
 
     if propShovelContainer.get_children().size() > 0:

@@ -30,8 +30,9 @@ func _ready() -> void :
 
 
 
-func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false) -> TowerDefenseInGamePacketShow:
-    return TowerDefenseManager.SpawnPacket(packetConfig, pos, aliveTime, isFall, useCost)
+
+func SpawnPacket(packetConfig: TowerDefensePacketConfig, pos: Vector2, aliveTime: float, isFall: bool, useCost: bool = false, useRandf: bool = true) -> TowerDefenseInGamePacketShow:
+    return TowerDefenseManager.SpawnPacket(packetConfig, pos, aliveTime, isFall, useCost, useRandf)
 
 
 func YBCreate(pos: Vector2, num: int, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0, _collect: bool = false) -> void :
@@ -50,6 +51,10 @@ func CoinCreate(pos: Vector2, num: int, _velocity: Vector2 = Vector2(randf_range
 
 func LuckyBagCreate(pos: Vector2, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0) -> void :
     TowerDefenseManager.LuckyBagCreate(pos, parent.GetGroundHeight(pos.y) - parent.groundHeight * 2, _velocity, _gravity)
+
+
+func GoldShardCreate(pos: Vector2, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0) -> void :
+    TowerDefenseManager.GoldShardCreate(pos, parent.GetGroundHeight(pos.y) - parent.groundHeight * 2, _velocity, _gravity)
 
 
 func SunCreate(pos: Vector2, sunNum: int, movingMethod: TowerDefenseEnum.SUN_MOVING_METHOD = TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, _velocity: Vector2 = Vector2(randf_range(-50.0, 50.0), -400.0), _gravity: float = 980.0, _moveStopTime: float = -1) -> TowerDefenseSunBase:

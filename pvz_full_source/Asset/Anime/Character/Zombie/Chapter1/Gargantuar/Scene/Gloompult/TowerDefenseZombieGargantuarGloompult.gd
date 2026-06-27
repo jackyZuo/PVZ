@@ -58,6 +58,23 @@ func _ready() -> void :
         fireComponent.timeScale *= 1.0
         walkSpeedScale *= 1.0
 
+    attackComponent2.attackReady.connect(_on_attack_component2_ready)
+    attackComponent2.attackOver.connect(_on_attack_component2_over)
+    fireComponent.fireReady.connect(_on_fire_component_ready)
+    fireComponent.fireOver.connect(_on_fire_component_over)
+
+func _on_attack_component2_ready() -> void :
+    componentRunning = true
+
+func _on_attack_component2_over() -> void :
+    componentRunning = false
+
+func _on_fire_component_ready() -> void :
+    componentRunning = true
+
+func _on_fire_component_over() -> void :
+    componentRunning = false
+
 func _physics_process(delta: float) -> void :
     if Engine.is_editor_hint():
         return
@@ -104,7 +121,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantGloompult")
     if cell.CanPacketPlant(packetConfig):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

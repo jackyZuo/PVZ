@@ -24,7 +24,10 @@ func Recycle(percentage: float = 0.2, _destroy: bool = true) -> void :
         _sync_deserializing = false
     else:
         _sync_sun_velocity = sunVelocity
-    parent.SunCreate(parent.global_position, int(parent.cost * percentage), TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, sunVelocity, 980.0)
+    if parent.instance.hypnoses:
+        parent.BrainSunCreate(parent.global_position, int(parent.cost * percentage), TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, sunVelocity, 980.0)
+    else:
+        parent.SunCreate(parent.global_position, int(parent.cost * percentage), TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, sunVelocity, 980.0)
     if _destroy:
         parent.isShovel = true
         parent.Destroy()

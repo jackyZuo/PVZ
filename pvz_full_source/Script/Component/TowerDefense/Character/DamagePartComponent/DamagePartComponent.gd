@@ -37,7 +37,7 @@ func DamagePartCreate(damagePointName: StringName, node: Node2D, velocity: Vecto
 
 func _try_armor_damage_part(damagePointName: StringName, node: Node2D, velocity: Vector2, from_sync: bool) -> bool:
     var damageData = parent.damagePart[damagePointName]
-    if !(damageData is CharacterArmorConfig):
+    if !(damageData is ArmorSlotConfig):
         return false
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost and !from_sync:
         return true
@@ -48,12 +48,12 @@ func _try_armor_damage_part(damagePointName: StringName, node: Node2D, velocity:
         return false
     var armor_sprite: Sprite2D = armorInstance.sprite
     if !armor_sprite:
-        if damageData.replaceMethod == "Sprite" and damageData.stageAnimeTexture.size() > 0:
+        if armorInstance.slotConfig.replaceMethod == "Sprite" and armorInstance.typeData.stageAnimeTexture.size() > 0:
             armor_sprite = Sprite2D.new()
-            armor_sprite.texture = damageData.stageAnimeTexture[mini(armorInstance.stageIndex, damageData.stageAnimeTexture.size() - 1)]
-            armor_sprite.position = damageData.replaceSpriteOffset
-            armor_sprite.rotation = damageData.replaceSpriteRotation
-            armor_sprite.scale = damageData.replaceSpriteScale
+            armor_sprite.texture = armorInstance.typeData.stageAnimeTexture[mini(armorInstance.stageIndex, armorInstance.typeData.stageAnimeTexture.size() - 1)]
+            armor_sprite.position = armorInstance.slotConfig.offset
+            armor_sprite.rotation = armorInstance.slotConfig.rotation
+            armor_sprite.scale = armorInstance.slotConfig.scale
         else:
             return false
     var send_pos: Vector2 = armor_sprite.global_position if is_instance_valid(armor_sprite) and armor_sprite.is_inside_tree() else parent.global_position
@@ -84,8 +84,8 @@ func _create_damage_part(damagePointName: StringName, node: Node2D, velocity: Ve
         var damageData = parent.damagePart[damagePointName]
         if damageData is CharacterDamagePointConfig:
             node = slot.CreatePart(parent.damagePart[damagePointName].animeFliterClose.split("&", false))
-        if damageData is CharacterArmorConfig:
-            node = slot.CreatePart(parent.damagePart[damagePointName].destroyFliter.split("&", false))
+        if damageData is ArmorSlotConfig:
+            node = slot.CreatePart(damageData.destroyFliter.split("&", false))
             if !node:
                 var _armorInstance: TowerDefenseArmorInstance = parent.GetArmorFromName(String(damagePointName))
                 if _armorInstance and is_instance_valid(_armorInstance) and _armorInstance.sprite:
@@ -108,7 +108,7 @@ func _create_damage_part(damagePointName: StringName, node: Node2D, velocity: Ve
         armorInstance.damagePartDropped = true
 
 func MagnetCreate(armorInstance: TowerDefenseArmorInstance, node: Node2D) -> TowerDefenseMagnet:
-    var damagePointName: String = armorInstance.config.armorName
+    var damagePointName: String = armorInstance.slotConfig.armorName
     var slot: AdobeAnimateSlot = parent.get_node(parent.damagePartSlot[damagePointName]) as AdobeAnimateSlot
     if !slot:
         return
@@ -118,8 +118,8 @@ func MagnetCreate(armorInstance: TowerDefenseArmorInstance, node: Node2D) -> Tow
         var damageData = parent.damagePart[damagePointName]
         if damageData is CharacterDamagePointConfig:
             node = slot.CreatePart(parent.damagePart[damagePointName].animeFliterClose.split("&", false))
-        if damageData is CharacterArmorConfig:
-            node = slot.CreatePart(parent.damagePart[damagePointName].destroyFliter.split("&", false))
+        if damageData is ArmorSlotConfig:
+            node = slot.CreatePart(damageData.destroyFliter.split("&", false))
     else:
         if node.get_parent():
             var saveNodeScale: Vector2 = node.global_scale

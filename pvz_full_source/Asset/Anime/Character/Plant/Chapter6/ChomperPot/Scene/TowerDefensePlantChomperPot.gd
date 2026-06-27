@@ -1,11 +1,10 @@
 @tool
 extends TowerDefensePlant
 
-@onready var chomperComponent: ChomperComponent = %ChomperComponent
 @onready var attackComponent: AttackComponent = %AttackComponent
 @onready var attackComponent2: AttackComponent = %AttackComponent2
 @onready var checkShape: CollisionShape2D = %CheckShape
-
+@onready var chomperComponent: ChomperComponent = %ChomperComponent
 @export var chewTime: float = 30.0:
     set(_chewTime):
         chewTime = _chewTime
@@ -40,8 +39,9 @@ func Teleport() -> void :
                     if _target.global_position.x < global_position.x - 10:
                         continue
 
+                    var teleportOffset: float = - _target.scale.x * TowerDefenseManager.GetMapGridSize().x * 0.5
                     _target.shadowComponent.saveShadowPosition.y += chomperPot.global_position.y - _target.global_position.y
-                    _target.global_position = chomperPot.global_position - Vector2(11, 0)
+                    _target.global_position = chomperPot.global_position + Vector2(teleportOffset, 0)
                     _target.gridPos = chomperPot.gridPos
 
 

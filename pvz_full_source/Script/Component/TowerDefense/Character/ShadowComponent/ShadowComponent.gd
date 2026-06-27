@@ -20,6 +20,14 @@ var _initialized: bool = false
 var _pendingVisible: bool = true
 var shadowDisabled: bool = false
 
+var _dirty: bool = true
+
+var _last_z: float = 0.0
+
+var _last_transform_scale: Vector2 = Vector2.ONE
+
+var _last_ground_height: float = 0.0
+
 
 func GetName() -> String:
     return "ShadowComponent"
@@ -31,12 +39,18 @@ func _ready() -> void :
         await parent.ready
     _initialized = true
     parent.shadowSprite.visible = _pendingVisible && !parent.invisible && !shadowDisabled
+    MarkDirty()
 
 
 func Init() -> void :
     saveShadowScale = parent.shadowSprite.scale
     saveShadowPosition = parent.shadowSprite.global_position
     saveTransformPointScale = parent.transformPoint.scale
+    MarkDirty()
+
+
+func MarkDirty() -> void :
+    _dirty = true
 
 
 func UpdateShadow() -> void :
@@ -57,7 +71,18 @@ func _physics_process(delta: float) -> void :
         return
     if !parent.shadowSprite.is_visible_in_tree():
         return
-    UpdateShadow()
+
+    var current_z: float = parent.z
+    var current_scale: Vector2 = parent.transformPoint.scale
+    var current_ground_height: float = parent.groundHeight
+    if !_dirty && (current_z != _last_z || current_scale != _last_transform_scale || current_ground_height != _last_ground_height):
+        _dirty = true
+    if _dirty:
+        _last_z = current_z
+        _last_transform_scale = current_scale
+        _last_ground_height = current_ground_height
+        _dirty = false
+        UpdateShadow()
 
 
 

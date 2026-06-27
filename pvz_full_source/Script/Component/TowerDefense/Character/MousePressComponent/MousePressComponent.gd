@@ -53,15 +53,6 @@ func _ready() -> void :
 
 
 @warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        isPressed = false
-        isMoseIn = false
-        parent.SetSpriteGroupShaderParameter("brightStrength", 0.0)
-        return
-
-
-@warning_ignore("unused_parameter")
 func _input(event: InputEvent) -> void :
     if !alive:
         return
@@ -70,6 +61,8 @@ func _input(event: InputEvent) -> void :
     if !TowerDefenseManager.IsGameRunning():
         return
     if !parent.inGame:
+        return
+    if !parent.componentAlive:
         return
     if toogle:
         if toggleTarget.visible:
@@ -152,6 +145,11 @@ func MouseExited() -> void :
 
 func SetAlive(_alive: bool) -> void :
     super.SetAlive(_alive)
+    if !_alive:
+        isPressed = false
+        isMoseIn = false
+        if is_instance_valid(parent):
+            parent.SetSpriteGroupShaderParameter("brightStrength", 0.0)
     if is_instance_valid(inputControl):
         if !_alive:
             inputControl.mouse_default_cursor_shape = Control.CURSOR_ARROW

@@ -96,10 +96,14 @@ func _ready() -> void :
     TowerDefenseManager.backZombie = false
     TowerDefenseManager.deathList.clear()
     TowerDefenseManager.luckyBagNum = 0
+    TowerDefenseManager.goldShardNum = 0
     DropItemRegistry.Reset()
     BattleEventBus.uiSwitched.connect(UISwitched)
     BattleEventBus.packetUIFront.connect(PacketUIFront)
     SceneManager.sceneChange.connect(_on_scene_change)
+
+    PhonkComponent.phonkEnabled = GameSaveManager.GetConfigValue("PhonkEnabled")
+    PhonkComponent.phonkIntensity = GameSaveManager.GetConfigValue("PhonkIntensity")
     if is_instance_valid(TowerDefenseManager.currentLevelConfig):
         Init(TowerDefenseManager.currentLevelConfig)
     UISwitched(GameSaveManager.GetConfigValue("MobilePreset"))
@@ -140,9 +144,10 @@ func OldLevelInit(_levelConfig: TowerDefenseLevelConfig) -> void :
         AddFeature(featureName, _levelConfig.featureData[featureName])
 
     if _levelConfig.processName != &"":
-        SetProcess(_levelConfig.processName, _levelConfig.processData)
-        if _levelConfig.finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2 && process is TowerDefenseBattleProcessWave:
-            process.isIZM2 = true
+        if _levelConfig.processName == "Wave" && _levelConfig.finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+            SetProcess("IZM2", _levelConfig.processData)
+        else:
+            SetProcess(_levelConfig.processName, _levelConfig.processData)
 
     AddProcessDependenceFeature()
 
@@ -392,6 +397,7 @@ func GameRunningEntered() -> void :
     else:
         checkBox2X.visible = true
     for character in TowerDefenseManager.GetCharacter():
+        character.process_mode = Node.PROCESS_MODE_INHERIT
         character.state.process_mode = Node.PROCESS_MODE_INHERIT
     for zombie in TowerDefenseManager.GetZombie():
         zombie.call("Walk")
@@ -981,8 +987,9 @@ func _on_multiplayer_state_received(op_code: String, data: String, sender_id: St
     if op_code == MatchOpCodes.GAME_ENTRY:
         var parsed = JSON.parse_string(data)
         var round_num: int = parsed.get("round_num", 0) if parsed else 0
-        if is_instance_valid(process) and process.isSurvival and is_instance_valid(process.survivalRunner):
-            process.survivalRunner.roundNum = round_num
+        var waveFeature: TowerDefenseBattleFeatureWave = GetFeature("Wave")
+        if waveFeature and waveFeature.isSurvival and is_instance_valid(waveFeature.survivalRunner):
+            waveFeature.survivalRunner.roundNum = round_num
         GameEntry()
         MultiPlayerManager.SendGameEntryAck()
         return

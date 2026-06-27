@@ -50,16 +50,21 @@ func Attack() -> void :
                     effect.global_position = hammer.global_position
                     characterNode.add_child(effect)
                     checkCharacterList.append(character)
-                    var attackNum = 400
-                    if character.instance.armorList.size() > 0:
-                        attackNum = min(attackNum, character.instance.armorList[0].hitPoints)
-                    var num = character.Hurt(attackNum, true)
-                    if num > 0 || character.instance.hitpoints <= character.config.hitpointsNearDeath:
-                        if randf() < 0.1:
-                            for i in 3:
-                                character.SunCreate(character.global_position, 25, TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, Vector2(randf_range(-50.0, 50.0), -400.0), 980.0)
-                        character.Destroy()
-                    return
+
+                if character is TowerDefensePlant:
+                    if is_instance_valid(character.cell) && is_instance_valid(character.cell.itemShield):
+                        if character.cell.itemShield.ShieldBlockLethal():
+                            return
+                var attackNum = 400
+                if character.instance.armorList.size() > 0:
+                    attackNum = min(attackNum, character.instance.armorList[0].hitPoints)
+                var num = character.Hurt(attackNum, true)
+                if num > 0 || character.instance.hitpoints <= character.config.hitpointsNearDeath:
+                    if randf() < 0.1:
+                        for i in 3:
+                            character.SunCreate(character.global_position, 25, TowerDefenseEnum.SUN_MOVING_METHOD.GRAVITY, Vector2(randf_range(-50.0, 50.0), -400.0), 980.0)
+                    character.Destroy()
+                return
 
 func AnimeCompleted(clip: String) -> void :
     match clip:

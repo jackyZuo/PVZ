@@ -10,6 +10,8 @@ var characterSlotDictionary: Dictionary[TowerDefenseCharacter, TowerDefenseChara
 var slot: Dictionary[TowerDefenseEnum.PLANTGRIDTYPE, TowerDefenseCharacter] = {}
 var characterSurround: TowerDefenseCharacter
 var characterLadder: TowerDefenseCharacter
+
+var itemShield: TowerDefenseItemSheild
 var gridPos: Vector2i = Vector2i.ZERO
 var groundHeightCurve: CurveTexture
 var config: TowerDefenseCellConfig
@@ -61,6 +63,8 @@ func ClearEmpty() -> void :
         characterSurround = null
     if !is_instance_valid(characterLadder):
         characterLadder = null
+    if !is_instance_valid(itemShield):
+        itemShield = null
 
 func CharacterPlant(packetConfig: TowerDefensePacketConfig, character: TowerDefenseCharacter, noLimit: bool = false) -> void :
     ClearEmpty()
@@ -78,6 +82,24 @@ func CharacterPlant(packetConfig: TowerDefensePacketConfig, character: TowerDefe
                 characterSlotDictionary[character] = null
                 character.destroy.connect(CharacterDestroy)
                 return
+
+    if character is TowerDefenseItemSheild:
+        if is_instance_valid(itemShield):
+            itemShield.ShieldAddHitpoints(TowerDefenseItemSheild.HP_PER_LAYER, character.shieldType)
+            character.queue_free()
+            return
+        else:
+            itemShield = character
+            characterList.append(character)
+            characterSlotDictionary[character] = null
+            if !character.destroy.is_connected(CharacterDestroy):
+                character.destroy.connect(CharacterDestroy)
+            return
+
+
+
+    if is_instance_valid(itemShield) && character is TowerDefensePlant:
+        itemShield.instance.canBeCollection = false
 
     if !packetConfig.GetPlantCover().is_empty():
         if !noLimit:
@@ -148,10 +170,11 @@ func CharacterPlant(packetConfig: TowerDefensePacketConfig, character: TowerDefe
                 if !_character.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.POT:
                     continue
                 if _character.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.NO_POT_REPLACE:
-                    continue
+                    if IsWater():
+                        continue
                 CharacterReplace(_character, character)
                 return
-        if characterConfig.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.LILYPAD:
+    if characterConfig.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.LILYPAD:
             for _character: TowerDefenseCharacter in characterList:
                 if !is_instance_valid(_character):
                     continue
@@ -252,7 +275,14 @@ func CharacterDestroy(character: TowerDefenseCharacter) -> void :
         characterSurround = null
     if characterLadder == character:
         characterLadder = null
-    _dirty = true
+    if itemShield == character:
+        itemShield = null
+        _dirty = true
+
+
+    if is_instance_valid(itemShield) && character is TowerDefensePlant:
+        if !HasSlotCharacterList() && !is_instance_valid(characterSurround):
+            itemShield.instance.canBeCollection = true
     return
 
 func GetSlotCharacterList() -> Array[TowerDefenseCharacter]:
@@ -319,11 +349,9 @@ func CanPacketPlant(packetConfig: TowerDefensePacketConfig, noLimit: bool = fals
         return false
     ClearEmpty()
     var characterConfig: TowerDefenseCharacterConfig = packetConfig.characterConfig
-
     if Global.isEditor && SceneManager.currentScene == "LevelEditorStage":
         if HasVase() && !(packetConfig.characterConfig is TowerDefenseVaseConfig):
             return true
-
 
     if !isCheck:
         if characterConfig is TowerDefensePlantConfig:
@@ -338,9 +366,22 @@ func CanPacketPlant(packetConfig: TowerDefensePacketConfig, noLimit: bool = fals
     if characterConfig.plantGridType.has(TowerDefenseEnum.PLANTGRIDTYPE.ALL):
         return true
 
+    if !isCheck:
+        if characterConfig is TowerDefensePlantConfig:
+            for _character: TowerDefenseCharacter in characterList:
+                if !is_instance_valid(_character):
+                    continue
+                if _character.config is TowerDefensePlantConfig:
+                    if !_character.config.extendGrid.is_empty() && _character.gridPos != gridPos:
+                        if !_character.config.plantGridType.has(TowerDefenseEnum.PLANTGRIDTYPE.SURROUND):
+                            return false
+
     if characterConfig is TowerDefenseItemConfig:
         if characterConfig.isLadder:
             return HasWallnut() && !is_instance_valid(characterLadder)
+
+        if characterConfig.isShield:
+            return true
 
     if !characterConfig.plantGridType.has(TowerDefenseEnum.PLANTGRIDTYPE.ICECAP):
         var iceCap = TowerDefenseManager.GetMapIceCapList()[gridPos.y]
@@ -358,6 +399,11 @@ func CanPacketPlant(packetConfig: TowerDefensePacketConfig, noLimit: bool = fals
     if !characterConfig.plantCanHasSurround:
         if is_instance_valid(characterSurround):
             return false
+
+    if is_instance_valid(characterSurround):
+        if characterConfig is TowerDefensePlantConfig && !characterConfig.extendGrid.is_empty():
+            if characterSurround.config is TowerDefensePlantConfig && characterSurround.config.extendGrid.is_empty():
+                return false
 
     for type: TowerDefenseEnum.PLANTGRIDTYPE in gridType:
         if !slot.has(type):
@@ -416,6 +462,9 @@ func CanPacketPlant(packetConfig: TowerDefensePacketConfig, noLimit: bool = fals
                 continue
             if !character.config.plantCanHasSurround:
                 return false
+            if characterConfig is TowerDefensePlantConfig && characterConfig.extendGrid.is_empty():
+                if character.config is TowerDefensePlantConfig && !character.config.extendGrid.is_empty():
+                    return false
         if surroundPlantFlag:
             for type: TowerDefenseEnum.PLANTGRIDTYPE in gridType:
                 if !is_instance_valid(slot[type]):
@@ -468,7 +517,8 @@ func CanPacketPlant(packetConfig: TowerDefensePacketConfig, noLimit: bool = fals
                 if !character.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.POT:
                     continue
                 if character.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.NO_POT_REPLACE:
-                    continue
+                    if IsWater():
+                        continue
                 return true
         if characterConfig.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.LILYPAD:
             for character: TowerDefenseCharacter in characterList:
@@ -536,11 +586,14 @@ func RemoveCharacter(character: TowerDefenseCharacter) -> void :
         characterLadder = null
     _dirty = true
 
-func CanShovel(pecentage: float) -> bool:
-    return GetShovelCharacter(pecentage) != null
+func CanShovel(pecentage: float, shovelConfig: ShovelConfig = null) -> bool:
+    return GetShovelCharacter(pecentage, shovelConfig) != null
 
-func _IsShovelable(character: TowerDefenseCharacter) -> bool:
+func _IsShovelable(character: TowerDefenseCharacter, shovelConfig: ShovelConfig = null) -> bool:
     if character is TowerDefenseGravestone || character is TowerDefenseCrater:
+        if is_instance_valid(shovelConfig) && !shovelConfig.shovelableNames.is_empty():
+            if shovelConfig.shovelableNames.has(character.config.name):
+                return true
         if Global.isEditor && SceneManager.currentScene == "LevelEditorStage":
             return true
         return false
@@ -548,43 +601,50 @@ func _IsShovelable(character: TowerDefenseCharacter) -> bool:
         return false
     return true
 
-func GetShovelCharacter(pecentage: float) -> TowerDefenseCharacter:
+func GetShovelCharacter(pecentage: float, shovelConfig: ShovelConfig = null) -> TowerDefenseCharacter:
     ClearEmpty()
     if pecentage < 0.25:
         if gridType.has(TowerDefenseEnum.PLANTGRIDTYPE.AIR):
             if is_instance_valid(slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR]):
-                if _IsShovelable(slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR]):
+                if _IsShovelable(slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR], shovelConfig):
                     return slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR]
     if pecentage > 0.5:
         if is_instance_valid(characterSurround):
-            if _IsShovelable(characterSurround):
+            if _IsShovelable(characterSurround, shovelConfig):
                 return characterSurround
 
     for characterKey: TowerDefenseCharacter in characterSlotDictionary.keys():
         if is_instance_valid(characterSlotDictionary[characterKey]):
-            if _IsShovelable(characterSlotDictionary[characterKey]):
+            if _IsShovelable(characterSlotDictionary[characterKey], shovelConfig):
                 return characterSlotDictionary[characterKey]
     for characterKey: TowerDefenseEnum.PLANTGRIDTYPE in slot.keys():
         if is_instance_valid(slot[characterKey]):
-            if _IsShovelable(slot[characterKey]):
+            if _IsShovelable(slot[characterKey], shovelConfig):
                 return slot[characterKey]
     for character: TowerDefenseCharacter in characterList:
-        if _IsShovelable(character):
+        if _IsShovelable(character, shovelConfig):
             return character
     if is_instance_valid(characterSurround):
-        if _IsShovelable(characterSurround):
+        if _IsShovelable(characterSurround, shovelConfig):
             return characterSurround
     if Global.isEditor && SceneManager.currentScene == "LevelEditorStage":
         for character: TowerDefenseCharacter in TowerDefenseManager.GetCharacter():
             if character.gridPos == gridPos:
-                if _IsShovelable(character):
+                if _IsShovelable(character, shovelConfig):
                     return character
     return null
 
 func Shovel(shovelConfig: ShovelConfig, pecentage: float) -> void :
-    var character: TowerDefenseCharacter = GetShovelCharacter(pecentage)
+    var character: TowerDefenseCharacter = GetShovelCharacter(pecentage, shovelConfig)
     if character:
-        if character is TowerDefensePlant || (Global.isEditor && SceneManager.currentScene == "LevelEditorStage"):
+        if character is TowerDefenseCrater:
+            if (Global.isEditor && SceneManager.currentScene == "LevelEditorStage"):
+                character.Destroy()
+            else:
+                character.DieDown()
+            ClearEmpty()
+            return
+        if character is TowerDefensePlant || character is TowerDefenseItemSheild || (Global.isEditor && SceneManager.currentScene == "LevelEditorStage"):
             var characterNode: Node2D = TowerDefenseManager.GetCharacterNode()
             var plantedEffect: TowerDefenseEffectParticlesOnce = TowerDefenseManager.CreateEffectParticlesOnce(load("uid://du8ukldfc7fh7"), character.gridPos)
             characterNode.add_child(plantedEffect)
@@ -640,6 +700,8 @@ func _IsValidTarget(character: TowerDefenseCharacter, camp: TowerDefenseEnum.CHA
         return false
     if !character.CanCollision(maskFlags):
         return false
+    if !(character.instance.maskFlags & maskFlags):
+        return false
     return true
 
 func GetTarget(maskFlags: int = 0, camp: TowerDefenseEnum.CHARACTER_CAMP = TowerDefenseEnum.CHARACTER_CAMP.PLANT, checkInvincible: bool = true, isCataplut: bool = false) -> TowerDefenseCharacter:
@@ -648,7 +710,8 @@ func GetTarget(maskFlags: int = 0, camp: TowerDefenseEnum.CHARACTER_CAMP = Tower
         if is_instance_valid(characterSurround):
             if characterSurround.instance.canBeCollection:
                 if characterSurround.CanCollision(maskFlags):
-                    return characterSurround
+                    if characterSurround.instance.maskFlags & maskFlags:
+                        return characterSurround
     if isCataplut:
         if slot.has(TowerDefenseEnum.PLANTGRIDTYPE.AIR):
             if is_instance_valid(slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR]):
@@ -656,21 +719,32 @@ func GetTarget(maskFlags: int = 0, camp: TowerDefenseEnum.CHARACTER_CAMP = Tower
                     return slot[TowerDefenseEnum.PLANTGRIDTYPE.AIR]
     for characterKey: TowerDefenseCharacter in characterSlotDictionary.keys():
         if is_instance_valid(characterSlotDictionary[characterKey]):
+            if checkInvincible && is_instance_valid(characterKey) && characterKey.instance.invincible:
+                continue
             if _IsValidTarget(characterSlotDictionary[characterKey], camp, maskFlags, checkInvincible):
                 return characterSlotDictionary[characterKey]
     for characterKey: TowerDefenseEnum.PLANTGRIDTYPE in slot.keys():
         if is_instance_valid(slot[characterKey]):
+            if checkInvincible:
+                var slotParent: TowerDefenseCharacter = FindSlotParent(slot[characterKey])
+                if is_instance_valid(slotParent) && slotParent.instance.invincible:
+                    continue
             if _IsValidTarget(slot[characterKey], camp, maskFlags, checkInvincible):
                 return slot[characterKey]
     for character: TowerDefenseCharacter in characterList:
         if is_instance_valid(character):
+            if checkInvincible:
+                var slotParent: TowerDefenseCharacter = FindSlotParent(character)
+                if is_instance_valid(slotParent) && slotParent.instance.invincible:
+                    continue
             if _IsValidTarget(character, camp, maskFlags, checkInvincible):
                 return character
     if isCataplut:
         if is_instance_valid(characterSurround):
             if characterSurround.instance.canBeCollection:
                 if characterSurround.CanCollision(maskFlags):
-                    return characterSurround
+                    if characterSurround.instance.maskFlags & maskFlags:
+                        return characterSurround
     return null
 
 func GetSlot(character: TowerDefenseCharacter) -> TowerDefenseCharacter:

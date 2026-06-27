@@ -116,6 +116,8 @@ func AnimeCompleted(clip: String) -> void :
 
 
 func AreaEntered(area: Area2D) -> void :
+    if !open:
+        return
     var character = area.get_parent()
     if character is TowerDefenseGroundItemBase:
         if character is TowerDefensePlant && !(character is TowerDefensePlantBowlingBase):

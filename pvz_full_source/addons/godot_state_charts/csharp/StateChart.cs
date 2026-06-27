@@ -40,7 +40,7 @@ public class StateChart : NodeWrapper
 
 	public static StateChart Of(Node stateChart)
 	{
-		if (!(stateChart.GetScript().As<Script>() is GDScript gdScript) || !gdScript.ResourcePath.EndsWith("state_chart.gd"))
+		if (!(stateChart.GetScript().As<Script>() is GDScript gDScript) || !gDScript.ResourcePath.EndsWith("state_chart.gd"))
 		{
 			throw new ArgumentException("Given node is not a state chart.");
 		}

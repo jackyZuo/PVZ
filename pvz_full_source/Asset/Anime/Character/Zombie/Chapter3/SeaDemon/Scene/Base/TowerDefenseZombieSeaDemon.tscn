@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://ov0p8peemmbu" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Config/TowerDefenseZombieSeaDemon.tres" id="3"]
 [ext_resource type="Resource" uid="uid://5pbudhad0osw" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/DamagePoint/Config/ZombieSeaDemonDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://d0rb5yqixtlf1" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/DamagePoint/Config/ZombieSeaDemonDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://bddo786kv1fq5" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorHelmet.tres" id="6"]
-[ext_resource type="Resource" uid="uid://dtkw884fntese" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dtkw884fntese" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bddo786kv1fq5" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorHelmet.tres" id="7"]
 [ext_resource type="Resource" uid="uid://bnafstq8gupyf" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorSpecialHelmet.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://sftmgg4oomkw" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/ZombieSeaDemon.tscn" id="9"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="10"]
@@ -39,17 +39,6 @@ image = SubResource("Image_0xj3a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4n33"]
 shader = ExtResource("10")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_o0dr1")
@@ -80,17 +69,17 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("6"),
+"Helmet": ExtResource("7"),
 "SpecialHelmet": ExtResource("8")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
 
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]

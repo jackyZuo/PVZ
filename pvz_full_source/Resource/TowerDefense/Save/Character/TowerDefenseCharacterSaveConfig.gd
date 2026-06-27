@@ -27,6 +27,8 @@ class_name TowerDefenseCharacterSaveConfig extends Resource
 @export var transformPointScaleY: float = 1.0
 @export var overrideSave: Dictionary = {}
 @export var variantSave: Dictionary = {}
+@export var canChangeCostSave: bool = true
+@export var changeCostListSave: Array[Dictionary] = []
 
 @export var z: float = 0.0
 @export var ySpeed: float = 0.0
@@ -49,7 +51,7 @@ func SaveCharacter(character: TowerDefenseCharacter) -> void :
     currentArmor.clear()
     for armorInstance: TowerDefenseArmorInstance in character.instance.armorList:
         if !armorInstance.isRemove:
-            currentArmor.append(armorInstance.config.armorName)
+            currentArmor.append(armorInstance.slotConfig.armorName)
     currentCustom = character.currentCustom
     timeScale = character.timeScale
     timeScaleInit = character.timeScaleInit
@@ -63,6 +65,11 @@ func SaveCharacter(character: TowerDefenseCharacter) -> void :
         overrideSave = character.packet.override.Export()
     else:
         overrideSave = {}
+    if is_instance_valid(character.packet):
+        canChangeCostSave = character.packet.canChangeCost
+        changeCostListSave.clear()
+        for changeCost: TowerDefensePacketChangeCost in character.packet.changeCostList:
+            changeCostListSave.append(changeCost.ExportSave())
     var stateChart: StateChart = character.get_node_or_null("StateChart")
     if stateChart and is_instance_valid(stateChart._state):
         var rootSavedState: SavedState = SavedState.new()
@@ -103,6 +110,8 @@ func SaveCharacter(character: TowerDefenseCharacter) -> void :
         "inGame": character.inGame, 
         "characterFilter": character.characterFilter, 
     }
+    if is_instance_valid(character.shaderEffectComponent):
+        characterFlags["effectFlags"] = character.shaderEffectComponent.GetEffectFlags()
     z = character.z
     ySpeed = character.ySpeed
     isGround = character.isGround
@@ -119,7 +128,8 @@ func SaveCharacter(character: TowerDefenseCharacter) -> void :
             "inGround": zombie.inGround, 
             "startAttack": zombie.startAttack, 
             "sizeUpNum": zombie.sizeUpNum, 
-            "isCarry": zombie.isCarry, 
+            "hasGhost": zombie.hasGhost, 
+            "hasSpikeball": zombie.hasSpikeball, 
             "spritePause": zombie.spritePause, 
             "walkSpeedScale": zombie.walkSpeedScale, 
         }
@@ -140,6 +150,10 @@ func LoadCharacter() -> TowerDefenseCharacter:
         var override: TowerDefensePacketOverride = TowerDefensePacketOverride.new()
         override.Init(overrideSave)
         packetConfig.override = override
+    packetConfig.canChangeCost = canChangeCostSave
+    packetConfig.changeCostList.clear()
+    for changeCostData: Dictionary in changeCostListSave:
+        packetConfig.changeCostList.append(TowerDefensePacketChangeCost.ImportSave(changeCostData))
     character.RestoreFromSave(self)
     character.scale = Vector2(scaleX, scaleY)
     if is_instance_valid(character.transformPoint):
@@ -187,8 +201,12 @@ func LoadCharacter() -> TowerDefenseCharacter:
         zombie.inGround = zombieExtraSave.get("inGround", false)
         zombie.startAttack = zombieExtraSave.get("startAttack", false)
         zombie.sizeUpNum = zombieExtraSave.get("sizeUpNum", 2)
-        zombie.isCarry = zombieExtraSave.get("isCarry", false)
+        zombie.hasGhost = zombieExtraSave.get("hasGhost", false)
+        zombie.hasSpikeball = zombieExtraSave.get("hasSpikeball", false)
         zombie.walkSpeedScale = zombieExtraSave.get("walkSpeedScale", 1.0)
+
+    if variantSave.size() > 0:
+        character.ImportVariantSave(variantSave)
     var stateChart: StateChart = character.get_node_or_null("StateChart")
     if stateChart and is_instance_valid(stateChart._state) and stateChartSave.size() > 0:
         var rootSavedState: SavedState = SavedState.new()
@@ -207,8 +225,8 @@ func LoadCharacter() -> TowerDefenseCharacter:
         var zombie: TowerDefenseZombie = character as TowerDefenseZombie
         zombie.spritePause = zombieExtraSave.get("spritePause", false)
         zombie.isPause = zombieExtraSave.get("isPause", false)
-    if variantSave.size() > 0:
-        character.ImportVariantSave(variantSave)
+    if characterFlags.has("effectFlags") and is_instance_valid(character.shaderEffectComponent):
+        character.shaderEffectComponent.SetEffectFlags(characterFlags.get("effectFlags", 0))
     character.componentRunning = false
     print("[Load] 角色加载完成: %s 组件数=%d 状态机=%s 动画=%s 变体=%s" % [nodeName, componentSaveList.size(), "已恢复" if stateChartSave.size() > 0 else "无", "已恢复" if spriteSave.size() > 0 else "无", "已恢复" if variantSave.size() > 0 else "无"])
     return character

@@ -17,7 +17,7 @@ extends TowerDefenseZombie
             await ready
         fireComponent.fireNum = fireNum
 
-@export var projectileName: String = "AxeDefault":
+@export var projectileName: String = "Axe":
     set(_projectileName):
         projectileName = _projectileName
         if !is_node_ready():
@@ -28,7 +28,7 @@ var hasAxe: bool = true:
     set(_hasAxe):
         hasAxe = _hasAxe
         if !hasAxe:
-            sprite.SetFliters(["axe"], false)
+            instance.ArmorDelete("Axe")
             useAttackDps = true
             attackComponent.attackType = "Eat"
             attackAnimeClip = "Eat"
@@ -69,7 +69,8 @@ func DamagePointReach(damangePointName: String) -> void :
     super.DamagePointReach(damangePointName)
     match damangePointName:
         "Arm":
-            state.send_event("ToThrow")
+            if hasAxe:
+                state.send_event("ToThrow")
 
 func AnimeCompleted(clip: String) -> void :
     super.AnimeCompleted(clip)
@@ -82,9 +83,10 @@ func AnimeEvent(command: String, argument: Variant) -> void :
     super.AnimeEvent(command, argument)
     match command:
         "fire":
-            var projectile: TowerDefenseProjectile = fireComponent.CreateProjectileByData(0, Vector2(-500, 0), fireComponent.fireCheckList[0].projectile.GetProjetile(), -1, camp, Vector2.ZERO)
-            projectile.projectileBodyNode.scale.x = scale.x
-            projectile.gridPos = gridPos
+            if hasAxe:
+                var projectile: TowerDefenseProjectile = fireComponent.CreateProjectileByData(0, Vector2(-500, 0), fireComponent.fireCheckList[0].projectile.GetProjetile(), -1, camp, Vector2.ZERO)
+                projectile.projectileBodyNode.scale.x = scale.x
+                projectile.gridPos = gridPos
         "attack":
             if is_instance_valid(attackComponent.target):
                 if attackComponent.target.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.NUT:

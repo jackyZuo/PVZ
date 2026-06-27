@@ -24,7 +24,7 @@ func IdleProcessing(delta: float) -> void :
 
 func JumpDownSmash() -> void :
     CreateParticlesEffect()
-    TowerDefenseExplode.CreateExplode(global_position, Vector2(1.4, 1.4), eventList, [], camp, instance.collisionFlags)
+    TowerDefenseExplode.CreateExplode(global_position, Vector2(1.4, 1.4), eventList, [], camp, instance.collisionFlags | TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.UNDER_GROUND)
 
 func CreateParticlesEffect() -> TowerDefenseEffectParticlesOnce:
     var effect: TowerDefenseEffectParticlesOnce = TowerDefenseManager.CreateEffectParticlesOnce(SQUASH_CANDY_THROW_PARTICLES, gridPos)

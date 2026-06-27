@@ -10,15 +10,16 @@ func _ready() -> void :
 func AttackDeal(character: TowerDefenseCharacter, type: String, num: float) -> void :
     super.AttackDeal(character, type, num)
     if is_instance_valid(character):
-        if character.instance.ArmorHas("SpecialHelmet"):
+        if character.instance.unUseBuffFlags & TowerDefenseEnum.CHARACTER_BUFF_FLAGS.HYPNOSES:
             SkipInvincibleHurt(num)
             return
     match type:
         "Eat":
-            SkipInvincibleHurt(10)
+            SkipInvincibleHurt(max(10.0, num))
             if is_instance_valid(character):
                 character.Garlic()
-                character.Hypnoses()
+                if !IsSleep():
+                    character.Hypnoses()
         "Smash":
             Destroy()
         "Chomp":

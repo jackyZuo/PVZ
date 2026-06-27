@@ -481,6 +481,8 @@ func BuildConfig() -> TowerDefenseProjectileConfig:
         config.damageFlags = damageFlags
         config.collisionFlags = collisionFlags
         config.fireMethodFlags = fireMethodFlags
+        if data.isFire:
+            config.damageFlags |= TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.FIRE
         config.name = data.name
         config.skinName = skinName
         config.size = data.size

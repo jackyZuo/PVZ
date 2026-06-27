@@ -25,8 +25,8 @@ func GameInit() -> void :
     SetSun(config.begin)
 
 func GameStart() -> void :
-    var process = GetProcess()
-    if process is TowerDefenseBattleProcessWave and process.isSurvival and is_instance_valid(process.survivalRunner) and process.survivalRunner.roundNum > 0:
+    var waveFeature: TowerDefenseBattleFeatureWave = GetFeature("Wave")
+    if waveFeature and waveFeature.isSurvival and is_instance_valid(waveFeature.survivalRunner) and waveFeature.survivalRunner.roundNum > 0:
         type = config.type
         spawnInterval = config.spawnInterval
         spawnNum = config.spawnNum

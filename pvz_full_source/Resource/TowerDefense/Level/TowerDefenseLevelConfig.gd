@@ -341,11 +341,18 @@ func Init() -> void :
         var eventFeatureData: Dictionary = levelData.get("Event", {})
         if !eventFeatureData.is_empty():
             featureData["Event"] = eventFeatureData
+        if finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE || finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+            featureData["Wave"] = levelData.get("WaveManager", {})
 
     if processName == &"":
         match finishMethod:
-            TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE, TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+            TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE:
                 processName = "Wave"
+                processData = levelData.get("WaveManager", {}).duplicate()
+                processData["StormOpen"] = stormOpen
+                processData["MowerUse"] = mowerUse
+            TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+                processName = "IZM2"
                 processData = levelData.get("WaveManager", {}).duplicate()
                 processData["StormOpen"] = stormOpen
                 processData["MowerUse"] = mowerUse
@@ -492,11 +499,20 @@ func ExportToFeatureProcess() -> void :
         eventFeatureData["EventStart"].append(eventGet.Export())
     if !eventFeatureData["EventInit"].is_empty() || !eventFeatureData["EventReady"].is_empty() || !eventFeatureData["EventStart"].is_empty():
         featureData["Event"] = eventFeatureData
+    if finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE || finishMethod == TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+        if is_instance_valid(waveManager):
+            featureData["Wave"] = waveManager.Export()
     processName = &""
     processData = {}
     match finishMethod:
-        TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE, TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+        TowerDefenseEnum.LEVEL_FINISH_METHOD.WAVE:
             processName = "Wave"
+            if is_instance_valid(waveManager):
+                processData = waveManager.Export()
+            processData["StormOpen"] = stormOpen
+            processData["MowerUse"] = mowerUse
+        TowerDefenseEnum.LEVEL_FINISH_METHOD.IZM2:
+            processName = "IZM2"
             if is_instance_valid(waveManager):
                 processData = waveManager.Export()
             processData["StormOpen"] = stormOpen

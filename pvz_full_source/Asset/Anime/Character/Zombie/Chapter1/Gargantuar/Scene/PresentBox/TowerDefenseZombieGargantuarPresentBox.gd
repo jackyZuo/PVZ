@@ -78,9 +78,9 @@ func CreateRandom() -> void :
             zombie.transformPoint.scale = transformPoint.scale * 1.5
             if instance.hypnoses:
                 zombie.Hypnoses()
-            if is_instance_valid(TowerDefenseBattleProcessWave.instance):
-                TowerDefenseBattleProcessWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
-                TowerDefenseBattleProcessWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
+            if is_instance_valid(TowerDefenseBattleFeatureWave.instance):
+                TowerDefenseBattleFeatureWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
+                TowerDefenseBattleFeatureWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
             if Global.isMultiplayerMode and MultiPlayerManager.isHost:
                 var control = TowerDefenseManager.currentControl
                 if is_instance_valid(control):

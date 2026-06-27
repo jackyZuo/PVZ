@@ -73,11 +73,6 @@ func _ready() -> void :
         sprite.animeCompleted.connect(AnimeCompleted)
         sprite.animeEvent.connect(AnimeEvent)
 
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        return
-
 
 
 func MoonWalkEntered() -> void :
@@ -136,7 +131,8 @@ func DanceExited() -> void :
 func PointEntered() -> void :
     moonWalkOver = true
     sprite.SetAnimation(pointUpAnimeClip, false, 0.2)
-    sprite.AddAnimation(pointDownAnimeClip, pointDownDelay, false, 0.2)
+    if pointDownAnimeClip != "":
+        sprite.AddAnimation(pointDownAnimeClip, pointDownDelay, false, 0.2)
 
 @warning_ignore("unused_parameter")
 func PointProcessing(delta: float) -> void :
@@ -201,6 +197,15 @@ func AnimeCompleted(clip: String) -> void :
     if !parent.inGame:
         return
     match clip:
+        pointUpAnimeClip:
+            if pointDownAnimeClip == "":
+                if syncDancerAnimation:
+                    for dancer: TowerDefenseCharacter in dancerList:
+                        if is_instance_valid(dancer):
+                            if !dancer.die && !dancer.nearDie:
+                                dancer.Walk()
+                parent.Walk()
+                state.send_event("ToIdle")
         pointDownAnimeClip:
             if syncDancerAnimation:
                 for dancer: TowerDefenseCharacter in dancerList:

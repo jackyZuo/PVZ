@@ -41,6 +41,8 @@ func _physics_process(delta: float) -> void :
         return
     if parent.instance.sleep:
         return
+    if !parent.componentAlive:
+        return
     if !is_instance_valid(TowerDefenseManager.currentControl) || !TowerDefenseManager.currentControl.isGameRunning:
         return
     if growUpReach < growUpTime.size():

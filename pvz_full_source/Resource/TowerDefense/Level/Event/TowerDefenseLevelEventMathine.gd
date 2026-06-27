@@ -4,6 +4,7 @@ const eventList: Dictionary = {
 
     "LEVLE_EVENT_GRAVESTONE_CREATE_RANDOM": "GravestoneCreateRandom", 
     "LEVLE_EVENT_GRAVESTONE_SPAWN_ZOMBIE": "GravestoneSpawnZombie", 
+    "LEVLE_EVENT_GRID_SPAWN_ZOMBIE": "GridSpawnZombie", 
 
     "LEVLE_EVENT_CURRENTMAP_USE_STRIPE": "CurrentMapUseStripe", 
     "LEVLE_EVENT_CURRENTMAP_USE_WARNINGLINE": "CurrentMapUseWarningLine", 
@@ -26,6 +27,11 @@ static func EventGet(eventName: String) -> TowerDefenseLevelEventBase:
             return TowerDefenseLevelEventGravestoneCreateRandom.new()
         "GravestoneSpawnZombie":
             return TowerDefenseLevelEventGravestoneSpawnZombie.new()
+
+
+
+        "GridSpawnZombie":
+            return TowerDefenseLevelEventGridSpawnZombie.new()
 
 
 

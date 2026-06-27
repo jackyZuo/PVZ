@@ -53,21 +53,31 @@ func SetSpriteGroupShaderParameter(property: String, value: Variant) -> void :
         for node: AdobeAnimateSpriteBase in _shaderNodes:
             if !is_instance_valid(node):
                 continue
-            var _material: ShaderMaterial = node.material as ShaderMaterial
-            if is_instance_valid(_material):
-                var current: int = _material.get_shader_parameter("effectFlags") if _material.get_shader_parameter("effectFlags") != null else 0
-                if value:
-                    current |= flag
-                else:
-                    current &= ~ flag
-                _material.set_shader_parameter("effectFlags", current)
+            var current: int = node.get_instance_shader_parameter("effectFlags") if node.get_instance_shader_parameter("effectFlags") != null else 0
+            if value:
+                current |= flag
+            else:
+                current &= ~ flag
+            node.set_instance_shader_parameter("effectFlags", current)
     else:
         for node: AdobeAnimateSpriteBase in _shaderNodes:
             if !is_instance_valid(node):
                 continue
-            var _material: ShaderMaterial = node.material as ShaderMaterial
-            if is_instance_valid(_material):
-                _material.set_shader_parameter(property, value)
+            node.set_instance_shader_parameter(property, value)
+
+
+func GetEffectFlags() -> int:
+    if _shaderNodes.size() > 0 and is_instance_valid(_shaderNodes[0]):
+        var value = _shaderNodes[0].get_instance_shader_parameter("effectFlags")
+        return value if value != null else 0
+    return 0
+
+
+func SetEffectFlags(flags: int) -> void :
+    for node: AdobeAnimateSpriteBase in _shaderNodes:
+        if !is_instance_valid(node):
+            continue
+        node.set_instance_shader_parameter("effectFlags", flags)
 
 
 
@@ -79,20 +89,16 @@ func SetChildShaderParameter(parentNode: Node2D, property: String, value: Varian
     if SHADER_EFFECT_FLAGS.has(property):
         var flag: int = SHADER_EFFECT_FLAGS[property]
         if parentNode is AdobeAnimateSpriteBase:
-            var _material: ShaderMaterial = parentNode.material as ShaderMaterial
-            if is_instance_valid(_material):
-                var current: int = _material.get_shader_parameter("effectFlags") if _material.get_shader_parameter("effectFlags") != null else 0
-                if value:
-                    current |= flag
-                else:
-                    current &= ~ flag
-                _material.set_shader_parameter("effectFlags", current)
+            var current: int = parentNode.get_instance_shader_parameter("effectFlags") if parentNode.get_instance_shader_parameter("effectFlags") != null else 0
+            if value:
+                current |= flag
+            else:
+                current &= ~ flag
+            parentNode.set_instance_shader_parameter("effectFlags", current)
         for child in parentNode.get_children():
             SetChildShaderParameter(child, property, value)
         return
     if parentNode is AdobeAnimateSpriteBase:
-        var _material: ShaderMaterial = parentNode.material as ShaderMaterial
-        if _material:
-            _material.set_shader_parameter(property, value)
+        parentNode.set_instance_shader_parameter(property, value)
     for child in parentNode.get_children():
         SetChildShaderParameter(child, property, value)

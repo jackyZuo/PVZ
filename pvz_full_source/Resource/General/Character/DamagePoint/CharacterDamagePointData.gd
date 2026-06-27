@@ -41,6 +41,12 @@ func ClearDamagePointFliters(sprite: AdobeAnimateSprite):
     sprite.SetFliters(fliterCloseAll, true)
     sprite.SetFliters(fliterOpenAll, false)
 
+func ClearDamagePointAll(sprite: AdobeAnimateSprite):
+    ClearDamagePointFliters(sprite)
+    for config: CharacterDamagePointConfig in damagePointList:
+        if config && config.replaceMediaName:
+            sprite.SetReplace(config.replaceMediaName, null)
+
 func SetDamagePointFliters(sprite: AdobeAnimateSprite, damagePointName: String):
     var data: Dictionary = damagePointDictionary[damagePointName]
     var config: CharacterDamagePointConfig = data["Config"]

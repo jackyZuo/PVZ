@@ -58,3 +58,11 @@ func SetDamagePoint(sprite: AdobeAnimateSprite, customName: String, index: int) 
     var config: CharacterCustomConfig = data["Config"]
     if index < config.damagePointChangeMediaTexture.size():
         sprite.SetReplace(config.damagePointChangeMediaName, config.damagePointChangeMediaTexture[index])
+
+func ClearDamagePoint(sprite: AdobeAnimateSprite, customName: String) -> void :
+    if !customDictionary.has(customName):
+        return
+    var data: Dictionary = customDictionary[customName]
+    var config: CharacterCustomConfig = data["Config"]
+    if config.damagePointChangeMediaName != "":
+        sprite.SetReplace(config.damagePointChangeMediaName, null)

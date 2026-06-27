@@ -3,32 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
 [ext_resource type="Script" uid="uid://wneph3eojixr" path="res://Asset/Anime/Character/Plant/Chapter1/SunflowerPea/Scene/TowerDefensePlantSunflowerPea.gd" id="2"]
 [ext_resource type="Resource" uid="uid://dwa6qa7tplv2v" path="res://Asset/Anime/Character/Plant/Chapter1/SunflowerPea/Config/TowerDefensePlantSunflowerPea.tres" id="3"]
-[ext_resource type="Script" uid="uid://3gswocg6uh6g" path="res://Resource/General/Character/Armor/CharacterArmorConfig.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://bsh6g1gtv07mv" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket1.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://c8j6e6siocnub" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket2.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://dgcx0y0jelv7v" path="res://Asset/Texture/Character/Armor/Bucket/ZombieBucket3.png" id="7"]
-[ext_resource type="PackedScene" uid="uid://cpmorpmk3064d" path="res://Asset/Anime/Character/Plant/Chapter1/SunflowerPea/SunflowerPea.tscn" id="8"]
-[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="9"]
-[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="10"]
-[ext_resource type="PackedScene" uid="uid://c5d74tbefbann" path="res://Script/Component/TowerDefense/Character/ProduceComponent/ProduceComponent.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://b5htxrgm8twcr" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponent.tscn" id="12"]
-[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="13"]
-[ext_resource type="Script" uid="uid://bd70pedr27fla" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.gd" id="14"]
-[ext_resource type="Script" uid="uid://duxe603jas8ga" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.gd" id="15"]
-[ext_resource type="Script" uid="uid://ndtiv4yt0fsj" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.gd" id="16"]
-
-[sub_resource type="Resource" id="Resource_dliej"]
-script = ExtResource("4")
-armorName = "Bucket"
-damagePoint = 1100.0
-stagePersontage = [0.666, 0.333]
-replaceMethod = "Sprite"
-replaceSpriteRotation = -0.5
-replaceSpriteScale = Vector2(-0.75, 0.75)
-replaceSpriteOffset = Vector2(-5, -20)
-stageAnimeTexture = [ExtResource("5"), ExtResource("6"), ExtResource("7")]
-armorMethodFlags = 216
-Flag/Method = 216
+[ext_resource type="PackedScene" uid="uid://cpmorpmk3064d" path="res://Asset/Anime/Character/Plant/Chapter1/SunflowerPea/SunflowerPea.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+[ext_resource type="Script" uid="uid://b6lojhfkgvhsw" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://c5d74tbefbann" path="res://Script/Component/TowerDefense/Character/ProduceComponent/ProduceComponent.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://b5htxrgm8twcr" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponent.tscn" id="8"]
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="9"]
+[ext_resource type="Script" uid="uid://bd70pedr27fla" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.gd" id="10"]
+[ext_resource type="Script" uid="uid://duxe603jas8ga" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.gd" id="11"]
+[ext_resource type="Script" uid="uid://ndtiv4yt0fsj" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.gd" id="12"]
 
 [sub_resource type="Image" id="Image_08r0q"]
 data = {
@@ -54,19 +37,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_1rcwt"]
 image = SubResource("Image_tdccs")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gysu"]
-shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pthoe"]
+shader = ExtResource("5")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_1rcwt")
@@ -105,19 +77,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_e1wnp"]
 image = SubResource("Image_1rign")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d6er"]
-shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gysu"]
+shader = ExtResource("5")
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_e1wnp")
@@ -133,28 +94,37 @@ shader_parameter/mediaReplaceUse = [false, false, false, false, false, false, fa
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_753ec"]
-script = ExtResource("13")
+script = ExtResource("9")
 projectileName = &"Pea"
 catapultHeight = 400.0
 Flag/Damage = 3
 Flag/FireMethod = 1
 Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
 
 [sub_resource type="Resource" id="Resource_km3yf"]
-script = ExtResource("14")
+script = ExtResource("10")
 projectileData = SubResource("Resource_753ec")
 metadata/_custom_type_script = "uid://bd70pedr27fla"
 
 [sub_resource type="Resource" id="Resource_sj8p1"]
-script = ExtResource("15")
+script = ExtResource("11")
 projectile = SubResource("Resource_km3yf")
 metadata/_custom_type_script = "uid://duxe603jas8ga"
 
 [sub_resource type="Resource" id="Resource_a8jxh"]
-script = ExtResource("16")
+script = ExtResource("12")
 metadata/_custom_type_script = "uid://ndtiv4yt0fsj"
 
-[node name="TowerDefensePlantSunflowerPea" unique_id=1460449994 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+[node name="TowerDefensePlantSunflowerPea" unique_id=1460449994 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
 script = ExtResource("2")
 fireInterval = 1.5
 fireNum = 1
@@ -164,12 +134,9 @@ sunNum = 25
 idleAnimeClip = "BodyIdle"
 config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/SunflowerPea")
-damagePart = {
-"Bucket": SubResource("Resource_dliej")
-}
+headSlot = NodePath("SpriteGroup/TransformPoint/SunflowerPea/SunflowerSlot")
 Armor = []
 Custom = []
-DamagePartSlot/Bucket = null
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
 position = Vector2(0, 30)
@@ -177,25 +144,34 @@ position = Vector2(0, 30)
 [node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
 position = Vector2(0, 30)
 
-[node name="SunflowerPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1023619869 instance=ExtResource("8")]
-material = SubResource("ShaderMaterial_7gysu")
-instance_shader_parameters/frameIndex = 8.770814999999999
+[node name="SunflowerPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1023619869 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_pthoe")
+instance_shader_parameters/frameIndex = 1.6381050000004032
 position = Vector2(0, -30)
 trueFrameRate = 180.0
 
-[node name="Head" parent="SpriteGroup/TransformPoint/SunflowerPea" index="0"]
-material = SubResource("ShaderMaterial_6d6er")
-instance_shader_parameters/frameIndex = 14.521190666666632
-position = Vector2(9.532318, -18.165623)
+[node name="HeadSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunflowerPea" index="0" unique_id=1004435392]
+position = Vector2(0.7562237, -12.944422)
+rotation = -0.14223498
+scale = Vector2(0.7985181, 0.7985181)
+script = ExtResource("6")
+followSlotId = 14
+offset = Vector2(25, 30)
+metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
+
+[node name="Head" parent="SpriteGroup/TransformPoint/SunflowerPea" index="1"]
+material = SubResource("ShaderMaterial_7gysu")
+instance_shader_parameters/frameIndex = 0.0
+position = Vector2(17.262215, -16.245396)
 trueFrameRate = 180.0
 
 [node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunflowerPea/Head" index="0" unique_id=2133731212]
 position = Vector2(26.87, -18.76)
 
-[node name="SunflowerSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunflowerPea" index="1" unique_id=1797594345]
-position = Vector2(-10.11174, -13.324193)
+[node name="SunflowerSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunflowerPea" index="2" unique_id=1797594345]
+position = Vector2(-17.182487, -12.017503)
 scale = Vector2(0.5999756, 0.5339779)
-script = ExtResource("10")
+script = ExtResource("6")
 followSlotId = 21
 offset = Vector2(30.8, 18.775)
 metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
@@ -205,11 +181,11 @@ metadata/_custom_type_script = "uid://b6lojhfkgvhsw"
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
 position = Vector2(0, 0)
 
-[node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=684868129 node_paths=PackedStringArray("marker") instance=ExtResource("11")]
+[node name="ProduceComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="21" unique_id=684868129 node_paths=PackedStringArray("marker") instance=ExtResource("7")]
 unique_name_in_owner = true
 marker = [NodePath("../../SpriteGroup/TransformPoint/SunflowerPea/SunflowerSlot/Marker2D")]
 
-[node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="22" unique_id=461641528 node_paths=PackedStringArray("firePosMarker", "checkRayList", "sprite") instance=ExtResource("12")]
+[node name="FireComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="22" unique_id=461641528 node_paths=PackedStringArray("firePosMarker", "checkRayList", "sprite") instance=ExtResource("8")]
 unique_name_in_owner = true
 firePosMarker = [NodePath("../../SpriteGroup/TransformPoint/SunflowerPea/Head/Marker2D")]
 checkRayList = [NodePath("RayCast2D")]

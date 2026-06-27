@@ -32,19 +32,8 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_5qq2x"]
 image = SubResource("Image_gr6bw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc8nt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_expxd"]
 shader = ExtResource("5")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_5qq2x")
@@ -64,7 +53,7 @@ size = Vector2(92, 46)
 
 [node name="TowerDefensePlantChomperPot" unique_id=499274913 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 script = ExtResource("2")
-chewTime = 40.0
+chewTime = 30.0
 config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/ChomperPot")
 
@@ -75,8 +64,8 @@ position = Vector2(0, 30)
 position = Vector2(0, 30)
 
 [node name="ChomperPot" parent="SpriteGroup/TransformPoint" index="0" unique_id=1408913735 instance=ExtResource("4")]
-material = SubResource("ShaderMaterial_hc8nt")
-instance_shader_parameters/frameIndex = 7.114478888886531
+material = SubResource("ShaderMaterial_expxd")
+instance_shader_parameters/frameIndex = 9.280286666666669
 position = Vector2(0, -30)
 
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
@@ -111,7 +100,6 @@ checkGravestone = false
 [node name="ChomperComponent" parent="ComponentManager" parent_id_path=PackedInt32Array(798302124) index="10" unique_id=206414620 node_paths=PackedStringArray("attackComponent", "sprite") instance=ExtResource("7")]
 unique_name_in_owner = true
 attackComponent = NodePath("../AttackComponent")
-chewTime = 40.0
 sprite = NodePath("../../SpriteGroup/TransformPoint/ChomperPot")
 chewReadyAnimeClips = "Down"
 

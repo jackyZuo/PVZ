@@ -11,10 +11,15 @@ extends TowerDefensePlant
     set(_projectileName):
         projectileName = _projectileName
 
+func CanSleep() -> bool:
+    if TowerDefenseManager.IsIZMMode():
+        return false
+    return super.CanSleep()
+
 func Timeout(timerName: String) -> void :
     match timerName:
         "Fire":
-            if !sprite.pause && sprite.timeScale > 0:
+            if !sprite.pause && (sprite.timeScale > 0 || TowerDefenseManager.IsIZMMode()):
                 for i in 36:
                     var dir: Vector2 = Vector2.from_angle(deg_to_rad(i * 10))
                     var projectile = FireComponent.CreateProjectilePositionByData(self, null, GetGroundHeight(global_position.y) + 10, global_position, dir * 200.0, TowerDefenseProjectileCreateData.new(StringName(projectileName)), -1, camp)

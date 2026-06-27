@@ -34,7 +34,7 @@ public class Transition : NodeWrapper
 
 	public static Transition Of(Node transition)
 	{
-		if (!(transition.GetScript().As<Script>() is GDScript gdScript) || !gdScript.ResourcePath.EndsWith("transition.gd"))
+		if (!(transition.GetScript().As<Script>() is GDScript gDScript) || !gDScript.ResourcePath.EndsWith("transition.gd"))
 		{
 			throw new ArgumentException("Given node is not a transition.");
 		}

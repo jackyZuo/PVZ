@@ -5,11 +5,11 @@
 [ext_resource type="Resource" uid="uid://jfw0rcq5dnkg" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Config/TowerDefenseZombiePogo.tres" id="3"]
 [ext_resource type="Resource" uid="uid://dpi7rspytox4" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/DamagePoint/Config/ZombiePogoDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://chsyk5y7rfqox" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/DamagePoint/Config/ZombiePogoDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://d1gjstglppsvi" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorPogo.tres" id="6"]
-[ext_resource type="Resource" uid="uid://dxp2p0mwg185h" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorCone.tres" id="7"]
-[ext_resource type="Resource" uid="uid://8o708la8web0" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c0pwogj27xucx" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://8o708la8web0" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dxp2p0mwg185h" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorCone.tres" id="8"]
 [ext_resource type="Resource" uid="uid://ch414biby6mnk" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorHelmet.tres" id="9"]
-[ext_resource type="Resource" uid="uid://c0pwogj27xucx" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorBlackHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://d1gjstglppsvi" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorPogo.tres" id="10"]
 [ext_resource type="Resource" uid="uid://m2oq0csyyc2j" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/Armor/Config/ZombiePogoArmorSpecialHelmet.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://c8gqi3y75f6u6" path="res://Asset/Anime/Character/Zombie/Chapter4/Pogo/ZombiePogo.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="13"]
@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://bnuagwct5sv5y" path="res://addons/godot_state_charts/transition.gd" id="16"]
 [ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="17"]
 
-[sub_resource type="Image" id="Image_mcknb"]
+[sub_resource type="Image" id="Image_pklnk"]
 data = {
 "data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
 "format": "RGBAFloat",
@@ -28,9 +28,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
-image = SubResource("Image_mcknb")
+image = SubResource("Image_pklnk")
 
-[sub_resource type="Image" id="Image_6aidd"]
+[sub_resource type="Image" id="Image_cil5n"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
 "format": "RGBAFloat",
@@ -40,21 +40,10 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
-image = SubResource("Image_6aidd")
+image = SubResource("Image_cil5n")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cil5n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0hij"]
 shader = ExtResource("14")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
@@ -83,23 +72,23 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombiePogo")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("10"),
-"Bucket": ExtResource("8"),
-"Cone": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
 "Head": ExtResource("5"),
 "Helmet": ExtResource("9"),
-"Pogo": ExtResource("6"),
+"Pogo": ExtResource("10"),
 "SpecialHelmet": ExtResource("11")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = ["Pogo"]
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombiePogo/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
-DamagePartSlot/Pogo = NodePath("SpriteGroup/TransformPoint/ZombiePogo/PogoSlot")
-DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
-DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
+DamagePartSlot/Bucket = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
+DamagePartSlot/Cone = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
+DamagePartSlot/Pogo = NodePath("SpriteGroup/TransformPoint/ZombiePogo/PogoSlot")
 DamagePartSlot/SpecialHelmet = NodePath("SpriteGroup/TransformPoint/ZombiePogo/HeadSlot")
 gravity = 490.0
 
@@ -138,7 +127,7 @@ scale = Vector2(1, 1)
 
 [node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=634896316 instance=ExtResource("13")]
 visible = false
-material = SubResource("ShaderMaterial_cil5n")
+material = SubResource("ShaderMaterial_w0hij")
 instance_shader_parameters/frameIndex = 0.0
 position = Vector2(-12, -58)
 trueFrameRate = 180.0

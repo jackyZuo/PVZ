@@ -18,7 +18,7 @@ func RemoveDancer(dancer: TowerDefenseCharacter) -> void :
 
 func _ready() -> void :
     super._ready()
-    if Engine.is_editor_hint() || Global.isEditor:
+    if Engine.is_editor_hint():
         return
     dancingComponent = componentManager.GetComponentFromType("DancingComponent") as DancingComponent
     if is_instance_valid(dancingComponent):
@@ -30,8 +30,12 @@ func _ready() -> void :
 func WalkEntered() -> void :
     super.WalkEntered()
     if is_instance_valid(dancingComponent):
-        dancingComponent.sprite.scale.x = dancingComponent.normalSpriteScaleX
-        dancingComponent.walkTime = dancingComponent.walkTimeInit
+        dancingComponent.OnWalkEntered()
+
+func WalkProcessing(delta: float) -> void :
+    if is_instance_valid(dancingComponent):
+        groundMoveComponent.alive = dancingComponent.CanWalk()
+    super.WalkProcessing(delta)
 
 func Walk() -> void :
     if die:
@@ -181,8 +185,7 @@ func SpawnDisco() -> void :
 func Hypnoses(time: float = -1, canFliter: bool = true) -> void :
     super.Hypnoses(time, canFliter)
     if is_instance_valid(dancingComponent):
-        dancingComponent.dancerList.clear()
-        dancingComponent.dancerList.resize(4)
+        dancingComponent.OnHypnoses()
 
 func ExportVariantSave() -> Dictionary:
     var data: Dictionary = {

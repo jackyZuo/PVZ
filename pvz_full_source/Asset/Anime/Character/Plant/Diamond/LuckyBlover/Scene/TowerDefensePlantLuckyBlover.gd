@@ -11,7 +11,8 @@ func Explode() -> void :
             var packetList: Array = packetBankData.GetPlantList()
             var seedBankList = TowerDefenseManager.GetSeedBankList()
             for packetShow: TowerDefenseInGamePacketShow in seedBankList:
-                if packetShow.config.saveKey == packet.saveKey:
+                var identifyKey: String = packetShow.originalSaveKey if packetShow.originalSaveKey != "" else packetShow.config.saveKey
+                if identifyKey == packet.saveKey:
                     continue
                 var packetRandom: String = packetList.pick_random()
                 var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig(packetRandom)

@@ -5,16 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://sloopqlrolqe" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeTitle.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://b0j2gq7yaj0ye" path="res://Asset/Texture/GUI/TryLevel/ShopLevel_Almanac.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://cvef0gk801xiu" path="res://Asset/Texture/GUI/TryLevel/ShopLevel_Almanac_press.png" id="5"]
-[ext_resource type="PackedScene" uid="uid://8hmiilnigfwi" path="res://Prefab/GUI/DragMenu/DragMenu.tscn" id="6"]
-[ext_resource type="Texture2D" uid="uid://icxv7thbjhbb" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeButtonExchange.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://b5l0dyb2muril" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeCrystalExchangeDisable.png" id="8"]
-[ext_resource type="FontFile" uid="uid://dw688nrewjuwv" path="res://Asset/Font/方正粗圆简体.ttf" id="9"]
-[ext_resource type="Texture2D" uid="uid://oks7e2sbpr1o" path="res://Asset/Texture/GUI/General/General/ArrowButton.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://bdx1imearld07" path="res://Asset/Texture/GUI/General/General/ArrowButtonDown.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://wyr0cydqo0g7" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeCrystalPanel.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://dst2hhdwrg2it" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeRead.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://coaouf2scvagj" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeReadHover.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://dcjo5g7wbx138" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeReadPaper.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://biudlam3iois5" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeSelectPlant.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://8hmiilnigfwi" path="res://Prefab/GUI/DragMenu/DragMenu.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://icxv7thbjhbb" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeButtonExchange.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://b5l0dyb2muril" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeCrystalExchangeDisable.png" id="9"]
+[ext_resource type="FontFile" uid="uid://dw688nrewjuwv" path="res://Asset/Font/方正粗圆简体.ttf" id="10"]
+[ext_resource type="Texture2D" uid="uid://oks7e2sbpr1o" path="res://Asset/Texture/GUI/General/General/ArrowButton.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bdx1imearld07" path="res://Asset/Texture/GUI/General/General/ArrowButtonDown.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://wyr0cydqo0g7" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeCrystalPanel.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dst2hhdwrg2it" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeRead.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://coaouf2scvagj" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeReadHover.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://dcjo5g7wbx138" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeReadPaper.png" id="16"]
 
 [node name="OnlineLevelExchange" type="Control" unique_id=1666013473]
 light_mask = 0
@@ -74,7 +75,24 @@ texture_normal = ExtResource("4")
 texture_pressed = ExtResource("5")
 texture_hover = ExtResource("5")
 
-[node name="DragMenu" parent="." unique_id=147054819 instance=ExtResource("6")]
+[node name="SwitchModeButton" type="TextureButton" parent="GroupButtonNode" unique_id=572739470]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -104.0
+offset_right = -103.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6")
+
+[node name="DragMenu" parent="." unique_id=147054819 instance=ExtResource("7")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -107,8 +125,8 @@ offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7")
-texture_disabled = ExtResource("8")
+texture_normal = ExtResource("8")
+texture_disabled = ExtResource("9")
 
 [node name="CostLabel" type="Label" parent="ExchangeButton" unique_id=1751239064]
 unique_name_in_owner = true
@@ -124,7 +142,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9")
+theme_override_fonts/font = ExtResource("10")
 theme_override_font_sizes/font_size = 28
 text = "100"
 horizontal_alignment = 1
@@ -142,9 +160,9 @@ offset_right = 115.0
 offset_bottom = 9.79993
 scale = Vector2(0.75, 0.75)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("10")
-texture_pressed = ExtResource("11")
-texture_hover = ExtResource("11")
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("12")
+texture_hover = ExtResource("12")
 stretch_mode = 0
 
 [node name="CrystalNumBarTexture" type="TextureRect" parent="." unique_id=790334500]
@@ -155,7 +173,7 @@ anchor_right = 1.0
 offset_left = -224.0
 offset_bottom = 80.0
 grow_horizontal = 0
-texture = ExtResource("12")
+texture = ExtResource("13")
 
 [node name="CrystalNumLabel" type="Label" parent="CrystalNumBarTexture" unique_id=1825252025]
 unique_name_in_owner = true
@@ -170,7 +188,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("9")
+theme_override_fonts/font = ExtResource("10")
 theme_override_font_sizes/font_size = 32
 text = "100"
 horizontal_alignment = 1
@@ -178,15 +196,16 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ReadButton" type="TextureButton" parent="." unique_id=1083237274]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 37.0
 offset_top = 28.0
 offset_right = 191.0
 offset_bottom = 85.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("13")
-texture_pressed = ExtResource("14")
-texture_hover = ExtResource("14")
+texture_normal = ExtResource("14")
+texture_pressed = ExtResource("15")
+texture_hover = ExtResource("15")
 
 [node name="ReadpaperTexture" type="TextureRect" parent="." unique_id=87672819]
 unique_name_in_owner = true
@@ -196,9 +215,10 @@ offset_left = 183.0
 offset_top = 71.0
 offset_right = 927.0
 offset_bottom = 605.0
-texture = ExtResource("15")
+texture = ExtResource("16")
 
 [connection signal="pressed" from="GroupButtonNode/AlmanacButton" to="." method="AlmanacButtonPressed"]
+[connection signal="pressed" from="GroupButtonNode/SwitchModeButton" to="." method="SwitchModeButtonPressed"]
 [connection signal="pressed" from="ExchangeButton" to="." method="ExchangeButtonPressed"]
 [connection signal="pressed" from="BackButton" to="." method="BackButtonPressed"]
 [connection signal="pressed" from="ReadButton" to="." method="ReadButtonPressed"]

@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="CharacterArmorData" format=3 uid="uid://badbt8dtrloso"]
 
 [ext_resource type="Resource" uid="uid://igfdvrghl1jt" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/Armor/Config/ZombieHypnoArmorHypnoHat.tres" id="1"]
-[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cl7rmyix6rnq" path="res://Registry/Armor/Config/HypnoHat.tres" id="2"]
+[ext_resource type="Script" uid="uid://ci4c6gpjugqpl" path="res://Resource/General/Character/Armor/CharacterArmorData.gd" id="3"]
 
 [resource]
-script = ExtResource("2")
+script = ExtResource("3")
 armorList = [ExtResource("1")]
 armorDictionary = {
-"HypnoHat": ExtResource("1")
+"HypnoHat": {
+"slotConfig": ExtResource("1"),
+"typeData": ExtResource("2")
+}
 }
 fliterAllDictionary = {
 "HypnoHat": ["anim_hat"]

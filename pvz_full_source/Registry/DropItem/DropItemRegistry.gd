@@ -10,6 +10,7 @@ static var _coinHandler: CoinDropItemHandler
 static var _luckyBagHandler: LuckyBagDropItemHandler
 static var _jalapenoSunHandler: JalapenoSunDropItemHandler
 static var _brainSunHandler: BrainSunDropItemHandler
+static var _goldShardHandler: GoldShardDropItemHandler
 
 static func Init() -> void :
     if isInit:
@@ -24,6 +25,7 @@ static func _CreateHandlers() -> void :
     _luckyBagHandler = LuckyBagDropItemHandler.new()
     _jalapenoSunHandler = JalapenoSunDropItemHandler.new()
     _brainSunHandler = BrainSunDropItemHandler.new()
+    _goldShardHandler = GoldShardDropItemHandler.new()
 
 static func RegisterInit() -> void :
     Register(_CreateConfig("Sun", ObjectManagerConfig.OBJECT.SUN, preload("uid://dk3bkihnh1i0l"), 100, TowerDefenseEnum.DROP_ITEM_CATEGORY.SUN, 25, "", "Sun", -1, _sunHandler))
@@ -38,6 +40,7 @@ static func RegisterInit() -> void :
     Register(_CreateConfig("CoinYB2", ObjectManagerConfig.OBJECT.COIN_YB2, preload("uid://1twddwaolt4r"), 100, TowerDefenseEnum.DROP_ITEM_CATEGORY.COIN, 1000, "CoinFall", "CoinPick", 6, _coinHandler))
 
     Register(_CreateConfig("LuckyBag", ObjectManagerConfig.OBJECT.COIN_LUCKY_BAG, preload("uid://bnrh1k2cgopsn"), 100, TowerDefenseEnum.DROP_ITEM_CATEGORY.SPECIAL, 0, "CoinFall", "CoinPick", 3, _luckyBagHandler))
+    Register(_CreateConfig("GoldShard", ObjectManagerConfig.OBJECT.COIN_GOLD_SHARD, preload("uid://dsfn18qda4271"), 100, TowerDefenseEnum.DROP_ITEM_CATEGORY.SPECIAL, 0, "CoinFall", "CoinPick", 7, _goldShardHandler))
 
 static func _CreateConfig(_name: StringName, _id: ObjectManagerConfig.OBJECT, _scene: PackedScene, _poolMaxNum: int, _category: TowerDefenseEnum.DROP_ITEM_CATEGORY, _value: int, _fallAudio: String = "CoinFall", _pickAudio: String = "CoinPick", _coinObjectId: int = -1, _handler: DropItemHandler = null) -> DropItemConfig:
     var config: = DropItemConfig.new()

@@ -78,10 +78,13 @@ func _physics_process(delta: float) -> void :
         return
     if parent.instance.sleep:
         return
+    if !parent.componentAlive:
+        return
     if TowerDefenseManager.currentControl && !TowerDefenseManager.currentControl.isGameRunning:
         return
     for i in marker.size():
-        light[i].global_position = marker[i].global_position
+        if is_instance_valid(light[i]) && is_instance_valid(marker[i]):
+            light[i].global_position = marker[i].global_position
     var useProductFlag: bool = true
     if parent is TowerDefensePlant && _IZMMode:
         useProductFlag = false
@@ -98,9 +101,10 @@ func _physics_process(delta: float) -> void :
                 return
             if marker.size() > 0:
                 for i in marker.size():
-                    if !onlyEmit:
-                        Create(marker[i].global_position, num)
-                    product.emit(i, num)
+                    if is_instance_valid(marker[i]):
+                        if !onlyEmit:
+                            Create(marker[i].global_position, num)
+                        product.emit(i, num)
             else:
                 if !onlyEmit:
                     Create(parent.global_position, num)
@@ -201,6 +205,8 @@ func Destroy(character: TowerDefenseCharacter) -> void :
     if character.isShovel:
         return
     if parent.instance.sleep:
+        return
+    if !parent.componentAlive:
         return
     if !parent.die:
         return

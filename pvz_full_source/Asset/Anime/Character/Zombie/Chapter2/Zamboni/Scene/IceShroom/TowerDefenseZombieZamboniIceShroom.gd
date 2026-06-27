@@ -57,7 +57,8 @@ func WalkProcessing(delta: float) -> void :
         if global_position.x < TowerDefenseManager.GetMapGroundRight():
             AudioManager.AudioPlay("Zamboni", AudioManagerEnum.TYPE.SFX)
             audioPlay = true
-    TowerDefenseManager.SetIceCapPos(gridPos.y, iceCapMarker.global_position)
+    if !instance.hypnoses:
+        TowerDefenseManager.SetIceCapPos(gridPos.y, iceCapMarker.global_position)
 
     if attackComponent.CanAttack():
         if attackComponent.target is TowerDefensePlant:
@@ -79,7 +80,10 @@ func WalkProcessing(delta: float) -> void :
 
 func HitpointsEmpty() -> void :
     super.HitpointsEmpty()
-    Destroy()
+    if !isExplode:
+        Destroy()
+    else:
+        spritePause = true
 
 func DamagePointReach(damangePointName: String) -> void :
     super.DamagePointReach(damangePointName)
@@ -114,7 +118,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantIceShroom")
     if cell.CanPacketPlant(packetConfig):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos)
-        character.WeakUp()
+        character.WakeUp()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

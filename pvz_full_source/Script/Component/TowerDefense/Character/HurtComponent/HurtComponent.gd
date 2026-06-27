@@ -17,18 +17,26 @@ func _ready() -> void :
 
 func HurtWithAttackConfig(attackConfig: AttackConfig, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, createDamagePart: bool = true) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplyHurtWithAttackConfig(parent, attackConfig, playSplatAudio, velocity, createDamagePart)
 
 func Hurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, createDamagePart: bool = true) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplyHurt(parent, num, playSplatAudio, velocity, true, createDamagePart)
 
 func SkipInvincibleHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, createDamagePart: bool = true) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplySkipInvincibleHurt(parent, num, playSplatAudio, velocity, true, createDamagePart)
 
 func Health(num: float) -> void :
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     if is_instance_valid(parent.resourceSpawnComponent):
         parent.resourceSpawnComponent.HealthEffect(num)
         return
@@ -42,20 +50,30 @@ func Health(num: float) -> void :
 
 func BowlingHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, hitShield: bool = true, createDamagePart: bool = true) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplySkipInvincibleHurt(parent, num, playSplatAudio, velocity, hitShield, createDamagePart)
 
 func SmashHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplySmashHurt(parent, num, playSplatAudio, velocity)
 
 func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplyExplodeHurt(parent, num, type, playSplatAudio, velocity)
 
 func FlagHurt(num: float, damageFlags: int, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplyFlagHurt(parent, num, damageFlags, playSplatAudio, velocity)
 
 func ProjectileHurt(projectile: TowerDefenseProjectile, projectileConfig: TowerDefenseProjectileConfig, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, isRange: bool = false) -> float:
     parent.Bright()
+    if is_instance_valid(parent.showHealthComponent):
+        parent.showHealthComponent.MarkDirty()
     return _pipeline.ApplyProjectileHurt(parent, projectile, projectileConfig, playSplatAudio, velocity, isRange)

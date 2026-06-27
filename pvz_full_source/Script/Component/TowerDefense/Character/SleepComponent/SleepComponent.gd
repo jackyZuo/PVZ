@@ -57,6 +57,8 @@ func SleepExited() -> void :
     parent.instance.sleep = false
     if TowerDefenseManager.IsIZMMode():
         parent.timeScaleInit = parent.timeScaleSave
+    if parent is TowerDefenseZombie && !parent.die:
+        parent.Walk()
 
 
 

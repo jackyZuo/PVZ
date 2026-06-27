@@ -2,10 +2,17 @@
 
 [ext_resource type="Resource" uid="uid://ck1bthptd3rk2" path="res://Asset/Anime/Character/Plant/Chapter8/HammerLight/Config/TowerDefensePlantHammerLight.tres" id="1"]
 [ext_resource type="Script" uid="uid://c6d3po5310ugw" path="res://Resource/TowerDefense/PacketBank/Packet/TowerDefensePacketConfig.gd" id="2"]
+[ext_resource type="Script" uid="uid://p7yhpfahgp8d" path="res://Resource/UnlockCondition/UnlockConditionLevelFinishConfig.gd" id="3"]
+
+[sub_resource type="Resource" id="Resource_i0dnw"]
+script = ExtResource("3")
+levelSaveKey = "Level8_3"
+metadata/_custom_type_script = "uid://p7yhpfahgp8d"
 
 [resource]
 script = ExtResource("2")
 saveKey = "PlantHammerLight"
+unlockCheckList = [SubResource("Resource_i0dnw")]
 name = "TOWERDEFENSE_PLANT_HAMMERLIGHT_NAME"
 describe = "TOWERDEFENSE_PLANT_HAMMERLIGHT_EXPRESTION"
 handbookDescribe = "TOWERDEFENSE_PLANT_HAMMERLIGHT_HANDBOOK_EXPRESTION"
@@ -14,5 +21,6 @@ packetAnimeOffset = Vector2(20, 40)
 packetAnimeScale = Vector2(0.4, 0.4)
 characterConfig = ExtResource("1")
 override = null
+canPlaceOnZombie = true
 Cell/plantUseCell = true
 metadata/_custom_type_script = "uid://c6d3po5310ugw"

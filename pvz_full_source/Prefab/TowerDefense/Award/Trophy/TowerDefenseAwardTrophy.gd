@@ -50,6 +50,7 @@ func CreateCoin() -> void :
     while num >= 1000:
         var item = TowerDefenseManager.FallingObjectItemCreate(ObjectManagerConfig.OBJECT.COIN_DIAMOND, global_position - Vector2(0, 40), 120, Vector2(randf_range(-100.0, 100.0), -400.0), 980.0)
         item.gridPos.y = 200
+        item.canMagnet = false
         get_tree().create_timer(1.0, false).timeout.connect(item.moveComponent.MoveClear)
         get_tree().create_timer(1.5, false).timeout.connect(item.Collection)
         num -= 1000
@@ -57,6 +58,7 @@ func CreateCoin() -> void :
     while num >= 50:
         var item = TowerDefenseManager.FallingObjectItemCreate(ObjectManagerConfig.OBJECT.COIN_GOLD, global_position - Vector2(0, 40), 120, Vector2(randf_range(-100.0, 100.0), -400.0), 980.0)
         item.gridPos.y = 200
+        item.canMagnet = false
         get_tree().create_timer(1.0, false).timeout.connect(item.moveComponent.MoveClear)
         get_tree().create_timer(1.5, false).timeout.connect(item.Collection)
         num -= 50
@@ -64,6 +66,7 @@ func CreateCoin() -> void :
     while num >= 10:
         var item = TowerDefenseManager.FallingObjectItemCreate(ObjectManagerConfig.OBJECT.COIN_SILVER, global_position - Vector2(0, 40), 120, Vector2(randf_range(-100.0, 100.0), -400.0), 980.0)
         item.gridPos.y = 200
+        item.canMagnet = false
         get_tree().create_timer(1.0, false).timeout.connect(item.moveComponent.MoveClear)
         get_tree().create_timer(1.5, false).timeout.connect(item.Collection)
         num -= 10

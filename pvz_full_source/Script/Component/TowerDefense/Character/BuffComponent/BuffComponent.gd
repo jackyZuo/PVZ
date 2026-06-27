@@ -130,6 +130,7 @@ const BUFF_SAVE_FIELDS: Dictionary = {
     "NormalHit": [], 
     "Squid": ["time", "currentTime"], 
     "TabooBean": ["time", "currentTime", "blink"], 
+    "Coffee": ["timeScaleValue", "time", "currentTime", "blink"], 
 }
 
 func ExportSave() -> Array[Dictionary]:
@@ -157,5 +158,15 @@ func ImportSave(data: Array[Dictionary]) -> void :
         for field: String in fields:
             if buffData.has(field):
                 buff.set(field, buffData[field])
+
+
+
+        if buff is TowerDefenseCharacterBuffHypnoses:
+            var hypnosesBuff: TowerDefenseCharacterBuffHypnoses = buff as TowerDefenseCharacterBuffHypnoses
+            if hypnosesBuff.saveCamp != TowerDefenseEnum.CHARACTER_CAMP.NOONE:
+                if hypnosesBuff.saveCamp == TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE:
+                    parent.camp = TowerDefenseEnum.CHARACTER_CAMP.PLANT
+                elif hypnosesBuff.saveCamp == TowerDefenseEnum.CHARACTER_CAMP.PLANT:
+                    parent.camp = TowerDefenseEnum.CHARACTER_CAMP.ZOMBIE
         buffDictionary[buff.key] = buff
         buffAdd.emit(buff.key)

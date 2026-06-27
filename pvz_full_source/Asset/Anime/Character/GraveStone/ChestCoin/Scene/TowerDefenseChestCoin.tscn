@@ -33,17 +33,6 @@ image = SubResource("Image_m8dbn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tvaj0"]
 shader = ExtResource("6")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_bj44g")
@@ -58,9 +47,13 @@ shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0)]
 shader_parameter/mediaReplaceUse = [false]
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chest"]
+size = Vector2(36, 50)
+
 [node name="TowerDefenseChestCoin" unique_id=993489319 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
 script = ExtResource("2")
 rise = false
+canBeAttacked = false
 config = ExtResource("3")
 sprite = NodePath("SpriteGroup/TransformPoint/ChestCoin")
 PreviewDamagePointPersontage = 1.0
@@ -74,3 +67,6 @@ texture = ExtResource("4")
 material = SubResource("ShaderMaterial_tvaj0")
 instance_shader_parameters/frameIndex = 0.62436017179599
 position = Vector2(0, -18)
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1378956158) index="0" unique_id=813309339]
+shape = SubResource("RectangleShape2D_chest")

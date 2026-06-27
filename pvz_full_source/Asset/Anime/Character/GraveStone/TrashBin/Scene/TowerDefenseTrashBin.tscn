@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://joi8kosajoll"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://polusjy1c8s0" path="res://Asset/Anime/Character/GraveStone/TrashBin/Scene/TowerDefenseTrashBin.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bjr7thx8c4nig" path="res://Asset/Anime/Character/GraveStone/TrashBin/Config/TowerDefenseTrashBin.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://caikk1386wqmq" path="res://Asset/Anime/Character/GraveStone/TrashBin/TrashBin.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="5"]
+
+[sub_resource type="Image" id="Image_fv83t"]
+data = {
+"data": PackedByteArray("AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_65upa"]
+image = SubResource("Image_fv83t")
+
+[sub_resource type="Image" id="Image_1rqu8"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 1,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rg5kb"]
+image = SubResource("Image_1rqu8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4piqs"]
+shader = ExtResource("5")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_rg5kb")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_65upa")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(121, 112)
+shader_parameter/uvs = [Rect2(0, 0, 121, 112)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseTrashBin" unique_id=993489319 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+rise = false
+canBeAttacked = false
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/TrashBin")
+camp = 2
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12, 36)
+scale = Vector2(1.826, 1.565)
+
+[node name="TrashBin" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1313846696 instance=ExtResource("4")]
+material = SubResource("ShaderMaterial_4piqs")
+instance_shader_parameters/frameIndex = 0.9421372837673262
+position = Vector2(-8, 0)
+scale = Vector2(0.75, 0.75)

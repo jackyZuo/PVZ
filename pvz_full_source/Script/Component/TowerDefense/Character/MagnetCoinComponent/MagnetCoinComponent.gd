@@ -6,7 +6,7 @@ signal coinGet(num: int)
 @export var magnetTime: float = 5.0
 @export var magnetNum: int = -1
 @export var useRegistryCoinTypes: bool = true
-@export_enum("Silver", "Gold", "Diamond", "LuckyBag", "YQ", "YB1", "YB2") var objectList: Array[int] = [0, 1, 2, 4, 5, 6]
+@export_enum("Silver", "Gold", "Diamond", "LuckyBag", "YQ", "YB1", "YB2", "GoldShard") var objectList: Array[int] = [0, 1, 2, 4, 5, 6]
 
 var parent: TowerDefenseCharacter
 
@@ -44,6 +44,12 @@ func _exit_tree() -> void :
         coin.add_to_group("Coin")
         if GameSaveManager.GetFeatureValue("CoinCollect") && get_tree().get_node_count_in_group("GoldMagnet") <= 0:
             coin.Collection()
+        else:
+            coin.over = false
+            coin.spriteNode.position = Vector2.ZERO
+            coin.height = 0.0
+            coin.moveComponent.SetVelocity(Vector2(randf_range(-50, 50), -200))
+            coin.moveComponent.SetGravity(980.0)
 
 func _physics_process(delta: float) -> void :
     if !alive || !is_instance_valid(parent):

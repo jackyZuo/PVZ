@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://b5rl8wvksy61j" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Config/TowerDefenseZombieFootballFumeShroom.tres" id="3"]
 [ext_resource type="Resource" uid="uid://b8w8htp4yuf7k" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://d0c6qmcgnjnb0" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://dgoild34vd4mw" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorHelmet.tres" id="6"]
-[ext_resource type="Resource" uid="uid://bb01ieo87s4co" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://bb01ieo87s4co" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dgoild34vd4mw" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorHelmet.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bxg0vf8osyfib" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Sprite/FumeShroom/ZombieFootballFumeShroom.tscn" id="8"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="9"]
 [ext_resource type="Texture2D" uid="uid://bgqrj8e8qsgw8" path="res://Asset/Config/Projectile/Puff/Sprite/PuffShroom/ProjectilePuffShroomPuff.png" id="10"]
@@ -39,17 +39,6 @@ image = SubResource("Image_h4n3e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y2qf1"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_sqj22")
@@ -90,17 +79,6 @@ image = SubResource("Image_pcmfn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_31p57"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_823se")
@@ -169,16 +147,16 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("6")
+"Helmet": ExtResource("7")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/HelmentSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/HelmentSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballFumeShroom/HelmentSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
 position = Vector2(9, 37)

@@ -4,13 +4,20 @@ class_name TowerDefensePacketEventChangePacket extends TowerDefensePacketEventBa
 
 var packetConfig: TowerDefensePacketConfig
 
+
+var count: int = 1
+
 @warning_ignore("unused_parameter")
 func Init(data: Dictionary) -> void :
     levelPacketConfig = TowerDefenseLevelPacketConfig.new()
     levelPacketConfig.Init(data)
+    count = data.get("Count", 1)
 
 @warning_ignore("unused_parameter")
 func Execute(packet: TowerDefenseInGamePacketShow) -> void :
+    if count > 1:
+        count -= 1
+        return
     if !is_instance_valid(packetConfig):
         if is_instance_valid(levelPacketConfig):
             packetConfig = levelPacketConfig.GetPacket()
@@ -18,7 +25,10 @@ func Execute(packet: TowerDefenseInGamePacketShow) -> void :
         packet.Init(packetConfig)
 
 func Export() -> Dictionary:
-    return {
+    var data: Dictionary = {
         "EventName" = "ChangePacket", 
         "Value" = levelPacketConfig.Export() if is_instance_valid(levelPacketConfig) else {}, 
     }
+    if count > 1:
+        data["Count"] = count
+    return data

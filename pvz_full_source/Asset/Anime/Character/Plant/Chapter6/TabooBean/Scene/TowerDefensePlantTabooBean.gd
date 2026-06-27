@@ -8,5 +8,5 @@ func Explode() -> void :
                 continue
             if character.camp != camp:
                 continue
-            character.instance.wakeUp = true
+            character.WakeUp()
             character.BuffAdd(TowerDefenseCharacterBuffTabooBean.new())

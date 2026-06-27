@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dothaorbc50kf"]
+
+[ext_resource type="Script" uid="uid://bwpkekpvo7sto" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffButter.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtvfjfgy00epu" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.gd" id="2"]
+[ext_resource type="Script" uid="uid://gwcq00h6i7sn" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.gd" id="3"]
+[ext_resource type="Script" uid="uid://cpk1k0s7x63ej" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://k2ebwj24ofiw" path="res://Asset/Config/Projectile/CabbageCob/Sprite/CabbageCobXButter/ProjectileCabbageCobXButter.tscn" id="5"]
+[ext_resource type="Script" uid="uid://c56qfvul3rlxf" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.gd" id="6"]
+
+[sub_resource type="Resource" id="Resource_kq4bo"]
+script = ExtResource("1")
+time = 4.0
+butterSprite = null
+metadata/_custom_type_script = "uid://bwpkekpvo7sto"
+
+[sub_resource type="Resource" id="Resource_tim2n"]
+script = ExtResource("2")
+buffList = [SubResource("Resource_kq4bo")]
+metadata/_custom_type_script = "uid://dtvfjfgy00epu"
+
+[sub_resource type="Resource" id="Resource_yuy0r"]
+script = ExtResource("3")
+projectileName = &"Butter"
+baseDamage = 40.0
+damageFlags = 2
+Flag/Damage = 2
+Flag/FireMethod = 1
+Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_58a7j"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_yuy0r")
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[sub_resource type="Resource" id="Resource_40uje"]
+script = ExtResource("3")
+projectileName = &"Butter"
+baseDamage = 40.0
+damageFlags = 2
+catapultHeight = 800.0
+Flag/Damage = 2
+Flag/FireMethod = 1
+Flag/Collision = 1
+"Override/Hit Chests Scale" = false
+"Override/Hit Nut Scale" = false
+"Override/Hit Frozen Scale" = false
+"Override/Catapult Height" = false
+"Override/Penetrate Num" = false
+"Override/Penetrate Over Back" = false
+"Override/Back Out Ground" = false
+"Override/Back Duration" = false
+"Override/Rotate Follow Velocity" = false
+metadata/_custom_type_script = "uid://gwcq00h6i7sn"
+
+[sub_resource type="Resource" id="Resource_3442b"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_40uje")
+metadata/_custom_type_script = "uid://cpk1k0s7x63ej"
+
+[resource]
+script = ExtResource("6")
+name = "CabbageCobXButter"
+baseDamage = 100.0
+projectileScene = ExtResource("5")
+splatAudio = "ProjectileHit"
+splatScene = null
+hitEffect = null
+hitTargetEventList = [SubResource("Resource_3442b")]
+hitCharacterEventList = [SubResource("Resource_tim2n")]
+hitGroundEventList = [SubResource("Resource_58a7j")]
+rotateFollowVelocity = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)

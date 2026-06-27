@@ -100,9 +100,9 @@ func CreateRandom() -> void :
                 if instance.hypnoses:
                     zombie.Hypnoses(-1, false)
 
-                if is_instance_valid(TowerDefenseBattleProcessWave.instance):
-                    TowerDefenseBattleProcessWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
-                    TowerDefenseBattleProcessWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
+                if is_instance_valid(TowerDefenseBattleFeatureWave.instance):
+                    TowerDefenseBattleFeatureWave.instance.currentHpPointTotal += zombie.GetTotalHitPoint() / 3
+                    TowerDefenseBattleFeatureWave.instance.currentHpPoint += zombie.GetTotalHitPoint() / 3
 
                 if Global.isMultiplayerMode and MultiPlayerManager.isHost:
                     var control = TowerDefenseManager.currentControl
@@ -122,7 +122,7 @@ func Purify() -> void :
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantPresentBox")
     if cell.CanPacketPlant(packetConfig):
         var character: TowerDefenseCharacter = packetConfig.Plant(gridPos)
-        character.WeakUp.call_deferred()
+        character.WakeUp.call_deferred()
         if instance.hypnoses:
             character.Hypnoses()
         if Global.isMultiplayerMode and MultiPlayerManager.isHost:

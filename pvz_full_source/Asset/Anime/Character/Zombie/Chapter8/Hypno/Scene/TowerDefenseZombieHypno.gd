@@ -58,7 +58,7 @@ func DestroySet() -> void :
 
     var projectileData: TowerDefenseProjectileCreateData = TowerDefenseProjectileCreateData.new(&"HypnoPuff")
     projectileData.baseDamage = 0.0
-    projectileData.fireMethodFlags = TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.SHOOTER
-    var projectile: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByData(null, null, 0, global_position, Vector2(-300 * scale.x, 0), projectileData, -1, camp, Vector2.ZERO)
+    projectileData.fireMethodFlags = TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.TRACK
+    var projectile: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByData(null, null, 0, global_position, Vector2(300 * scale.x, 0), projectileData, -1, camp, Vector2.ZERO)
     projectile.projectileBodyNode.scale.x = spriteGroup.scale.x
     projectile.gridPos = gridPos

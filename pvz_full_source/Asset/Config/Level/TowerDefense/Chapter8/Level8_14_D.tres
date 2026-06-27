@@ -1,0 +1,3903 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bqh1igpi4j8w0"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter8/Level8_14_D.json" id="1"]
+[ext_resource type="Script" uid="uid://cvgtvji3a1q0m" path="res://Resource/TowerDefense/Level/Event/Gravestone/TowerDefenseLevelEventGravestoneCreateRandom.gd" id="2"]
+[ext_resource type="Script" uid="uid://dvah3vrclcs3o" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.gd" id="3"]
+[ext_resource type="Script" uid="uid://bcu3gorq4ef8d" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.gd" id="4"]
+[ext_resource type="Script" uid="uid://dh6dw4svladxc" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.gd" id="5"]
+[ext_resource type="Script" uid="uid://ccfqe6y4qcaji" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.gd" id="6"]
+[ext_resource type="Script" uid="uid://drd8ys8knej3u" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.gd" id="7"]
+[ext_resource type="Script" uid="uid://defiqin5g0ir7" path="res://Resource/TowerDefense/Level/Dynamic/TowerDefenseLevelDynamicConfig.gd" id="8"]
+[ext_resource type="Script" uid="uid://dhtx7l3tlrgcs" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.gd" id="9"]
+[ext_resource type="Script" uid="uid://8ona8byq7o7a" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.gd" id="10"]
+[ext_resource type="Script" uid="uid://dwrgy38cscgbk" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.gd" id="11"]
+[ext_resource type="Script" uid="uid://dtgcukbvfw5hk" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.gd" id="12"]
+[ext_resource type="Script" uid="uid://b2wtvsnyc4qk5" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.gd" id="13"]
+
+[sub_resource type="Resource" id="Resource_r37vn"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetHealth"]
+gravestoneNum = 7
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_e1ol8"]
+script = ExtResource("3")
+
+[sub_resource type="Resource" id="Resource_4708p"]
+script = ExtResource("4")
+
+[sub_resource type="Resource" id="Resource_sismy"]
+script = ExtResource("5")
+packetName = "PlantCaltropZ"
+override = null
+
+[sub_resource type="Resource" id="Resource_51ktw"]
+script = ExtResource("7")
+open = false
+begin = 500
+
+[sub_resource type="Resource" id="Resource_oxpq7"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_rdu2g"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_4ywer"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_rtqym"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_rg8mf"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_cfxsw"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_b4br3"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="Resource_t6ur1"]
+script = ExtResource("10")
+
+[sub_resource type="Resource" id="Resource_342yg"]
+script = ExtResource("11")
+points = 600
+zombiePool = ["ZombieNormalPeaShooterSingle"]
+
+[sub_resource type="Resource" id="Resource_f561d"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_342yg")
+
+[sub_resource type="Resource" id="Resource_vxd5i"]
+script = ExtResource("11")
+points = 600
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_xr3qc"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_vxd5i")
+
+[sub_resource type="Resource" id="Resource_6hcrf"]
+script = ExtResource("11")
+points = 600
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_dloob"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+dynamic = SubResource("Resource_6hcrf")
+
+[sub_resource type="Resource" id="Resource_t53rv"]
+script = ExtResource("11")
+points = 1000
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_32dft"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_rqj2t"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_32dft")]
+dynamic = SubResource("Resource_t53rv")
+
+[sub_resource type="Resource" id="Resource_4o4pk"]
+script = ExtResource("11")
+points = 900
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_1srxn"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+override = null
+
+[sub_resource type="Resource" id="Resource_n28aa"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_1srxn")]
+dynamic = SubResource("Resource_4o4pk")
+
+[sub_resource type="Resource" id="Resource_62wrg"]
+script = ExtResource("11")
+points = 700
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_aednt"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+override = null
+
+[sub_resource type="Resource" id="Resource_lyvoq"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_i3yep"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_aednt"), SubResource("Resource_lyvoq")]
+dynamic = SubResource("Resource_62wrg")
+
+[sub_resource type="Resource" id="Resource_6kibp"]
+script = ExtResource("11")
+points = 900
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_pyqe2"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_glgl4"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+override = null
+
+[sub_resource type="Resource" id="Resource_olle7"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_oxpbr"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_pyqe2"), SubResource("Resource_glgl4"), SubResource("Resource_olle7")]
+dynamic = SubResource("Resource_6kibp")
+
+[sub_resource type="Resource" id="Resource_swwdk"]
+script = ExtResource("11")
+points = 1000
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_631ce"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_q1gh8"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_xyaru"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_4sg51"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+override = null
+
+[sub_resource type="Resource" id="Resource_2h2cw"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_q1gh8"), SubResource("Resource_xyaru"), SubResource("Resource_4sg51")]
+dynamic = SubResource("Resource_swwdk")
+event = [SubResource("Resource_631ce")]
+
+[sub_resource type="Resource" id="Resource_3omx5"]
+script = ExtResource("11")
+points = 1100
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_1ipq3"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_sob43"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_v5sj2"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+override = null
+
+[sub_resource type="Resource" id="Resource_rm8j6"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_0hxe0"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+override = null
+
+[sub_resource type="Resource" id="Resource_81owc"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+override = null
+
+[sub_resource type="Resource" id="Resource_3d62o"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_sob43"), SubResource("Resource_v5sj2"), SubResource("Resource_rm8j6"), SubResource("Resource_0hxe0"), SubResource("Resource_81owc")]
+dynamic = SubResource("Resource_3omx5")
+event = [SubResource("Resource_1ipq3")]
+
+[sub_resource type="Resource" id="Resource_mdm30"]
+script = ExtResource("11")
+points = 1200
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_jm8w4"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_6y0pi"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_4pry1"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ppymb"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_jl2fk"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+override = null
+
+[sub_resource type="Resource" id="Resource_e8u5d"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+override = null
+
+[sub_resource type="Resource" id="Resource_5nybq"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+override = null
+
+[sub_resource type="Resource" id="Resource_bhrdp"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_6y0pi"), SubResource("Resource_4pry1"), SubResource("Resource_ppymb"), SubResource("Resource_jl2fk"), SubResource("Resource_e8u5d"), SubResource("Resource_5nybq")]
+dynamic = SubResource("Resource_mdm30")
+event = [SubResource("Resource_jm8w4")]
+
+[sub_resource type="Resource" id="Resource_ob524"]
+script = ExtResource("11")
+points = 1300
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_6ki78"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_r5pcl"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+override = null
+
+[sub_resource type="Resource" id="Resource_1mcy6"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_xyjno"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_snt5e"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+override = null
+
+[sub_resource type="Resource" id="Resource_b7i10"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+override = null
+
+[sub_resource type="Resource" id="Resource_yjgdb"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+override = null
+
+[sub_resource type="Resource" id="Resource_e1i0w"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_jxx11"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_r5pcl"), SubResource("Resource_1mcy6"), SubResource("Resource_xyjno"), SubResource("Resource_snt5e"), SubResource("Resource_b7i10"), SubResource("Resource_yjgdb"), SubResource("Resource_e1i0w")]
+dynamic = SubResource("Resource_ob524")
+event = [SubResource("Resource_6ki78")]
+
+[sub_resource type="Resource" id="Resource_gbvh4"]
+script = ExtResource("11")
+points = 1200
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_1ddpy"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_5nm80"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_govpr"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_0g6wb"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_hy1ex"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+override = null
+
+[sub_resource type="Resource" id="Resource_e15gn"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_jxsgs"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+override = null
+
+[sub_resource type="Resource" id="Resource_628aw"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_lbchm"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_5nm80"), SubResource("Resource_govpr"), SubResource("Resource_0g6wb"), SubResource("Resource_hy1ex"), SubResource("Resource_e15gn"), SubResource("Resource_jxsgs"), SubResource("Resource_628aw")]
+dynamic = SubResource("Resource_gbvh4")
+event = [SubResource("Resource_1ddpy")]
+
+[sub_resource type="Resource" id="Resource_vu2kq"]
+script = ExtResource("11")
+points = 1200
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_liulk"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_ybcgp"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ahiwy"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_iog77"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_385l2"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+override = null
+
+[sub_resource type="Resource" id="Resource_k6h2e"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ncx3l"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+override = null
+
+[sub_resource type="Resource" id="Resource_0er5n"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_kdmlg"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_yxvt6"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_ybcgp"), SubResource("Resource_ahiwy"), SubResource("Resource_iog77"), SubResource("Resource_385l2"), SubResource("Resource_k6h2e"), SubResource("Resource_ncx3l"), SubResource("Resource_0er5n"), SubResource("Resource_kdmlg")]
+dynamic = SubResource("Resource_vu2kq")
+event = [SubResource("Resource_liulk")]
+
+[sub_resource type="Resource" id="Resource_x4bll"]
+script = ExtResource("11")
+points = 1400
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_mld78"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_rnfuc"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_bc88y"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ow2gs"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_j7s6i"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_vm3wq"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_heaf6"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_5g36g"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_dypdy"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_8r7qh"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_nu6hx"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_rnfuc"), SubResource("Resource_bc88y"), SubResource("Resource_ow2gs"), SubResource("Resource_j7s6i"), SubResource("Resource_vm3wq"), SubResource("Resource_heaf6"), SubResource("Resource_5g36g"), SubResource("Resource_dypdy"), SubResource("Resource_8r7qh")]
+dynamic = SubResource("Resource_x4bll")
+event = [SubResource("Resource_mld78")]
+
+[sub_resource type="Resource" id="Resource_37ghm"]
+script = ExtResource("11")
+points = 1300
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_ck0i0"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_5ykcd"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_goimy"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_nyahg"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_l1w2f"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_dvjcw"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_myfca"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_tu64m"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_br3rk"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_7cq3d"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+override = null
+
+[sub_resource type="Resource" id="Resource_ho332"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_5ykcd"), SubResource("Resource_goimy"), SubResource("Resource_nyahg"), SubResource("Resource_l1w2f"), SubResource("Resource_dvjcw"), SubResource("Resource_myfca"), SubResource("Resource_tu64m"), SubResource("Resource_br3rk"), SubResource("Resource_7cq3d")]
+dynamic = SubResource("Resource_37ghm")
+event = [SubResource("Resource_ck0i0")]
+
+[sub_resource type="Resource" id="Resource_wfjyw"]
+script = ExtResource("11")
+points = 1400
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_ti5j6"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_lw4me"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_po1nw"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_nnjwe"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_qncra"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_2mjqi"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_jjp0m"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_i0wh0"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_wbv7o"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_uwy05"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_lw4me"), SubResource("Resource_po1nw"), SubResource("Resource_nnjwe"), SubResource("Resource_qncra"), SubResource("Resource_2mjqi"), SubResource("Resource_jjp0m"), SubResource("Resource_i0wh0"), SubResource("Resource_wbv7o")]
+dynamic = SubResource("Resource_wfjyw")
+event = [SubResource("Resource_ti5j6")]
+
+[sub_resource type="Resource" id="Resource_k2fnk"]
+script = ExtResource("11")
+points = 1500
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_1ein2"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_s26j2"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_evqet"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_yunup"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_1ats0"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_tpogp"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_sej1x"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_dg57j"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_mkfn7"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_ol0xf"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_1ein2"), SubResource("Resource_s26j2"), SubResource("Resource_evqet"), SubResource("Resource_yunup"), SubResource("Resource_1ats0"), SubResource("Resource_tpogp"), SubResource("Resource_sej1x"), SubResource("Resource_dg57j"), SubResource("Resource_mkfn7")]
+dynamic = SubResource("Resource_k2fnk")
+
+[sub_resource type="Resource" id="Resource_sy7d6"]
+script = ExtResource("11")
+points = 1500
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_sjqfg"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_he6bi"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_kjm7x"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_ixorm"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_4u3j4"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_jphax"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_fop5o"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_siwa5"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_dhqxn"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_pkn3k"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_he6bi"), SubResource("Resource_kjm7x"), SubResource("Resource_ixorm"), SubResource("Resource_4u3j4"), SubResource("Resource_jphax"), SubResource("Resource_fop5o"), SubResource("Resource_siwa5"), SubResource("Resource_dhqxn")]
+dynamic = SubResource("Resource_sy7d6")
+event = [SubResource("Resource_sjqfg")]
+
+[sub_resource type="Resource" id="Resource_tnik1"]
+script = ExtResource("11")
+points = 1600
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_um0uu"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_su4mr"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_ycuvq"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_moiw7"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_f7b2b"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_6e3d0"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_m7nri"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_4ulf0"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_0qyqd"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_x65nf"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_um0uu"), SubResource("Resource_su4mr"), SubResource("Resource_ycuvq"), SubResource("Resource_moiw7"), SubResource("Resource_f7b2b"), SubResource("Resource_6e3d0"), SubResource("Resource_m7nri"), SubResource("Resource_4ulf0"), SubResource("Resource_0qyqd")]
+dynamic = SubResource("Resource_tnik1")
+
+[sub_resource type="Resource" id="Resource_els7u"]
+script = ExtResource("11")
+points = 1700
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_17nm1"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_s1wvq"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_ttus1"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_27cu0"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_2pgk0"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_vly5b"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_57err"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_uu48a"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_aulqe"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_17nm1"), SubResource("Resource_s1wvq"), SubResource("Resource_ttus1"), SubResource("Resource_27cu0"), SubResource("Resource_2pgk0"), SubResource("Resource_vly5b"), SubResource("Resource_57err"), SubResource("Resource_uu48a")]
+dynamic = SubResource("Resource_els7u")
+
+[sub_resource type="Resource" id="Resource_xmf18"]
+script = ExtResource("11")
+points = 2000
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_5sfrj"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 4
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_yjosc"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_88yt2"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_upw44"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_oiqmw"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_3hncf"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_6f0ym"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_fo2tt"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_7t8u0"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_f2ks5"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_4dlky"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_yjosc"), SubResource("Resource_88yt2"), SubResource("Resource_upw44"), SubResource("Resource_oiqmw"), SubResource("Resource_3hncf"), SubResource("Resource_6f0ym"), SubResource("Resource_fo2tt"), SubResource("Resource_7t8u0"), SubResource("Resource_f2ks5")]
+dynamic = SubResource("Resource_xmf18")
+event = [SubResource("Resource_5sfrj")]
+
+[sub_resource type="Resource" id="Resource_n428n"]
+script = ExtResource("11")
+points = 2200
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_3xahy"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_cksl1"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_cwxr1"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_8v2kj"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_uyeee"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_uwu0c"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_122v4"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_f7ua3"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_o2rlj"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_sooa4"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_5fnrv"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_cksl1"), SubResource("Resource_cwxr1"), SubResource("Resource_8v2kj"), SubResource("Resource_uyeee"), SubResource("Resource_uwu0c"), SubResource("Resource_122v4"), SubResource("Resource_f7ua3"), SubResource("Resource_o2rlj"), SubResource("Resource_sooa4")]
+dynamic = SubResource("Resource_n428n")
+event = [SubResource("Resource_3xahy")]
+
+[sub_resource type="Resource" id="Resource_opa4u"]
+script = ExtResource("11")
+points = 2400
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_y44dy"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_qir3t"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_07u1m"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_djat1"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_l31q3"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_5n3sw"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_vebtx"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_w0tw2"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_dn7nj"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_j3fq8"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_p4f3x"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_qir3t"), SubResource("Resource_07u1m"), SubResource("Resource_djat1"), SubResource("Resource_l31q3"), SubResource("Resource_5n3sw"), SubResource("Resource_vebtx"), SubResource("Resource_w0tw2"), SubResource("Resource_dn7nj"), SubResource("Resource_j3fq8")]
+dynamic = SubResource("Resource_opa4u")
+event = [SubResource("Resource_y44dy")]
+
+[sub_resource type="Resource" id="Resource_f6t2g"]
+script = ExtResource("11")
+points = 2500
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_xigdl"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_khosy"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_lmxar"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_de8o5"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_u76sh"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_5v5tx"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_to3or"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_x26av"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_83pac"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_lschg"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_qulow"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_khosy"), SubResource("Resource_lmxar"), SubResource("Resource_de8o5"), SubResource("Resource_u76sh"), SubResource("Resource_5v5tx"), SubResource("Resource_to3or"), SubResource("Resource_x26av"), SubResource("Resource_83pac"), SubResource("Resource_lschg")]
+dynamic = SubResource("Resource_f6t2g")
+event = [SubResource("Resource_xigdl")]
+
+[sub_resource type="Resource" id="Resource_5cn6v"]
+script = ExtResource("11")
+points = 2500
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_32cs0"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_luxxr"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_mew7q"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_fo6ms"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_didrj"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_6uabl"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_u4bre"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_rhgwf"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_h8d0j"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_w68b2"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_nmyya"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_luxxr"), SubResource("Resource_mew7q"), SubResource("Resource_fo6ms"), SubResource("Resource_didrj"), SubResource("Resource_6uabl"), SubResource("Resource_u4bre"), SubResource("Resource_rhgwf"), SubResource("Resource_h8d0j"), SubResource("Resource_w68b2")]
+dynamic = SubResource("Resource_5cn6v")
+event = [SubResource("Resource_32cs0")]
+
+[sub_resource type="Resource" id="Resource_v644c"]
+script = ExtResource("11")
+points = 2600
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_77l5q"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_vjxtx"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_auawt"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_bbtry"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_cynjg"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_3yxkr"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_k1iah"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_c5qxf"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_mju73"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_6oe1i"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_wjgfp"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_vjxtx"), SubResource("Resource_auawt"), SubResource("Resource_bbtry"), SubResource("Resource_cynjg"), SubResource("Resource_3yxkr"), SubResource("Resource_k1iah"), SubResource("Resource_c5qxf"), SubResource("Resource_mju73"), SubResource("Resource_6oe1i")]
+dynamic = SubResource("Resource_v644c")
+event = [SubResource("Resource_77l5q")]
+
+[sub_resource type="Resource" id="Resource_rqavp"]
+script = ExtResource("11")
+points = 2600
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_kfxh6"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestoneNum = 3
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_1vfk0"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_cmdmm"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_gjkxx"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 3
+override = null
+
+[sub_resource type="Resource" id="Resource_i0jbh"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_p3ycc"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_d3hf4"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_dihe4"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_ha08n"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 4
+override = null
+
+[sub_resource type="Resource" id="Resource_j4ecu"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+override = null
+
+[sub_resource type="Resource" id="Resource_11syq"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_1vfk0"), SubResource("Resource_cmdmm"), SubResource("Resource_gjkxx"), SubResource("Resource_i0jbh"), SubResource("Resource_p3ycc"), SubResource("Resource_d3hf4"), SubResource("Resource_dihe4"), SubResource("Resource_ha08n"), SubResource("Resource_j4ecu")]
+dynamic = SubResource("Resource_rqavp")
+event = [SubResource("Resource_kfxh6")]
+
+[sub_resource type="Resource" id="Resource_g6wbf"]
+script = ExtResource("11")
+points = 3000
+zombiePool = ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+
+[sub_resource type="Resource" id="Resource_ftvhn"]
+script = ExtResource("2")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"]
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_lpj5g"]
+script = ExtResource("13")
+zombie = "ZombieNormalWallnut"
+num = 10
+override = null
+
+[sub_resource type="Resource" id="Resource_dc31l"]
+script = ExtResource("13")
+zombie = "ZombieNormalFirenut"
+num = 10
+override = null
+
+[sub_resource type="Resource" id="Resource_8cly8"]
+script = ExtResource("13")
+zombie = "ZombieZamboni"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_agvw8"]
+script = ExtResource("13")
+zombie = "ZombieZambonipult"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_nxw6w"]
+script = ExtResource("13")
+zombie = "ZombieCat"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_ttfog"]
+script = ExtResource("13")
+zombie = "ZombieImppult"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_d7fg1"]
+script = ExtResource("13")
+zombie = "ZombieGhost"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_l6omu"]
+script = ExtResource("13")
+zombie = "ZombieGargantuarZamboni"
+num = 5
+override = null
+
+[sub_resource type="Resource" id="Resource_5aqmr"]
+script = ExtResource("13")
+zombie = "ZombieNecromancerG"
+num = 2
+override = null
+
+[sub_resource type="Resource" id="Resource_hx2n4"]
+script = ExtResource("12")
+dynamicPlantfood = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+spawn = [SubResource("Resource_lpj5g"), SubResource("Resource_dc31l"), SubResource("Resource_8cly8"), SubResource("Resource_agvw8"), SubResource("Resource_nxw6w"), SubResource("Resource_ttfog"), SubResource("Resource_d7fg1"), SubResource("Resource_l6omu"), SubResource("Resource_5aqmr")]
+dynamic = SubResource("Resource_g6wbf")
+event = [SubResource("Resource_ftvhn")]
+
+[sub_resource type="Resource" id="Resource_r0wyh"]
+script = ExtResource("9")
+flagWaveInterval = 7
+maxNextWaveHealthPercentage = 0.3
+minNextWaveHealthPercentage = 0.15
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_t6ur1")
+dynamic = [null, null, null, null, null, null, null, SubResource("Resource_oxpq7"), SubResource("Resource_rdu2g"), SubResource("Resource_4ywer"), SubResource("Resource_rtqym"), SubResource("Resource_rg8mf"), SubResource("Resource_cfxsw"), SubResource("Resource_b4br3")]
+wave = [SubResource("Resource_f561d"), SubResource("Resource_xr3qc"), SubResource("Resource_dloob"), SubResource("Resource_rqj2t"), SubResource("Resource_n28aa"), SubResource("Resource_i3yep"), SubResource("Resource_oxpbr"), SubResource("Resource_2h2cw"), SubResource("Resource_3d62o"), SubResource("Resource_bhrdp"), SubResource("Resource_jxx11"), SubResource("Resource_lbchm"), SubResource("Resource_yxvt6"), SubResource("Resource_nu6hx"), SubResource("Resource_ho332"), SubResource("Resource_uwy05"), SubResource("Resource_ol0xf"), SubResource("Resource_pkn3k"), SubResource("Resource_x65nf"), SubResource("Resource_aulqe"), SubResource("Resource_4dlky"), SubResource("Resource_5fnrv"), SubResource("Resource_p4f3x"), SubResource("Resource_qulow"), SubResource("Resource_nmyya"), SubResource("Resource_wjgfp"), SubResource("Resource_11syq"), SubResource("Resource_hx2n4")]
+customSurvival = null
+
+[resource]
+script = ExtResource("6")
+data = ExtResource("1")
+featureData = {
+&"BGM": {
+"BackgroundMusic": "FrontlawnNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [],
+"EventReady": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetHealth"],
+"GravestoneNum": 7.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"EventStart": []
+},
+&"Map": {
+"MapName": "UndeadVillageEmpty"
+},
+&"Mower": {},
+&"PacketBank": {
+"PacketBankName": "GeneralPlant"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progess": {},
+&"ScreenEffect": {
+"PacketBankMethod": 1,
+"StormOpen": false
+},
+&"SeedBank": {
+"ColdDownStart": false,
+"ColdDownUse": true,
+"Method": "CHOOSE",
+"Packet": [{
+"PacketName": "PlantCaltropZ"
+}],
+"PlantColumn": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 500.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 1000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"Dynamic": {
+"Point": 900.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}]
+}, {
+"Dynamic": {
+"Point": 700.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"Dynamic": {
+"Point": 900.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}]
+}, {
+"Dynamic": {
+"Point": 1100.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}]
+}, {
+"Dynamic": {
+"Point": 1300.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 1400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 5.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1300.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1700.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 2000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 3000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 5.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 10.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 10.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}]
+}
+}
+processName = &"Wave"
+processData = {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"MowerUse": true,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Wave": [{
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": []
+}, {
+"Dynamic": {
+"Point": 1000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"Dynamic": {
+"Point": 900.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}]
+}, {
+"Dynamic": {
+"Point": 700.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}]
+}, {
+"Dynamic": {
+"Point": 900.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}]
+}, {
+"Dynamic": {
+"Point": 1100.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}]
+}, {
+"Dynamic": {
+"Point": 1300.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}]
+}, {
+"Dynamic": {
+"Point": 1200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 1400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 5.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1300.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 1700.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Dynamic": {
+"Point": 2000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2200.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2400.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2500.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 2600.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"Dynamic": {
+"Point": 3000.0,
+"ZombiePool": ["ZombieNormalPeaShooterSingle", "ZombieNormalStarfruit"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneTargetSkeleton", "GraveStoneTargetSheild", "GraveStoneTargetGargantuar", "GraveStoneTargetHealth"],
+"GravestoneNum": 5.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 10.0,
+"Zombie": "ZombieNormalWallnut"
+}, {
+"Line": -1.0,
+"Num": 10.0,
+"Zombie": "ZombieNormalFirenut"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieZamboni"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieZambonipult"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieCat"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImppult"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieGhost"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}]
+}
+map = "UndeadVillageEmpty"
+backgroundMusic = "FrontlawnNight"
+firstRewardType = 1
+firstRewardValue = "PlantCaltropZ"
+eventReady = [SubResource("Resource_r37vn")]
+packetColdDownStart = false
+sunManager = SubResource("Resource_51ktw")
+fogManager = SubResource("Resource_e1ol8")
+lookStarManager = SubResource("Resource_4708p")
+waveManager = SubResource("Resource_r0wyh")
+vaseManager = null
+_IZMManager = null
+customTalk = null
+customTutorial = null
+packetBankList = [SubResource("Resource_sismy")]
+conveyorData = null
+rainData = null
+PacketBank/Name = "GeneralPlant"
+name = "Level8_14"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_UNDEADVILLAGE_LEVEL_NAME"
+levelNumber = 14
+homeWorld = 1
+metadata/_custom_type_script = "uid://ccfqe6y4qcaji"

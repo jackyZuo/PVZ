@@ -127,11 +127,11 @@ func _process_armor_layer(armor_list: Array[TowerDefenseArmorInstance], num: flo
     for armorInstance: TowerDefenseArmorInstance in armor_list:
         if armorInstance.isRemove:
             continue
-        if projectileHeight >= 0 && projectileHeight > armorInstance.config.height:
+        if projectileHeight >= 0 && projectileHeight > armorInstance.typeData.height:
             continue
-        if armorInstance.config.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.INVINCIBLE:
+        if armorInstance.typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.INVINCIBLE:
             num = 0
-        if armorInstance.config.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.PASSDAMAGE:
+        if armorInstance.typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.PASSDAMAGE:
             dealHurtFunc.call(num, playSplatAudio, velocity, createDamagePart)
             passFlag = true
         if isRange:
@@ -182,6 +182,11 @@ func ProjectileHurt(projectile: TowerDefenseProjectile, projectileConfig: TowerD
                     if !(damageFlags & TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD):
                         damageFlags |= TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD
                         hitShieldFlag = false
+            if character.config.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.CANT_PENETRATE:
+                projectile.Over()
+                if !(damageFlags & TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD):
+                    damageFlags |= TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD
+                    hitShieldFlag = false
     if hitShieldFlag:
         FlagHurt(num, TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.HITSHIELD, playSplatAudio, velocity, createDamagePart, isRange)
     if is_instance_valid(projectile):
@@ -207,6 +212,10 @@ func FlagHurt(num: float, damageFlags: int, playSplatAudio: bool = true, velocit
         return 1000000.0
     num = character.buff.SetAttackNum(num)
     num *= dealHurtScale
+
+    num = _ShieldAbsorb(num)
+    if num <= 0:
+        return 0
     var passFlag: bool = false
     if damageFlags & TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.FIRE:
         if character.buff.BuffHas("RedHeat"):
@@ -244,6 +253,11 @@ func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true,
         character.bodyHurt.emit(0)
         return 0
     num *= dealHurtScale
+
+    if character is TowerDefensePlant:
+        if num >= 1800 && is_instance_valid(character.cell) && is_instance_valid(character.cell.itemShield):
+            if character.cell.itemShield.ShieldBlockLethal():
+                return 0
     if character is TowerDefensePlant:
         if num >= 1800:
             num = 10000000
@@ -262,8 +276,8 @@ func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true,
             num *= 2
     for i in armorHeadCover.size():
         for armor: TowerDefenseArmorInstance in armorHeadCover:
-            armor.DealHurt(num * armor.config.explodePersontage, playSplatAudio, velocity)
-            if armor.config.explodePersontage == 0.0:
+            armor.DealHurt(num * armor.typeData.explodePersontage, playSplatAudio, velocity)
+            if armor.typeData.explodePersontage == 0.0:
                 num = 0.0
             if num > 0:
                 break
@@ -271,8 +285,8 @@ func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true,
             break
     for i in armorShield.size():
         for armor: TowerDefenseArmorInstance in armorShield:
-            armor.DealHurt(num * armor.config.explodePersontage, playSplatAudio, velocity)
-            if armor.config.explodePersontage == 0.0:
+            armor.DealHurt(num * armor.typeData.explodePersontage, playSplatAudio, velocity)
+            if armor.typeData.explodePersontage == 0.0:
                 num = 0.0
             if num > 0:
                 break
@@ -280,8 +294,8 @@ func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true,
             break
     for i in armorHelm.size():
         for armor: TowerDefenseArmorInstance in armorHelm:
-            num = armor.DealHurt(num * armor.config.explodePersontage, playSplatAudio, velocity)
-            if armor.config.explodePersontage == 0.0:
+            num = armor.DealHurt(num * armor.typeData.explodePersontage, playSplatAudio, velocity)
+            if armor.typeData.explodePersontage == 0.0:
                 num = 0.0
             if num > 0:
                 break
@@ -289,7 +303,7 @@ func ExplodeHurt(num: float, type: String = "Bomb", playSplatAudio: bool = true,
             break
     for i in armorBody.size():
         for armor: TowerDefenseArmorInstance in armorBody:
-            num = armor.DealHurt(num * armor.config.explodePersontage, playSplatAudio, velocity)
+            num = armor.DealHurt(num * armor.typeData.explodePersontage, playSplatAudio, velocity)
             if num > 0:
                 break
         if num <= 0:
@@ -353,6 +367,10 @@ func SkipInvincibleHurt(num: float, playSplatAudio: bool = true, velocity: Vecto
     if die:
         return 1000000.0
     num *= dealHurtScale
+
+    num = _ShieldAbsorb(num)
+    if num <= 0:
+        return 0
     var passFlag: bool = false
     if num > 0:
         if hitShield && armorShield.size() > 0:
@@ -372,6 +390,16 @@ func SkipInvincibleHurt(num: float, playSplatAudio: bool = true, velocity: Vecto
                 num = SkipInvincibleDealHurt(num, playSplatAudio, velocity, createDamagePart)
     return num
 
+
+
+func _ShieldAbsorb(num: float) -> float:
+    if num <= 0:
+        return num
+    if character is TowerDefensePlant:
+        if is_instance_valid(character.cell) && is_instance_valid(character.cell.itemShield):
+            return character.cell.itemShield.ShieldAbsorbDamage(num)
+    return num
+
 func Hurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.ZERO, hitShield: bool = true, createDamagePart: bool = true) -> float:
     if invincible:
         character.bodyHurt.emit(0)
@@ -381,6 +409,10 @@ func Hurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vector2.Z
     if die:
         return 1000000.0
     num *= dealHurtScale
+
+    num = _ShieldAbsorb(num)
+    if num <= 0:
+        return 0
     var passFlag: bool = false
     if num > 0:
         if hitShield && armorShield.size() > 0:
@@ -406,6 +438,12 @@ func SmashHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vect
         return 0
     if invincibleSmash:
         return 0
+
+    if character is TowerDefensePlant:
+        if is_instance_valid(character.cell) && is_instance_valid(character.cell.itemShield):
+            if character.cell.itemShield.ShieldBlockLethal():
+                character.cell.itemShield.ShieldDeflateVehicle(character.lastAttacker)
+                return 0
     if character is TowerDefensePlant:
         var checkNum: float = 100000.0
         if smashHurt != -1:
@@ -489,10 +527,11 @@ func DealHurt(num: float, playSplatAudio: bool = true, velocity: Vector2 = Vecto
 
 func Health(num: float) -> void :
     hitpoints += num
+    RefreshDamagePoint()
 
 func ArmorHas(armorName: String) -> bool:
     for armorInstance: TowerDefenseArmorInstance in armorList:
-        if armorInstance.config.armorName == armorName:
+        if armorInstance.slotConfig.armorName == armorName:
             return true
     return false
 
@@ -502,37 +541,38 @@ func ArmorAdd(armorName: String) -> void :
         unUseBuffFlags = TowerDefenseEnum.CHARACTER_BUFF_FLAGS.ALL
     if !is_instance_valid(armorData):
         return
-    if !armorData.armorDictionary.has(armorName):
+    var slotConfig: ArmorSlotConfig = armorData.GetOrCreateSlotConfig(armorName)
+    if !slotConfig:
         return
-    var armorConfig: CharacterArmorConfig = armorData.armorDictionary[armorName]
-    var armorInstance: TowerDefenseArmorInstance = TowerDefenseArmorInstance.new(character, armorConfig)
+    var typeData: TowerDefenseArmorTypeData = TowerDefenseArmorRegistry.GetArmorType(armorName)
+    var armorInstance: TowerDefenseArmorInstance = TowerDefenseArmorInstance.new(character, slotConfig)
     armorInstance.remove.connect(ArmorDestroy)
     armorInstance.hitpointsEmpty.connect(ArmorDestroy)
     armorInstance.damagePointReach.connect(ArmorDamagePointReach)
     armorInstance.hitpointScale = hitpointScale
     armorList.append(armorInstance)
-    if armorConfig.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.SHIELD:
+    if typeData && typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.SHIELD:
         armorShield.append(armorInstance)
-    if armorConfig.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.HELM:
+    if typeData && typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.HELM:
         armorHelm.append(armorInstance)
-    if armorConfig.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.BODY:
+    if typeData && typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.BODY:
         armorBody.append(armorInstance)
-    if armorConfig.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.HEAD_COVER:
+    if typeData && typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.HEAD_COVER:
         armorHeadCover.append(armorInstance)
-    if armorConfig.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DROPABLE:
+    if typeData && typeData.armorMethodFlags & TowerDefenseEnum.ARMOR_METHOD_FLAGS.DROPABLE:
         if !character.damagePart.has(armorName):
-            character.damagePart[armorName] = armorConfig
+            character.damagePart[armorName] = slotConfig
 
 func ArmorDelete(armorName: String, createDamagePart: bool = true) -> void :
     for armorInstance: TowerDefenseArmorInstance in armorList:
-        if armorInstance.config.armorName == armorName:
+        if armorInstance.slotConfig.armorName == armorName:
             armorInstance.Hurt(10000000.0, false, Vector2.ZERO, createDamagePart)
 
 func ArmorDamagePointReach(instance: TowerDefenseArmorInstance, stage: int):
-    armorDamagePointReach.emit(instance.config.armorName, stage)
+    armorDamagePointReach.emit(instance.slotConfig.armorName, stage)
 
 func ArmorDestroy(instance: TowerDefenseArmorInstance) -> void :
-    if instance.config.armorName == "SpecialHelmet":
+    if instance.slotConfig.armorName == "SpecialHelmet":
         unUseBuffFlags = armorOverrideUnUseBuffFlagSave
     instance.isRemove = true
     armorList.erase(instance)
@@ -540,10 +580,10 @@ func ArmorDestroy(instance: TowerDefenseArmorInstance) -> void :
     armorHelm.erase(instance)
     armorBody.erase(instance)
     armorHeadCover.erase(instance)
-    armorHitpointsEmpty.emit(instance.config.armorName)
+    armorHitpointsEmpty.emit(instance.slotConfig.armorName)
 
 func ArmorClear() -> void :
-    for armorInstance: TowerDefenseArmorInstance in armorList:
+    for armorInstance: TowerDefenseArmorInstance in armorList.duplicate():
         armorInstance.Hurt(10000000.0, false, Vector2.ZERO, true, true)
 
 func ArmorDraw(instance: TowerDefenseArmorInstance) -> TowerDefenseMagnet:
@@ -551,7 +591,7 @@ func ArmorDraw(instance: TowerDefenseArmorInstance) -> TowerDefenseMagnet:
         return null
     var draw: TowerDefenseMagnet = instance.Draw()
     character.armorHurt.emit(instance.hitPoints)
-    armorHitpointsEmpty.emit(instance.config.armorName)
+    armorHitpointsEmpty.emit(instance.slotConfig.armorName)
     return draw
 
 func RefeshHitPoint() -> void :
@@ -571,6 +611,38 @@ func SetDamageStage(index: int) -> void :
         for customName: String in character.currentCustom:
             customData.SetDamagePoint(character.sprite, customName, index)
     damagePointReach.emit(damagePointName)
+
+func RefreshDamagePoint() -> void :
+    if !damagePointData:
+        return
+    if damagePointIndex == 0:
+        return
+    if character is TowerDefenseZombie:
+        return
+    if character is TowerDefenseZombieGargantuarBase:
+        return
+    if !is_instance_valid(character) || !is_instance_valid(character.sprite):
+        return
+    var persontage: float = (hitpoints - hitpointsNearDeath) / (hitpointsSave - hitpointsNearDeath)
+    var newIndex: = 0
+    for i in damagePoints.size():
+        if persontage <= damagePoints[i]["Persontage"]:
+            newIndex = i + 1
+        else:
+            break
+    if newIndex == damagePointIndex:
+        return
+    damagePointData.ClearDamagePointAll(character.sprite)
+    if customData:
+        for customName: String in character.currentCustom:
+            customData.ClearDamagePoint(character.sprite, customName)
+    for i in newIndex:
+        var damagePointName: String = damagePoints[i]["Name"]
+        damagePointData.SetDamagePointFliters(character.sprite, damagePointName)
+        if customData:
+            for customName: String in character.currentCustom:
+                customData.SetDamagePoint(character.sprite, customName, i)
+    damagePointIndex = newIndex
 
 func ExportSave() -> Dictionary:
     var data: Dictionary = {}
@@ -661,6 +733,6 @@ func ImportSave(data: Dictionary) -> void :
             if armorName == "":
                 continue
             for armorInstance: TowerDefenseArmorInstance in armorList:
-                if armorInstance.config.armorName == armorName:
+                if armorInstance.slotConfig.armorName == armorName:
                     armorInstance.ImportSave(armorSaveData)
                     break

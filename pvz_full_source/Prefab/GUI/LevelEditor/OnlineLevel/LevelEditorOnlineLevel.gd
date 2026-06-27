@@ -15,12 +15,14 @@ const LEVEL_EDITOR_ONLINE_LEVEL_ITEM = preload("uid://7tkumqfm20gv")
 @onready var jumpPageToSpinBox: SpinBox = %JumpPageToSpinBox
 @onready var jumpPageToButton: MainButton = %JumpPageToButton
 
+@onready var typeOptionButton: OptionButton = %TypeOptionButton
 
 var levelNum: int = 1
 var maxPage: int = 1
 var currentPage: int = -1
 var currentPageList: Array = []
 var suffix: String = ""
+var suffix2: String = ""
 var search: String = ""
 var currentLevelId: String = ""
 
@@ -36,7 +38,7 @@ func GetPage(pageIndex: int = 1) -> void :
         node.queue_free()
 
     if !myCollection:
-        InternetServerManager.GetOnlineLevelPage(pageIndex, suffix, search)
+        InternetServerManager.GetOnlineLevelPage(pageIndex, suffix, suffix2, search)
     else:
         LoadMyCollectionPage(pageIndex)
 
@@ -177,6 +179,8 @@ func LevelInformationGetHTTPRequestCompleted(result: int, response_code: int, he
 func MyCollectionButtonPressed() -> void :
     myCollection = true
     suffix = ""
+    typeOptionButton.selected = 0
+    TypeOptionButtonItemSelected(0)
     GetPage(1)
 
 func SmartRecommendationButtonPressed() -> void :
@@ -202,3 +206,23 @@ func SortByNumberOfPlayedButtonPressed() -> void :
 
 func ExchangeButtonPressed() -> void :
     DialogManager.DialogCreate("OnlineLevelExchange")
+
+func TypeOptionButtonItemSelected(index: int) -> void :
+    match index:
+        0:
+            suffix2 = ""
+        1:
+            suffix2 = "&finish_method=wave&round_mode=default&is_lucky=false"
+        2:
+            suffix2 = "&finish_method=vase"
+        3:
+            suffix2 = "&finish_method=izm"
+        4:
+            suffix2 = "&finish_method=izm2"
+        5:
+            suffix2 = "&round_mode=survival"
+        6:
+            suffix2 = "&round_mode=endless"
+        7:
+            suffix2 = "&is_lucky=true"
+    GetPage(1)

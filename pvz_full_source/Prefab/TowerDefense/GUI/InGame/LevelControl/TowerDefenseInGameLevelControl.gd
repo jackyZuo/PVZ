@@ -43,8 +43,7 @@ func AwardCreate(pos: Vector2) -> void :
     if awardCreate:
         return
     awardCreate = true
-    if Global.isMultiplayerMode and MultiPlayerManager.isHost:
-        MultiPlayerManager.SendGameResult(true)
+    BattleEventBus.gameVictory.emit()
     if (Global.isEditor && Global.enterLevelMode == "DiyLevel") || Global.enterLevelMode == "LoadLevel" || Global.enterLevelMode == "OnlineLevel":
         if Global.enterLevelMode == "OnlineLevel":
             InternetServerManager.OnlineLevelPost(Global.enterLevelId, "completion")

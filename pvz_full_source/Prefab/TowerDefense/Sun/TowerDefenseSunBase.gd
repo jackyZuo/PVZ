@@ -148,6 +148,7 @@ func Collection() -> void :
     if isCollect:
         return
     OnCollectStart()
+    light.visible = false
     var config: DropItemConfig = GetDropItemConfig()
     var pickAudio: String = "Sun"
     if config:

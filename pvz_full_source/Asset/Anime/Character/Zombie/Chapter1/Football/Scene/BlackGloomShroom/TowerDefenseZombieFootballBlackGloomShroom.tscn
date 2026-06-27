@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://cw43id6ynffo5" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Config/TowerDefenseZombieFootballBlackGloomShroom.tres" id="3"]
 [ext_resource type="Resource" uid="uid://b8w8htp4yuf7k" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointArm.tres" id="4"]
 [ext_resource type="Resource" uid="uid://d0c6qmcgnjnb0" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointHead.tres" id="5"]
-[ext_resource type="Resource" uid="uid://dedieta5uv0ct" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorHelmet.tres" id="6"]
-[ext_resource type="Resource" uid="uid://bdqvjthyoys55" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://bdqvjthyoys55" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dedieta5uv0ct" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorHelmet.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://co7x7udagux7a" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Sprite/BlackGloomShroom/ZombieFootballBlackGloomShroom.tscn" id="8"]
 [ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="9"]
 [ext_resource type="PackedScene" uid="uid://dir0f8lu1l3b3" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponent.tscn" id="10"]
@@ -49,17 +49,6 @@ image = SubResource("Image_ts6md")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46loo"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_gibt5")
@@ -100,17 +89,6 @@ image = SubResource("Image_snke3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ma5t6"]
 shader = ExtResource("9")
-shader_parameter/brightStrength = 0.0
-shader_parameter/whiteStrength = 0.0
-shader_parameter/discardUpPos = -10000.0
-shader_parameter/discardDownPos = 10000.0
-shader_parameter/surfacePos = 0.0
-shader_parameter/ash = false
-shader_parameter/cover = false
-shader_parameter/imitater = false
-shader_parameter/puzzle = false
-shader_parameter/blink = false
-shader_parameter/hologram = false
 shader_parameter/frameBlend = -1.0
 shader_parameter/blend = false
 shader_parameter/imageCustomData = SubResource("ImageTexture_8qqim")
@@ -140,16 +118,16 @@ sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom")
 headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HeadSlot")
 damagePart = {
 "Arm": ExtResource("4"),
-"BlackHelmet": ExtResource("7"),
+"BlackHelmet": ExtResource("6"),
 "Head": ExtResource("5"),
-"Helmet": ExtResource("6")
+"Helmet": ExtResource("7")
 }
 PreviewDamagePointPersontage = 1.0
 Armor = []
 DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/ArmSlot")
 DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HeadSlot")
-DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HelmentSlot")
 DamagePartSlot/BlackHelmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HelmentSlot")
+DamagePartSlot/Helmet = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HelmentSlot")
 
 [node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
 position = Vector2(9, 37)

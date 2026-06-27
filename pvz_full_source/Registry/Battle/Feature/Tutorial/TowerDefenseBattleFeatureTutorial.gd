@@ -16,6 +16,8 @@ func Init(_data: Dictionary) -> void :
 
 func GameStart() -> void :
     if is_instance_valid(config):
+        if config.saveKey != "" && GameSaveManager.GetTutorialValue(config.saveKey):
+            return
         TutorialManager.TutorialEnter(config)
         await TutorialManager.tutorialFinish
 

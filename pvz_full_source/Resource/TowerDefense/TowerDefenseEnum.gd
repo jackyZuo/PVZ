@@ -105,7 +105,8 @@ enum CHARACTER_PHYSIQUE_TYPE{
     LIGHT = 1 << 6, 
     JALAPENO = 1 << 7, 
     CAT = 1 << 8, 
-    NO_POT_REPLACE = 1 << 9
+    NO_POT_REPLACE = 1 << 9, 
+    CANT_PENETRATE = 1 << 10
 }
 
 
@@ -198,6 +199,7 @@ enum LEVEL_FINISH_METHOD{
     IZM, 
     QUIZ, 
     IZM2, 
+    EMPTY, 
 }
 
 enum LEVEL_REWARDTYPE{

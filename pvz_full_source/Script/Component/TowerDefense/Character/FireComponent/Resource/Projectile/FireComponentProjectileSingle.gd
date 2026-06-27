@@ -1,4 +1,4 @@
-
+@tool
 class_name FireComponentProjectileSingle extends FireComponentProjectileResource
 
 
@@ -7,7 +7,7 @@ class_name FireComponentProjectileSingle extends FireComponentProjectileResource
 
 var projectileName: String:
     set(value):
-        if value != projectileData.projectileName:
+        if !projectileData || value != String(projectileData.projectileName):
             projectileData = TowerDefenseProjectileCreateData.new(StringName(value))
     get:
         if projectileData:

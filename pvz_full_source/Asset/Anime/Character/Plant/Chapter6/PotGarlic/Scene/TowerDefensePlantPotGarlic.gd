@@ -15,7 +15,7 @@ func AttackDeal(character: TowerDefenseCharacter, type: String, num: float) -> v
             return
     match type:
         "Eat":
-            SkipInvincibleHurt(10)
+            SkipInvincibleHurt(max(10.0, num))
             character.Garlic()
         "Smash":
             Destroy()

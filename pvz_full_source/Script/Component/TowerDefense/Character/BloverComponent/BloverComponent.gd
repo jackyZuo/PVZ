@@ -32,11 +32,8 @@ signal blowOver()
 
 var parent: TowerDefenseCharacter
 
-var projectileConfigList: Array[TowerDefenseProjectileConfig] = []
-
 var _sync_projectile_data: Array = []
 var _sync_deserializing: bool = false
-
 
 func GetName() -> String:
     return "BloverComponent"
@@ -46,8 +43,6 @@ func _ready() -> void :
     parent = get_parent().parent as TowerDefenseCharacter
     if !is_instance_valid(parent):
         return
-    for data: TowerDefenseProjectileCreateData in projectileDataList:
-        projectileConfigList.append(data.BuildConfig())
 
 
 func Execult() -> void :
@@ -81,7 +76,7 @@ func ExecuteTargetList(targetList: Array) -> void :
             continue
         if target.instance.maskFlags == 0:
             continue
-        var bloweLengthGet: float = - blowLength if parent.instance.hypnoses else blowLength
+        var bloweLengthGet: float = - blowLength if parent.scale.x < 0 else blowLength
         if target.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE:
             if blowAirCharacterOut:
                 target.Blow()
@@ -93,17 +88,20 @@ func ExecuteTargetList(targetList: Array) -> void :
                 if !(target.instance.maskFlags & TowerDefenseEnum.CHARACTER_COLLISION_FLAGS.OFF_GROUND_CHARACTRE):
                     bloweLengthGet = blowPhysiqueHugeLength
         target.BlowBack(bloweLengthGet, blowTime)
-    if !projectileConfigList.is_empty():
+    if !projectileDataList.is_empty():
         var height: float = parent.GetGroundHeight(parent.global_position.y)
         _sync_projectile_data.clear()
+        var projectileConfigList: Array[TowerDefenseProjectileConfig] = []
+        for data: TowerDefenseProjectileCreateData in projectileDataList:
+            projectileConfigList.append(data.BuildConfig())
         for id in range(projectileRowNum):
             for line in range(1, TowerDefenseManager.GetMapGridNum().y + 1):
                 var pos: Vector2 = Vector2(-50, TowerDefenseManager.GetMapCellPlantPos(Vector2(0, line)).y)
-                if parent.instance.hypnoses:
+                if parent.scale.x < 0:
                     pos.x = TowerDefenseManager.GetMapGroundRight()
                 var heightOffset: float = randf_range(-10, 40) + 20
                 var pickedConfig: TowerDefenseProjectileConfig = projectileConfigList.pick_random()
-                var projVelocityX: float = randf_range(400.0, 800.0) * (-1 if parent.instance.hypnoses else 1)
+                var projVelocityX: float = randf_range(400.0, 800.0) * (-1 if parent.scale.x < 0 else 1)
                 _sync_projectile_data.append({
                     "line": line, 
                     "height_offset": heightOffset, 
@@ -111,7 +109,7 @@ func ExecuteTargetList(targetList: Array) -> void :
                     "config_index": projectileConfigList.find(pickedConfig)
                 })
                 var projectile: TowerDefenseProjectile = FireComponent.CreateProjectilePositionByConfig(null, null, height + heightOffset, pos + Vector2(0, 20), Vector2(projVelocityX, 0.0), pickedConfig, -1, parent.camp)
-                projectile.projectileBodyNode.scale.x = parent.global_scale.x
+                projectile.projectileBodyNode.scale.x = parent.scale.x
                 projectile.gridPos.y = line
             await get_tree().create_timer(0.1, false).timeout
     else:

@@ -40,8 +40,6 @@ var skinName: String = "Default":
             await ready
         fireComponent.fireCheckList[0].projectile.projectileData.skinName = skinName
 
-@export var eventList: Array[TowerDefenseCharacterEventBase] = []
-
 func _ready() -> void :
     if Engine.is_editor_hint():
         return

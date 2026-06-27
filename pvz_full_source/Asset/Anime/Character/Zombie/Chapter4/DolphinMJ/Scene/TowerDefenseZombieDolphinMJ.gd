@@ -13,7 +13,6 @@ var dolphin: bool = true:
         if !dolphin:
             useAttackDps = true
             attackComponent.attackType = "Eat"
-            attackComponent.checkVase = false
             useAttackDps = true
             walkAnimeClip = "Walk"
             attackAnimeClip = "Eat"
@@ -87,6 +86,9 @@ func WalkProcessing(delta: float) -> void :
                     sprite.SetAnimation("PointUp4", false, 0.0)
                     sprite.AddAnimation("PointDown4", 0.75, false, 0.0)
                 isSpawn = true
+    if !dolphin && attackComponent.CanAttack():
+        if is_instance_valid(attackComponent.target) && attackComponent.target is TowerDefenseVase:
+            attackComponent.SmashAttackCell(config.smashAttack)
 
 func AttackProcessing(delta: float) -> void :
     super.AttackProcessing(delta)

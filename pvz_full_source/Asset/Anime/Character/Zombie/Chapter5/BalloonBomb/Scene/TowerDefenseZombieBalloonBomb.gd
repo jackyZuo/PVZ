@@ -51,6 +51,12 @@ func FlyAttackExited() -> void :
 func Walk() -> void :
     state.send_event("ToFly")
 
+func Attack() -> void :
+    if die:
+        state.send_event("ToDie")
+        return
+    state.send_event("ToFly")
+
 func Blow() -> void :
     HitBoxDestroy()
     var tween = create_tween()

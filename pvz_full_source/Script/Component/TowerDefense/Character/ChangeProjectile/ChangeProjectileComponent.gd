@@ -10,6 +10,7 @@ class_name ChangeProjectileComponent extends ComponentBase
 
 @export var isStar: bool = false
 
+@export var checkAir: bool = false
 
 var parent: TowerDefenseCharacter
 
@@ -45,6 +46,8 @@ func ChangeProjectile(area: Area2D):
             return
         if !projectile.checkAll && projectile.gridPos.y != parent.gridPos.y:
             return
+        if checkAir && projectile.fireMethodFlags & TowerDefenseEnum.PROJECTILE_FIRE_METHOD_FLAG.CATAPULT:
+            return
         var toProjectileName: StringName = TowerDefenseProjectileRegistry.GetProjectileChange(StringName(projectile.config.name), changeName)
         if toProjectileName != &"":
             var currentData: TowerDefenseProjectileData = TowerDefenseProjectileRegistry.GetProjectile(StringName(projectile.config.name))
@@ -56,6 +59,8 @@ func ChangeProjectile(area: Area2D):
                 toProjectileConfig.baseDamage = projectile.damage * (data.baseDamage / currentData.baseDamage)
             elif data:
                 toProjectileConfig.baseDamage = data.baseDamage
+            if data && data.isFire:
+                toProjectileConfig.damageFlags |= TowerDefenseEnum.PROJECTILE_DAMAGE_FLAG.FIRE
             if toProjectileConfig:
                 projectile.Change(toProjectileConfig, StringName(projectile.config.name), toProjectileName, parent)
                 if changeAudio:

@@ -23,6 +23,7 @@ func Enter() -> void :
     character.spriteGroup.add_child(light)
 
     character.instance.canBeCollection = false
+    character.instance.physiqueTypeFlags |= TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.LIGHT
 
 @warning_ignore("unused_parameter")
 func Step(delta: float) -> bool:
@@ -36,6 +37,7 @@ func Exit() -> void :
     if is_instance_valid(light):
         light.queue_free()
     character.instance.canBeCollection = true
+    character.instance.physiqueTypeFlags &= ~ TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.LIGHT
 
 @warning_ignore("unused_parameter")
 func Refresh(config: TowerDefenseCharacterBuffConfig) -> void :

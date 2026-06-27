@@ -38,6 +38,8 @@ func Change() -> void :
     characterNode.add_child(effect)
     await get_tree().physics_frame
     var packetConfig: TowerDefensePacketConfig = TowerDefenseManager.GetPacketConfig("PlantNutFlower")
+    if instance.hypnoses:
+        packetConfig.overrideHypnoses = true
     packetConfig.Plant(gridPos)
 
 func ExportVariantSave() -> Dictionary:

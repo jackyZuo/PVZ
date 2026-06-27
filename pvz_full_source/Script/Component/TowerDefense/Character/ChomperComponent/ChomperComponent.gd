@@ -25,6 +25,8 @@ var parent: TowerDefenseCharacter
 
 @export var chewTime: float = 30.0
 
+@export var chewTimePercentage: float = -1
+
 @export var biteAttack: float = -1
 
 @export var biteEvent: Array[TowerDefenseCharacterEventBase]
@@ -32,6 +34,10 @@ var parent: TowerDefenseCharacter
 @export var biteOnly: bool = false
 
 @export var biteNoLimit: bool = false
+
+@export var ignoreBiteHurt: bool = false
+
+@export var healthPercentage: float = -1
 @export_subgroup("AnimeSetting")
 
 @export var sprite: AdobeAnimateSprite
@@ -85,6 +91,10 @@ var isChew: bool = false
 
 var eatCharacter: bool = false
 
+var canEnterChew: bool = true
+
+var healthNum: float = 0
+
 
 
 func GetName() -> String:
@@ -108,12 +118,6 @@ func _ready() -> void :
         state.process_mode = Node.PROCESS_MODE_INHERIT
         sprite.animeCompleted.connect(AnimeCompleted)
         sprite.animeEvent.connect(AnimeEvent)
-
-
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void :
-    if !alive || !is_instance_valid(parent):
-        return
 
 
 
@@ -270,7 +274,10 @@ func SwallowProcessing(delta: float) -> void :
 
 
 func SwallowExited() -> void :
-    pass
+    if healthNum > 0:
+        parent.Health(healthNum)
+        if parent.instance.hitpoints >= parent.instance.hitpointsSave:
+            parent.instance.hitpoints = parent.instance.hitpointsSave
 
 
 
@@ -279,13 +286,19 @@ func AnimeCompleted(clip: String) -> void :
         biteStartAnimeClips:
             if !suckUse:
                 if eatCharacter:
-                    state.send_event("ToChew")
+                    if canEnterChew:
+                        state.send_event("ToChew")
+                    else:
+                        state.send_event("ToIdle")
                 else:
                     biteFail.emit()
                     state.send_event("ToIdle")
         biteEndAnimeClips:
             if eatCharacter:
-                state.send_event("ToChew")
+                if canEnterChew:
+                    state.send_event("ToChew")
+                else:
+                    state.send_event("ToIdle")
             else:
                 biteFail.emit()
                 state.send_event("ToIdle")
@@ -316,33 +329,57 @@ func AnimeEvent(command: String, argument: Variant) -> void :
 
 
 func BitCharacter(_target: TowerDefenseCharacter) -> void :
+    canEnterChew = true
     if _target.die || _target.nearDie:
         return
     if Global.isMultiplayerMode and !MultiPlayerManager.isHost and _target is TowerDefenseZombie:
         return
+    if parent.instance.physiqueTypeFlags & TowerDefenseEnum.CHARACTER_PHYSIQUE_TYPE.SPIKE && _target.instance.zombiePhysique == TowerDefenseEnum.ZOMBIE_PHYSIQUE.CAR:
+        canEnterChew = false
     var chewFlag: bool = false
+    var _chewTime: float = chewTime
+    var _healthNum: float = 0
     if parent.CanTarget(_target) && parent.CanCollision(_target.instance.maskFlags):
+        if chewTimePercentage >= 0 && chewTimePercentage <= 1:
+            var _targetCurrentHitPoint: float = _target.GetCurrentHitPoint()
+            _chewTime = _targetCurrentHitPoint * chewTimePercentage
+            if _chewTime > chewTime:
+                _chewTime = chewTime
+        if healthPercentage >= 0 && healthPercentage <= 1:
+            var _targetCurrentHitPoint: float = _target.GetCurrentHitPoint()
+            _healthNum = _targetCurrentHitPoint * healthPercentage
         BiteEventExecute(_target)
+        var _damage: float
         if biteNoLimit:
-            if _target is TowerDefenseZombie:
-                if _target.instance.biteHurt == -1:
-                    if !biteOnly:
-                        chewFlag = true
-                    else:
-                        _target.Hurt((_target.instance.biteHurt if biteAttack == -1 else biteAttack), true, Vector2.ZERO, false)
-                else:
-                    _target.Hurt((_target.instance.biteHurt if biteAttack == -1 else biteAttack), true, Vector2.ZERO, false)
+            if _target is TowerDefenseZombie && _target.instance.biteHurt == -1 && !biteOnly:
+                chewFlag = true
             else:
-                _target.Hurt((_target.instance.biteHurt if biteAttack == -1 else biteAttack), true, Vector2.ZERO, false)
+                _damage = (_target.instance.biteHurt if biteAttack == -1 else biteAttack)
+                _target.AttackDeal(parent, attackComponent.attackType, _damage)
+                _target.Hurt(_damage, true, Vector2.ZERO, false)
         else:
-            if _target.instance.biteHurt == -1:
-                _target.instance.ArmorClear()
-                _target.Hurt((100000.0 if biteAttack == -1 else biteAttack), true, Vector2.ZERO, false)
+            if ignoreBiteHurt || _target.instance.biteHurt == -1:
+                if _target.instance.zombiePhysique == TowerDefenseEnum.ZOMBIE_PHYSIQUE.BOSS:
+                    _damage = (_target.instance.biteHurt if biteAttack == -1 else biteAttack)
+                else:
+
+                    if _target is TowerDefensePlant and biteAttack == -1:
+                        if is_instance_valid(_target.cell) and is_instance_valid(_target.cell.itemShield):
+                            if _target.cell.itemShield.ShieldBlockLethal():
+                                canEnterChew = false
+                                return
+                    if biteAttack == -1:
+                        _target.instance.ArmorClear()
+                    _damage = (100000.0 if biteAttack == -1 else biteAttack)
             else:
-                _target.Hurt((_target.instance.biteHurt if biteAttack == -1 else biteAttack), true, Vector2.ZERO, false)
+                _damage = (_target.instance.biteHurt if biteAttack == -1 else biteAttack)
+            _target.AttackDeal(parent, attackComponent.attackType, _damage)
+            _target.Hurt(_damage, true, Vector2.ZERO, false)
     if _target.die || _target.nearDie:
         chewFlag = true
     if !biteOnly && chewFlag:
+        chewTime = _chewTime
+        healthNum = _healthNum
         _target.isChomp = true
         _target.Destroy()
         eatCharacter = true
@@ -374,6 +411,8 @@ func ExportComponentSave() -> Dictionary:
         "isSuck": isSuck, 
         "isChew": isChew, 
         "eatCharacter": eatCharacter, 
+        "canEnterChew": canEnterChew, 
+        "healthNum": healthNum
     }
     if is_instance_valid(target):
         data["target"] = target.name.validate_node_name()
@@ -384,6 +423,8 @@ func ImportComponentSave(_data: Dictionary, _owner: TowerDefenseLevelSaveConfig)
     isSuck = _data.get("isSuck", false)
     isChew = _data.get("isChew", false)
     eatCharacter = _data.get("eatCharacter", false)
+    canEnterChew = _data.get("canEnterChew", true)
+    healthNum = _data.get("healthNum", 0)
     var targetName: String = _data.get("target", "")
     if targetName != "" and _owner.charcterDicionary.has(targetName):
         target = _owner.charcterDicionary[targetName]
@@ -394,6 +435,8 @@ func SyncSerialize() -> Dictionary:
         "isSuck": isSuck, 
         "isChew": isChew, 
         "eatCharacter": eatCharacter, 
+        "canEnterChew": canEnterChew, 
+        "healthNum": healthNum
     }
     if is_instance_valid(target):
         data["targetSyncId"] = target.sync_id
@@ -406,6 +449,8 @@ func SyncDeserialize(data: Dictionary) -> void :
     isSuck = data.get("isSuck", false)
     isChew = data.get("isChew", false)
     eatCharacter = data.get("eatCharacter", false)
+    canEnterChew = data.get("canEnterChew", true)
+    healthNum = data.get("healthNum", 0)
     if data.has("targetSyncId"):
         var target_sync_id: int = data["targetSyncId"]
         if target_sync_id >= 0 and is_instance_valid(TowerDefenseManager.currentControl):
